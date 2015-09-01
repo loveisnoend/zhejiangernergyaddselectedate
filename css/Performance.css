@@ -1,0 +1,104 @@
+#idPerformance .performance_main {
+              width: 980px;
+  margin: 0px auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 0;
+  -webkit-text-size-adjust: none;
+  color: #FFF;
+  font-family: \5FAE\8F6F\96C5\9ED1;
+        }
+ #idPerformance .performance_head{
+   height: 200px;
+  padding-top: 15px;
+  background: url("../img/2-2-bg.png");
+  background-repeat: no-repeat;
+  background-position-x: 155px;
+  background-position-y: 15px;
+  background-size: auto 200px;
+  color: #FFF;
+ }
+ #idPerformance .performance_head>.inner_text{
+       margin: 8px auto;
+  width: 840px;
+  text-align: center;
+  height: 180px;
+ }
+ #idPerformance .performance_head>.inner_text>div{
+ display:inline-block;
+ vertical-align: top;
+ margin: 37px 58px;
+ }
+  #idPerformance .performance_head>#rlr_circle{
+        width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 15px;
+  left: 410px;
+  }
+#idPerformance .performance_main > div {
+    display: inline-block;
+    vertical-align: top;
+    padding: 12px;
+    height: 446px;
+    font-size: 12px;
+    float:left;
+    }
+
+        #idPerformance .panel {
+            width: 460px;
+  padding: 3px;
+  height: 200px;
+
+  margin-bottom: 24px;
+background:url("../img/item-bg.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+        }
+
+            #idPerformance .panel .panel_title {
+                text-align: left;
+                padding-left: 20px;
+                font-size: 18px;
+                background-color:transparent;
+                font-weight: 500;
+                line-height: 40px;
+            }
+
+                #idPerformance .panel .panel_title span {
+                    float: right;
+                    padding-right: 20px;
+                }
+
+            #idPerformance .panel .panel_content {
+                height: 160px;
+  background-color:transparent;
+            }
+
+                #idPerformance .panel .panel_content > div {
+                    width: 460px;
+                    height: 160px;
+                }
+
+ #idPerformance .performance_head .inner_panel{
+    margin: 46px auto;
+    width: 156px;
+    text-align: center;
+}
+ #idPerformance .performance_head .inner_panel .title{
+    font-size: 20px;
+}
+ #idPerformance .performance_head .inner_panel .num{
+    font-size: 50px;
+}
+ #idPerformance .performance_head .inner_panel .info{
+    font-size: 18px;
+    line-height: 18px;
+    height: 18px;
+}
+ #idPerformance .performance_head .inner_panel .info img{
+width: 18px;
+    height: 18px;
+    vertical-align: bottom;
+    padding-left: 10px;
+}

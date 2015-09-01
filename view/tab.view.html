@@ -1,0 +1,178 @@
+<template data-controller-name="com.zhenergy.pcbi.view.tab">
+ <script>
+    function change(value){
+	    switch(true)
+	        {
+	            case value==3:
+                    tab.getController().loadChart01();
+                    break;
+                case value==1:
+                    tab.getController().loadChart02();
+                    break;
+                case value==2:
+                    tab.getController().loadChart01();
+                    break;
+	        }
+	}
+ </script>
+	 <div class="nav_main">
+    
+        <div class="msg_top">
+            
+        </div>
+        <div class="content_center tab_bgcolor">
+            <div class="yinying"></div>
+            <div class="yinying position1"></div>
+            <div class="yinying position2"></div>
+            <div class="yinying position3"></div>
+            <div id="demo" style="color:white;margin-top:20px;margin-left:40px;font-weight:bold;"><span id="demo">经营业绩 > 全社会用电量</span></div>
+            <div class="tab_content">
+                <div class="tab_content_head">
+                    <div class="tab_content_head_01">2015年8月11日</div>
+                    <div class="tab_content_head_01">周二</div>
+                </div>
+                <div class="tab_content_center1">
+                    <div class="tab_center1_01">
+                        <div class="tab_001 tab01">
+                            <div class="tab_001_image img003"></div>
+                            <div class="tab_001_font">30℃</div>
+                        </div>
+                        <div class="tab_001 ">
+                            <div class="tab_001_image img003"></div>
+                            <div class="tab_001_font">30℃</div>
+                        </div>
+                        <div class="tab_001 ">
+                            <div class="tab_001_image img001"></div>
+                            <div class="tab_001_font">30℃</div>
+                        </div>
+                        <div class="tab_001 ">
+                            <div class="tab_001_image img003"></div>
+                            <div class="tab_001_font">30℃</div>
+                        </div>
+                        <div class="tab_001 ">
+                            <div class="tab_001_image img002"></div>
+                            <div class="tab_001_font">30℃</div>
+                        </div>
+                        <div class="tab_001 ">
+                            <div class="tab_001_image img001"></div>
+                            <div class="tab_001_font">30℃</div>
+                        </div>
+                        <div class="tab_001">
+                            <div class="tab_001_image img001"></div>
+                            <div class="tab_001_font">30℃</div>
+                        </div>
+                    </div>
+                    <div class="tab_center1_02" id="line01"></div>
+                    <div class="tab_center1_03" id="line02"></div>
+                    <div class="tab_center1_04" >
+                        <div class="tab_bar barft" id="bar01"></div>
+                        <div class="tab_bar" id="bar02"></div>
+                        <div class="tab_bar" id="bar03"></div>
+                        <div class="tab_bar" id="bar04"></div>
+                        <div class="tab_bar" id="bar05"></div>
+                        <div class="tab_bar" id="bar06"></div>
+                        <div class="tab_bar" id="bar07"></div>
+                    </div>
+                </div>
+                
+                <button style="width:1px;height:1px;position:relative;z-index:-999">qeqweqeqew</button>
+                <div class="tab_content_center2">
+                    <div class="tab_center2_01">
+                        <div class="tab_center2_01_font">按地市电厂</div>
+                        <div class="tab_center2_01_choose01">
+                            <select class="select" id="select01" onchange="change(this.value)">
+                              <option value="1" seleted>杭州</option>
+                              <option value="2">台州</option>
+                              <option value="3">金华</option>
+                              <option value="舟山">舟山</option>
+                            </select>
+                        </div>
+                        <div class="tab_center2_01_choose01">
+                            <select class="select">
+                              <option value="集团">集团</option>
+                              <option value="台州">台州</option>
+                              <option value="金华">金华</option>
+                              <option value="舟山">舟山</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="tab_center2_02">
+                        <div class="tab_center2_01_font">指标趋势</div>
+                        <div class="tab_center2_02_table01">
+                            <div class="tab_center2_02_01"></div>
+                            <div class="tab_center2_02_table01_font">气温趋势</div>
+                        </div>
+                        <div class="tab_center2_02_table01">
+                            <div class="tab_center2_02_01 table_bg"></div>
+                            <div class="tab_center2_02_table01_font">社会用电量</div>
+                        </div>
+                        <div class="tab_center2_02_table01">
+                            <div class="tab_center2_02_01 table_bg1"></div>
+                            <div class="tab_center2_02_table01_font">发电量</div>
+                        </div>
+                    </div>
+                    <div class="tab_center2_03">
+                        <div class="tab_center2_01_font">堆煤温度</div>
+                        <div class="tab_center2_03_img">
+                            <div class="tab_center2_03_img01">
+                                <div class="tab_center2_img img01"></div>
+                                <div class="tab_center2_font">堆一</div>
+                            </div>
+                            <div class="tab_center2_03_img01">
+                                <div class="tab_center2_img img02"></div>
+                                <div class="tab_center2_font">堆二</div>
+                            </div>
+                            <div class="tab_center2_03_img01">
+                                <div class="tab_center2_img img01"></div>
+                                <div class="tab_center2_font">堆三</div>
+                            </div>
+                            <div class="tab_center2_03_img01">
+                                <div class="tab_center2_img img03"></div>
+                                <div class="tab_center2_font">堆四</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            
+        </div>
+       <div class="menu_bottom">
+            <ul>
+                <li class="but01">
+                    <div class="But01" type="button"  onClick="doit1()"></div>
+                </li>
+                <li class="split_line"></li>
+                <li class="but02">
+                    <div class="But02" type="button"  onClick="doit2()"></div>
+                </li>
+                <li class="split_line"></li>
+                <li class="but03 nav_BI">
+                    <div class="But03" type="button"  onClick="doit3()"></div>
+                </li>
+                <li class="split_line"></li>
+                <li class="but04">
+                    <div class="But04" type="button"  onClick="doit4()"></div>
+                </li>
+                <li class="split_line"></li>
+                <li class="but05">
+                    <div class="But05" type="button"  onClick="doit5()"></div>
+                </li>
+                <li class="split_line"></li>
+                <li class="but06">
+                    <div class="But06" type="button"  onClick="doit6()"></div>
+                </li>
+                <li class="split_line"></li>
+                <li class="but07">
+                    <div class="But07" type="button"  onClick="doit7()"></div>
+                </li>
+                <li class="split_line"></li>
+                <li class="but08">
+                    <div class="But08" type="button"  onClick="doit8()"></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+ 
+</template>

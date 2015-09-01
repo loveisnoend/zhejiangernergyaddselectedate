@@ -1,0 +1,12 @@
+.powerPlantLeft{
+    background-color : black;
+    height : 100%;
+    width : 50%;
+    float : left;
+}
+.powerPlantRight{
+    background-color : white;
+    height : 100%;
+    width : 50%;
+    float : left;
+}

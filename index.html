@@ -11,15 +11,177 @@
 				data-sap-ui-resourceroots='{"com.zhenergy.pcbi": "./"}'
 				data-sap-ui-theme="sap_bluecrystal">
 		</script>
+		<!-- css  -->
+		<link rel="stylesheet" type="text/css" href="css/home.css">
+		<link rel="stylesheet" type="text/css" href="css/swiper.css">
+		<link rel="stylesheet" type="text/css" href="css/panel.css">
+		<link rel="stylesheet" type="text/css" href="css/tab.css">
+		<link rel="stylesheet" type="text/css" href="css/Performance.css">
+		<link rel="stylesheet" type="text/css" href="css/bottom_button.css">
+		<link rel="stylesheet" type="text/css" href="css/powerPlantMap.css">
+
 		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
-		
-		
+		<script src="echarts-2.2.7/build/dist/echarts.js"></script>
+
+		<script type="text/javascript" src="swiper.js"></script>
+		<script>
+		    require.config({
+                paths: {
+                    echarts: 'echarts-2.2.7/build/dist'
+                }
+            });
+		    var mySwiper;
+		    function clear(){
+		        mychart.clear();
+		        mychart.dispose();
+		    }
+		    function toDetailPage(){
+		     app.to("idrlcbDetailPage","show");
+		    }
+		    function doit1() {
+    		   mySwiper = new Swiper('.swiper-container',{
+            	    initialSlide : 1,
+            	    speed : 50,
+            	    loop : false,
+            	   // freeMode : true,
+            	   // freeModeMomentum : true,
+            	   // freeModeMomentumRatio : 2,
+            	   // freeModeMomentumBounce : true,
+            	   // freeModeMomentumBounceRatio : 5,
+            	    freeModeSticky : true,
+                    pagination: '.swiper-pagination',
+            		paginationClickable : true,
+            		centeredSlides : true,
+                    effect: 'coverflow',
+                    grabCursor: true,
+            		slideToClickedSlide : false,
+                    centeredSlides: true,
+                    slidesPerView: 'auto',
+                    coverflow: {
+                        rotate: 0,
+                        stretch: 450,
+                        depth: 550,
+                        modifier: 1,
+                        slideShadows : true
+                    }
+                });
+                mySwiper.slideTo(4, 1500, false);
+                app.to("idhome","show");
+            }
+            function doit2() {
+               // app.to("idjingyingyeji","show");
+    		   mySwiper = new Swiper('.swiper-container',{
+            	    initialSlide : 4,
+            	    speed : 50,
+            	    loop : false,
+            	    freeModeSticky : true,
+                    pagination: '.swiper-pagination',
+            		paginationClickable : true,
+            		centeredSlides : true,
+                    effect: 'coverflow',
+                    grabCursor: true,
+            		slideToClickedSlide : false,
+                    centeredSlides: true,
+                    slidesPerView: 'auto',
+                    coverflow: {
+                        rotate: 0,
+                        stretch: 750,
+                        depth: 600,
+                        modifier: 1,
+                        slideShadows : true
+                    }
+                });
+                mySwiper.slideTo(2, 1500, false);
+                app.to("idhome","show");
+            }
+            function doit3() {
+                app.to("idhome","show");
+    		   mySwiper = new Swiper('.swiper-container',{
+            	    initialSlide : 4,
+            	    speed : 50,
+            	    loop : false,
+            	   // freeMode : true,
+            	   // freeModeMomentum : true,
+            	   // freeModeMomentumRatio : 2,
+            	   // freeModeMomentumBounce : true,
+            	   // freeModeMomentumBounceRatio : 5,
+            	    freeModeSticky : true,
+                    pagination: '.swiper-pagination',
+            		paginationClickable : true,
+            		centeredSlides : true,
+                    effect: 'coverflow',
+                    grabCursor: true,
+            		slideToClickedSlide : false,
+                    centeredSlides: true,
+                    slidesPerView: 'auto',
+                    coverflow: {
+                        rotate: 0,
+                        stretch: 750,
+                        depth: 600,
+                        modifier: 1,
+                        slideShadows : true
+                    }
+                });
+                mySwiper.slideTo(2, 1500, false);
+            }
+            function dailyProfit(){
+                app.to("idPerformance","show");
+               
+            }
+            function powerWaste(){
+                app.to("idtab","show");
+             
+            }
+            
+            // power plant map
+            function doit8(){
+                app.to("idPowerPlantMap", "show");
+            }
+		</script>
 		<script>
 				sap.ui.localResources("view");
 				var app = new sap.m.App({initialPage:"idhome"});
-				var page = sap.ui.view({id:"idhome", viewName:"com.zhenergy.pcbi.view.home", type:sap.ui.core.mvc.ViewType.HTML});
-				app.addPage(page);
-				app.placeAt("content");
+				function startApp(context) {
+            		var home = sap.ui.view({
+            			id: "idhome",
+            			viewName: "com.zhenergy.pcbi.view.home",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		});
+            		app.addPage(home);
+            		var Performance = sap.ui.view({
+            			id: "idPerformance",
+            			viewName: "com.zhenergy.pcbi.view.Performance",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		});
+            		app.addPage(Performance);
+            		var rlcbDetailPage = sap.ui.view({
+            			id: "idrlcbDetailPage",
+            			viewName: "com.zhenergy.pcbi.view.rlcbDetailPage",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		});
+            		app.addPage(rlcbDetailPage);
+            		var jingyingyeji = sap.ui.view({
+            			id: "idjingyingyeji",
+            			viewName: "com.zhenergy.pcbi.view.jingyingyeji",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		});
+            		app.addPage(jingyingyeji);
+            		tab = sap.ui.view({
+            			id: "idtab",
+            			viewName: "com.zhenergy.pcbi.view.tab",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		});
+            		app.addPage(tab);
+            		
+            		var powerPlantMap = sap.ui.view({
+            			id: "idPowerPlantMap",
+            			viewName: "com.zhenergy.pcbi.view.powerPlantMap",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(powerPlantMap);
+					app.placeAt("content");
+				}
+                startApp();
 		</script>
 		
 	</head>
@@ -27,7 +189,3 @@
 		<div id="content"></div>
 	</body>
 </html>
-	
-
-
-
