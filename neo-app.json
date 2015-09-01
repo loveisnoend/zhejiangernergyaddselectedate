@@ -2,6 +2,15 @@
   "welcomeFile": "index.html",
   "routes": [
     {
+      "path": "/sap/opu/odata",
+      "target": {
+        "type": "destination",
+        "name": "BWD",
+        "entryPath": "/sap/opu/odata"
+      },
+      "description": "BWD"
+    },
+    {
       "path": "/resources",
       "target": {
         "type": "service",

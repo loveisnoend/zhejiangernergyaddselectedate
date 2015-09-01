@@ -15,20 +15,61 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 		});
 	},
     onBeforeShow: function(evt) {
-	    date = new Array("7/21", "7/22", "7/23", "7/24", "7/25", "7/26", "7/27", "7/28");
-        date01 = new Array("0701", "0702", "0703", "0704", "0705", "0706", "0707", "0708", "0709", "0710", "0711", "0712", "0713", "0714", "0715", "0716", "0717", "0718", "0719", "0720", "0721", "0722", "0723", "0724", "0725", "0726", "0727", "0728", "0729", "0730", "0731");
-        data1 = new Array(278, 260, 330, 240, 230, 263, 230, 258);
-        data2 = new Array(0.5, 0.25, 0.35, 0.52, 0.45, 0.8, 0.95, 0.65);
-        data3 = new Array(13.3, 20.4, 17.5, 26.9, 23.3, 30.9, 19.8, 26.0);
-        data4 = new Array(0.45, 0.8, 0.95, 0.65, 0.52, 0.45, 0.35, 0.52);
-        data5 = new Array(200, 300, 278, 260, 330, 240, 230, 263, 300, 278, 260, 330, 240, 230, 263, 300, 278, 260, 230, 240, 230, 263, 300, 278, 260, 330, 240, 230, 263, 230, 258);
-        data6 = new Array(0.5, 0.25, 0.35, 0.52, 0.45, 0.8, 0.95, 0.65, 0.5, 0.25, 0.35, 0.52, 0.45, 0.8, 0.95, 0.65, 0.5, 0.25, 0.35, 0.52, 0.45, 0.8, 0.95, 0.5, 0.25, 0.35, 0.52, 0.45, 0.8, 0.95, 0.65);
-        data7 = new Array(0.45, 0.8, 0.95, 0.65, 0.52, 0.45, 0.35, 0.52, 0.45, 0.8, 0.95, 0.65, 0.52, 0.45, 0.35, 0.52, 0.8, 0.95, 0.65, 0.52, 0.45, 0.35, 0.52, 0.45, 0.8, 0.95, 0.65, 0.52, 0.45, 0.35, 0.52);
-        this.loadChart();
+		date = new Array();
+		data1 = new Array();
+		data2 = new Array();
+		data3 = new Array();
+		data4 = new Array();
+        
+        income = null;//收入
+        cost = null;//成本
+        profit = null;//利润
+		var mParameters = {};
+		mParameters['async'] = true;
+		mParameters['success'] = jQuery.proxy(function(sRes) {
+
+			//设置日期
+			for (var i in sRes.results) {
+				if((sRes.results[i].PlantId == 'JT00')&&(sRes.results[i].KpiId == '4')){
+					date.push(sRes.results[i].RepDate);
+				}
+			};
+
+			//设置数据
+			for (var i in sRes.results) {
+				if (sRes.results[i].PlantId == 'JT00') {
+				    if (sRes.results[i].KpiId == '1') { //日利润
+						profit = sRes.results[i].KpiValue;
+					} else if (sRes.results[i].KpiId == '2') { //总收入
+						income = sRes.results[i].KpiValue;
+						//alert(income);
+					} else if (sRes.results[i].KpiId == '3') { //总成本
+						cost = sRes.results[i].KpiValue;
+					} else if (sRes.results[i].KpiId == '4') { //上网电量
+						data1.push(sRes.results[i].KpiValue);
+					} else if (sRes.results[i].KpiId == '5') { //平均上网电价
+						data2.push(sRes.results[i].KpiValue);
+					} else if (sRes.results[i].KpiId == '6') { //燃料成本
+						data3.push(sRes.results[i].KpiValue);
+					} else if (sRes.results[i].KpiId == '7') { //其他成本
+						data4.push(sRes.results[i].KpiValue);
+					}
+				}
+			};
+
+			this.loadChart();
+			this.loadData();
+		}, this);
+		mParameters['error'] = jQuery.proxy(function(eRes) {
+			alert("Get Data Error");
+		}, this);
+		sap.ui.getCore().getModel().read("/HANAKPISet", mParameters);
+
+		// this.loadChart();
 		//this.loadData();
 	},
-	onAfterShow: function(evt){
-	    this.loadData();
+	onAfterShow: function(evt) {
+		// 		this.loadData();
 	},
 	loadChart: function() {
 	    require(
@@ -236,7 +277,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 		
 		//收入数据
 		
-		var sr_data = (swdl_data * pjswdj_data).toFixed(1);
+//		var sr_data = (swdl_data * pjswdj_data).toFixed(1);
 		var sr_prec = a.toFixed(1);
 		var sr_color="red";
 		//var sr_img ="";
@@ -245,7 +286,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 		}
 
 		//成本数据
-		var cb_data=(rlcb_data+qtcb_data).toFixed(1);
+//		var cb_data=(rlcb_data+qtcb_data).toFixed(1);
 		var cb_prec=a.toFixed(1);
 		var cb_color="red";
 		if(cb_prec>0){
@@ -256,27 +297,26 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 		var sr_innerhtml=
 		'<div class="main_content_title_1"><span>收入<span style="font-size:10px;">(亿元)</span></span>'+
 		'<span style="margin-left:25%;">成本<span style="font-size:10px;">(亿元)</span></span></div>'+
-		'<div class="main_content_sz" style="font-size:40px;font-weight:bold;color:'+sr_color+'"><span>'+sr_data+'</span><span style="margin-left:15%;font-weight:bold;color:'+cb_color+'">'+cb_data+'</span></div>'
+		'<div class="main_content_sz" style="font-size:40px;font-weight:bold;color:'+sr_color+'"><span>'+ income +'</span><span style="margin-left:15%;font-weight:bold;color:'+cb_color+'">'+cost+'</span></div>'
 		+'<div class="main_content_sz"><span style="text-align:center;padding-left:5%;">同比'+sr_prec+'%<img src="img/arrow-'+sr_color+'2.png" class="content_img"/></span><span style="margin-left:18%;text-align:right;">同比'+cb_prec+'%<img src="img/arrow-'+cb_color+'2.png" class="content_img"/></sapn></div>';
 
 		//日利润数据
-		var rlr_data=(sr_data-cb_data).toFixed(1);
+//		var rlr_data=(sr_data-cb_data).toFixed(1);
 		var rlr_prec=a.toFixed(1);
 		var rlr_color="red";
 		if(rlr_prec>0){
 		    rlr_color="green";
 		}
-		var rlr_innerhtml='<div class="main_content_title">日利润<span style="font-size:20px;">(亿元)</span></div><div class="main_content_sz" style="font-size:70px;font-weight:bold;color:'+rlr_color+'">'+rlr_data+'</div><div class="main_content_sz">同比'+rlr_prec+'%<img src="img/arrow-'+rlr_color+'2.png" class="content_img"/></div>';
-		
-		                        
-                        
+		var rlr_innerhtml='<div class="main_content_title">日利润<span style="font-size:20px;">(亿元)</span></div><div class="main_content_sz" style="font-size:70px;font-weight:bold;color:'+rlr_color+'">'+profit+'</div><div class="main_content_sz">同比'+rlr_prec+'%<img src="img/arrow-'+rlr_color+'2.png" class="content_img"/></div>';
+
                         
 		document.getElementById('sr').innerHTML = sr_innerhtml;
+		document.getElementById('rlr').innerHTML=rlr_innerhtml;
         document.getElementById('swdl_span').innerHTML=swdl_data+'亿千瓦时';
         document.getElementById('pjswdj_span').innerHTML=pjswdj_data+'元/千瓦时';
         document.getElementById('rlcb_span').innerHTML=rlcb_data+'亿元';
         document.getElementById('qtcb_span').innerHTML=qtcb_data+'亿元';
-		document.getElementById('rlr').innerHTML=rlr_innerhtml;
+
 
 // 		document.getElementById('cb').innerHTML = cb_innerhtml;
 	}
