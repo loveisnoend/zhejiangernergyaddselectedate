@@ -158,6 +158,7 @@ progress {
 	height: 2%;
 	border-radius: 4px 4px 4px 4px;
 	color: rgb(50,255,50); /*IE10*/
+	margin-left:15%;
 
 }
 progress::-moz-progress-bar {border-radius: 4px 4px 4px 4px; background: rgb(29,29,29); }

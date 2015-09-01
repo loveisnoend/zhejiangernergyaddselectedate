@@ -255,9 +255,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 // 		<div class="info">同比'+cb_prec+'%<img src="img/arrow-'+cb_color+'2.png"/></div>';
 		var sr_innerhtml=
 		'<div class="main_content_title_1"><span>收入<span style="font-size:10px;">(亿元)</span></span>'+
-		'<span style="margin-left:27%;">成本<span style="font-size:10px;">(亿元)</span></span></div>'+
-		'<div class="main_content_sz" style="font-size:40px;color:'+sr_color+'"><span>'+sr_data+'</span><span style="margin-left:19%;color:'+cb_color+'">'+cb_data+'</span></div>'
-		+'<div class="main_content_sz"><span style="text-align:center;padding-left:5%;">同比'+sr_prec+'%<img src="img/arrow-'+sr_color+'2.png"/></span><span style="margin-left:20%;text-align:right;">同比'+cb_prec+'%<img src="img/arrow-'+cb_color+'2.png"/></sapn></div>';
+		'<span style="margin-left:25%;">成本<span style="font-size:10px;">(亿元)</span></span></div>'+
+		'<div class="main_content_sz" style="font-size:40px;font-weight:bold;color:'+sr_color+'"><span>'+sr_data+'</span><span style="margin-left:15%;font-weight:bold;color:'+cb_color+'">'+cb_data+'</span></div>'
+		+'<div class="main_content_sz"><span style="text-align:center;padding-left:5%;">同比'+sr_prec+'%<img src="img/arrow-'+sr_color+'2.png" class="content_img"/></span><span style="margin-left:18%;text-align:right;">同比'+cb_prec+'%<img src="img/arrow-'+cb_color+'2.png" class="content_img"/></sapn></div>';
 
 		//日利润数据
 		var rlr_data=(sr_data-cb_data).toFixed(1);
@@ -266,7 +266,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 		if(rlr_prec>0){
 		    rlr_color="green";
 		}
-		var rlr_innerhtml='<div class="main_content_title">日利润<span style="font-size:20px;">(亿元)</span></div><div class="main_content_sz" style="font-size:70px;color:'+rlr_color+'">'+rlr_data+'</div><div class="main_content_sz">同比'+rlr_prec+'%<img src="img/arrow-'+rlr_color+'2.png"/></div>';
+		var rlr_innerhtml='<div class="main_content_title">日利润<span style="font-size:20px;">(亿元)</span></div><div class="main_content_sz" style="font-size:70px;font-weight:bold;color:'+rlr_color+'">'+rlr_data+'</div><div class="main_content_sz">同比'+rlr_prec+'%<img src="img/arrow-'+rlr_color+'2.png" class="content_img"/></div>';
 		
 		                        
                         
