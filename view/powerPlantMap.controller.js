@@ -44,8 +44,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
                 },
   				legend: {
                   	orient:'vertical',
-                  	x:'70',
-                  	y:'520',
+                  	x:'500',
+                  	y:'6',
                   	textStyle:{
 						color:'white',
 						fontFamily:'微软雅黑',
