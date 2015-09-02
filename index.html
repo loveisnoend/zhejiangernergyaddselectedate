@@ -36,7 +36,10 @@
 		        mychart.dispose();
 		    }
 		    function toDetailPage(){
-		     app.to("idrlcbDetailPage","show");
+		        app.to("idrlcbDetailPage","show");
+		    }
+		    function toInternetPowerDetailPage() {
+		        app.to("idInternetPowerVolume","show");
 		    }
 		    function doit1() {
     		   mySwiper = new Swiper('.swiper-container',{
@@ -184,6 +187,13 @@
             			type: sap.ui.core.mvc.ViewType.HTML
             		 });
             		 app.addPage(powerPlantMap);
+            		 
+            		var internetPowerVolume = sap.ui.view({
+            			id: "idInternetPowerVolume",
+            			viewName: "com.zhenergy.pcbi.view.internetPowerVolume",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(internetPowerVolume);
 					app.placeAt("content");
 				}
                 startApp();
