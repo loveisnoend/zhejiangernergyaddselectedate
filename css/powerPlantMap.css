@@ -70,7 +70,9 @@
     height:90%;
     margin:5%;
     margin-left:10px;
-    background-color:rgb(26,26,26);
+    /*background-color:rgb(26,26,26);*/
+    background-image:url("../img/backImg.png");
+    border-radius: 20px 20px 20px 20px;
     background-size:cover;
     float:left;
 }
@@ -165,12 +167,12 @@
 }
 .detail_02_04
 {
-    width: 28%;
+    width: 25%;
     height: 8%;
     background-color: #056199;
     position: absolute;
     top: 49%;
-    /*margin-left: 1%;*/
+    margin-left: 1%;
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     border-bottom-left-radius: 50px;
