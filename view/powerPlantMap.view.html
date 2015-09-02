@@ -16,7 +16,7 @@
     			  </div>
     			  <div class="mapBottom">
     			      <div class="chinaMap">
-    			          <div style="background-image:url(img/chinamap-border-pc.png);height:140px;width:190px;margin-top:-140px;margin-left:50px;">
+    			          <div style="background-image:url(img/chinamap-border-pc.png);height:140px;width:190px;margin-top:-120px;margin-left:80px;">
         			          <div id="chinaMap1" style="float:left;height:110px;width:140px;margin-top:15px;margin-left:30px;">
         			              
         			          </div>
@@ -87,8 +87,58 @@
                             </div>
                     </div>
                 </div>
-                
+            <div class="detail_02" style="display:none" id="detail_another">
+                    <div class="detail_02_01" style="font-size:20px;font-family: 微软雅黑;margin-left:20px;">
+                        <span>
+                        集团
+                        </span>
+                        <span onclick="back_another()" style="margin-left:20px;color:rgb(255,153,0);">返回</span>
+                    </div>
+                    <!--<div class="another_font01 detail_02_01" onclick="back_another()">-->
+                    <!--    返回-->
+                    <!--</div>-->
+                    <div class="detail_another_01" id="detail_another_01" style="float:left;">
+                        
+                    </div>
+                    <div class="detail_another_font" style="float:left;">
+                        统计于<br/>2015.08.08
+                    </div>
+                </div>
+                <div id="mj_hid" class="detail_02_hid" style="display:none">
+                     <div class="detail_02_01">
+                        <div>测试电厂甲</div>
+                        <div onclick="back()">返回</div>
+                        <ul>
+                            <li>
+                                <button id="btn1" class="active" onclick="btnclick('1')">4500大卡</button></li>
+                            <li>
+                                <button id="btn2" onclick="btnclick('2')">4800大卡</button></li>
+                            <li>
+                                <button id="btn3" onclick="btnclick('3')">5000大卡</button></li>
+                            <li>
+                                <button id="btn4" onclick="btnclick('4')">5200大卡</button></li>
+                            <li>
+                                <button id="btn5" onclick="btnclick('5')">5500大卡</button></li>
+                        </ul>
+                    </div>
+                <div id="mj_content_hid1" class="mj_content">
+                    <div id="pic4500"></div>
+                </div>
+                <div id="mj_content_hid2" class="mj_content" style="display: none">
+                    <div id="pic4800"></div>
+                </div>
+                <div id="mj_content_hid3" class="mj_content" style="display: none">
+                    <div id="pic5000"></div>
+                </div>
+                <div id="mj_content_hid4" class="mj_content" style="display: none">
+                    <div id="pic5200"></div>
+                </div>
+                <div id="mj_content_hid5" class="mj_content" style="display: none">
+                    <div id="pic5500"></div>
+                </div>
+            </div>    
             </div>
+            
           </div>
 
         </div>

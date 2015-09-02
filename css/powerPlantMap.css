@@ -70,7 +70,9 @@
     height:90%;
     margin:5%;
     margin-left:10px;
-    background-color:rgb(26,26,26);
+    /*background-color:rgb(26,26,26);*/
+    background-image:url("../img/backImg.png");
+    border-radius: 20px 20px 20px 20px;
     background-size:cover;
     float:left;
 }
@@ -85,7 +87,6 @@
 }
 .detail_02_01
 {
-	width: 300px;
             height: 40px;
             margin-top: 2px;
             font-size: 25px;
@@ -111,8 +112,8 @@
 	width:20%;
 	height:30%;
 	position:relative;
-	top: 18%;
-	left: 25%;
+	top: 40%;
+	left: 15%;
 }
 .detail_02_font01
 {
@@ -126,7 +127,7 @@
 .font_size1
 {
 	height: 80px;
-    font-size: 70px;
+    font-size: 60px;
     margin-bottom: -5px;
     line-height: 80px;
 }
@@ -165,12 +166,12 @@
 }
 .detail_02_04
 {
-    width: 28%;
+    width: 25%;
     height: 8%;
     background-color: #056199;
     position: absolute;
     top: 49%;
-    /*margin-left: 1%;*/
+    margin-left: 1%;
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     border-bottom-left-radius: 50px;
@@ -234,6 +235,8 @@
     /*margin-left: 5%;*/
     /*top: 59px;*/
     z-index:10;
+    top: 38%;
+    margin-left: -1%;
 }
 .another_font01
 {
@@ -245,19 +248,20 @@
 }
 .detail_another_01
 {
-    width:482px;
-    height:578px;
+    width:550px;
+    height:500px;
     margin-top:12px;
 }
 .detail_another_font
 {
-    width: 100px;
-    height: 50px;
+    /*width: 5%;*/
+    /*height: 50px;*/
     color: white;
     font-family: 微软雅黑;
-    position: absolute;
-    top: 593px;
-    margin-left: 344px;
+    margin-top:60%;
+    /*position: absolute;*/
+    /*top: 90%;*/
+    /*margin-left: 344px;*/
 }
 .detail_02_01 > ul {
             float: right;
@@ -325,6 +329,7 @@
 .main_content_combition_1_1{
     width:100%;
     height:40%;
+    padding-top:15%;
     /*border: 1px solid green;*/
 }
 .main_content_combition_1_2{
@@ -335,6 +340,6 @@
     width:100%;
     height:40%;
     /*border: 1px solid red;*/
-    margin-top:2%;
+    margin-top:-5%;
 
 }
