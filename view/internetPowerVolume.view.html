@@ -6,7 +6,7 @@
         </div>
         <div class="content_center">
           <div class="internetPowerTop">
-              
+                <div id="demo" style="color:white;margin-top:5px;margin-left:40px;font-weight:bold;"><span id="demo"><b onClick="doit1()" style="cursor:pointer;">日利润</b> > 上网电量</span></div>
           </div>
           <div class="internetPowerBottom">
               <div class="internetPowerPlantLeft">
@@ -16,28 +16,158 @@
 			  </div>
 			  <div class="mapBottom">
 			      <div class="chinaMap">
-			          <div style="background-image:url(img/chinamap-border-pc.png);height:140px;width:190px;margin-top:-140px;margin-left:50px;">
+			          <div style="background-image:url(img/chinamap-border-pc.png);height:140px;width:190px;margin-top:-120px;margin-left:100px;">
     			          <div id="chinaMap" style="float:left;height:110px;width:140px;margin-top:15px;margin-left:30px;">
     			              
     			          </div>
 			          </div>
 			      </div>
-			      <div class="mapDetail">
-		          		<div style="font-size:12px;color:white;background-color:;height:80%;width:100%;margin-top:40px;margin-left:-5px;">
-						   <div style="margin:20px;0px;0px;20px;width:90%;font-size:12px;font-family:Hiragino;">
-							   水电：<b id="powerName" style="color:#FEFF02;"></b>市电厂<br>
-							   <br>
-							   管理型电：XX家<br>
-							   <br>
-							   其他：XX家
-						   </div>
-					    </div>
-			      </div>
+			      <!--<div class="mapDetail">-->
+		       <!--   		<div style="font-size:12px;color:white;background-color:;height:80%;width:100%;margin-top:40px;margin-left:-5px;">-->
+						   <!--<div style="margin:20px;0px;0px;20px;width:90%;font-size:12px;font-family:Hiragino;">-->
+							  <!-- 水电：<b id="powerName" style="color:#FEFF02;"></b>市电厂<br>-->
+							  <!-- <br>-->
+							  <!-- 管理型电：XX家<br>-->
+							  <!-- <br>-->
+							  <!-- 其他：XX家-->
+						   <!--</div>-->
+					    <!--</div>-->
+			      <!--</div>-->
 			  </div>
             </div>
-              <div class="internetPowerPlantRight">
-
-            </div>
+            <div class="internetPowerPlantRight">
+                <div class="internetDetail">
+                    <div class="internetDetailTop">
+                        <div style="color:#FFFFFF;margin-top:10px;margin-left:10px;float:left"><b id="powerPlantName">萧山</b>电厂</div>
+                    </div>
+                    <div class="internetDetailBottom">
+                        <div class="internetDetailRow2">
+                            <div class="internetDetailRowPlace1">
+                                <div class="internetDetailRowPlaceTitle1">
+                                    平均上网电价&nbsp;<b style="font-size:15px">(&nbsp;元/千瓦时&nbsp;)</b>
+                                </div>
+                                <div class="internetDetailRowPlaceValue1">
+                                    <div id="internetAverPrice1">0.02</div>
+                                </div>
+                            </div>
+                            <div class="internetDetailRowPlace2">
+                                <div class="internetDetailRowPlaceTitle1">
+                                    电量&nbsp;<b style="font-size:15px">(&nbsp;亿千瓦时&nbsp;)</b>
+                                </div>
+                                <div class="internetDetailRowPlaceValue1">
+                                    <div id="powerVolume1">23.18</div>
+                                </div>
+                            </div>
+                            <div class="internetDetailRowPlace3">
+                                <div class="internetDetailRowPlaceTitle1">
+                                    收入&nbsp;<b style="font-size:15px">(&nbsp;万元&nbsp;)</b>
+                                </div>
+                                <div class="internetDetailRowPlaceValue1">
+                                    <div id="powerVolume1">4636.00</div>
+                                </div>
+                            </div>
+                            <div class="internetDetailRowPlace4">
+                                <div id="percentMap1" style="width:100%;height:100%;">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="internetDetailRow">
+                            <div class="internetDetailRowPlace1">
+                                <div class="internetDetailRowPlaceTitle1">
+                                    合约电价&nbsp;<b style="font-size:15px">(&nbsp;元/千瓦时&nbsp;)</b>
+                                </div>
+                                <div class="internetDetailRowPlaceValue1">
+                                    <div id="internetAverPrice2">0.03</div>
+                                </div>
+                            </div>
+                            <div class="internetDetailRowPlace2">
+                                <div class="internetDetailRowPlaceTitle1">
+                                    电量&nbsp;<b style="font-size:15px">(&nbsp;亿千瓦时&nbsp;)</b>
+                                </div>
+                                <div class="internetDetailRowPlaceValue1">
+                                    <div id="powerVolume2">20.45</div>
+                                </div>
+                            </div>
+                            <div class="internetDetailRowPlace3">
+                                <div class="internetDetailRowPlaceTitle1">
+                                    收入&nbsp;<b style="font-size:15px">(&nbsp;万元&nbsp;)</b>
+                                </div>
+                                <div class="internetDetailRowPlaceValue1">
+                                    <div id="inputCash2">6135.00</div>
+                                </div>
+                            </div>
+                            <div class="internetDetailRowPlace4">
+                                <div id="percentMap2" style="width:100%;height:100%;">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="internetDetailRow2">
+                            <div class="internetDetailRowPlace1">
+                                <div class="internetDetailRowPlaceTitle1">
+                                    直供电价&nbsp;<b style="font-size:15px">(&nbsp;元/千瓦时&nbsp;)</b>
+                                </div>
+                                <div class="internetDetailRowPlaceValue1">
+                                    <div id="internetAverPrice3">0.02</div>
+                                </div>
+                            </div>
+                            <div class="internetDetailRowPlace2">
+                                <div class="internetDetailRowPlaceTitle1">
+                                    电量&nbsp;<b style="font-size:15px">(&nbsp;亿千瓦时&nbsp;)</b>
+                                </div>
+                                <div class="internetDetailRowPlaceValue1">
+                                    <div id="powerVolume3">21.20</div>
+                                </div>
+                            </div>
+                            <div class="internetDetailRowPlace3">
+                                <div class="internetDetailRowPlaceTitle1">
+                                    收入&nbsp;<b style="font-size:15px">(&nbsp;万元&nbsp;)</b>
+                                </div>
+                                <div class="internetDetailRowPlaceValue1">
+                                    <div id="inputCash3">4240.00</div>
+                                </div>
+                            </div>
+                            <div class="internetDetailRowPlace4">
+                                <div id="percentMap3" style="width:100%;height:100%;">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="internetDetailRow">
+                            <div class="internetDetailRowPlace1">
+                                <div class="internetDetailRowPlaceTitle1">
+                                    替代电价&nbsp;<b style="font-size:15px">(&nbsp;元/千瓦时&nbsp;)</b>
+                                </div>
+                                <div class="internetDetailRowPlaceValue1">
+                                    <div id="internetAverPrice3">0.02</div>
+                                </div>
+                            </div>
+                            <div class="internetDetailRowPlace2">
+                                <div class="internetDetailRowPlaceTitle1">
+                                    电量&nbsp;<b style="font-size:15px">(&nbsp;亿千瓦时&nbsp;)</b>
+                                </div>
+                                <div class="internetDetailRowPlaceValue1">
+                                    <div id="powerVolume3">23.18</div>
+                                </div>
+                            </div>
+                            <div class="internetDetailRowPlace3">
+                                <div class="internetDetailRowPlaceTitle1">
+                                    收入&nbsp;<b style="font-size:15px">(&nbsp;万元&nbsp;)</b>
+                                </div>
+                                <div class="internetDetailRowPlaceValue1">
+                                    <div id="inputCash4">4636.00</div>
+                                </div>
+                            </div>
+                            <div class="internetDetailRowPlace4">
+                                <div id="percentMap4" style="width:100%;height:100%;">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
           </div>
 
         </div>

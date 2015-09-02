@@ -1,5 +1,4 @@
 .internetPowerTop{
-    background-color:white;
     height:5%;
     width:100%;
     float:left;
@@ -16,8 +15,75 @@
     float : left;
 }
 .internetPowerPlantRight{
-    background-color : white;
     height : 100%;
     width : 50%;
     float : left;
 }
+.internetDetail{
+    width:670px;
+    height:650px;
+    background-image: url(../img/bg-detail-pc.png);
+}
+.internetDetailTop{
+    height:6%;
+    width:100%;
+}
+.internetDetailBottom{
+    width:100%;
+    height:94%;
+}
+.internetDetailRow{
+    width:100%;
+    height:23%;
+    float:left;
+}
+.internetDetailRow2{
+    width:100%;
+    height:23%;
+    float:left;
+}
+.internetDetailRowPlace1{
+    width:36%;
+    height:100%;
+    float:left;
+    color:white;
+}
+.internetDetailRowPlace2{
+    width:22%;
+    height:100%;
+    float:left;
+    color:white;
+}
+.internetDetailRowPlace3{
+    width:22%;
+    height:100%;
+    float:left;
+    color:white;
+}
+.internetDetailRowPlace4{
+    width:20%;
+    height:100%;
+    float:left;
+    color:white;
+}
+.internetDetailRowPlaceTitle1{
+    font-size:20px;
+    font-family:"Microsoft YaHei";
+    margin-left:20px;
+    margin-top:28px;
+}
+.internetDetailRowPlaceValue1{
+    font-size:35px;
+    font-family:"impact";
+    margin-left:20px;
+    margin-top:0px;
+}
+
+
+
+
+
+
+
+
+
