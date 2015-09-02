@@ -14,6 +14,21 @@
         "id": 3028987,
         "displayName": "New Web Application 2"
       }
+    },
+    {
+      "filePath": "/zhenergypcbi/view/tab.view.html",
+      "previewMode": 0,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 8766190,
+        "displayName": "New Web Application 3"
+      }
     }
   ]
 }
