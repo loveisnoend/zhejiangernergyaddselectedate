@@ -1,52 +1,45 @@
-<template data-controller-name="com.zhenergy.pcbi.view.Performance">
-	 <div class="nav_main">
+<template data-controller-name="com.zhenergy.pcbi.view.internetPowerVolume">
+    <div class="nav_main">
+    
         <div class="msg_top">
             <marquee behavior="scroll"><div class="msg_text"><b style="color:#32FF32;">GDP 7.8 3%↓　PPI 250 2%↑</b> &nbsp;&nbsp;&nbsp;&nbsp;PMI 50 2%↑ &nbsp;&nbsp;&nbsp;&nbsp;工业增加值6.8 &nbsp;&nbsp;&nbsp;&nbsp;<b style="color:red;">发电增速 1.1%</b> &nbsp;&nbsp;&nbsp;&nbsp;全社会用电量预测303亿千瓦时 &nbsp;&nbsp;&nbsp;&nbsp;PMI 50 2%↑ &nbsp;&nbsp;&nbsp;&nbsp;全国平均利用 668小时</div></marquee> 
         </div>
-
         <div class="content_center">
-            <div id="demo" style="color:white;margin-top:20px;margin-left:40px;font-weight:bold;"><span id="demo"><b onClick="doit1()" style="cursor:pointer;">经营业绩</b> > 利润率</span></div>
-        <div class="performance_main">
-            <div class="performance_main_content">
-                <div class="panel swdl">
-                    <div class="panel_title">上网电量<span id="swdl_span">35.23亿千瓦时</span></div>
-                    <div class="panel_content">
-                        <div id="swdl"></div>
-                    </div>
-                </div>
-                <div class="panel pjswdj" onclick="toInternetPowerDetailPage()">
-                    <div class="panel_title">平均上网电价<span id="pjswdj_span">0.4364元/千瓦时</span></div>
-                    <div class="panel_content">
-                        <div id="pjswdj"></div>
-                    </div>
-                </div>
+          <div class="internetPowerTop">
+              
+          </div>
+          <div class="internetPowerBottom">
+              <div class="internetPowerPlantLeft">
+			  <div class="mapTop">
+			      <div id="huaiNanMap" style="position:absolute;z-index:2;left:170px;top:150px;height:100px;width:100px;"></div>
+			      <div id="powerPlantMap" style="margin-left:220px;margin-top:80px;height:461px;width:456px;"></div>
+			  </div>
+			  <div class="mapBottom">
+			      <div class="chinaMap">
+			          <div style="background-image:url(img/chinamap-border-pc.png);height:140px;width:190px;margin-top:-140px;margin-left:50px;">
+    			          <div id="chinaMap" style="float:left;height:110px;width:140px;margin-top:15px;margin-left:30px;">
+    			              
+    			          </div>
+			          </div>
+			      </div>
+			      <div class="mapDetail">
+		          		<div style="font-size:12px;color:white;background-color:;height:80%;width:100%;margin-top:40px;margin-left:-5px;">
+						   <div style="margin:20px;0px;0px;20px;width:90%;font-size:12px;font-family:Hiragino;">
+							   水电：<b id="powerName" style="color:#FEFF02;"></b>市电厂<br>
+							   <br>
+							   管理型电：XX家<br>
+							   <br>
+							   其他：XX家
+						   </div>
+					    </div>
+			      </div>
+			  </div>
             </div>
-            <div class="performance_main_content" style="background:url(img/combination_3.png) no-repeat center center;background-size: cover;">
-
-                    <div id="rlr">
-                     </div>
-                    <div id="sr">
-                    </div>
-                   
-            </div>
-            <div class="performance_main_content">
-            <div class="panel rlcb" onclick="toDetailPage()">
-                <div class="panel_title">燃料成本<span id="rlcb_span">8.58亿元</span></div>
-                <div class="panel_content">
-                    <div id="rlcb"></div>
-                </div>
-            </div>
-            <div class="panel qtcb">
-                <div class="panel_title">其他成本<span id="qtcb_span">4.62亿元</span></div>
-                <div class="panel_content">
-                    <div id="qtcb"></div>
-                </div>
-            </div>
+              <div class="internetPowerPlantRight">
 
             </div>
+          </div>
 
-
-        </div>
         </div>
         <div class="menu_bottom">
             <ul>
