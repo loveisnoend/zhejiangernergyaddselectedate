@@ -22,7 +22,7 @@
         <link rel="stylesheet" type="text/css" href="css/internetPowerVolume.css">
 		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
 		<script src="echarts/echarts.js"></script>
-
+        <script type="text/javascript" src="js/powerPlantMap.js"></script>
 		<script type="text/javascript" src="swiper.js"></script>
 		<script>
 		    require.config({
@@ -36,7 +36,7 @@
 		        mychart.dispose();
 		    }
 		    function toDetailPage(){
-		        app.to("idrlcbDetailPage","show");
+		        app.to("idPowerPlantMap", "show");
 		    }
 		    function toInternetPowerDetailPage() {
 		        app.to("idInternetPowerVolume","show");
@@ -143,6 +143,7 @@
 		</script>
 		<script>
 				sap.ui.localResources("view");
+				var powerPlantMap;
 				var app = new sap.m.App({initialPage:"idhome"});
 				
 				var sServiceUrl = "/sap/opu/odata/sap/ZHANA003_SRV/";
@@ -181,7 +182,7 @@
             		});
             		app.addPage(tab);
             		
-            		var powerPlantMap = sap.ui.view({
+            		powerPlantMap = sap.ui.view({
             			id: "idPowerPlantMap",
             			viewName: "com.zhenergy.pcbi.view.powerPlantMap",
             			type: sap.ui.core.mvc.ViewType.HTML
