@@ -87,7 +87,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 
 	//////////////////////////////////浙江省地图//////////////////////////////////////////////////////////		
 			    // 基于准备好的dom，初始化echarts图表
-                myChart4 = ec.init(document.getElementById('powerPlantMap1'));
+                myChart4 = ec.init(document.getElementById('powerPlantMap'));
 				var allPowerData = [
 					{name: "温州", value: 300, coal:1196820.02, coalDays:3, inputPlanTotal:"600", inputPlanValue:335, averUsePerH:11.8, averLoadRate: "65%", netPowerWPerH:6.19, costData:8580.15, costPer:0.45, otherAllCost:5646.66, otherCost:345.45, repairCost:580.9, peopleCost:3456.15, finaceCost:1000.56, depreciationCost:345.3},
 					{name: "义乌", value: 270, coal:3342340.02, coalDays:6, inputPlanTotal:"700", inputPlanValue:200, averUsePerH:23.2, averLoadRate: "36%", netPowerWPerH:3.56, costData:65324.05, costPer:1.98, otherAllCost:3452.45, otherCost:543.67, repairCost:456.87, peopleCost:2334.74, finaceCost:2345.56, depreciationCost:300.5},
