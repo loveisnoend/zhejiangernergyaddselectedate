@@ -2,18 +2,22 @@
     <div class="nav_main">
     
         <div class="msg_top">
-            
+            <marquee behavior="scroll"><div class="msg_text"><b style="color:#32FF32;">GDP 7.8 3%↓　PPI 250 2%↑</b> &nbsp;&nbsp;&nbsp;&nbsp;PMI 50 2%↑ &nbsp;&nbsp;&nbsp;&nbsp;工业增加值6.8 &nbsp;&nbsp;&nbsp;&nbsp;<b style="color:red;">发电增速 1.1%</b> &nbsp;&nbsp;&nbsp;&nbsp;全社会用电量预测303亿千瓦时 &nbsp;&nbsp;&nbsp;&nbsp;PMI 50 2%↑ &nbsp;&nbsp;&nbsp;&nbsp;全国平均利用 668小时</div></marquee> 
         </div>
         <div class="content_center">
-            <div class="powerPlantLeft">
+          <div class="internetPowerTop">
+              
+          </div>
+          <div class="internetPowerBottom">
+              <div class="internetPowerPlantLeft">
 			  <div class="mapTop">
-			      <div id="huaiNanMap" style="position:absolute;z-index:2;left:30px;top:30px;height:100px;width:100px;"></div>
-			      <div id="powerPlantMap" style="margin-left:50px;margin-top:40px;height:461px;width:456px;"></div>
+			      <div id="huaiNanMap" style="position:absolute;z-index:2;left:170px;top:150px;height:100px;width:100px;"></div>
+			      <div id="powerPlantMap" style="margin-left:220px;margin-top:80px;height:461px;width:456px;"></div>
 			  </div>
 			  <div class="mapBottom">
 			      <div class="chinaMap">
-			          <div style="background-image:url(img/chinamap-border.png);height:140px;width:170px;margin-top:10px;margin-left:50px;">
-    			          <div id="chinaMap" style="float:left;height:110px;width:140px;margin-top:15px;margin-left:15px;">
+			          <div style="background-image:url(img/chinamap-border-pc.png);height:140px;width:190px;margin-top:-140px;margin-left:50px;">
+    			          <div id="chinaMap" style="float:left;height:110px;width:140px;margin-top:15px;margin-left:30px;">
     			              
     			          </div>
 			          </div>
@@ -31,110 +35,11 @@
 			      </div>
 			  </div>
             </div>
-            <div class="powerPlantRight">
-                <div id="rlcb_detail" class="detail_02">
-                    <div class="detail_02_01">
-                        <div>xxx测试电厂</div>
-                    </div>
-                    <div class="detail_pie" id="detail_pie" onclick="detailAnother()"></div>
-                    <div class="detail_02_02">
-                        <div class="detail_02_font01">单位燃料成本</div>
-                        <div class="detail_02_font01 font_size1" id="fuelCost">450</div>
-                        <div class="detail_02_font01 font_size2">元/吨</div>
-                        <div class="detail_02_font01 font_size3">
-                            <div class="detail_02_font04_01 font_size4"><b id="fuelDownPercent"></b>%</div>
-                            <div class="detail_02_font04_02"></div>
-                        </div>
-                    </div>
-                    <div class="detail_02_03">
-                        <div class="detail_02_font1">运价（元/吨）</div>
-                        <div class="detail_02_font2" id="travelPrice">25.00</div>
-                        <div class="detail_02_img" id="detail_01"></div>
-                    </div>
-                    <div class="detail_02_03 detail_position01" onclick="toMJhid()">
-                        <div class="detail_02_font1">煤价（元/吨）</div>
-                        <div class="detail_02_font2" id="coalPrice">25.00</div>
-                        <div class="detail_02_img" id="detail_02"></div>
-                    </div>
-                    <div class="detail_02_04">
-                        <div class="detail_001">
-                            标煤耗<b id="coalCost">300</b>克/度
-                        </div>
-                    </div>
-                    <div class="detail_02_03 detail_position02">
-                        <div class="detail_02_font1"><b id="wattVolume1">30</b>万KW(克/度)</div>
-                        <div class="detail_02_font2" id="watt1">25.00</div>
-                        <div class="detail_02_img" id="detail_03"></div>
-                    </div>
-                    <div class="detail_02_03 detail_position03">
-                        <div class="detail_02_font1"><b id="wattVolume2">40</b>万KW(克/度)</div>
-                        <div class="detail_02_font2" id="watt2">25.00</div>
-                        <div class="detail_02_img" id="detail_04"></div>
-                    </div>
-                    <div class="detail_02_08">
-                        <div class="detail_002">
-                            库存煤量
-                            <b id="coalTotalVolume" style="color:#226C23">
-                            1012119.11
-                            </b>
-                            吨&nbsp;&nbsp;&nbsp;满发可用
-                            <b id="wasteDays" style="color:#226C23">
-                            3
-                            </b>
-                            天
-                        </div>
-                    </div>
-                </div>
-                <div class="detail_02" style="display:none" id="detail_another">
-                    <div class="detail_02_01">
-                        <div >
-                        集团
-                        </div>
-                    </div>
-                    <div class="another_font01 detail_02_01" onclick="back_another()">
-                        返回
-                    </div>
-                    <div class="detail_another_01" id="detail_another_01">
-                        
-                    </div>
-                    <div class="detail_another_font">
-                        统计于<br/>2015.08.08
-                    </div>
-                </div>
-                <div id="mj_hid" class="detail_02_hid" style="display:none">
-                     <div class="detail_02_01">
-                        <div>测试电厂甲</div>
-                        <div onclick="back()">返回</div>
-                        <ul>
-                            <li>
-                                <button id="btn1" class="active" onclick="btnclick('1')">4500大卡</button></li>
-                            <li>
-                                <button id="btn2" onclick="btnclick('2')">4800大卡</button></li>
-                            <li>
-                                <button id="btn3" onclick="btnclick('3')">5000大卡</button></li>
-                            <li>
-                                <button id="btn4" onclick="btnclick('4')">5200大卡</button></li>
-                            <li>
-                                <button id="btn5" onclick="btnclick('5')">5500大卡</button></li>
-                        </ul>
-                    </div>
-        <div id="mj_content_hid1" class="mj_content">
-            <div id="pic4500"></div>
-        </div>
-        <div id="mj_content_hid2" class="mj_content" style="display: none">
-            <div id="pic4800"></div>
-        </div>
-        <div id="mj_content_hid3" class="mj_content" style="display: none">
-            <div id="pic5000"></div>
-        </div>
-        <div id="mj_content_hid4" class="mj_content" style="display: none">
-            <div id="pic5200"></div>
-        </div>
-        <div id="mj_content_hid5" class="mj_content" style="display: none">
-            <div id="pic5500"></div>
-        </div>
-    </div>
+              <div class="internetPowerPlantRight">
+
             </div>
+          </div>
+
         </div>
         <div class="menu_bottom">
             <ul>

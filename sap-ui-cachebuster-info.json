@@ -1,6 +1,7 @@
 {
   "css/bottom_button.css": "1441073100976",
   "css/home.css": "1441096997519",
+  "css/internetPowerVolume.css": "1441166314791",
   "css/panel.css": "1441073101058",
   "css/Performance.css": "1441094798215",
   "css/powerPlantMap.css": "1441073101011",
@@ -41,6 +42,7 @@
   "img/arrow-red.png": "1441073100959",
   "img/arrow-red2.png": "1441073100858",
   "img/bg-001.png": "1441073101189",
+  "img/chinamap-border.png": "1441006762870",
   "img/combination_3.png": "1441094798211",
   "img/down.png": "1441073101142",
   "img/gaowenyujing.png": "1441073100962",
@@ -71,14 +73,14 @@
   "img/tab8.png": "1441073101061",
   "img/up.png": "1441073100967",
   "img/write.png": "1441073100979",
-  "index.html": "1441161161620",
+  "index.html": "1441166252259",
   "js/swiper.js": "1441073100991",
   "README.md": "1441072786127",
   "swiper.js": "1441073101029",
   "view/home.controller.js": "1441076598837",
   "view/home.view.html": "1441095154046",
-  "view/internetPowerVolume.controller.js": "1441160309365",
-  "view/internetPowerVolume.view.html": "1441161089029",
+  "view/internetPowerVolume.controller.js": "1441162664154",
+  "view/internetPowerVolume.view.html": "1441166594817",
   "view/jingyingyeji.controller.js": "1441073100847",
   "view/jingyingyeji.view.html": "1441156581295",
   "view/Performance.controller.js": "1441100698525",
@@ -88,5 +90,6 @@
   "view/rlcbDetailPage.controller.js": "1441073101108",
   "view/rlcbDetailPage.view.html": "1441073100866",
   "view/tab.controller.js": "1441073100874",
-  "view/tab.view.html": "1441159841074"
+  "view/tab.view.html": "1441159841074",
+  "img/chinamap-border-pc.png": "1441166163937"
 }
