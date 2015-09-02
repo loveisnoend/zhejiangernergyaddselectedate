@@ -8,14 +8,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 	onInit: function() {
         this.getView().addEventDelegate({
 			// not added the controller as delegate to avoid controller functions with similar names as the events
-			onBeforeShow: jQuery.proxy(function(evt) {
-				this.onBeforeShow(evt);
+			onAfterShow: jQuery.proxy(function(evt) {
+				this.onAfterShow(evt);
 			}, this)
 		});
 	},
 	
 	// eventment before show the page 
-	onBeforeShow : function () {
+	onAfterShow : function () {
 	    
         this.loadChart();
         //this.loadmjChart("mj_content_hid1", xdate, data_sj, data_qg);

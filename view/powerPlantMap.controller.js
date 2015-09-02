@@ -1,21 +1,21 @@
 sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 
 /**
-* Called when a controller is instantiated and its View controls (if available) are already created.
-* Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
+* Called when a controller detail_01 instantiated and its View controls (if available) are already created.
+* Can be used to modify thdetail_01e View before it is displayed, to bind event handlers and do other one-time initialization.
 * @memberOf com.zhenergy.bi.view.powerPlantMap
 */
 	onInit: function() {
         this.getView().addEventDelegate({
 			// not added the controller as delegate to avoid controller functions with similar names as the events
-			onBeforeShow: jQuery.proxy(function(evt) {
-				this.onBeforeShow(evt);
+			onAfterShow: jQuery.proxy(function(evt) {
+				this.onAfterShow(evt);
 			}, this)
 		});
 	},
 	
 	// eventment before show the page 
-	onBeforeShow : function () {
+	onAfterShow : function () {
 	    
         this.loadChart();
         //this.loadmjChart("mj_content_hid1", xdate, data_sj, data_qg);
@@ -38,6 +38,12 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 			
 			function draw(e) {
 			    drawPowerDistribution(e);
+			    
+			    drawpie01(e);
+    			drawbar01(e);
+    			drawbar02(e);
+    			drawbar03(e);
+    			drawbar04(e);
 		    }
 		
 		    function drawPowerDistribution(ec) {
@@ -47,7 +53,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
     
 	///////////////////////////////////中国地图/////////////////////////////////////			
 				// 基于准备好的dom，初始化echarts图表
-				myChart3 = ec.init(document.getElementById('chinaMap')); 
+				myChart3 = ec.init(document.getElementById('chinaMap1')); 
 				option3 = {
 					tooltip : {
 						trigger: 'item',
@@ -87,7 +93,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 
 	//////////////////////////////////浙江省地图//////////////////////////////////////////////////////////		
 			    // 基于准备好的dom，初始化echarts图表
-                myChart4 = ec.init(document.getElementById('powerPlantMap'));
+                myChart4 = ec.init(document.getElementById('powerPlantMap1'));
 				var allPowerData = [
 					{name: "温州", value: 300, coal:1196820.02, coalDays:3, inputPlanTotal:"600", inputPlanValue:335, averUsePerH:11.8, averLoadRate: "65%", netPowerWPerH:6.19, costData:8580.15, costPer:0.45, otherAllCost:5646.66, otherCost:345.45, repairCost:580.9, peopleCost:3456.15, finaceCost:1000.56, depreciationCost:345.3},
 					{name: "义乌", value: 270, coal:3342340.02, coalDays:6, inputPlanTotal:"700", inputPlanValue:200, averUsePerH:23.2, averLoadRate: "36%", netPowerWPerH:3.56, costData:65324.05, costPer:1.98, otherAllCost:3452.45, otherCost:543.67, repairCost:456.87, peopleCost:2334.74, finaceCost:2345.56, depreciationCost:300.5},
@@ -217,6 +223,12 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 					var data1 = mapSeries.markPoint.data[param.dataIndex].inputPlanValue;
 					var data2 = mapSeries.markPoint.data[param.dataIndex].inputPlanTotal - mapSeries.markPoint.data[param.dataIndex].inputPlanValue
 				    
+				    drawpie(ec, data1, data2, 'detail_pie');
+				    drawbar(ec, data1, data2, 'detail_01');
+				    drawbar(ec, data1, data2, 'detail_02');
+				    drawbar(ec, data1, data2, 'detail_03');
+				    drawbar(ec, data1, data2, 'detail_04');	
+				    
 				    document.getElementById('fuelCost').innerHTML = mapSeries.markPoint.data[param.dataIndex].inputPlanValue;
 				    document.getElementById('fuelDownPercent').innerHTML = mapSeries.markPoint.data[param.dataIndex].coalDays;
 				    document.getElementById('travelPrice').innerHTML = mapSeries.markPoint.data[param.dataIndex].averUsePerH;
@@ -236,7 +248,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
                 myChart4.setOption(option4); 
 		///////////////////////////////安徽淮南市地图////////////////////////////////////////////
 				// 基于准备好的dom，初始化echarts图表
-                myChart5 = ec.init(document.getElementById('huaiNanMap')); 
+                myChart5 = ec.init(document.getElementById('huaiNanMap1')); 
                 
 				var allPowerData2 = [
 					{name: "淮南", value: 300, coal:1196820.02, coalDays:3, inputPlanTotal:"600", inputPlanValue:335, averUsePerH:11.8, averLoadRate: "65%", netPowerWPerH:6.19, costData:8580.15, costPer:0.45, otherAllCost:5646.66, otherCost:345.45, repairCost:580.9, peopleCost:3456.15, finaceCost:1000.56, depreciationCost:345.3},
@@ -332,6 +344,12 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 					var data1 = mapSeries.markPoint.data[param.dataIndex].inputPlanValue;
 					var data2 = mapSeries.markPoint.data[param.dataIndex].inputPlanTotal - mapSeries.markPoint.data[param.dataIndex].inputPlanValue
 				    
+				    drawpie(ec, data1, data2, 'detail_pie');
+				    drawbar(ec, data1, data2, 'detail_01');
+				    drawbar(ec, data1, data2, 'detail_02');
+				    drawbar(ec, data1, data2, 'detail_03');
+				    drawbar(ec, data1, data2, 'detail_04');	
+				    
 				    document.getElementById('fuelCost').innerHTML = mapSeries.markPoint.data[param.dataIndex].inputPlanValue;
 				    document.getElementById('fuelDownPercent').innerHTML = mapSeries.markPoint.data[param.dataIndex].coalDays;
 				    document.getElementById('travelPrice').innerHTML = mapSeries.markPoint.data[param.dataIndex].averUsePerH;
@@ -348,5 +366,144 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
                 // 为echarts对象加载数据 
                 myChart5.setOption(option5); 
         }
+        
+        function drawpie(e, data1, data2, id) {
+			var mychart = e.init(document.getElementById(id));
+			var option = {
+				title: {
+					show: false,
+					text: '日利润'
+				},
+				tooltip: {
+					show: false
+				},
+				legend: {
+					show: false,
+					data: ['日利润']
+				},
+				series: [
+					{
+						name: '1',
+						type: 'pie',
+						radius: [123, 126],
+						itemStyle: {
+							normal: {
+								color: '#33FE33',
+								label: {
+									show: false
+								},
+								labelLine: {
+									show: false
+								}
+							}
+						},
+						data: [
+							{
+								value: data1,
+								name: '日利润'
+                            },
+							{
+								value: data2,
+								name: 'invisible',
+								itemStyle: {
+									normal: {
+										color: 'rgba(0,0,0,0)',
+										label: {
+											show: false
+										},
+										labelLine: {
+											show: false
+										}
+									},
+									emphasis: {
+										color: 'rgba(0,0,0,0)'
+									}
+								}
+                                }
+                                ]
+                            }
+                            ]
+			    };
+			mychart.setOption(option);
+		}
+		function drawbar(e, data1, data2, id) {
+			var mychart = e.init(document.getElementById(id));
+			var option = {
+				grid: {
+					x: 0,
+					y: 0,
+					x2: 0,
+					y2: 0,
+					borderWidth: 0
+
+				},
+				color: ['#1E871E', '#080809'],
+
+				xAxis: [
+					{
+						show: false,
+						type: 'value'
+							}
+						],
+				yAxis: [
+					{
+						show: false,
+						type: 'category',
+						data: ['周一']
+							}
+						],
+				series: [
+					{
+						name: '直接访问',
+						type: 'bar',
+						stack: '总量',
+						itemStyle: {
+							normal: {
+								label: {
+									show: false,
+									position: 'insideRight'
+								}
+							}
+						},
+						data: [data1]
+							},
+					{
+						name: '邮件营销',
+						type: 'bar',
+						stack: '总量',
+						itemStyle: {
+							normal: {
+								label: {
+									show: false,
+									position: 'insideRight'
+								}
+							}
+						},
+
+						data: [data2]
+							}
+
+						]
+			};
+			mychart.setOption(option);
+		}
+		function drawpie01(e) {
+            drawpie(e, 3, 4, 'detail_pie');
+        }
+		function drawbar01(e) {
+			drawbar(e, 4, 6, 'detail_01');
+		}
+
+		function drawbar02(e) {
+			drawbar(e, 7, 3, 'detail_02');
+		}
+
+		function drawbar03(e) {
+			drawbar(e, 3, 7, 'detail_03');
+		}
+
+		function drawbar04(e) {
+			drawbar(e, 8, 2, 'detail_04');
+		}
 	}
 });
