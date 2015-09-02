@@ -5,38 +5,88 @@
             
         </div>
         <div class="content_center">
-          <div class="internetPowerTop">
+          <div class="powerTop">
               
           </div>
-          <div class="internetPowerBottom">
-              <div class="internetPowerPlantLeft">
-			  <div class="mapTop">
-			      <div id="huaiNanMap" style="position:absolute;z-index:2;left:170px;top:150px;height:100px;width:100px;"></div>
-			      <div id="powerPlantMap" style="margin-left:220px;margin-top:80px;height:461px;width:456px;"></div>
-			  </div>
-			  <div class="mapBottom">
-			      <div class="chinaMap">
-			          <div style="background-image:url(img/chinamap-border-pc.png);height:140px;width:190px;margin-top:-140px;margin-left:50px;">
-    			          <div id="chinaMap" style="float:left;height:110px;width:140px;margin-top:15px;margin-left:30px;">
-    			              
+          <div class="powerBottom">
+              <div class="powerPlantLeft">
+    			  <div class="mapTop">
+    			      <div id="huaiNanMap" style="position:absolute;z-index:2;left:170px;top:150px;height:100px;width:100px;"></div>
+    			      <div id="powerPlantMap" style="margin-left:220px;margin-top:80px;height:461px;width:456px;"></div>
+    			  </div>
+    			  <div class="mapBottom">
+    			      <div class="chinaMap">
+    			          <div style="background-image:url(img/chinamap-border-pc.png);height:140px;width:190px;margin-top:-140px;margin-left:50px;">
+        			          <div id="chinaMap" style="float:left;height:110px;width:140px;margin-top:15px;margin-left:30px;">
+        			              
+        			          </div>
     			          </div>
-			          </div>
-			      </div>
-			      <!--<div class="mapDetail">-->
-		       <!--   		<div style="font-size:12px;color:white;background-color:;height:80%;width:100%;margin-top:40px;margin-left:-5px;">-->
-						   <!--<div style="margin:20px;0px;0px;20px;width:90%;font-size:12px;font-family:Hiragino;">-->
-							  <!-- 水电：<b id="powerName" style="color:#FEFF02;"></b>市电厂<br>-->
-							  <!-- <br>-->
-							  <!-- 管理型电：XX家<br>-->
-							  <!-- <br>-->
-							  <!-- 其他：XX家-->
-						   <!--</div>-->
-					    <!--</div>-->
-			      <!--</div>-->
-			  </div>
+    			      </div>
+    			      <!--<div class="mapDetail">-->
+    		       <!--   		<div style="font-size:12px;color:white;background-color:;height:80%;width:100%;margin-top:40px;margin-left:-5px;">-->
+    						   <!--<div style="margin:20px;0px;0px;20px;width:90%;font-size:12px;font-family:Hiragino;">-->
+    							  <!-- 水电：<b id="powerName" style="color:#FEFF02;"></b>市电厂<br>-->
+    							  <!-- <br>-->
+    							  <!-- 管理型电：XX家<br>-->
+    							  <!-- <br>-->
+    							  <!-- 其他：XX家-->
+    						   <!--</div>-->
+    					    <!--</div>-->
+    			      <!--</div>-->
+    			  </div>
             </div>
-              <div class="internetPowerPlantRight">
-
+            <div class="powerPlantRight">
+                <div id="rlcb_detail" class="detail_02">
+                    <div class="detail_02_01">
+                            <div>集团</div>
+                    </div>
+                    <div class="main_content_combition_1">
+                        <div class="main_content_combition_1_1">
+                            <div class="detail_02_03">
+                                <div class="detail_02_font1">运价（元/吨）</div>
+                                <div class="detail_02_font2" id="travelPrice">25.00</div>
+                                <div class="detail_02_img" id="detail_01"></div>
+                            </div>
+                            <div class="detail_02_03 detail_position01" onclick="toMJhid()">
+                                <div class="detail_02_font1">煤价（元/吨）</div>
+                                <div class="detail_02_font2" id="coalPrice">25.00</div>
+                                <div class="detail_02_img" id="detail_02"></div>
+                            </div>
+                        </div>
+                        <div class="main_content_combition_1_2">
+                            <div class="detail_02_04">
+                                <div class="detail_001">
+                                    标煤耗<b id="coalCost">300</b>克/度
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main_content_combition_1_3">
+                            <div class="detail_02_03">
+                                <div class="detail_02_font1"><b id="wattVolume1">30</b>万KW(克/度)</div>
+                                <div class="detail_02_font2" id="watt1">25.00</div>
+                                <div class="detail_02_img" id="detail_03"></div>
+                            </div>
+                            <div class="detail_02_03">
+                                <div class="detail_02_font1"><b id="wattVolume2">40</b>万KW(克/度)</div>
+                                <div class="detail_02_font2" id="watt2">25.00</div>
+                                <div class="detail_02_img" id="detail_04"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main_content_combition_2">
+                            <div class="detail_pie" id="detail_pie" onclick="detailAnother()"></div>
+                            <div class="detail_02_02">
+                                <div class="detail_02_font01">单位燃料成本</div>
+                                <div class="detail_02_font01 font_size1" id="fuelCost">450</div>
+                                <div class="detail_02_font01 font_size2">元/吨</div>
+                                <div class="detail_02_font01 font_size3">
+                                    <div class="detail_02_font04_01 font_size4"><b id="fuelDownPercent"></b>%</div>
+                                    <div class="detail_02_font04_02"></div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                
             </div>
           </div>
 
