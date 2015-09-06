@@ -11,17 +11,18 @@
 .internetPowerPlantLeft{
     background-color : black;
     height : 100%;
-    width : 50%;
+    width : 44%;
     float : left;
 }
 .internetPowerPlantRight{
     height : 100%;
-    width : 50%;
+    width : 56%;
     float : left;
 }
 .internetDetail{
-    width:670px;
-    height:650px;
+    width:740px;
+    height:550px;
+    background-size:cover;
     background-image: url(../img/bg-detail-pc.png);
 }
 .internetDetailTop{
@@ -78,12 +79,3 @@
     margin-left:20px;
     margin-top:0px;
 }
-
-
-
-
-
-
-
-
-
