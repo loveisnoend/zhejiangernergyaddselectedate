@@ -36,12 +36,12 @@
 			  </div>
             </div>
             <div class="internetPowerPlantRight">
-                <div class="internetDetail">
+                <div class="internetDetail" id="internetMain">
                     <div class="internetDetailTop">
-                        <div style="color:#FFFFFF;margin-top:10px;margin-left:10px;float:left"><b id="powerPlantName">萧山</b>电厂</div>
+                        <div style="color:#FFFFFF;margin-top:20px;margin-left:20px;float:left"><b id="powerPlantName">集团</b>电厂</div>
                     </div>
                     <div class="internetDetailBottom">
-                        <div class="internetDetailRow2">
+                        <div class="internetDetailRow2" style="margin-top:7%;cursor:pointer;" onClick="priceDetailAnother('detail001')">
                             <div class="internetDetailRowPlace1">
                                 <div class="internetDetailRowPlaceTitle1">
                                     平均上网电价&nbsp;<b style="font-size:15px">(&nbsp;元/千瓦时&nbsp;)</b>
@@ -55,7 +55,7 @@
                                     电量&nbsp;<b style="font-size:15px">(&nbsp;亿千瓦时&nbsp;)</b>
                                 </div>
                                 <div class="internetDetailRowPlaceValue1">
-                                    <div id="powerVolume1">23.18</div>
+                                    <div class="multipleImg"></div><div id="powerVolume1">23.18</div>
                                 </div>
                             </div>
                             <div class="internetDetailRowPlace3">
@@ -63,16 +63,16 @@
                                     收入&nbsp;<b style="font-size:15px">(&nbsp;万元&nbsp;)</b>
                                 </div>
                                 <div class="internetDetailRowPlaceValue1">
-                                    <div id="powerVolume1">4636.00</div>
+                                    <div class="equalsImg"></div><div id="inputCash1">4636.00</div>
                                 </div>
                             </div>
                             <div class="internetDetailRowPlace4">
-                                <div id="percentMap1" style="width:100%;height:100%;">
+                                <div id="percentMap1" class="gaugeChart">
                                     
                                 </div>
                             </div>
                         </div>
-                        <div class="internetDetailRow">
+                        <div class="internetDetailRow" style="cursor:pointer;" onClick="priceDetailAnother('detail002')">
                             <div class="internetDetailRowPlace1">
                                 <div class="internetDetailRowPlaceTitle1">
                                     合约电价&nbsp;<b style="font-size:15px">(&nbsp;元/千瓦时&nbsp;)</b>
@@ -86,7 +86,7 @@
                                     电量&nbsp;<b style="font-size:15px">(&nbsp;亿千瓦时&nbsp;)</b>
                                 </div>
                                 <div class="internetDetailRowPlaceValue1">
-                                    <div id="powerVolume2">20.45</div>
+                                    <div class="multipleImg"></div><div id="powerVolume2">20.45</div>
                                 </div>
                             </div>
                             <div class="internetDetailRowPlace3">
@@ -94,16 +94,16 @@
                                     收入&nbsp;<b style="font-size:15px">(&nbsp;万元&nbsp;)</b>
                                 </div>
                                 <div class="internetDetailRowPlaceValue1">
-                                    <div id="inputCash2">6135.00</div>
+                                    <div class="equalsImg"></div><div id="inputCash2">6135.00</div>
                                 </div>
                             </div>
                             <div class="internetDetailRowPlace4">
-                                <div id="percentMap2" style="width:100%;height:100%;">
+                                <div id="percentMap2" class="gaugeChart">
                                     
                                 </div>
                             </div>
                         </div>
-                        <div class="internetDetailRow2">
+                        <div class="internetDetailRow2" style="cursor:pointer;" onClick="priceDetailAnother('detail003')">
                             <div class="internetDetailRowPlace1">
                                 <div class="internetDetailRowPlaceTitle1">
                                     直供电价&nbsp;<b style="font-size:15px">(&nbsp;元/千瓦时&nbsp;)</b>
@@ -117,7 +117,7 @@
                                     电量&nbsp;<b style="font-size:15px">(&nbsp;亿千瓦时&nbsp;)</b>
                                 </div>
                                 <div class="internetDetailRowPlaceValue1">
-                                    <div id="powerVolume3">21.20</div>
+                                    <div class="multipleImg"></div><div id="powerVolume3">21.20</div>
                                 </div>
                             </div>
                             <div class="internetDetailRowPlace3">
@@ -125,22 +125,22 @@
                                     收入&nbsp;<b style="font-size:15px">(&nbsp;万元&nbsp;)</b>
                                 </div>
                                 <div class="internetDetailRowPlaceValue1">
-                                    <div id="inputCash3">4240.00</div>
+                                    <div class="equalsImg"></div><div id="inputCash3">4240.00</div>
                                 </div>
                             </div>
                             <div class="internetDetailRowPlace4">
-                                <div id="percentMap3" style="width:100%;height:100%;">
+                                <div id="percentMap3" class="gaugeChart">
                                     
                                 </div>
                             </div>
                         </div>
-                        <div class="internetDetailRow">
+                        <div class="internetDetailRow" style="cursor:pointer;" onClick="priceDetailAnother('detail004')">
                             <div class="internetDetailRowPlace1">
                                 <div class="internetDetailRowPlaceTitle1">
                                     替代电价&nbsp;<b style="font-size:15px">(&nbsp;元/千瓦时&nbsp;)</b>
                                 </div>
                                 <div class="internetDetailRowPlaceValue1">
-                                    <div id="internetAverPrice3">0.02</div>
+                                    <div id="internetAverPrice4">0.02</div>
                                 </div>
                             </div>
                             <div class="internetDetailRowPlace2">
@@ -148,7 +148,7 @@
                                     电量&nbsp;<b style="font-size:15px">(&nbsp;亿千瓦时&nbsp;)</b>
                                 </div>
                                 <div class="internetDetailRowPlaceValue1">
-                                    <div id="powerVolume3">23.18</div>
+                                    <div class="multipleImg"></div><div id="powerVolume4">23.18</div>
                                 </div>
                             </div>
                             <div class="internetDetailRowPlace3">
@@ -156,15 +156,31 @@
                                     收入&nbsp;<b style="font-size:15px">(&nbsp;万元&nbsp;)</b>
                                 </div>
                                 <div class="internetDetailRowPlaceValue1">
-                                    <div id="inputCash4">4636.00</div>
+                                    <div class="equalsImg"></div><div id="inputCash4">4636.00</div>
                                 </div>
                             </div>
                             <div class="internetDetailRowPlace4">
-                                <div id="percentMap4" style="width:100%;height:100%;">
+                                <div id="percentMap4" class="gaugeChart">
                                     
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="internetDetail" style="display:none;margin-top:0px;" id="internetDetail">
+                    <div class="internetDetailTop" style="font-size:14px;font-family: 微软雅黑;margin-left:20px;">
+                       <div style="color:#FFFFFF;margin-top:20px;margin-left:20px;float:left">
+                            <span>
+                            集团
+                            </span>
+                            <span onclick="internetPowerback()" style="cursor:pointer;margin-left:20px;color:rgb(255,153,0);">返回</span>
+                       </div>
+                    </div>
+                    <div class="priceDetail_another_01" id="priceDetailDiv" style="float:left;">
+                        
+                    </div>
+                    <div class="priceDetail_another_font" style="float:left;">
+                        统计于<br/>2015.08.08
                     </div>
                 </div>
               </div>

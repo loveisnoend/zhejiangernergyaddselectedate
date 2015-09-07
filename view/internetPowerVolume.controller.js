@@ -20,7 +20,130 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
         this.loadChart();
         //this.loadmjChart("mj_content_hid1", xdate, data_sj, data_qg);
 	},
-	
+	// 电价详细Chart
+	loadPriceChartdetail: function(chartDivId, priceChartName) {
+        	require(
+            [
+                'echarts',
+                'echarts/chart/line',
+                'echarts/chart/bar'
+            ],
+			draw);
+			
+			function draw(e){
+			    var mychart = e.init(document.getElementById(chartDivId));
+			    var option = {
+			        title:{
+                	text: priceChartName,
+                	textStyle:{
+						color:'white',
+						fontFamily:'微软雅黑'
+					},
+					x:'50',
+					y:'10'
+                },
+  				legend: {
+                  	orient:'horizontal',
+                  	x:'400',
+                  	y:'20',
+                  	textStyle:{
+						color:'white',
+						fontFamily:'微软雅黑'
+					},
+        			data:['当年','去年']
+   			 	},
+   				color: ['#2DE630', '#E52DE6','white'],
+				grid: {
+                    y1:100,
+                    y2:100
+				},
+				xAxis: [
+					{
+
+						//show: false,
+						type: 'category',
+						axisLabel: {
+							textStyle: {
+								color: 'white'
+							},
+							formatter: '{value}'
+						},
+						data: ['电厂1', '电厂2', '电厂3', '电厂4']
+                    }
+                ],
+				yAxis: [
+					{
+						name: '',
+						type: 'value',
+						axisLine: {
+							show: false
+						},
+						axisLabel: {
+							textStyle: {
+								color: 'white'
+							},
+							formatter: '{value}'
+						},
+						// 		splitLine: {
+						// 			show: false
+						// 		},
+						splitLine: {
+							// 			show: false
+							lineStyle: {
+								color: 'rgba(64,64,64,0.5)'
+							}
+						},
+						max: 0.65,
+						min: 0,
+						splitNumber: 13
+                    },
+					{
+						name: '',
+						type: 'value',
+						axisLine: {
+							show: false
+						},
+						axisLabel: {
+							textStyle: {
+								color: 'white'
+							},
+							formatter: '{value}%'
+						},
+						splitLine: {
+							// 			show: false
+							lineStyle: {
+								//color: 'rgba(64,64,64,0.5)',
+							}
+						},
+						max: 8.5,
+						min: 2.0,
+						splitNumber: 13
+                    }
+                ],
+				series: [
+					{
+						name: '当年',
+						type: 'bar',
+						smooth: true,
+                     	barGap: '0%',
+                      	barCategoryGap: '50%',
+						// itemStyle: {normal: {areaStyle: {type: 'default'}}},
+						data: ['0.18','0.50','0.18','0.37']
+                    },
+					{
+						name: '去年',
+						type: 'bar',
+						smooth: true,
+					
+						//itemStyle: {normal: {areaStyle: {type: 'default'}}},
+						data: ['0.12','0.43','0.20','0.30']
+
+                    }
+                ]
+			    };
+			    mychart.setOption(option);
+			}
+    },
 	// load the chart map
 	loadChart : function () {
 	    var myChart3
@@ -39,10 +162,6 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 			
 			function draw(e) {
 			    drawPowerDistribution(e);
-			    drawpie(e, 2, 3, 'percentMap1');
-			    drawpie(e, 4, 5, 'percentMap2');
-			    drawpie(e, 6, 7, 'percentMap3');
-			    drawpie(e, 4, 1, 'percentMap4');
 		    }
 		
 		    function drawPowerDistribution(ec) {
@@ -180,8 +299,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 							markPoint : {
 							    normal: {
 								    label:{
-									    show: true,
-									},
+									    show: true
+									}
 								},
 								symbol:'emptyCircle',
 								symbolSize : function (v){
@@ -207,33 +326,131 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 				}; 
 	
 				myChart4.on(ecConfig.EVENT.CLICK, function (param){  
-				// 	if (param.dataIndex == 0 && param.name != '温州') {
-    //                     document.getElementById("detailInfo").style.display = "none";
-				// 		document.getElementById('onlyMap').style.display = "";
-				// 	} else {
-				// 	    document.getElementById("detailInfo").style.display = "";
-				// 	    document.getElementById('onlyMap').style.display = "none";
-				// 	}
-					
+
 					var mapSeries = option4.series[0];
 
 					// 电厂名
-					document.getElementById('powerName').innerHTML = mapSeries.markPoint.data[param.dataIndex].name;
-					var data1 = mapSeries.markPoint.data[param.dataIndex].inputPlanValue;
-					var data2 = mapSeries.markPoint.data[param.dataIndex].inputPlanTotal - mapSeries.markPoint.data[param.dataIndex].inputPlanValue
+					document.getElementById('powerPlantName').innerHTML = mapSeries.markPoint.data[param.dataIndex].name;
+					
+					// 平均电价
+					var internetAverPrice1 = mapSeries.markPoint.data[param.dataIndex].costPer;
+					internetAverPrice1 = internetAverPrice1.toString().substring(0, internetAverPrice1.toString().indexOf('.')+3);
+                    document.getElementById('internetAverPrice1').innerHTML =  internetAverPrice1;  
+                    
+                    var powerVolume1 = mapSeries.markPoint.data[param.dataIndex].averUsePerH;
+					powerVolume1 = powerVolume1.toString().substring(0, powerVolume1.toString().indexOf('.')+3);
+				    document.getElementById('powerVolume1').innerHTML = powerVolume1;
 				    
-				    document.getElementById('fuelCost').innerHTML = mapSeries.markPoint.data[param.dataIndex].inputPlanValue;
-				    document.getElementById('fuelDownPercent').innerHTML = mapSeries.markPoint.data[param.dataIndex].coalDays;
-				    document.getElementById('travelPrice').innerHTML = mapSeries.markPoint.data[param.dataIndex].averUsePerH;
-				    document.getElementById('coalPrice').innerHTML = mapSeries.markPoint.data[param.dataIndex].netPowerWPerH;
-				    document.getElementById('coalCost').innerHTML = mapSeries.markPoint.data[param.dataIndex].otherAllCost;
-				    document.getElementById('wattVolume1').innerHTML = mapSeries.markPoint.data[param.dataIndex].inputPlanValue;
-				    document.getElementById('watt1').innerHTML = mapSeries.markPoint.data[param.dataIndex].depreciationCost;
-				    document.getElementById('wattVolume2').innerHTML = mapSeries.markPoint.data[param.dataIndex].peopleCost;
-				    document.getElementById('watt2').innerHTML = mapSeries.markPoint.data[param.dataIndex].repairCost;
-				    document.getElementById('coalTotalVolume').innerHTML = mapSeries.markPoint.data[param.dataIndex].coal;
-				    document.getElementById('wasteDays').innerHTML = mapSeries.markPoint.data[param.dataIndex].coalDays;
+				    var inputCash1 = mapSeries.markPoint.data[param.dataIndex].costPer*mapSeries.markPoint.data[param.dataIndex].averUsePerH;
+				    document.getElementById('inputCash1').innerHTML = inputCash1.toString().substring(0, inputCash1.toString().indexOf('.')+3);
+
+					// 合约电价
+					var internetAverPrice2 = mapSeries.markPoint.data[param.dataIndex].costPer;
+					internetAverPrice2 = internetAverPrice2.toString().substring(0, internetAverPrice2.toString().indexOf('.')+3);
+                    document.getElementById('internetAverPrice2').innerHTML =  internetAverPrice2;  
+                    
+                    var powerVolume2 = mapSeries.markPoint.data[param.dataIndex].averUsePerH+0.5;
+					powerVolume2 = powerVolume2.toString().substring(0, powerVolume2.toString().indexOf('.')+3);
+				    document.getElementById('powerVolume2').innerHTML = powerVolume2;
+				    
+				    var inputCash2 = mapSeries.markPoint.data[param.dataIndex].costPer*(mapSeries.markPoint.data[param.dataIndex].averUsePerH+0.5);
+				    document.getElementById('inputCash2').innerHTML = inputCash2.toString().substring(0, inputCash2.toString().indexOf('.')+3);
+
+					// 直供电价
+					var internetAverPrice3 = mapSeries.markPoint.data[param.dataIndex].costPer;
+					internetAverPrice3 = internetAverPrice3.toString().substring(0, internetAverPrice3.toString().indexOf('.')+3);
+                    document.getElementById('internetAverPrice3').innerHTML =  internetAverPrice3;  
+                    
+                    var powerVolume3 = mapSeries.markPoint.data[param.dataIndex].averUsePerH+1.4;
+					powerVolume3 = powerVolume3.toString().substring(0, powerVolume3.toString().indexOf('.')+3);
+				    document.getElementById('powerVolume3').innerHTML = powerVolume3;
+				    
+				    var inputCash3 = mapSeries.markPoint.data[param.dataIndex].costPer*(mapSeries.markPoint.data[param.dataIndex].averUsePerH+1.4);
+				    document.getElementById('inputCash3').innerHTML = inputCash3.toString().substring(0, inputCash3.toString().indexOf('.')+3);
+
+
+					// 代替电价
+					var internetAverPrice4 = mapSeries.markPoint.data[param.dataIndex].costPer;
+					internetAverPrice4 = internetAverPrice4.toString().substring(0, internetAverPrice4.toString().indexOf('.')+3);
+                    document.getElementById('internetAverPrice4').innerHTML =  internetAverPrice4;  
+                    
+                    var powerVolume4 = mapSeries.markPoint.data[param.dataIndex].averUsePerH+2.8;
+					powerVolume4 = powerVolume4.toString().substring(0, powerVolume4.toString().indexOf('.')+3);
+				    document.getElementById('powerVolume4').innerHTML = powerVolume4
+				        
+				    var inputCash4 = mapSeries.markPoint.data[param.dataIndex].costPer*(mapSeries.markPoint.data[param.dataIndex].averUsePerH+2.8);
+				    document.getElementById('inputCash4').innerHTML = inputCash4.toString().substring(0, inputCash4.toString().indexOf('.')+3);
+					
+					var data1 = mapSeries.markPoint.data[param.dataIndex].coalDays;
+					var data2 = mapSeries.markPoint.data[param.dataIndex].averUsePerH;
+					var data3 = mapSeries.markPoint.data[param.dataIndex].netPowerWPerH;
+					var data4 = mapSeries.markPoint.data[param.dataIndex].costPer;
+					drawpie(ec, data1, 3, 'percentMap1');
+    			    drawpie(ec, data2, 5, 'percentMap2');
+    			    drawpie(ec, data3, 7, 'percentMap3');
+    			    drawpie(ec, data4, 1, 'percentMap4');
 				});	
+				
+				// 电厂名
+				document.getElementById('powerPlantName').innerHTML = "集团";
+				
+				// 平均电价
+				var internetCenterAverPrice1 = 23;
+				internetCenterAverPrice1 = internetCenterAverPrice1.toString().substring(0, internetCenterAverPrice1.toString().indexOf('.')+3);
+                document.getElementById('internetAverPrice1').innerHTML =  internetCenterAverPrice1;  
+                
+                var powerCenterVolume1 = 12;
+				powerCenterVolume1 = powerCenterVolume1.toString().substring(0, powerCenterVolume1.toString().indexOf('.')+3);
+			    document.getElementById('powerVolume1').innerHTML = powerCenterVolume1;
+			    
+			    var inputCenterCash1 = internetCenterAverPrice1*powerCenterVolume1;
+			    document.getElementById('inputCash1').innerHTML = inputCenterCash1.toString().substring(0, inputCenterCash1.toString().indexOf('.')+3);
+
+				// 合约电价
+				var internetCenterAverPrice2 = 23;
+				internetCenterAverPrice2 = internetCenterAverPrice2.toString().substring(0, internetCenterAverPrice2.toString().indexOf('.')+3);
+                document.getElementById('internetAverPrice2').innerHTML =  internetCenterAverPrice2;  
+                
+                var powerCenterVolume2 = 22;
+				powerCenterVolume2 = powerCenterVolume2.toString().substring(0, powerCenterVolume2.toString().indexOf('.')+3);
+			    document.getElementById('powerVolume2').innerHTML = powerCenterVolume2;
+			    
+			    var inputCenterCash2 = internetCenterAverPrice2*powerCenterVolume2;
+			    document.getElementById('inputCash2').innerHTML = inputCenterCash2.toString().substring(0, inputCenterCash2.toString().indexOf('.')+3);
+
+				// 直供电价
+				var internetCenterAverPrice3 = 23;
+				internetCenterAverPrice3 = internetCenterAverPrice3.toString().substring(0, internetCenterAverPrice3.toString().indexOf('.')+3);
+                document.getElementById('internetAverPrice3').innerHTML =  internetCenterAverPrice3;  
+                
+                var powerCenterVolume3 = 32;
+				powerCenterVolume3 = powerCenterVolume3.toString().substring(0, powerCenterVolume3.toString().indexOf('.')+3);
+			    document.getElementById('powerVolume3').innerHTML = powerCenterVolume3;
+			    
+			    var inputCenterCash3 = internetCenterAverPrice3*powerCenterVolume3;
+			    document.getElementById('inputCash3').innerHTML = inputCenterCash3.toString().substring(0, inputCenterCash3.toString().indexOf('.')+3);
+
+				// 代替电价
+				var internetCenterAverPrice4 = 23;
+				internetCenterAverPrice4 = internetCenterAverPrice4.toString().substring(0, internetCenterAverPrice4.toString().indexOf('.')+3);
+                document.getElementById('internetAverPrice4').innerHTML =  internetCenterAverPrice4;  
+                
+                var powerCenterVolume4 = 42;
+				powerCenterVolume4 = powerCenterVolume4.toString().substring(0, powerCenterVolume4.toString().indexOf('.')+3);
+			    document.getElementById('powerVolume4').innerHTML = powerCenterVolume4;
+			    
+			    var inputCenterCash4 = internetCenterAverPrice4*powerCenterVolume4;
+			    document.getElementById('inputCash4').innerHTML = inputCenterCash4.toString().substring(0, inputCenterCash4.toString().indexOf('.')+3);
+
+
+				var dataCenter1 = 30;
+				var dataCenter2 = 57;
+				var dataCenter3 = 29;
+				var dataCenter4 = 90;
+				drawpie(ec, dataCenter1, 3, 'percentMap1');
+			    drawpie(ec, dataCenter2, 5, 'percentMap2');
+			    drawpie(ec, dataCenter3, 7, 'percentMap3');
+			    drawpie(ec, dataCenter4, 1, 'percentMap4');
 				
 				// document.getElementById('powerName').innerHTML = "杭州";
 				
@@ -333,23 +550,65 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 					var mapSeries = option5.series[0];
 
 					// 电厂名
-					document.getElementById('powerName').innerHTML = mapSeries.markPoint.data[param.dataIndex].name;
-					var data1 = mapSeries.markPoint.data[param.dataIndex].inputPlanValue;
-					var data2 = mapSeries.markPoint.data[param.dataIndex].inputPlanTotal - mapSeries.markPoint.data[param.dataIndex].inputPlanValue
+					document.getElementById('powerPlantName').innerHTML = mapSeries.markPoint.data[param.dataIndex].name;
+					
+					// 平均电价
+					var internetAverPrice1 = mapSeries.markPoint.data[param.dataIndex].costPer;
+					internetAverPrice1 = internetAverPrice1.toString().substring(0, internetAverPrice1.toString().indexOf('.')+3);
+                    document.getElementById('internetAverPrice1').innerHTML =  internetAverPrice1;  
+                    
+                    var powerVolume1 = mapSeries.markPoint.data[param.dataIndex].averUsePerH;
+					powerVolume1 = powerVolume1.toString().substring(0, powerVolume1.toString().indexOf('.')+3);
+				    document.getElementById('powerVolume1').innerHTML = powerVolume1;
 				    
-				    drawpie(ec, data1, data2, 'percentMap1');
-				    				    
-				    document.getElementById('fuelCost').innerHTML = mapSeries.markPoint.data[param.dataIndex].inputPlanValue;
-				    document.getElementById('fuelDownPercent').innerHTML = mapSeries.markPoint.data[param.dataIndex].coalDays;
-				    document.getElementById('travelPrice').innerHTML = mapSeries.markPoint.data[param.dataIndex].averUsePerH;
-				    document.getElementById('coalPrice').innerHTML = mapSeries.markPoint.data[param.dataIndex].netPowerWPerH;
-				    document.getElementById('coalCost').innerHTML = mapSeries.markPoint.data[param.dataIndex].otherAllCost;
-				    document.getElementById('wattVolume1').innerHTML = mapSeries.markPoint.data[param.dataIndex].inputPlanValue;
-				    document.getElementById('watt1').innerHTML = mapSeries.markPoint.data[param.dataIndex].depreciationCost;
-				    document.getElementById('wattVolume2').innerHTML = mapSeries.markPoint.data[param.dataIndex].peopleCost;
-				    document.getElementById('watt2').innerHTML = mapSeries.markPoint.data[param.dataIndex].repairCost;
-				    document.getElementById('coalTotalVolume').innerHTML = mapSeries.markPoint.data[param.dataIndex].coal;
-				    document.getElementById('wasteDays').innerHTML = mapSeries.markPoint.data[param.dataIndex].coalDays;
+				    var inputCash1 = mapSeries.markPoint.data[param.dataIndex].costPer*mapSeries.markPoint.data[param.dataIndex].averUsePerH;
+				    document.getElementById('inputCash1').innerHTML = inputCash1.toString().substring(0, inputCash1.toString().indexOf('.')+3);
+
+					// 合约电价
+					var internetAverPrice2 = mapSeries.markPoint.data[param.dataIndex].costPer;
+					internetAverPrice2 = internetAverPrice2.toString().substring(0, internetAverPrice2.toString().indexOf('.')+3);
+                    document.getElementById('internetAverPrice2').innerHTML =  internetAverPrice2;  
+                    
+                    var powerVolume2 = mapSeries.markPoint.data[param.dataIndex].averUsePerH+0.5;
+					powerVolume2 = powerVolume2.toString().substring(0, powerVolume2.toString().indexOf('.')+3);
+				    document.getElementById('powerVolume2').innerHTML = powerVolume2;
+				    
+				    var inputCash2 = mapSeries.markPoint.data[param.dataIndex].costPer*(mapSeries.markPoint.data[param.dataIndex].averUsePerH+0.5);
+				    document.getElementById('inputCash2').innerHTML = inputCash2.toString().substring(0, inputCash2.toString().indexOf('.')+3);
+
+					// 直供电价
+					var internetAverPrice3 = mapSeries.markPoint.data[param.dataIndex].costPer;
+					internetAverPrice3 = internetAverPrice3.toString().substring(0, internetAverPrice3.toString().indexOf('.')+3);
+                    document.getElementById('internetAverPrice3').innerHTML =  internetAverPrice3;  
+                    
+                    var powerVolume3 = mapSeries.markPoint.data[param.dataIndex].averUsePerH+1.4;
+					powerVolume3 = powerVolume3.toString().substring(0, powerVolume3.toString().indexOf('.')+3);
+				    document.getElementById('powerVolume3').innerHTML = powerVolume3;
+				    
+				    var inputCash3 = mapSeries.markPoint.data[param.dataIndex].costPer*(mapSeries.markPoint.data[param.dataIndex].averUsePerH+1.4);
+				    document.getElementById('inputCash3').innerHTML = inputCash3.toString().substring(0, inputCash3.toString().indexOf('.')+3);
+
+
+					// 代替电价
+					var internetAverPrice4 = mapSeries.markPoint.data[param.dataIndex].costPer;
+					internetAverPrice4 = internetAverPrice4.toString().substring(0, internetAverPrice4.toString().indexOf('.')+3);
+                    document.getElementById('internetAverPrice4').innerHTML =  internetAverPrice4;  
+                    
+                    var powerVolume4 = mapSeries.markPoint.data[param.dataIndex].averUsePerH+2.8;
+					powerVolume4 = powerVolume4.toString().substring(0, powerVolume4.toString().indexOf('.')+3);
+				    document.getElementById('powerVolume4').innerHTML = powerVolume4
+				        
+				    var inputCash4 = mapSeries.markPoint.data[param.dataIndex].costPer*(mapSeries.markPoint.data[param.dataIndex].averUsePerH+2.8);
+				    document.getElementById('inputCash4').innerHTML = inputCash4.toString().substring(0, inputCash4.toString().indexOf('.')+3);
+					
+					var data1 = mapSeries.markPoint.data[param.dataIndex].coalDays;
+					var data2 = mapSeries.markPoint.data[param.dataIndex].averUsePerH;
+					var data3 = mapSeries.markPoint.data[param.dataIndex].netPowerWPerH;
+					var data4 = mapSeries.markPoint.data[param.dataIndex].costPer;
+					drawpie(ec, data1, 3, 'percentMap1');
+    			    drawpie(ec, data2, 5, 'percentMap2');
+    			    drawpie(ec, data3, 7, 'percentMap3');
+    			    drawpie(ec, data4, 1, 'percentMap4');
 				});	
 			
                 // 为echarts对象加载数据 
@@ -369,8 +628,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
                             splitNumber: 10,       // 分割段数，默认为5
                             axisLine: {            // 坐标轴线
                                 lineStyle: {       // 属性lineStyle控制线条样式
-                                    color: [[0.2, '#228b22'],[0.8, '#48b'],[1, '#ff4500']], 
-                                    width: 8
+                                    color: [[0.2, '#34BC34'],[0.8, '#FFD400'],[1, '#FF4535']], 
+                                    width: 4
                                 }
                             },
                             axisTick: {            // 坐标轴小标记
@@ -388,34 +647,34 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
                             },
                             splitLine: {           // 分隔线
                                 show: true,        // 默认显示，属性show控制显示与否
-                                length :10,         // 属性length控制线长
+                                length :0,         // 属性length控制线长
                                 lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
                                     color: 'auto'
                                 }
                             },
                             pointer : {
-                                width : 5
+                                width : 2
                             },
                             title : {
                                 show : true,
-                                offsetCenter: [0, '20%'],       // x, y，单位px
+                                offsetCenter: [0, '18'],       // x, y，单位px
                                 borderWidth: 1,
                                 textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
                                     fontWeight: 'bolder',
-                                    color:'green'
+                                    color:'#34BC34'
                                 }
                             },
                             detail : {
                                 formatter:'{value}%',
-                                offsetCenter: [0, '10%'],       // x, y，单位px
+                                offsetCenter: [0, '15'],       // x, y，单位px
                                 textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                                    color: 'green',
+                                    color: '#34BC34',
                                     fontWeight: '400',
-                                    fontSize:20
+                                    fontSize:15
                                 }
                             },
                             data:[
-                                  { value: 40, 
+                                  { value: data1, 
                                     name: '环比' 
                                   }
                                  ]

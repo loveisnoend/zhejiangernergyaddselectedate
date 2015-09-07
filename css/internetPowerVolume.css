@@ -23,6 +23,7 @@
     width:740px;
     height:550px;
     background-size:cover;
+    border-radius: 20px 20px 20px 20px;
     background-image: url(../img/bg-detail-pc.png);
 }
 .internetDetailTop{
@@ -34,14 +35,17 @@
     height:94%;
 }
 .internetDetailRow{
-    width:100%;
-    height:23%;
+    width:95%;
+    height:20%;
     float:left;
+    margin-left:3%;
 }
 .internetDetailRow2{
-    width:100%;
-    height:23%;
+    width:95%;
+    height:20%;
     float:left;
+    margin-left:3%;
+    background-color:#383838;
 }
 .internetDetailRowPlace1{
     width:36%;
@@ -71,11 +75,46 @@
     font-size:20px;
     font-family:"Microsoft YaHei";
     margin-left:20px;
-    margin-top:28px;
+    margin-top:20px;
 }
 .internetDetailRowPlaceValue1{
     font-size:35px;
     font-family:"impact";
     margin-left:20px;
     margin-top:0px;
+}
+.gaugeChart{
+    width:100%;
+    height:100%;
+    margin-top:0px;
+}
+.multipleImg{
+    width:30px;
+    height:30px;
+    float:left;
+    margin-left:-40px;
+    margin-top:8px;
+    background-size:cover;
+    background-image: url(../img/multipleImg.png);
+}
+.equalsImg{
+    width:30px;
+    height:30px;
+    float:left;
+    margin-left:-40px;
+    margin-top:8px;
+    background-size:cover;
+    background-image: url(../img/equalsImg.png);
+}
+.priceDetail_another_01
+{
+    width:630px;
+    height:500px;
+    margin-top:12px;
+}
+.priceDetail_another_font
+{
+    color: white;
+    font-family: 微软雅黑;
+    margin-top:50%;
 }

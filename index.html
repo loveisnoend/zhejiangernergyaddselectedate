@@ -23,6 +23,7 @@
 		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
 		<script src="echarts/echarts.js"></script>
         <script type="text/javascript" src="js/powerPlantMap.js"></script>
+        <script type="text/javascript" src="js/internetPowerVolume.js"></script>
 		<script type="text/javascript" src="swiper.js"></script>
 		<script>
 		    require.config({
@@ -144,6 +145,7 @@
 		<script>
 				sap.ui.localResources("view");
 				var powerPlantMap;
+				var internetPowerVolume;
 				var app = new sap.m.App({initialPage:"idhome"});
 				
 				var sServiceUrl = "/sap/opu/odata/sap/ZHANA003_SRV/";
@@ -189,7 +191,7 @@
             		 });
             		 app.addPage(powerPlantMap);
             		 
-            		var internetPowerVolume = sap.ui.view({
+            		internetPowerVolume = sap.ui.view({
             			id: "idInternetPowerVolume",
             			viewName: "com.zhenergy.pcbi.view.internetPowerVolume",
             			type: sap.ui.core.mvc.ViewType.HTML
