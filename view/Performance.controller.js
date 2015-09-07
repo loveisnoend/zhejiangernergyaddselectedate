@@ -217,56 +217,56 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
         }
         
         function drawpie(e){
-    mychart=e.init(document.getElementById('rlr_circle'));
-    var option = {
-        title: {
-            show:false,
-            text: '日利润'
-        },
-        tooltip : {
-            show: false
-        },
-        legend: {
-            show:false,
-            data:['日利润']
-        },
-        series : [
-        {
-            name:'1',
-            type:'pie',
-            radius : [95, 98],
-            itemStyle : {
-                normal:{
-                    color:'red',
-                    label: {show:false},
-                    labelLine: {show:false}
-                }
-            },
-            data:[
-            {
-                value:68,
-                name:'日利润'
-            },
-            {
-                value:32,
-                name:'invisible',
-                itemStyle : {
-                    normal : {
-                        color: 'rgba(0,0,0,0)',
-                        label: {show:false},
-                        labelLine: {show:false}
-                    },
-                    emphasis : {
-                        color: 'rgba(0,0,0,0)'
-                    }
-                }
-            }
-            ]
+            // mychart=e.init(document.getElementById('rlr_circle'));
+            // var option = {
+            //     title: {
+            //         show:false,
+            //         text: '日利润'
+            //     },
+            //     tooltip : {
+            //         show: false
+            //     },
+            //     legend: {
+            //         show:false,
+            //         data:['日利润']
+            //     },
+            //     series : [
+            //     {
+            //         name:'1',
+            //         type:'pie',
+            //         radius : [95, 98],
+            //         itemStyle : {
+            //             normal:{
+            //                 color:'red',
+            //                 label: {show:false},
+            //                 labelLine: {show:false}
+            //             }
+            //         },
+            //         data:[
+            //         {
+            //             value:68,
+            //             name:'日利润'
+            //         },
+            //         {
+            //             value:32,
+            //             name:'invisible',
+            //             itemStyle : {
+            //                 normal : {
+            //                     color: 'rgba(0,0,0,0)',
+            //                     label: {show:false},
+            //                     labelLine: {show:false}
+            //                 },
+            //                 emphasis : {
+            //                     color: 'rgba(0,0,0,0)'
+            //                 }
+            //             }
+            //         }
+            //         ]
+            //     }
+            //     ]
+            // };
+            // mychart.setOption(option);
         }
-        ]
-    };
-    mychart.setOption(option);
-}
 	},
 	loadData: function() {
 		var swdl_data = data1[data1.length - 1];

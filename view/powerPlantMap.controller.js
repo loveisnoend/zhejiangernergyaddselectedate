@@ -20,13 +20,137 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
         this.loadChart();
         //this.loadmjChart("mj_content_hid1", xdate, data_sj, data_qg);
 	},
+	loadmjChart: function(divId){
+        require(
+        [
+            'echarts',
+            'echarts/chart/line',
+            'echarts/chart/bar'
+        ],
+		draw);
+		
+		function draw(e){
+		    mychart = e.init(document.getElementById(divId));
+		    var option = {
+		        title:{
+            	text:'',
+            	textStyle:{
+					color:'white',
+					fontFamily:'微软雅黑'
+				},
+				x:'50',
+				y:'10'
+            },
+  			legend: {
+              	orient:'vertical',
+              	x:'500',
+              	y:'6',
+              	textStyle:{
+					color:'white',
+					fontFamily:'微软雅黑'
+				},
+    			data:['实际采购价格','秦港煤价']
+   		 	},
+   			color: ['#2DE630', '#E52DE6','white'],
+			grid: {
+                y1:100,
+                y2:100
+			},
+			xAxis: [
+				{
+
+					//show: false,
+					type: 'category',
+					axisLabel: {
+						textStyle: {
+							color: 'white'
+						},
+						formatter: '{value}'
+					},
+					data: ['7/23', '7/24', '7/25', '7/26', '7/27', '7/28', '7/29', '7/30']
+                }
+            ],
+			yAxis: [
+				{
+					name: '',
+					type: 'value',
+					axisLine: {
+						show: false
+					},
+					axisLabel: {
+						textStyle: {
+							color: 'white'
+						},
+						formatter: '{value}'
+					},
+					// 		splitLine: {
+					// 			show: false
+					// 		},
+					splitLine: {
+						// 			show: false
+						lineStyle: {
+							color: 'rgba(64,64,64,0.5)'
+						}
+					},
+					max: 0.65,
+					min: 0,
+					splitNumber: 13
+                },
+				{
+					name: '',
+					type: 'value',
+					axisLine: {
+						show: false
+					},
+					axisLabel: {
+						textStyle: {
+							color: 'white'
+						},
+						formatter: '{value}%'
+					},
+					splitLine: {
+						// 			show: false
+						lineStyle: {
+							//color: 'rgba(64,64,64,0.5)',
+						}
+					},
+					max: 8.5,
+					min: 2.0,
+					splitNumber: 13
+                }
+            ],
+			series: [
+				{
+					name: '实际采购价格',
+					type: 'line',
+					smooth: true,
+                 	barGap: '0%',
+                  	barCategoryGap: '50%',
+					// itemStyle: {normal: {areaStyle: {type: 'default'}}},
+					data: ['0.50','0.18','0.37','0.18','0.50','0.18','0.50','0.18','0.18','0.37','0.18']
+                },
+				{
+					name: '秦港煤价',
+					type: 'line',
+					smooth: true,
+				
+					//itemStyle: {normal: {areaStyle: {type: 'default'}}},
+					data: ['0.30','0.14','0.34','0.13','0.40','0.12','0.40','0.08','0.15','0.27','0.14']
+
+                }
+            ]
+		    };
+		    mychart.setOption(option);
+		}
+	    
+	},
 	//大圆圈点进去的chart
 	loadChartdetail: function() {
         	require(
             [
                 'echarts',
                 'echarts/chart/line',
-                'echarts/chart/bar',
+                'echarts/chart/bar'
             ],
 			draw);
 			
@@ -37,25 +161,25 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
                 	text:'单位燃料成本',
                 	textStyle:{
 						color:'white',
-						fontFamily:'微软雅黑',
+						fontFamily:'微软雅黑'
 					},
 					x:'50',
-					y:'10',
+					y:'10'
                 },
   				legend: {
-                  	orient:'vertical',
-                  	x:'500',
-                  	y:'6',
+                  	orient:'horizontal',
+                  	x:'300',
+                  	y:'20',
                   	textStyle:{
 						color:'white',
-						fontFamily:'微软雅黑',
+						fontFamily:'微软雅黑'
 					},
         			data:['当前单位成本','去年同期','涨幅']
    			 	},
    				color: ['#2DE630', '#E52DE6','white'],
 				grid: {
                     y1:100,
-                    y2:100,
+                    y2:100
 				},
 				xAxis: [
 					{

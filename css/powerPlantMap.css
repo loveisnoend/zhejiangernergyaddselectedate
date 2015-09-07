@@ -1,5 +1,5 @@
 .powerTop{
-    background-color:white;
+    background-color:black;
     height:5%;
     width:100%;
     float:left;
@@ -77,11 +77,15 @@
     float:left;
 }
 .detail_02_hid{
-    width:482px;
-    height:628px;
-    margin:20px;
+    /*width:640px;*/
+    /*height:500px;*/
+    width:95%;
+    height:90%;
+    margin:5%;
     margin-left:10px;
-    background-image:url("../img/detail_another.png");
+    /*background-image:url("../img/detail_another.png");*/
+    background-image:url("../img/backImg.png");
+    border-radius: 20px 20px 20px 20px;
     background-size:cover;
     float:left;
 }
@@ -248,7 +252,7 @@
 }
 .detail_another_01
 {
-    width:550px;
+    width:630px;
     height:500px;
     margin-top:12px;
 }
@@ -294,8 +298,8 @@
                 }
 
         .mj_content {
-            width: 482px;
-                height: 628px;
+            width: 628px;
+            height: 482px;
         }
 
             .mj_content > div {
