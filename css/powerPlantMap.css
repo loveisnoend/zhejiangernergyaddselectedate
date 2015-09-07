@@ -297,10 +297,17 @@
     background-color: #FFF;
 }
 
+<<<<<<< HEAD
 .mj_content {
     width: 628px;
     height: 482px;
 }
+=======
+        .mj_content {
+            width: 628px;
+            height: 482px;
+        }
+>>>>>>> branch 'master' of https://github.com/billyshen26/zhenergypcbi.git
 
 .mj_content > div {
     width: 482px;
