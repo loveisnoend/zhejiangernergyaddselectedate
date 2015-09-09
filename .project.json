@@ -17,5 +17,9 @@
     "defaultLanguage": "en",
     "defaultI18NPropertyFile": "i18n.properties",
     "resourceModelName": "i18n"
+  },
+  "deploy": {
+    "destination": "BWD",
+    "name": "ZHEENERGYPCBI"
   }
 }
