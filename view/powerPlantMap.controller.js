@@ -156,6 +156,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 			
 			function draw(e){
 			    mychart = e.init(document.getElementById('detail_another_01'));
+			    document.getElementById('bigCircleDetailTitle').innerHTML = document.getElementById('powerPlantMainDetailTitle').innerHTML;
 			    var option = {
 			        title:{
                 	text:'单位燃料成本',
@@ -495,7 +496,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
                     myChart5.setOption(option5);
                     
 					// 电厂名
-					document.getElementById('powerPlantMainDetailTitle').innerHTML = mapSeries.markPoint.data[param.dataIndex].name;
+					document.getElementById('powerPlantMainDetailTitle').innerHTML = mapSeries.markPoint.data[param.dataIndex].name+'电厂';
                  
 					var data1 = mapSeries.markPoint.data[param.dataIndex].inputPlanValue;
 					var data2 = mapSeries.markPoint.data[param.dataIndex].inputPlanTotal - mapSeries.markPoint.data[param.dataIndex].inputPlanValue
@@ -636,7 +637,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
                     myChart4.setOption(option4);
                     
 					// 电厂名
-					document.getElementById('powerPlantMainDetailTitle').innerHTML = mapSeries.markPoint.data[param.dataIndex].name;
+					document.getElementById('powerPlantMainDetailTitle').innerHTML = mapSeries.markPoint.data[param.dataIndex].name+'电厂';
 					var data1 = mapSeries.markPoint.data[param.dataIndex].inputPlanValue;
 					var data2 = mapSeries.markPoint.data[param.dataIndex].inputPlanTotal - mapSeries.markPoint.data[param.dataIndex].inputPlanValue
 				    
