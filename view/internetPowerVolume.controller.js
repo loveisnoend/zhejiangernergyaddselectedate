@@ -231,7 +231,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 						text: '',
 						subtext: '',
 						sublink: '',
-						x:'center',
+						x:'center'
 					},
 					calculable: false,
 					tooltip : {
@@ -240,7 +240,20 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 					series : [
 						{
 						    itemStyle:{
-							    normal:{label:{show:true}},
+							    normal:{
+							        label:{
+							            show:true,
+							            textStyle: {
+							                color: '#00FF00'
+							            }
+							        },
+							        areaStyle:{
+							            color: 'black',
+							            type: 'default'
+							        },
+							        borderColor: 'white',
+							        borderWidth: 2
+							    },
                                 emphasis:{label:{show:true}}
 							},
 							name: 'XXX电厂',
@@ -251,30 +264,39 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 							data : [],
 							mapLocation : {
 							    x: "center",
-								y: "center",
+								y: "center"
 								//width: "500px",
 								//height: "500px"
 							},
 							markPoint : {
-								symbolSize: 13,       // 标注大小，半宽（半径）参数，当图形为方向或菱形则总宽度为symbolSize * 2
+							    clickable: true,
+							    symbol: 'star50',
+								symbolSize: 6,       // 标注大小，半宽（半径）参数，当图形为方向或菱形则总宽度为symbolSize * 2
+								effect:{
+								  show: false,
+								  type: 'scale',
+								  scaleSize: 7,
+								  loop: true,
+								  period: 7
+								},
 								itemStyle: {
 									normal: {
-									    //color:'blue',    // 标点颜色值
-										borderColor: '#87cefa',
+									    color:'#00FF00',    // 标点颜色值
+										borderColor: '#00ff00',
 										borderWidth: 1,            // 标注边线线宽，单位px，默认为1
 										label: {
-											show: true,
-											formatter: [{name:name}],
-										},
-									},
-									emphasis: {
-										borderColor: '#1e90ff',
-										borderWidth: 5,
-										label: {
-											show: true,
+											show: false,
+											formatter: [{name:name}]
 										}
 									},
-									large: true,
+									emphasis: {
+										borderColor: '#FFFFFF',
+										borderWidth: 1,
+										label: {
+											show: true
+										}
+									},
+									large: true
 								},
 								data :allPowerData
 							},
@@ -288,7 +310,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 								"舟山":[122.207216,29.985295],
 								"宁波":[121.56,29.86],
 								"台州":[121.420757,28.656386],
-								"湖州":[120.1,30.86]
+								"湖州":[120.1,30.86],
+								"上海":[3000,3000]
 							}
 						},
 						{
@@ -302,24 +325,21 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 									    show: true
 									}
 								},
-								symbol:'emptyCircle',
-								symbolSize : function (v){
-									return 10 + v/100
-								},
-								effect : {
-									show: true,
-									shadowBlur : 0
+								symbol:'star50',
+								effect:{
+								  show: true,
+								  type: 'scale',
+								  scaleSize: 3,
+								  loop: true,
+								  shadowColor: '#00FF00',
+								  period: 7
 								},
 								itemStyle:{
 									normal:{
 										label:{show:false}
 									}
 								},
-								data : [
-									{name: "温州", value: 193},
-									{name: "义乌", value: 200},
-									{name: "杭州", value: 300}
-								]
+								data : [{name: "杭州", value: 300}]
 							}
 						}
 					]
@@ -328,10 +348,18 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 				myChart4.on(ecConfig.EVENT.CLICK, function (param){  
 
 					var mapSeries = option4.series[0];
-
+                  
 					// 电厂名
 					document.getElementById('powerPlantName').innerHTML = mapSeries.markPoint.data[param.dataIndex].name;
 					
+					var selectedData = {name: mapSeries.markPoint.data[param.dataIndex].name, value: mapSeries.markPoint.data[param.dataIndex].inputPlanValue};
+					
+                    option4.series[1].markPoint.data[0] = selectedData;
+                    myChart4.setOption(option4);
+					
+					option5.series[1].markPoint.data = [{name:'上海',value:0}];
+                    myChart5.setOption(option5);
+                    
 					// 平均电价
 					var internetAverPrice1 = mapSeries.markPoint.data[param.dataIndex].costPer;
 					internetAverPrice1 = internetAverPrice1.toString().substring(0, internetAverPrice1.toString().indexOf('.')+3);
@@ -469,44 +497,67 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 						text: '',
 						subtext: '',
 						sublink: '',
-						x:'center',
+						x:'center'
 					},
 					calculable: false,
 					series : [
 						{
 							itemStyle:{
-								normal:{label:{show:true}},
+								normal:
+								{
+								    label:{
+								        show: true,
+								        textStyle: {
+							                color: '#00FF00'
+							            }
+								    },
+								    areaStyle:{
+							            color: 'black',
+							            type: 'default'
+							        },
+							        borderColor: 'white',
+							        borderWidth: 2
+								},
 								emphasis:{label:{show:true}}
 							},
 							name: '安徽',
 							type: 'map',
 							mapType: '安徽|淮南市',
-							hoverable:true,
+							hoverable:false,
 							roam:false,
 							data : [],
 							markPoint : {
-								symbolSize: 13,       // 标注大小，半宽（半径）参数，当图形为方向或菱形则总宽度为symbolSize * 2
+								clickable: true,
+							    symbol: 'star50',
+								symbolSize: 6,         // 标注大小，半宽（半径）参数，当图形为方向或菱形则总宽度为symbolSize * 2
 								itemStyle: {
 									normal: {
-									    //color:'blue',    // 标点颜色值
-										borderColor: '#87cefa',
+									    color:'#00FF00',    // 标点颜色值
+										borderColor: 'white',
 										borderWidth: 1,            // 标注边线线宽，单位px，默认为1
-										label: {
-											show: false,
-										},
-									},
-									emphasis: {
-										borderColor: '#1e90ff',
-										borderWidth: 5,
 										label: {
 											show: false
 										}
-									}
+									},
+									emphasis: {
+										borderColor: 'white',
+										borderWidth: 1,
+										label: {
+											show: false
+										}
+									},
+									effect:{
+    								  show: true,
+    								  type: 'scale',
+    								  scaleSize: 7,
+    								  loop: true,
+    								  period: 5
+    								}
 								},
 								data :allPowerData2
 							},
 							geoCoord: {
-                                "淮南":[116.73,32.80],
+                                "淮南":[116.73,32.80]
 							}
 						},
 						{
@@ -515,40 +566,38 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 							mapType: '安徽|淮南市',
 							data:[],
 							markPoint : {
-								symbol:'emptyCircle',
-								symbolSize : function (v){
-									return 10 + v/100
-								},
-								effect : {
-									show: true,
-									shadowBlur : 0,
-									scaleSize: 1.5,
-									type: 'bounce'
+								symbol:'star50',
+								effect:{
+								  show: true,
+								  type: 'scale',
+								  scaleSize: 3,
+								  loop: true,
+								  shadowColor: '#00FF00',
+								  period: 7
 								},
 								itemStyle:{
 									normal:{
 										label:{show:false}
 									}
 								},
-								data : [
-									{name: "淮南", value: 193},
-								]
+								data : []
 							}
 						}
 					]
 				}; 
 
 				myChart5.on(ecConfig.EVENT.CLICK, function (param){
-				
-				//     if (param.dataIndex == 0 && param.name != '淮南') {
-    //                     document.getElementById("detailInfo").style.display = "none";
-				// 		document.getElementById('onlyMap').style.display = "";
-				// 	} else {
-				// 	    document.getElementById("detailInfo").style.display = "";
-				// 	    document.getElementById('onlyMap').style.display = "none";
-				// 	}
+
 					var mapSeries = option5.series[0];
 
+					var selectedData = {name: mapSeries.markPoint.data[param.dataIndex].name, value: mapSeries.markPoint.data[param.dataIndex].inputPlanValue};
+
+                    option5.series[1].markPoint.data[0] = selectedData;
+                    myChart5.setOption(option5);
+                
+                    option4.series[1].markPoint.data = [{name:'上海',value:0}];
+                    myChart4.setOption(option4);
+                    
 					// 电厂名
 					document.getElementById('powerPlantName').innerHTML = mapSeries.markPoint.data[param.dataIndex].name;
 					

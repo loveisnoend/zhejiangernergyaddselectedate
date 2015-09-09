@@ -2,6 +2,7 @@ var btnID, divID, oldbtn, olddivID;
         function toMJhid() {
             document.getElementById('rlcb_detail').style.display = "none";
             document.getElementById('mj_hid').style.display = "";
+            
             powerPlantMap.getController().loadmjChart('pic4500');
         }
         function back() {
@@ -35,7 +36,7 @@ var btnID, divID, oldbtn, olddivID;
                 document.getElementById(divID).style.display = "";
                 powerPlantMap.getController().loadmjChart(chartDivId);
             } else {
-                powerPlantMap.getController().loadmjChart(divID);
+                powerPlantMap.getController().loadmjChart(chartDivId);
             }
         }
         function detailAnother() {

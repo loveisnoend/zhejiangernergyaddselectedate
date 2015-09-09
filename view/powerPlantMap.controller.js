@@ -30,7 +30,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 		draw);
 		
 		function draw(e){
-		    mychart = e.init(document.getElementById(divId));
+		    var mychart = e.init(document.getElementById(divId));
 		    var option = {
 		        title:{
             	text:'',
@@ -363,13 +363,112 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 					{name: "湖州", value: 90, coal:2568746.02, coalDays:2, inputPlanTotal:"500", inputPlanValue:300, averUsePerH:51.8, averLoadRate: "53%", netPowerWPerH:2.45, costData:25424.64, costPer:2.56, otherAllCost:9832.56, otherCost:127.67, repairCost:283.6, peopleCost:9876.44, finaceCost:3456.56, depreciationCost:234.67}
 				];
 								
-				var option4 = {
+				// var option4 = {
+
+				// 	title : {
+				// 		text: '',
+				// 		subtext: '',
+				// 		sublink: '',
+				// 		x:'center',
+				// 	},
+				// 	calculable: false,
+				// 	tooltip : {
+				// 		trigger: 'item'
+				// 	},
+				// 	series : [
+				// 		{
+				// 		    itemStyle:{
+				// 			    normal:{label:{show:true}},
+    //                             emphasis:{label:{show:true}}
+				// 			},
+				// 			name: 'XXX电厂',
+				// 			type: 'map',
+				// 			mapType: '浙江',
+				// 			hoverable: false,
+				// 			roam:false,
+				// 			data : [],
+				// 			mapLocation : {
+				// 			    x: "center",
+				// 				y: "center",
+				// 				//width: "500px",
+				// 				//height: "500px"
+				// 			},
+				// 			markPoint : {
+				// 				symbolSize: 13,       // 标注大小，半宽（半径）参数，当图形为方向或菱形则总宽度为symbolSize * 2
+				// 				itemStyle: {
+				// 					normal: {
+				// 					    //color:'blue',    // 标点颜色值
+				// 						borderColor: '#87cefa',
+				// 						borderWidth: 1,            // 标注边线线宽，单位px，默认为1
+				// 						label: {
+				// 							show: true,
+				// 							formatter: [{name:name}],
+				// 						},
+				// 					},
+				// 					emphasis: {
+				// 						borderColor: '#1e90ff',
+				// 						borderWidth: 5,
+				// 						label: {
+				// 							show: true,
+				// 						}
+				// 					},
+				// 					large: true,
+				// 				},
+				// 				data :allPowerData
+				// 			},
+				// 			geoCoord: {
+				// 				"温州":[120.65,28.01],
+				// 				"义乌":[120.06,29.32],
+				// 				"杭州":[120.19,30.26],
+				// 				"绍兴":[120.58,30.01],
+				// 				"金华":[119.64,29.12],
+				// 				"衢州":[118.88,28.97],
+				// 				"舟山":[122.207216,29.985295],
+				// 				"宁波":[121.56,29.86],
+				// 				"台州":[121.420757,28.656386],
+				// 				"湖州":[120.1,30.86]
+				// 			}
+				// 		},
+				// 		{
+				// 			name: 'Top3',
+				// 			type: 'map',
+				// 			mapType: '浙江',
+				// 			data:[],
+				// 			markPoint : {
+				// 			    normal: {
+				// 				    label:{
+				// 					    show: true,
+				// 					},
+				// 				},
+				// 				symbol:'emptyCircle',
+				// 				symbolSize : function (v){
+				// 					return 10 + v/100
+				// 				},
+				// 				effect : {
+				// 					show: true,
+				// 					shadowBlur : 0
+				// 				},
+				// 				itemStyle:{
+				// 					normal:{
+				// 						label:{show:false}
+				// 					}
+				// 				},
+				// 				data : [
+				// 					{name: "温州", value: 193},
+				// 					{name: "义乌", value: 200},
+				// 					{name: "杭州", value: 300}
+				// 				]
+				// 			}
+				// 		}
+				// 	]
+				// }; 
+		        var option4 = {
 
 					title : {
 						text: '',
 						subtext: '',
 						sublink: '',
-						x:'center',
+						x:'center'
 					},
 					calculable: false,
 					tooltip : {
@@ -378,7 +477,20 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 					series : [
 						{
 						    itemStyle:{
-							    normal:{label:{show:true}},
+							    normal:{
+							        label:{
+							            show:true,
+							            textStyle: {
+							                color: '#00FF00'
+							            }
+							        },
+							        areaStyle:{
+							            color: 'black',
+							            type: 'default'
+							        },
+							        borderColor: 'white',
+							        borderWidth: 2
+							    },
                                 emphasis:{label:{show:true}}
 							},
 							name: 'XXX电厂',
@@ -389,30 +501,39 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 							data : [],
 							mapLocation : {
 							    x: "center",
-								y: "center",
+								y: "center"
 								//width: "500px",
 								//height: "500px"
 							},
 							markPoint : {
-								symbolSize: 13,       // 标注大小，半宽（半径）参数，当图形为方向或菱形则总宽度为symbolSize * 2
+							    clickable: true,
+							    symbol: 'star50',
+								symbolSize: 6,       // 标注大小，半宽（半径）参数，当图形为方向或菱形则总宽度为symbolSize * 2
+								effect:{
+								  show: false,
+								  type: 'scale',
+								  scaleSize: 7,
+								  loop: true,
+								  period: 7
+								},
 								itemStyle: {
 									normal: {
-									    //color:'blue',    // 标点颜色值
-										borderColor: '#87cefa',
+									    color:'#00FF00',    // 标点颜色值
+										borderColor: '#00ff00',
 										borderWidth: 1,            // 标注边线线宽，单位px，默认为1
 										label: {
-											show: true,
-											formatter: [{name:name}],
-										},
-									},
-									emphasis: {
-										borderColor: '#1e90ff',
-										borderWidth: 5,
-										label: {
-											show: true,
+											show: false,
+											formatter: [{name:name}]
 										}
 									},
-									large: true,
+									emphasis: {
+										borderColor: '#FFFFFF',
+										borderWidth: 1,
+										label: {
+											show: true
+										}
+									},
+									large: true
 								},
 								data :allPowerData
 							},
@@ -426,7 +547,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 								"舟山":[122.207216,29.985295],
 								"宁波":[121.56,29.86],
 								"台州":[121.420757,28.656386],
-								"湖州":[120.1,30.86]
+								"湖州":[120.1,30.86],
+								"上海":[3000,3000]
 							}
 						},
 						{
@@ -437,45 +559,42 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 							markPoint : {
 							    normal: {
 								    label:{
-									    show: true,
-									},
+									    show: true
+									}
 								},
-								symbol:'emptyCircle',
-								symbolSize : function (v){
-									return 10 + v/100
-								},
-								effect : {
-									show: true,
-									shadowBlur : 0
+								symbol:'star50',
+								effect:{
+								  show: true,
+								  type: 'scale',
+								  scaleSize: 3,
+								  loop: true,
+								  shadowColor: '#00FF00',
+								  period: 7
 								},
 								itemStyle:{
 									normal:{
 										label:{show:false}
 									}
 								},
-								data : [
-									{name: "温州", value: 193},
-									{name: "义乌", value: 200},
-									{name: "杭州", value: 300}
-								]
+								data : [{name: "杭州", value: 300}]
 							}
 						}
 					]
 				}; 
-	
 				myChart4.on(ecConfig.EVENT.CLICK, function (param){  
-				// 	if (param.dataIndex == 0 && param.name != '温州') {
-    //                     document.getElementById("detailInfo").style.display = "none";
-				// 		document.getElementById('onlyMap').style.display = "";
-				// 	} else {
-				// 	    document.getElementById("detailInfo").style.display = "";
-				// 	    document.getElementById('onlyMap').style.display = "none";
-				// 	}
 					
 					var mapSeries = option4.series[0];
-
+					
+					var selectedData = {name: mapSeries.markPoint.data[param.dataIndex].name, value: mapSeries.markPoint.data[param.dataIndex].inputPlanValue};
+					option4.series[1].markPoint.data[0] = selectedData;
+                    myChart4.setOption(option4);
+					
+					option5.series[1].markPoint.data = [{name:'上海',value:0}];
+                    myChart5.setOption(option5);
+                    
 					// 电厂名
 					document.getElementById('powerName').innerHTML = mapSeries.markPoint.data[param.dataIndex].name;
+                 
 					var data1 = mapSeries.markPoint.data[param.dataIndex].inputPlanValue;
 					var data2 = mapSeries.markPoint.data[param.dataIndex].inputPlanTotal - mapSeries.markPoint.data[param.dataIndex].inputPlanValue
 				    
@@ -510,49 +629,145 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 					{name: "淮南", value: 300, coal:1196820.02, coalDays:3, inputPlanTotal:"600", inputPlanValue:335, averUsePerH:11.8, averLoadRate: "65%", netPowerWPerH:6.19, costData:8580.15, costPer:0.45, otherAllCost:5646.66, otherCost:345.45, repairCost:580.9, peopleCost:3456.15, finaceCost:1000.56, depreciationCost:345.3},
 				];
 								
+				// option5 = {
+				// 	title : {
+				// 		text: '',
+				// 		subtext: '',
+				// 		sublink: '',
+				// 		x:'center',
+				// 	},
+				// 	calculable: false,
+				// 	series : [
+				// 		{
+				// 			itemStyle:{
+				// 				normal:{label:{show:true}},
+				// 				emphasis:{label:{show:true}}
+				// 			},
+				// 			name: '安徽',
+				// 			type: 'map',
+				// 			mapType: '安徽|淮南市',
+				// 			hoverable:true,
+				// 			roam:false,
+				// 			data : [],
+				// 			markPoint : {
+				// 				symbolSize: 13,       // 标注大小，半宽（半径）参数，当图形为方向或菱形则总宽度为symbolSize * 2
+				// 				itemStyle: {
+				// 					normal: {
+				// 					    //color:'blue',    // 标点颜色值
+				// 						borderColor: '#87cefa',
+				// 						borderWidth: 1,            // 标注边线线宽，单位px，默认为1
+				// 						label: {
+				// 							show: false,
+				// 						},
+				// 					},
+				// 					emphasis: {
+				// 						borderColor: '#1e90ff',
+				// 						borderWidth: 5,
+				// 						label: {
+				// 							show: false
+				// 						}
+				// 					}
+				// 				},
+				// 				data :allPowerData2
+				// 			},
+				// 			geoCoord: {
+    //                             "淮南":[116.73,32.80],
+				// 			}
+				// 		},
+				// 		{
+				// 			name: 'Top3',
+				// 			type: 'map',
+				// 			mapType: '安徽|淮南市',
+				// 			data:[],
+				// 			markPoint : {
+				// 				symbol:'emptyCircle',
+				// 				symbolSize : function (v){
+				// 					return 10 + v/100
+				// 				},
+				// 				effect : {
+				// 					show: true,
+				// 					shadowBlur : 0,
+				// 					scaleSize: 1.5,
+				// 					type: 'bounce'
+				// 				},
+				// 				itemStyle:{
+				// 					normal:{
+				// 						label:{show:false}
+				// 					}
+				// 				},
+				// 				data : [
+				// 					{name: "淮南", value: 193},
+				// 				]
+				// 			}
+				// 		}
+				// 	]
+				// }; 
 				option5 = {
 					title : {
 						text: '',
 						subtext: '',
 						sublink: '',
-						x:'center',
+						x:'center'
 					},
 					calculable: false,
 					series : [
 						{
 							itemStyle:{
-								normal:{label:{show:true}},
+								normal:
+								{
+								    label:{
+								        show: true,
+								        textStyle: {
+							                color: '#00FF00'
+							            }
+								    },
+								    areaStyle:{
+							            color: 'black',
+							            type: 'default'
+							        },
+							        borderColor: 'white',
+							        borderWidth: 2
+								},
 								emphasis:{label:{show:true}}
 							},
 							name: '安徽',
 							type: 'map',
 							mapType: '安徽|淮南市',
-							hoverable:true,
+							hoverable:false,
 							roam:false,
 							data : [],
 							markPoint : {
-								symbolSize: 13,       // 标注大小，半宽（半径）参数，当图形为方向或菱形则总宽度为symbolSize * 2
+								clickable: true,
+							    symbol: 'star50',
+								symbolSize: 6,         // 标注大小，半宽（半径）参数，当图形为方向或菱形则总宽度为symbolSize * 2
 								itemStyle: {
 									normal: {
-									    //color:'blue',    // 标点颜色值
-										borderColor: '#87cefa',
+									    color:'#00FF00',    // 标点颜色值
+										borderColor: 'white',
 										borderWidth: 1,            // 标注边线线宽，单位px，默认为1
-										label: {
-											show: false,
-										},
-									},
-									emphasis: {
-										borderColor: '#1e90ff',
-										borderWidth: 5,
 										label: {
 											show: false
 										}
-									}
+									},
+									emphasis: {
+										borderColor: 'white',
+										borderWidth: 1,
+										label: {
+											show: false
+										}
+									},
+									effect:{
+    								  show: true,
+    								  type: 'scale',
+    								  scaleSize: 7,
+    								  loop: true,
+    								  period: 5
+    								}
 								},
 								data :allPowerData2
 							},
 							geoCoord: {
-                                "淮南":[116.73,32.80],
+                                "淮南":[116.73,32.80]
 							}
 						},
 						{
@@ -561,40 +776,37 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 							mapType: '安徽|淮南市',
 							data:[],
 							markPoint : {
-								symbol:'emptyCircle',
-								symbolSize : function (v){
-									return 10 + v/100
-								},
-								effect : {
-									show: true,
-									shadowBlur : 0,
-									scaleSize: 1.5,
-									type: 'bounce'
+								symbol:'star50',
+								effect:{
+								  show: true,
+								  type: 'scale',
+								  scaleSize: 3,
+								  loop: true,
+								  shadowColor: '#00FF00',
+								  period: 7
 								},
 								itemStyle:{
 									normal:{
 										label:{show:false}
 									}
 								},
-								data : [
-									{name: "淮南", value: 193},
-								]
+								data : []
 							}
 						}
 					]
 				}; 
-
 				myChart5.on(ecConfig.EVENT.CLICK, function (param){
-				
-				//     if (param.dataIndex == 0 && param.name != '淮南') {
-    //                     document.getElementById("detailInfo").style.display = "none";
-				// 		document.getElementById('onlyMap').style.display = "";
-				// 	} else {
-				// 	    document.getElementById("detailInfo").style.display = "";
-				// 	    document.getElementById('onlyMap').style.display = "none";
-				// 	}
+
 					var mapSeries = option5.series[0];
 
+					var selectedData = {name: mapSeries.markPoint.data[param.dataIndex].name, value: mapSeries.markPoint.data[param.dataIndex].inputPlanValue};
+
+                    option5.series[1].markPoint.data[0] = selectedData;
+                    myChart5.setOption(option5);
+                
+                    option4.series[1].markPoint.data = [{name:'上海',value:0}];
+                    myChart4.setOption(option4);
+                    
 					// 电厂名
 					document.getElementById('powerName').innerHTML = mapSeries.markPoint.data[param.dataIndex].name;
 					var data1 = mapSeries.markPoint.data[param.dataIndex].inputPlanValue;
