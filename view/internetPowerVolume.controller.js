@@ -193,19 +193,6 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 						}
 					]
 				};
-				/*
-				var ecConfig = require('echarts/config');
-				myChart1.on(ecConfig.EVENT.MAP_SELECTED, function (param){
-					var selected = param.selected;
-					var str = '当前选择： ';
-					for (var p in selected) {
-						if (selected[p]) {
-							str += p + ' ';
-						}
-					}
-					document.getElementById('wrong-message').innerHTML = str;
-				})
-				*/
 				// 为echarts对象加载数据 
 				myChart3.setOption(option3); 
 
@@ -234,8 +221,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 						x:'center'
 					},
 					calculable: false,
-					tooltip : {
-						trigger: 'item'
+				    tooltip : {
+					    show : false,
+						trigger : 'item'
 					},
 					series : [
 						{
