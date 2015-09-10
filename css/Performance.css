@@ -1,5 +1,5 @@
 #idPerformance .performance_main {
-              width: 1300px;
+  width: 1300px;
   margin: 0px auto;
   padding-left: 10px;
   padding-right: 10px;
@@ -7,9 +7,9 @@
   -webkit-text-size-adjust: none;
   color: #FFF;
   font-family: \5FAE\8F6F\96C5\9ED1;
-        }
+ }
  #idPerformance .performance_head{
-   height: 200px;
+  height: 200px;
   padding-top: 15px;
   background: url("../img/2-2-bg.png");
   background-repeat: no-repeat;
@@ -46,54 +46,80 @@
 /*    }*/
 .performance_main{
     width:100%;
-    height:80%;
+    height:100%;
 	border: 2% solid rgb(142,191,224);
 }
 .performance_main_content{
     float:left;
+    width:30%;
+    height:82%;
+    margin-top:20px;
+    margin-bottom: 0;
+    border: 2% solid rgb(47,233,48);
+}
+.performance_main_content_left{
+    float:left;
+    width:30%;
+    height:82%;
+    margin-top:20px;
+    margin-bottom: 0;
+    border: 2% solid rgb(47,233,48);
+}
+.performance_main_content_center{
+    float:left;
+    margin-left:7%;
     width:33%;
     height:82%;
-    margin-top:5%;
-    margin-bottom: 10%;
+    margin-top:20px;
+    margin-bottom: 0;
     border: 2% solid rgb(47,233,48);
-
 }
-        #idPerformance .panel {
-            width: 430px;
+.performance_main_content_right{
+    float:left;
+    margin-left:-3%;
+    width:30%;
+    height:82%;
+    margin-top:20px;
+    margin-bottom: 0;
+    border: 2% solid rgb(47,233,48);
+}
+#idPerformance .panel {
+  width: 430px;
   padding: 3px;
   height: 200px;
+  margin-left:40px;
 
   margin-bottom: 24px;
-background:url("../img/item-bg.png");
+  background:url("../img/item-bg.png");
   background-size: contain;
   background-repeat: no-repeat;
-        }
+}
 
-            #idPerformance .panel .panel_title {
-                text-align: left;
-                padding-left: 20px;
-                font-size: 18px;
-                background-color:transparent;
-                font-weight: bold;
-                line-height: 40px;
-            }
+#idPerformance .panel .panel_title {
+    text-align: left;
+    padding-left: 20px;
+    font-size: 18px;
+    background-color:transparent;
+    font-weight: bold;
+    line-height: 40px;
+}
 
-                #idPerformance .panel .panel_title span {
-                    float: right;
-                    padding-right: 20px;
-                }
+#idPerformance .panel .panel_title span {
+    float: right;
+    padding-right: 20px;
+}
 
-            #idPerformance .panel .panel_content {
-                height: 160px;
-  background-color:transparent;
-            }
+#idPerformance .panel .panel_content {
+    height: 160px;
+    background-color:transparent;
+}
 
-                #idPerformance .panel .panel_content > div {
-                    width: 430px;
-                    height: 160px;
-                }
+#idPerformance .panel .panel_content > div {
+    width: 430px;
+    height: 160px;
+}
 
- #idPerformance .performance_head .inner_panel{
+#idPerformance .performance_head .inner_panel{
     margin: 46px auto;
     width: 156px;
     text-align: center;

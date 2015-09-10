@@ -9,7 +9,7 @@ font-size:0px;
   padding-left:30px;
 }
 .menu_bottom li{
-      background-color: inherit;
+  background-color: inherit;
   width: 120px;
 }
 
@@ -19,7 +19,7 @@ font-size:0px;
 }
 .menu_bottom div{
     width:90px;
-    height:90px;
+    height:100px;
     border:0px;
     margin-left:10px;
     margin-right:10px;

@@ -8,23 +8,21 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
                 ]
                 );
 		var mySwiper = new Swiper('.swiper-container',{
-        	    initialSlide : 4,
+        	    initialSlide : 2,
         	    speed : 50,
-        	    loop : false,
-        	    freeMode : false,
-        	    threshold : 0,
-        	   // freeModeMomentum : true,
-        	   // freeModeMomentumRatio : 1,
-        	   // freeModeMomentumBounce : false,
-        	   // freeModeMomentumBounceRatio : 1,
+        // 	   // loop : false,
+        // 	   // freeMode : true,
+        // 	    threshold : 0,
+        // 	   //// freeModeMomentum : true,
+        // 	   //// freeModeMomentumRatio : 1,
+        // 	   //// freeModeMomentumBounce : false,
+        // 	   //// freeModeMomentumBounceRatio : 1,
         	    freeModeSticky : true,
                 pagination: '.swiper-pagination',
-        		paginationClickable : true,
-        		centeredSlides : true,
                 effect: 'coverflow',
                 grabCursor: true,
-        		slideToClickedSlide : false,
                 centeredSlides: true,
+                paginationClickable : true,
                 slidesPerView: 'auto',
                 coverflow: {
                     rotate: 0,
@@ -34,7 +32,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
                     slideShadows : true
                 }
          });
-         mySwiper.slideTo(4, 1500, false);//切换到第一个slide，速度为1秒
+         mySwiper.slideTo(3, 1500, false);//切换到第一个slide，速度为1秒
 	},
 	
 /**

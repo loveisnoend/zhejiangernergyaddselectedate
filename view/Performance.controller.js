@@ -295,8 +295,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 // 		var cb_innerhtml='<div class="title">成本(亿元)</div><div class="num" style="color:'+cb_color+'">'+cb_data+'</div>
 // 		<div class="info">同比'+cb_prec+'%<img src="img/arrow-'+cb_color+'2.png"/></div>';
 		var sr_innerhtml=
-		'<div class="main_content_title_1"><span>收入<span style="font-size:10px;">(亿元)</span></span>'+
-		'<span style="margin-left:25%;">成本<span style="font-size:10px;">(亿元)</span></span></div>'+
+		'<div class="main_content_title_1"><span style="margin-left:3%;">收入<span style="font-size:10px;">(亿元)</span></span>'+
+		'<span style="margin-left:28%;">成本<span style="font-size:10px;">(亿元)</span></span></div>'+
 		'<div class="main_content_sz" style="font-size:40px;font-weight:bold;color:'+sr_color+'"><span>'+ income +'</span><span style="margin-left:15%;font-weight:bold;color:'+cb_color+'">'+cost+'</span></div>'
 		+'<div class="main_content_sz"><span style="text-align:center;padding-left:5%;">同比'+sr_prec+'%<img src="img/arrow-'+sr_color+'2.png" class="content_img"/></span><span style="margin-left:18%;text-align:right;">同比'+cb_prec+'%<img src="img/arrow-'+cb_color+'2.png" class="content_img"/></sapn></div>';
 
