@@ -3,13 +3,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 
 		this.getView().addEventDelegate({
 			// not added the controller as delegate to avoid controller functions with similar names as the events
-			onBeforeShow: jQuery.proxy(function(evt) {
-				this.onBeforeShow(evt);
+			onAfterShow: jQuery.proxy(function(evt) {
+				this.onAfterShow(evt);
 			}, this)
 		});
 	},
 
-	onBeforeShow: function(evt) {
+	onAfterShow: function(evt) {
 	    data_x3 = new Array("1.2", "1.1", "1.4", "1.15", "1.2", "1.15", "1.2");
  		data_x4 = new Array("0.015", "0.01", "0.04", "0.02", "0.025", "0.015", "0.025");
 		this.loadChart();

@@ -33,7 +33,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 		    var mychart = e.init(document.getElementById(divId));
 		    var option = {
 		        title:{
-            	text:'',
+            	text:'煤炭价格变化',
             	textStyle:{
 					color:'white',
 					fontFamily:'微软雅黑'
@@ -42,9 +42,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 				y:'10'
             },
   			legend: {
-              	orient:'vertical',
-              	x:'500',
-              	y:'6',
+              	orient:'horizontal',
+              	x:'350',
+              	y:'15',
               	textStyle:{
 					color:'white',
 					fontFamily:'微软雅黑'
@@ -158,122 +158,122 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 			    mychart = e.init(document.getElementById('detail_another_01'));
 			    document.getElementById('bigCircleDetailTitle').innerHTML = document.getElementById('powerPlantMainDetailTitle').innerHTML;
 			    var option = {
-			        title:{
-                	text:'单位燃料成本',
-                	textStyle:{
-						color:'white',
-						fontFamily:'微软雅黑'
-					},
-					x:'50',
-					y:'10'
-                },
-  				legend: {
-                  	orient:'horizontal',
-                  	x:'300',
-                  	y:'20',
-                  	textStyle:{
-						color:'white',
-						fontFamily:'微软雅黑'
-					},
-        			data:['当前单位成本','去年同期','涨幅']
-   			 	},
-   				color: ['#2DE630', '#E52DE6','white'],
-				grid: {
-                    y1:100,
-                    y2:100
-				},
-				xAxis: [
-					{
-
-						//show: false,
-						type: 'category',
-						axisLabel: {
-							textStyle: {
-								color: 'white'
-							},
-							formatter: '{value}'
-						},
-						data: ['电厂1', '电厂2', '电厂3', '电厂4']
-                    }
-                ],
-				yAxis: [
-					{
-						name: '',
-						type: 'value',
-						axisLine: {
-							show: false
-						},
-						axisLabel: {
-							textStyle: {
-								color: 'white'
-							},
-							formatter: '{value}'
-						},
-						// 		splitLine: {
-						// 			show: false
-						// 		},
-						splitLine: {
-							// 			show: false
-							lineStyle: {
-								color: 'rgba(64,64,64,0.5)'
-							}
-						},
-						max: 0.65,
-						min: 0,
-						splitNumber: 13
+    			    title:{
+                    	text:'单位燃料成本',
+                    	textStyle:{
+    						color:'white',
+    						fontFamily:'微软雅黑'
+    					},
+    					x:'50',
+    					y:'10'
                     },
-					{
-						name: '',
-						type: 'value',
-						axisLine: {
-							show: false
-						},
-						axisLabel: {
-							textStyle: {
-								color: 'white'
-							},
-							formatter: '{value}%'
-						},
-						splitLine: {
-							// 			show: false
-							lineStyle: {
-								//color: 'rgba(64,64,64,0.5)',
-							}
-						},
-						max: 8.5,
-						min: 2.0,
-						splitNumber: 13
-                    }
-                ],
-				series: [
-					{
-						name: '当前单位成本',
-						type: 'bar',
-						smooth: true,
-                     	barGap: '0%',
-                      	barCategoryGap: '50%',
-						// itemStyle: {normal: {areaStyle: {type: 'default'}}},
-						data: ['0.18','0.50','0.18','0.37']
-                    },
-					{
-						name: '去年同期',
-						type: 'bar',
-						smooth: true,
-					
-						//itemStyle: {normal: {areaStyle: {type: 'default'}}},
-						data: ['0.12','0.43','0.20','0.30']
-
-                    },
-                  	{
-						name: '涨幅',
-						type: 'line',
-						smooth: true,
-					
-						//itemStyle: {normal: {areaStyle: {type: 'default'}}},
-						data: ['0.12','0.43','0.20','0.30']
-
-                    }
-                ]
+      				legend: {
+                      	orient:'horizontal',
+                      	x:'300',
+                      	y:'20',
+                      	textStyle:{
+    						color:'white',
+    						fontFamily:'微软雅黑'
+    					},
+            			data:['当前单位成本','去年同期','涨幅']
+       			 	},
+       				color: ['#2DE630', '#E52DE6','white'],
+    				grid: {
+                        y1:100,
+                        y2:100
+    				},
+    				xAxis: [
+    					{
+    
+    						//show: false,
+    						type: 'category',
+    						axisLabel: {
+    							textStyle: {
+    								color: 'white'
+    							},
+    							formatter: '{value}'
+    						},
+    						data: ['电厂1', '电厂2', '电厂3', '电厂4']
+                        }
+                    ],
+    				yAxis: [
+    					{
+    						name: '',
+    						type: 'value',
+    						axisLine: {
+    							show: false
+    						},
+    						axisLabel: {
+    							textStyle: {
+    								color: 'white'
+    							},
+    							formatter: '{value}'
+    						},
+    						// 		splitLine: {
+    						// 			show: false
+    						// 		},
+    						splitLine: {
+    							// 			show: false
+    							lineStyle: {
+    								color: 'rgba(64,64,64,0.5)'
+    							}
+    						},
+    						max: 0.65,
+    						min: 0,
+    						splitNumber: 13
+                        },
+    					{
+    						name: '',
+    						type: 'value',
+    						axisLine: {
+    							show: false
+    						},
+    						axisLabel: {
+    							textStyle: {
+    								color: 'white'
+    							},
+    							formatter: '{value}%'
+    						},
+    						splitLine: {
+    							// 			show: false
+    							lineStyle: {
+    								//color: 'rgba(64,64,64,0.5)',
+    							}
+    						},
+    						max: 8.5,
+    						min: 2.0,
+    						splitNumber: 13
+                        }
+                    ],
+    				series: [
+    					{
+    						name: '当前单位成本',
+    						type: 'bar',
+    						smooth: true,
+                         	barGap: '0%',
+                          	barCategoryGap: '50%',
+    						// itemStyle: {normal: {areaStyle: {type: 'default'}}},
+    						data: ['0.18','0.50','0.18','0.37']
+                        },
+    					{
+    						name: '去年同期',
+    						type: 'bar',
+    						smooth: true,
+    					
+    						//itemStyle: {normal: {areaStyle: {type: 'default'}}},
+    						data: ['0.12','0.43','0.20','0.30']
+    
+                        },
+                      	{
+    						name: '涨幅',
+    						type: 'line',
+    						smooth: true,
+    					
+    						//itemStyle: {normal: {areaStyle: {type: 'default'}}},
+    						data: ['0.12','0.43','0.20','0.30']
+    
+                        }
+                    ]
 			    };
 			    mychart.setOption(option);
 			}
@@ -682,7 +682,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 					{
 						name: '1',
 						type: 'pie',
-						radius: [123, 126],
+						center: ['30%','50%'],
+						radius: [98, 99],
 						itemStyle: {
 							normal: {
 								color: '#33FE33',
