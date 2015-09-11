@@ -11,12 +11,12 @@
 .internetPowerPlantLeft{
     background-color : black;
     height : 100%;
-    width : 44%;
+    width : 50%;
     float : left;
 }
 .internetPowerPlantRight{
     height : 100%;
-    width : 56%;
+    width : 50%;
     float : left;
 }
 .internetDetail{
