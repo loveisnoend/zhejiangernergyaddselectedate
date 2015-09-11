@@ -166,6 +166,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 		
 		    function drawPowerDistribution(ec) {
 		        
+		    document.getElementById('internetDetail').style.display = "none";
+            document.getElementById('internetMain').style.display = "";
+            
 		    // event configure    
             var ecConfig = require('echarts/config');
     
