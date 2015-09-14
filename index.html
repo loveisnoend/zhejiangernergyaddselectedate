@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="X-UA-Compatible" content="IE=10">
 		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
 
 		<script src="resources/sap-ui-core.js"
@@ -13,7 +13,8 @@
 		</script>
 		<!-- css  -->
 		<link rel="stylesheet" type="text/css" href="css/home.css">
-		<link rel="stylesheet" type="text/css" href="css/swiper.css">
+		<link rel="stylesheet" type="text/css" href="css/idangerous.swiper.css">
+		<link rel="stylesheet" type="text/css" href="css/idangerous.swiper.3dflow.css">
 		<link rel="stylesheet" type="text/css" href="css/panel.css">
 		<link rel="stylesheet" type="text/css" href="css/tab.css">
 		<link rel="stylesheet" type="text/css" href="css/Performance.css">
@@ -24,7 +25,8 @@
 		<script src="echarts.js"></script>
         <script type="text/javascript" src="js/powerPlantMap.js"></script>
         <script type="text/javascript" src="js/internetPowerVolume.js"></script>
-		<script type="text/javascript" src="swiper.js"></script>
+		<script type="text/javascript" src="js/idangerous.swiper.js"></script>
+		<script type="text/javascript" src="js/idangerous.swiper.3dflow-2.0.js"></script>
 		<script>
 		    require.config({
                 paths: {
@@ -43,92 +45,65 @@
 		        app.to("idInternetPowerVolume","show");
 		    }
 		    function doit1() {
-    		   mySwiper = new Swiper('.swiper-container',{
-                	    initialSlide : 2,
-                	    speed : 50,
-                // 	   // loop : false,
-                // 	   // freeMode : true,
-                // 	    threshold : 0,
-                // 	   //// freeModeMomentum : true,
-                // 	   //// freeModeMomentumRatio : 1,
-                // 	   //// freeModeMomentumBounce : false,
-                // 	   //// freeModeMomentumBounceRatio : 1,
-                	    freeModeSticky : true,
-                        pagination: '.swiper-pagination',
-                        effect: 'coverflow',
-                        grabCursor: true,
-                        centeredSlides: true,
-                        paginationClickable : true,
-                        slidesPerView: 'auto',
-                        coverflow: {
-                            rotate: 0,
-                            stretch: 750,
-                            depth: 600,
-                            modifier: 1,
-                            slideShadows : true
-                        }
+    		   var mySwiper = new Swiper('.swiper-container',{
+    		        onSlideClick: function(swiper){
+                      swiper.swipeTo(mySwiper.clickedSlideIndex, 500, false);
+                    },
+    		        initialSlide : 2,
+                    slidesPerView : 3,
+                    centeredSlides : false,
+                    grabCursor : true,
+                    paginationClickable :true,
+                    tdFlow: {
+                        rotate : 0,
+                        stretch : 70,
+                        depth : 250,
+                        modifier : 1,
+                        shadows : false
+                    }
                 });
-                mySwiper.slideTo(4, 1500, false);
                 app.to("idhome","show");
             }
             function doit2() {
-               // app.to("idjingyingyeji","show");
-    		   mySwiper = new Swiper('.swiper-container',{
-                	    initialSlide : 2,
-                	    speed : 50,
-                // 	   // loop : false,
-                // 	   // freeMode : true,
-                // 	    threshold : 0,
-                // 	   //// freeModeMomentum : true,
-                // 	   //// freeModeMomentumRatio : 1,
-                // 	   //// freeModeMomentumBounce : false,
-                // 	   //// freeModeMomentumBounceRatio : 1,
-                	    freeModeSticky : true,
-                        pagination: '.swiper-pagination',
-                        effect: 'coverflow',
-                        grabCursor: true,
-                        centeredSlides: true,
-                        paginationClickable : true,
-                        slidesPerView: 'auto',
-                        coverflow: {
-                            rotate: 0,
-                            stretch: 750,
-                            depth: 600,
-                            modifier: 1,
-                            slideShadows : true
+    		  var mySwiper = new Swiper('.swiper-container',{
+        		        onSlideClick: function(swiper){
+                          swiper.swipeTo(mySwiper.clickedSlideIndex, 500, false);
+                          
+                        },
+        		        initialSlide : 4,
+                        slidesPerView : 3,
+                        centeredSlides : true,
+                        grabCursor : true,
+                        paginationClickable :true,
+                        tdFlow: {
+                            rotate : 0,
+                            stretch : 70,
+                            depth : 250,
+                            modifier : 1,
+                            shadows : false
                         }
                 });
-                mySwiper.slideTo(2, 1500, false);
                 app.to("idhome","show");
             }
             function doit3() {
-                app.to("idhome","show");
-    		   mySwiper = new Swiper('.swiper-container',{
-                	    initialSlide : 2,
-                	    speed : 50,
-                // 	   // loop : false,
-                // 	   // freeMode : true,
-                // 	    threshold : 0,
-                // 	   //// freeModeMomentum : true,
-                // 	   //// freeModeMomentumRatio : 1,
-                // 	   //// freeModeMomentumBounce : false,
-                // 	   //// freeModeMomentumBounceRatio : 1,
-                	    freeModeSticky : true,
-                        pagination: '.swiper-pagination',
-                        effect: 'coverflow',
-                        grabCursor: true,
-                        centeredSlides: true,
-                        paginationClickable : true,
-                        slidesPerView: 'auto',
-                        coverflow: {
-                            rotate: 0,
-                            stretch: 750,
-                            depth: 600,
-                            modifier: 1,
-                            slideShadows : true
+    		   var mySwiper = new Swiper('.swiper-container',{
+        		        onSlideClick: function(swiper){
+                          swiper.swipeTo(mySwiper.clickedSlideIndex, 500, false);
+                          
+                        },
+        		        initialSlide : 4,
+                        slidesPerView : 3,
+                        centeredSlides : false,
+                        grabCursor : true,
+                        paginationClickable :true,
+                        tdFlow: {
+                            rotate : 0,
+                            stretch : 70,
+                            depth : 250,
+                            modifier : 1,
+                            shadows : false
                         }
                 });
-                mySwiper.slideTo(2, 1500, false);
             }
             function dailyProfit(){
                 app.to("idPerformance","show");

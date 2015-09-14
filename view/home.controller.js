@@ -4,35 +4,47 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 	_drawSwiper: function() {
 	    require(
                 [
-                    'js/swiper'
+                    'js/idangerous.swiper'
                 ]
                 );
 		var mySwiper = new Swiper('.swiper-container',{
-        	    initialSlide : 2,
-        	    speed : 50,
-        // 	   // loop : false,
-        // 	   // freeMode : true,
-        // 	    threshold : 0,
-        // 	   //// freeModeMomentum : true,
-        // 	   //// freeModeMomentumRatio : 1,
-        // 	   //// freeModeMomentumBounce : false,
-        // 	   //// freeModeMomentumBounceRatio : 1,
-        	    freeModeSticky : true,
-                pagination: '.swiper-pagination',
-                effect: 'coverflow',
-                grabCursor: true,
-                centeredSlides: true,
-                paginationClickable : true,
-                slidesPerView: 'auto',
-                coverflow: {
-                    rotate: 0,
-                    stretch: 750,
-                    depth: 600,
-                    modifier: 1,
-                    slideShadows : true
+		    
+		        onSlideClick: function(swiper){
+                  //alert('事件触发了;'+mySwiper.clickedSlideIndex);
+                  swiper.swipeTo(mySwiper.clickedSlideIndex, 500, false);
+                  
+                },
+		        initialSlide : 3,
+                slidesPerView : 3,
+                centeredSlides : true,
+                grabCursor : true,
+                paginationClickable :true,
+                tdFlow: {
+                    rotate : 0,
+                    stretch : 70,
+                    depth : 250,
+                    modifier : 1,
+                    shadows : false
                 }
          });
-         mySwiper.slideTo(3, 1500, false);//切换到第一个slide，速度为1秒
+         $('#but01').click(function(){
+              mySwiper.swipeTo(0, 500, false);
+         });
+         $('#but02').click(function(){
+              mySwiper.swipeTo(1, 500, false);
+         });
+         $('#but03').click(function(){
+              mySwiper.swipeTo(2, 500, false);
+         });
+         $('#but04').click(function(){
+              mySwiper.swipeTo(3, 500, false);
+         });
+         $('#but05').click(function(){
+              mySwiper.swipeTo(4, 500, false);
+         });
+         $('#but06').click(function(){
+              mySwiper.swipeTo(5, 500, false);
+         });
 	},
 	
 /**
