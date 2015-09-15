@@ -21,8 +21,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
                 paginationClickable :true,
                 tdFlow: {
                     rotate : 0,
-                    stretch : 70,
-                    depth : 250,
+                    stretch : 100,
+                    depth : 400,
                     modifier : 1,
                     shadows : false
                 }
