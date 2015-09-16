@@ -17,6 +17,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 	// eventment before show the page 
 	onAfterShow : function () {
 	    
+        document.getElementById('mj_hid').style.display = "none";
+        document.getElementById('rlcb_detail').style.display = "";
         this.loadChart();
         //this.loadmjChart("mj_content_hid1", xdate, data_sj, data_qg);
 	},
@@ -682,8 +684,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 					{
 						name: '1',
 						type: 'pie',
-						center: ['30%','50%'],
-						radius: [98, 99],
+						center: ['27%','40%'],
+						radius: [110, 111],
+						startAngle : 0,
 						itemStyle: {
 							normal: {
 								color: '#33FE33',

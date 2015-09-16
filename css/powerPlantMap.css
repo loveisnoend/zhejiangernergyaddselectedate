@@ -1,6 +1,6 @@
 .powerTop{
     background-color:black;
-    height:5%;
+    height:7%;
     width:100%;
     float:left;
 }
@@ -228,13 +228,13 @@
 }
 .detail_pie
 {
-    width: 30%;
-    height: 30%;
+    width: 32%;
+    height: 40%;
     position: absolute;
     /*margin-left: 5%;*/
     /*top: 59px;*/
     z-index:10;
-    top: 32%;
+    top: 30%;
     margin-left: -1%;
 }
 .another_font01

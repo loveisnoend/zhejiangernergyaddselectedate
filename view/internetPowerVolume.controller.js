@@ -17,6 +17,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 	// eventment before show the page 
 	onAfterShow : function () {
 	    
+        document.getElementById('internetDetail').style.display = "none";
+        document.getElementById('internetMain').style.display = "";
         this.loadChart();
         //this.loadmjChart("mj_content_hid1", xdate, data_sj, data_qg);
 	},
@@ -254,7 +256,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 							roam:false,
 							data : [],
 							mapLocation : {
-							    x: "center",
+							    x: "left",
 								y: "center"
 								//width: "500px",
 								//height: "500px"
