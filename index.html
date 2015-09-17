@@ -45,36 +45,36 @@
 		        app.to("idInternetPowerVolume","show");
 		    }
 		    function doit1() {
-		      //  slidePageNum = 0;
-        //         app.to("idhome","show");
+		        slidePageNum = 0;
+                app.to("idhome02","show");
             }
             function doit2() {
                 slidePageNum = 3;
                 app.to("idhome","show");
             }
             function doit3() {
-                // slidePageNum = 2;
-                // app.to("idhome","show");
+                slidePageNum = 2;
+                app.to("idhome03","show");
             }
             function doit4() {
-                // slidePageNum = 3;
-                // app.to("idhome","show");
+                slidePageNum = 3;
+                app.to("idhome04","show");
             }
             function doit5() {
-                // slidePageNum = 4;
-                // app.to("idhome","show");
+                slidePageNum = 4;
+                app.to("idhome05","show");
             }
             function doit6() {
-                // slidePageNum = 5;
-                // app.to("idhome","show");
+                slidePageNum = 5;
+                app.to("idhome06","show");
             }
             function doit7() {
-                // slidePageNum = 6;
-                // app.to("idhome","show");
+                slidePageNum = 6;
+                app.to("idhome07","show");
             }
             function doit8() {
-                // slidePageNum = 7;
-                // app.to("idhome","show");
+                slidePageNum = 7;
+                app.to("idhome08","show");
             } 
             function dailyProfit(){
                 app.to("idPerformance","show");
@@ -101,6 +101,48 @@
             			type: sap.ui.core.mvc.ViewType.HTML
             		});
             		app.addPage(home);
+            		 var home02= sap.ui.view({
+            			id: "idhome02",
+            			viewName: "com.zhenergy.pcbi.view.home02",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		});
+            		app.addPage(home02);
+            		var home03 = sap.ui.view({
+            			id: "idhome03",
+            			viewName: "com.zhenergy.pcbi.view.home03",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		});
+            		app.addPage(home03);
+            		var home04 = sap.ui.view({
+            			id: "idhome04",
+            			viewName: "com.zhenergy.pcbi.view.home04",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		});
+            		app.addPage(home04);
+            		var home05 = sap.ui.view({
+            			id: "idhome05",
+            			viewName: "com.zhenergy.pcbi.view.home05",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		});
+            		app.addPage(home05);
+            		var home06 = sap.ui.view({
+            			id: "idhome06",
+            			viewName: "com.zhenergy.pcbi.view.home06",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		});
+            		app.addPage(home06);
+            		var home07 = sap.ui.view({
+            			id: "idhome07",
+            			viewName: "com.zhenergy.pcbi.view.home07",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		});
+            		app.addPage(home07);
+            		var home08 = sap.ui.view({
+            			id: "idhome08",
+            			viewName: "com.zhenergy.pcbi.view.home08",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		});
+            		app.addPage(home08);
             		var Performance = sap.ui.view({
             			id: "idPerformance",
             			viewName: "com.zhenergy.pcbi.view.Performance",
