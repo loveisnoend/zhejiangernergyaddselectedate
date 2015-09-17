@@ -693,8 +693,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 				    document.getElementById('watt1').innerHTML = mapSeries.markPoint.data[param.dataIndex].depreciationCost;
 				    // document.getElementById('wattVolume2').innerHTML = mapSeries.markPoint.data[param.dataIndex].peopleCost;
 				    document.getElementById('watt2').innerHTML = mapSeries.markPoint.data[param.dataIndex].repairCost;
-				    document.getElementById('coalTotalVolume').innerHTML = mapSeries.markPoint.data[param.dataIndex].coal;
-				    document.getElementById('wasteDays').innerHTML = mapSeries.markPoint.data[param.dataIndex].coalDays;
+				    // document.getElementById('coalTotalVolume').innerHTML = mapSeries.markPoint.data[param.dataIndex].coal;
+				    // document.getElementById('wasteDays').innerHTML = mapSeries.markPoint.data[param.dataIndex].coalDays;
 				});	
 				
 				// document.getElementById('powerName').innerHTML = "杭州";
@@ -839,8 +839,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 				    document.getElementById('watt1').innerHTML = mapSeries.markPoint.data[param.dataIndex].depreciationCost;
 				    // document.getElementById('wattVolume2').innerHTML = mapSeries.markPoint.data[param.dataIndex].peopleCost;
 				    document.getElementById('watt2').innerHTML = mapSeries.markPoint.data[param.dataIndex].repairCost;
-				    document.getElementById('coalTotalVolume').innerHTML = mapSeries.markPoint.data[param.dataIndex].coal;
-				    document.getElementById('wasteDays').innerHTML = mapSeries.markPoint.data[param.dataIndex].coalDays;
+				    // document.getElementById('coalTotalVolume').innerHTML = mapSeries.markPoint.data[param.dataIndex].coal;
+				    // document.getElementById('wasteDays').innerHTML = mapSeries.markPoint.data[param.dataIndex].coalDays;
 				});	
 			
                 // 为echarts对象加载数据 
@@ -867,7 +867,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 						name: '1',
 						type: 'pie',
 				// 		center: ['31%','36%'],
-						radius: [127, 130],
+						radius: [122, 126],
 						startAngle : 0,
 						itemStyle: {
 							normal: {
