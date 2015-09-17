@@ -67,7 +67,7 @@
     /*margin:5%;*/
     margin-left:10px;
     /*background-color:rgb(26,26,26);*/
-    background-image:url("../img/backImg.png");
+    background-image:url("../img/backImg001.png");
     border-radius: 20px 20px 20px 20px;
     background-size:cover;
     float:left;
@@ -229,13 +229,13 @@
 .detail_pie
 {
     width: 32%;
-    height: 40%;
+    height: 50%;
     position: absolute;
     /*margin-left: 5%;*/
     /*top: 59px;*/
     z-index:10;
-    top: 30%;
-    margin-left: -1%;
+    top: 19.8%;
+    margin-left: -7.2%;
 }
 .another_font01
 {
