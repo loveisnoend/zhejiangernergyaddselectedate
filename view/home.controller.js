@@ -19,6 +19,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
                 centeredSlides : true,
                 grabCursor : true,
                 paginationClickable :true,
+                // longSwipesRatio : 0.5,
+                // shortSwipes : false,
+                // followFinger : false,
+                noSwiping : true,
                 tdFlow: {
                     rotate : 0,
                     stretch : 100,
