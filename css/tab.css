@@ -137,12 +137,12 @@
 .tab_center2_01
 {
     width:234px;
-    height:100px;
+    /*height:100px;*/
 }
 .tab_center2_01_font
 {
     width:234px;
-    height:40px;
+    /*height:40px;*/
     font-family:微软雅黑;
     color:white;
     font-weight: bolder;
@@ -152,7 +152,7 @@
 {
     width:117px;
     height:60px;
-    float:left;
+    /*float:left;*/
 }
 .tab_center2_01_choose01 select option
 {
@@ -162,7 +162,7 @@
 {
       background: none;
       border: solid 1px;
-      width: 80%;
+      width: 120%;
       height: 40px;
       color: white;
       font-size: 20px;
@@ -176,12 +176,12 @@
 .tab_center2_02_table01
 {
     width:234px;
-    height:40px;
+    height:36px;
     border:solid 1px;
     color:white;
     font-family:微软雅黑;
-    font-size: 20px;
-    margin-bottom:20px;
+    font-size: 18px;
+    margin-bottom:18px;
 }
 .tab_center2_02_01
 {

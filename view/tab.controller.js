@@ -64,22 +64,23 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 			var option="";
 			if(id == "line02"){
 			    option = {
-  				legend: {
-                  	orient:'vertical',
-                  	zlevel : 2,
-                  	x:'720',
-                  	y:'20',
-                  	textStyle:{
-						color:'white',
-						fontFamily:'微软雅黑'
-					},
-        			data:['社会用电量','发电量']
-   			 	},
+  		// 		legend: {
+    //               	orient:'vertical',
+    //               	zlevel : 2,
+    //               	x:'720',
+    //               	y:'20',
+    //               	textStyle:{
+				// 		color:'white',
+				// 		fontFamily:'微软雅黑'
+				// 	},
+    //     			data:['社会用电量','发电量']
+   	// 		 	},
 			    tooltip:{
 			       trigger:'axis' ,
 			       backgroundColor:'rgb(234,234,234)',
 			       textStyle:{
-			           color:'rgb(0,0,0)'
+			           color:'rgb(0,0,0)',
+			           baseline:'top'
 			       },
 			       axisPointer:{
 			           type: 'none'
@@ -95,10 +96,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 				},
 				xAxis: [
 					{
-
 						show: false,
 						type: 'category',
-						data: ['', '', '', '', '', '', '']
+						data: ['2015年8月11日', '2015年8月12日', '2015年8月13日', '2015年8月14日', '2015年8月15日', '2015年8月16日', '2015年8月17日']
                     }
                 ],
 				yAxis: [
@@ -175,23 +175,24 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 			};
 			}else{
 			   option = {
-			    legend: {
-                  	orient:'vertical',
-                  	zlevel : 2,
-                  	x:'720',
-                  	y:'20',
-                  	textStyle:{
-						color:'white',
-						fontFamily:'微软雅黑'
-					},
-        			data:['气温']
-   			 	},
+			 //   legend: {
+    //               	orient:'vertical',
+    //               	zlevel : 2,
+    //               	x:'720',
+    //               	y:'20',
+    //               	textStyle:{
+				// 		color:'white',
+				// 		fontFamily:'微软雅黑'
+				// 	},
+    //     			data:['气温']
+   	// 		 	},
 			    tooltip:{
 			       trigger:'axis' ,
 			       backgroundColor:'rgb(234,234,234)',
 			       textStyle:{
 			           color:'rgb(0,0,0)'
 			       },
+			       
 			       axisPointer:{
 			           type: 'none'
 			       }
@@ -209,7 +210,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 
 						show: false,
 						type: 'category',
-						data: ['', '', '', '', '', '', '']
+						data: ['2015年8月11日', '2015年8月12日', '2015年8月13日', '2015年8月14日', '2015年8月15日', '2015年8月16日', '2015年8月17日']
                     }
                 ],
 				yAxis: [
