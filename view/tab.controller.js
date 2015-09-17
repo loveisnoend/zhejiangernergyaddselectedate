@@ -56,12 +56,24 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 		}
 
 		function drawline02(e) {
-			drawline(e, 'line02', data_x3, data_x4, 1.40, 1.00, 0.05, 0.01, 4, '#FFB300', '#1EAD88');
+			drawline(e, 'line02', data_x3, data_x4, 1.40, 1.00, 0.05, 0.01, 4, '#FFB300', 'rgb(51,255,50)');
 		}
 
 		function drawline(e, id, datax1, datax2, y1, y2, y3, y4, n, color1, color2) {
 			mychart = e.init(document.getElementById(id));
-			var option = {
+			var option="";
+			if(id == "line02"){
+			    option = {
+			    tooltip:{
+			       trigger:'axis' ,
+			       backgroundColor:'rgb(234,234,234)',
+			       textStyle:{
+			           color:'rgb(0,0,0)'
+			       },
+			       axisPointer:{
+			           type: 'none'
+			       }
+			    },
 				color: [color1, color2],
 				grid: {
 					x: 50,
@@ -75,7 +87,107 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 
 						show: false,
 						type: 'category',
-						data: ['q', 'q', 'q', 'q', 'q', 'q', 'q']
+						data: ['', '', '', '', '', '', '']
+                    }
+                ],
+				yAxis: [
+					{
+						name: '社会用电量',
+						type: 'value',
+						axisLine: {
+							show: false
+						},
+						axisLabel: {
+							textStyle: {
+								color: 'rgb(255,179,0)'
+							},
+							formatter: '{value}'
+						},
+						// 		splitLine: {
+						// 			show: false
+						// 		},
+						splitLine: {
+							// 			show: false
+							lineStyle: {
+								color: 'rgba(64,64,64,0.5)'
+							}
+						},
+						max: y1,
+						min: y2,
+						splitNumber: n
+                    },
+					{
+						name: '发电量',
+						type: 'value',
+						axisLine: {
+							show: false
+						},
+						axisLabel: {
+							textStyle: {
+								color: 'rgb(51,255,50)'
+							},
+							formatter: '{value}'
+						},
+						splitLine: {
+							// 			show: false
+							lineStyle: {
+								color: 'rgba(64,64,64,0.5)',
+							}
+						},
+						max: y3,
+						min: y4,
+						splitNumber: n,
+                    }
+                ],
+				series: [
+					{
+						name: '社会用电量',
+						type: 'line',
+						smooth: true,
+						symbol:'emptyCircle',
+						symbolSize:5,
+						// itemStyle: {normal: {areaStyle: {type: 'default'}}},
+						data: datax1
+                    },
+					{
+						name: '发电量',
+						type: 'line',
+						smooth: true,
+						yAxisIndex: 1,
+						symbol:'emptyCircle',
+						symbolSize:5,
+						//itemStyle: {normal: {areaStyle: {type: 'default'}}},
+						data: datax2
+
+                    }
+                ]
+			};
+			}else{
+			   option = {
+			    tooltip:{
+			       trigger:'axis' ,
+			       backgroundColor:'rgb(234,234,234)',
+			       textStyle:{
+			           color:'rgb(0,0,0)'
+			       },
+			       axisPointer:{
+			           type: 'none'
+			       }
+			    },
+				color: [color1, color2],
+				grid: {
+					x: 50,
+					y: 20,
+					x2: 50,
+					y2: 20,
+					borderWidth: 0
+				},
+				xAxis: [
+					{
+
+						show: false,
+						type: 'category',
+						data: ['', '', '', '', '', '', '']
                     }
                 ],
 				yAxis: [
@@ -103,53 +215,111 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 						max: y1,
 						min: y2,
 						splitNumber: n,
-                    },
-					{
-						name: '',
-						type: 'value',
-						axisLine: {
-							show: false
-						},
-						axisLabel: {
-							textStyle: {
-								color: 'white'
-							},
-							formatter: '{value}'
-						},
-						splitLine: {
-							// 			show: false
-							lineStyle: {
-								color: 'rgba(64,64,64,0.5)',
-							}
-						},
-						max: y3,
-						min: y4,
-						splitNumber: n,
                     }
+                    
                 ],
 				series: [
 					{
-						name: '',
+						name: '气温',
 						type: 'line',
 						smooth: true,
 						symbol:'emptyCircle',
 						symbolSize:5,
 						// itemStyle: {normal: {areaStyle: {type: 'default'}}},
 						data: datax1
-                    },
-					{
-						name: '',
-						type: 'line',
-						smooth: true,
-						yAxisIndex: 1,
-						symbol:'emptyCircle',
-						symbolSize:5,
-						//itemStyle: {normal: {areaStyle: {type: 'default'}}},
-						data: datax2
-
                     }
                 ]
-			};
+			}; 
+			}
+// 			var option = {
+// 				color: [color1, color2],
+// 				grid: {
+// 					x: 50,
+// 					y: 20,
+// 					x2: 50,
+// 					y2: 20,
+// 					borderWidth: 0
+// 				},
+// 				xAxis: [
+// 					{
+
+// 						show: false,
+// 						type: 'category',
+// 						data: ['q', 'q', 'q', 'q', 'q', 'q', 'q']
+//                     }
+//                 ],
+// 				yAxis: [
+// 					{
+// 						name: '',
+// 						type: 'value',
+// 						axisLine: {
+// 							show: false
+// 						},
+// 						axisLabel: {
+// 							textStyle: {
+// 								color: 'white'
+// 							},
+// 							formatter: '{value}'
+// 						},
+// 						// 		splitLine: {
+// 						// 			show: false
+// 						// 		},
+// 						splitLine: {
+// 							// 			show: false
+// 							lineStyle: {
+// 								color: 'rgba(64,64,64,0.5)',
+// 							}
+// 						},
+// 						max: y1,
+// 						min: y2,
+// 						splitNumber: n,
+//                     },
+// 					{
+// 						name: '',
+// 						type: 'value',
+// 						axisLine: {
+// 							show: false
+// 						},
+// 						axisLabel: {
+// 							textStyle: {
+// 								color: 'rgb(51,255,50)'
+// 							},
+// 							formatter: '{value}'
+// 						},
+// 						splitLine: {
+// 							// 			show: false
+// 							lineStyle: {
+// 								color: 'rgba(64,64,64,0.5)',
+// 							}
+// 						},
+// 						max: y3,
+// 						min: y4,
+// 						splitNumber: n,
+//                     }
+//                 ],
+// 				series: [
+// 					{
+// 						name: '',
+// 						type: 'line',
+// 						smooth: true,
+// 						symbol:'emptyCircle',
+// 						symbolSize:5,
+// 						// itemStyle: {normal: {areaStyle: {type: 'default'}}},
+// 						data: datax1
+//                     },
+// 					{
+// 						name: '',
+// 						type: 'line',
+// 						smooth: true,
+// 						yAxisIndex: 1,
+// 						symbol:'emptyCircle',
+// 						symbolSize:5,
+// 						//itemStyle: {normal: {areaStyle: {type: 'default'}}},
+// 						data: datax2
+
+//                     }
+//                 ]
+// 			};
 			mychart.setOption(option);
 		}
 
@@ -221,6 +391,12 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 							}
 						},
 						data: [data1]
+				// 		data: [data1],
+				// 		markPoint : {
+    //                         data : [
+    //                             {type : 'max', name: '最大值'}
+    //                         ]
+    //                     }
 							},
 					{
 						name: '邮件营销',
