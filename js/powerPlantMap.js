@@ -50,3 +50,17 @@ function back_another() {
 	document.getElementById("rlcb_detail").style.display = "";
 	document.getElementById("detail_another").style.display = "none";
 }
+
+function detailAnother002(machineType) {
+    if(document.getElementById('powerPlantMainDetailTitle').innerHTML != '集团'){
+    	document.getElementById("rlcb_detail").style.display = "none";
+    	//document.getElementById("hidden01").style.display = "none";
+    	document.getElementById("detail_another002").style.display = "";
+    	powerPlantMap.getController().loadChartdetail02(machineType);
+    }
+}
+
+function back_another002() {
+	document.getElementById("rlcb_detail").style.display = "";
+	document.getElementById("detail_another002").style.display = "none";
+}

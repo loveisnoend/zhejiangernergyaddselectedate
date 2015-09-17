@@ -62,13 +62,13 @@
                             </div>
                         </div>
                         <div class="main_content_combition_1_3">
-                            <div class="detail_02_03">
+                            <div class="detail_02_03" onclick="detailAnother002('30')">
                                 <div class="detail_02_font1"><b id="wattVolume1">30</b>万KW(克/度)</div>
                                 <div class="detail_02_font2" id="watt1">25.00</div>
                                 <div class="detail_02_img" id="detail_03"></div>
                             </div>
-                            <div class="detail_02_03">
-                                <div class="detail_02_font1"><b id="wattVolume2">40</b>万KW(克/度)</div>
+                            <div class="detail_02_03" onclick="detailAnother002('60')">
+                                <div class="detail_02_font1"><b id="wattVolume2">60</b>万KW(克/度)</div>
                                 <div class="detail_02_font2" id="watt2">25.00</div>
                                 <div class="detail_02_img" id="detail_04"></div>
                             </div>
@@ -103,9 +103,25 @@
                         <!--</div>-->
                     </div>
                 </div>
+                <div class="detail_02_hid" style="display:none" id="detail_another002">
+                    <div class="detail_02_01" style="font-size:14px;font-family: 微软雅黑;margin-left:0px;float:left;margin-top:0px;">
+                        <div class="detail_02_01" style="font-size:14px;font-family: 微软雅黑;margin-left:0px;">
+                            <span id="bigCircleDetailTitle002">
+                            集团
+                            </span>
+                            <span onclick="back_another002()" style="cursor:pointer;margin-left:20px;color:rgb(255,153,0);">返回</span>
+                        </div>
+                        <div class="detail_another_01" id="detail_another_02" style="float:left;">
+                            
+                        </div>
+                        <!--<div class="detail_another_font" style="float:left;">-->
+                        <!--    统计于<br/>2015.08.08-->
+                        <!--</div>-->
+                    </div>
+                </div>
                 <div id="mj_hid" class="detail_02_hid" style="display:none;">
                      <div class="detail_02_01" style="font-size:14px;font-family: 微软雅黑;margin-left:0px;">
-                        <div style="float:left;margin-top:0px;">测试电厂甲</div>
+                        <div style="float:left;margin-top:0px;" id="caloriPowerPlantName">集团</div>
                         <div onclick="back()" style="float:left;margin-top:0px;margin-left:20px;cursor:pointer;color:rgb(255,153,0);">返回</div>
                         <ul style="float:left;margin-left:100px;margin-top:0px;">
                             <li>
