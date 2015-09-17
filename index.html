@@ -45,82 +45,49 @@
 		        app.to("idInternetPowerVolume","show");
 		    }
 		    function doit1() {
-    		   var mySwiper = new Swiper('.swiper-container',{
-    		        onSlideClick: function(swiper){
-                      swiper.swipeTo(mySwiper.clickedSlideIndex, 500, false);
-                    },
-    		        initialSlide : 2,
-                    slidesPerView : 3,
-                    centeredSlides : false,
-                    grabCursor : true,
-                    paginationClickable :true,
-                    tdFlow: {
-                        rotate : 0,
-                        stretch : 70,
-                        depth : 250,
-                        modifier : 1,
-                        shadows : false
-                    }
-                });
+		        slidePageNum = 0;
                 app.to("idhome","show");
             }
             function doit2() {
-    		  var mySwiper = new Swiper('.swiper-container',{
-        		        onSlideClick: function(swiper){
-                          swiper.swipeTo(mySwiper.clickedSlideIndex, 500, false);
-                          
-                        },
-        		        initialSlide : 4,
-                        slidesPerView : 3,
-                        centeredSlides : true,
-                        grabCursor : true,
-                        paginationClickable :true,
-                        tdFlow: {
-                            rotate : 0,
-                            stretch : 70,
-                            depth : 250,
-                            modifier : 1,
-                            shadows : false
-                        }
-                });
+                slidePageNum = 1;
                 app.to("idhome","show");
             }
             function doit3() {
-    		   var mySwiper = new Swiper('.swiper-container',{
-        		        onSlideClick: function(swiper){
-                          swiper.swipeTo(mySwiper.clickedSlideIndex, 500, false);
-                          
-                        },
-        		        initialSlide : 4,
-                        slidesPerView : 3,
-                        centeredSlides : false,
-                        grabCursor : true,
-                        paginationClickable :true,
-                        tdFlow: {
-                            rotate : 0,
-                            stretch : 70,
-                            depth : 250,
-                            modifier : 1,
-                            shadows : false
-                        }
-                });
+                slidePageNum = 2;
+                app.to("idhome","show");
             }
+            function doit4() {
+                slidePageNum = 3;
+                app.to("idhome","show");
+            }
+            function doit5() {
+                slidePageNum = 4;
+                app.to("idhome","show");
+            }
+            function doit6() {
+                slidePageNum = 5;
+                app.to("idhome","show");
+            }
+            function doit7() {
+                slidePageNum = 6;
+                app.to("idhome","show");
+            }
+            function doit8() {
+                slidePageNum = 7;
+                app.to("idhome","show");
+            } 
             function dailyProfit(){
                 app.to("idPerformance","show");
             }
             function powerWaste(){
                 app.to("idtab","show");
             }
-            
-            // power plant map
-            function doit8(){
-                app.to("idPowerPlantMap", "show");
-            }
 		</script>
 		<script>
 				sap.ui.localResources("view");
 				var powerPlantMap;
 				var internetPowerVolume;
+				var slidePageNum = 0;
 				var app = new sap.m.App({initialPage:"idhome"});
 				
 				var sServiceUrl = "/sap/opu/odata/sap/ZHANA003_SRV/";
