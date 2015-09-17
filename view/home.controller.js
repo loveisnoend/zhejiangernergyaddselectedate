@@ -26,7 +26,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
                 shadows : false
             }
          });
-         $('.menu_bottom li').removeClass('but01 but02 but03 but04 but05 but06 nav_BI');
+         $('.menu_bottom li').removeClass('but01 but02 but03 but04 but05 but06 but07 but08 nav_BI');
          if (slidePageNum == 0){
              mySwiper.swipeTo(0, 500, false);
              $('#but01').addClass("but01 nav_BI");
@@ -49,37 +49,55 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
          }
          if (slidePageNum == 5){
              mySwiper.swipeTo(5, 500, false);
-             $('#but06').addClass("but03 nav_BI");
+             $('#but06').addClass("but06 nav_BI");
+         }
+         if (slidePageNum == 6){
+             mySwiper.swipeTo(6, 500, false);
+             $('#but07').addClass("but03 nav_BI");
+         }
+        if (slidePageNum == 7){
+             mySwiper.swipeTo(7, 500, false);
+             $('#but08').addClass("but03 nav_BI");
          }
          $('#but01').click(function(){
               mySwiper.swipeTo(0, 500, false);
-              $('.menu_bottom li').removeClass('but01 but02 but03 but04 but05 but06 nav_BI');
+              $('.menu_bottom li').removeClass('but01 but02 but03 but04 but05 but06 but07 but08 nav_BI');
               $('#but01').addClass("but01 nav_BI");
          });
          $('#but02').click(function(){
               mySwiper.swipeTo(1, 500, false);
-              $('.menu_bottom li').removeClass('but01 but02 but03 but04 but05 but06 nav_BI');
+              $('.menu_bottom li').removeClass('but01 but02 but03 but04 but05 but06 but07 but08 nav_BI');
               $('#but02').addClass("but02 nav_BI");
          });
          $('#but03').click(function(){
               mySwiper.swipeTo(2, 500, false);
-              $('.menu_bottom li').removeClass('but01 but02 but03 but04 but05 but06 nav_BI');
+              $('.menu_bottom li').removeClass('but01 but02 but03 but04 but05 but06 but07 but08 nav_BI');
               $('#but03').addClass("but03 nav_BI");
          });
          $('#but04').click(function(){
               mySwiper.swipeTo(3, 500, false);
-              $('.menu_bottom li').removeClass('but01 but02 but03 but04 but05 but06 nav_BI');
+              $('.menu_bottom li').removeClass('but01 but02 but03 but04 but05 but06 but07 but08 nav_BI');
               $('#but04').addClass("but04 nav_BI");
          });
          $('#but05').click(function(){
               mySwiper.swipeTo(4, 500, false);
-              $('.menu_bottom li').removeClass('but01 but02 but03 but04 but05 but06 nav_BI');
+              $('.menu_bottom li').removeClass('but01 but02 but03 but04 but05 but06 but07 but08 nav_BI');
               $('#but05').addClass("but05 nav_BI");
          });
          $('#but06').click(function(){
               mySwiper.swipeTo(5, 500, false);
-              $('.menu_bottom li').removeClass('but01 but02 but03 but04 but05 but06 nav_BI');
+              $('.menu_bottom li').removeClass('but01 but02 but03 but04 but05 but06 but07 but08 nav_BI');
               $('#but06').addClass("but06 nav_BI");
+         });
+        $('#but07').click(function(){
+              mySwiper.swipeTo(6, 500, false);
+              $('.menu_bottom li').removeClass('but01 but02 but03 but04 but05 but06 but07 but08 nav_BI');
+              $('#but07').addClass("but07 nav_BI");
+         });
+        $('#but08').click(function(){
+              mySwiper.swipeTo(7, 500, false);
+              $('.menu_bottom li').removeClass('but01 but02 but03 but04 but05 but06 but07 but08 nav_BI');
+              $('#but08').addClass("but08 nav_BI");
          });
 	},
 	
