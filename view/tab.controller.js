@@ -175,6 +175,17 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 			};
 			}else{
 			   option = {
+			    legend: {
+                  	orient:'vertical',
+                  	zlevel : 2,
+                  	x:'720',
+                  	y:'20',
+                  	textStyle:{
+						color:'white',
+						fontFamily:'微软雅黑'
+					},
+        			data:['气温']
+   			 	},
 			    tooltip:{
 			       trigger:'axis' ,
 			       backgroundColor:'rgb(234,234,234)',
