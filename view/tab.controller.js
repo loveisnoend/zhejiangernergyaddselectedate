@@ -64,6 +64,17 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 			var option="";
 			if(id == "line02"){
 			    option = {
+  				legend: {
+                  	orient:'vertical',
+                  	zlevel : 2,
+                  	x:'720',
+                  	y:'20',
+                  	textStyle:{
+						color:'white',
+						fontFamily:'微软雅黑'
+					},
+        			data:['社会用电量','发电量']
+   			 	},
 			    tooltip:{
 			       trigger:'axis' ,
 			       backgroundColor:'rgb(234,234,234)',
@@ -354,6 +365,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 		function drawbar(e, data1, data2, id) {
 			mychart = e.init(document.getElementById(id));
 			var option = {
+			    clickable : false,
+			    tooltip:{
+			      show : false  
+			    },
 				grid: {
 					x: 0,
 					y: 0,
@@ -378,43 +393,56 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 							}
 						],
 				series: [
-					{
-						name: '直接访问',
-						type: 'bar',
-						stack: '总量',
-						itemStyle: {
-							normal: {
-								label: {
-									show: false,
-									position: 'insideRight'
-								}
-							}
+    					{
+    						name: '直接访问',
+    						type: 'bar',
+    						stack: '总量',
+    						itemStyle: {
+    							normal: {
+    								label: {
+    									show: false,
+    									position: 'insideRight'
+    								}
+    							}
+    						},
+    						data: [data1],
+    				// 		data: [data1],
+    				        legendHoverLink : false,
+    						markPoint : {
+    						    symbol : 'droplet',
+    						    symbolSize : 20,
+    						    itemStyle:{
+    						      normal:{
+    						          color:'#FF5B00'                                                
+    						      }
+    						    },
+    						    effect : {
+    						        show : false
+    						    },
+                                data : [
+                                    {type : 'max', name: '最大值'}
+                                ]
+                            },
+                            markline : {
+                                clickable : false
+                            }
 						},
-						data: [data1]
-				// 		data: [data1],
-				// 		markPoint : {
-    //                         data : [
-    //                             {type : 'max', name: '最大值'}
-    //                         ]
-    //                     }
-							},
-					{
-						name: '邮件营销',
-						type: 'bar',
-						stack: '总量',
-						itemStyle: {
-							normal: {
-								label: {
-									show: false,
-									position: 'insideRight'
-								}
-							}
-						},
-
-						data: [data2]
-							},
-
-						]
+    					{
+    						name: '邮件营销',
+    						type: 'bar',
+    						stack: '总量',
+    						itemStyle: {
+    							normal: {
+    								label: {
+    									show: false,
+    									position: 'insideRight'
+    								}
+    							}
+    						},
+    
+    						data: [data2]
+    					}
+    				]
 			};
 			mychart.setOption(option);
 		}
