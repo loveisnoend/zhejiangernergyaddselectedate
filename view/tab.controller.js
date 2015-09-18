@@ -1,34 +1,168 @@
 sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 	onInit: function() {
+	    this.getView().addEventDelegate({
+			onBeforeShow: jQuery.proxy(function(evt) {
+				this.onBeforeShow(evt);
+			}, this)
+		});
 		this.getView().addEventDelegate({
-			// not added the controller as delegate to avoid controller functions with similar names as the events
 			onAfterShow: jQuery.proxy(function(evt) {
-			    var date = new Date();
-			    var dateStr = date.toLocaleDateString();
-			    var dateStrs = dateStr.split("/");
-			    if(dateStrs[1]!=='undefined'){
-			        $('#tab_content_head_01_content_date').html(dateStrs[0]+"年"+dateStrs[1]+"月"+dateStrs[2]+"日"); 
-			    }
-        		var weekDay = ["星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
-                var dateStrh = dateStrs[0]+"-"+dateStrs[1]+"-"+dateStrs[2];
-                var myDate = new Date(Date.parse(dateStrh.replace(/-/g, "/")));
-                $('#tab_content_head_01_week').html(weekDay[myDate.getDay()]);
-                // alert(weekDay[myDate.getDay()]);
 				this.onAfterShow(evt);
 			}, this)
 		});
 	},
-
-	onAfterShow: function(evt) {
-	    //给标题换时间 和 周几
-	   // var date = new Date();
-	   // var time2 = new Date().format("yyyy-MM-dd");
-	   // $('#tab_content_head_01_date').html(time2);
-	    
+    onBeforeShow: function(evt) {
 	    data_x3 = new Array("1.2", "1.1", "1.4", "1.15", "1.2", "1.15", "1.2");
  		data_x4 = new Array("0.015", "0.01", "0.04", "0.02", "0.025", "0.015", "0.025");
-		this.loadChart();
+		var mychart001;
+		var mychart002;
+		var mychart003;
+		var mychart004;
+		var myChart3;
+		var myChart4;
+		var myChart5;
+		var myChart6;
+		var myChart7;
+		var daytime;
+	    var year;
+	    var month;
+	    var day;
+		
+		//html参数
+		tab_place = "杭州";
+		tab_powerplant = "凤台发电";
+		tab_usetime = "发电量";
 	},
+	onAfterShow: function(evt) {
+	    this.loadData_v01();
+	   // this.loadData_v02();
+	},
+	loadData_v01 : function(){
+	    data01 = new Array();
+	    data02 = new Array();
+	    data03 = new Array();
+	    data04= new Array();
+	    place_v01 = tab_place;
+	     daytime = new Date();
+	     year = daytime.getFullYear();
+	     month = daytime.getMonth();
+	    var month_true;
+	    if( month > 8){
+	        month_true = month + 1;
+	    }else{
+	        month = month + 1;
+	        month_true = "0"+month;
+	    }
+	     day = daytime.getDate();
+	    if(day < 10){
+	        day = "0" + day;
+	    }
+	    final_daytime =year+month_true+day;
+	    var day01 = day -6;
+	    if(day01 < 10){
+	        day01 = "0" + day01;
+	    }
+	    final_daytime01 = year+month_true+day01;
+	    var mParameters = {};
+		mParameters['async'] = true;
+		mParameters['success'] = jQuery.proxy(function(sRes) {
+			//设置数据
+			for (var i in sRes.results) {
+			 //   console.log(final_daytime);
+			 //   console.log(final_daytime01);
+				if (sRes.results[i].KPI_DESC == place_v01&& sRes.results[i].KPI_TYPE == '地市-最高温度'&& final_daytime >= sRes.results[i].KPI_DATE && sRes.results[i].KPI_DATE >=final_daytime01){  //温度
+				    data01.push(sRes.results[i].KPI_VALUE); 
+				    var date_yuan = sRes.results[i].KPI_DATE;
+				   data04.push(date_yuan.substring(4,6)+"-"+date_yuan.substring(6,8));
+				}else if (sRes.results[i].KPI_DESC == place_v01&& sRes.results[i].KPI_TYPE == '地市-气象'&& final_daytime >= sRes.results[i].KPI_DATE && sRes.results[i].KPI_DATE >=final_daytime01 ){
+				    data02.push(sRes.results[i].KPI_VALUE);
+				}else if (sRes.results[i].KPI_DESC == place_v01&& sRes.results[i].KPI_TYPE == '地市-社会用电量'&& final_daytime >= sRes.results[i].KPI_DATE && sRes.results[i].KPI_DATE >=final_daytime01 ){
+				    data03.push(sRes.results[i].KPI_VALUE);
+				}
+			};
+
+			this.loadChart();
+			this.loadData_weather();
+		}, this);
+		mParameters['error'] = jQuery.proxy(function(eRes) {
+			alert("Get Data Error");
+		}, this);
+	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_02_V01", mParameters);
+	},
+	loadData_weather : function(){
+            var d = new Date();
+    	    var weekday=new Array(7);
+            weekday[0]="周日";
+            weekday[1]="周一";
+            weekday[2]="周二";
+            weekday[3]="周三";
+            weekday[4]="周四";
+            weekday[5]="周五";
+            weekday[6]="周六";
+            $('#tab_weekday').html(weekday[d.getDay()%7]);
+            $('#tab_daytime').html(year + "年" + month + "月" + day + "日");
+        
+            
+            $('#temperature0_date').html(data04[0]);
+            $('#temperature1_date').html(data04[1]);
+            $('#temperature2_date').html(data04[2]);
+            $('#temperature3_date').html(data04[3]);
+            $('#temperature4_date').html(data04[4]);
+            $('#temperature5_date').html(data04[5]);
+            $('#temperature6_date').html(data04[6]);
+            $('#temperature0').html(data01[0]);
+            $('#temperature1').html(data01[1]);
+            $('#temperature2').html(data01[2]);
+            $('#temperature3').html(data01[3]);
+            $('#temperature4').html(data01[4]);
+            $('#temperature5').html(data01[5]);
+            $('#temperature6').html(data01[6]);
+            for(var i=0;i < 7;i ++){
+            switch(data02[i] !== null){
+                
+    	        case data02[i] == "W001":
+    	             var id = "weatherimg" + i;
+    	             $("#"+id).css('background-image','url("img/0001-weather-05.png")');
+    	             break;
+    	        case data02[i] == "W002":
+    	             var id = "weatherimg" + i;
+    	             $("#"+id).css("background-image",'url("img/0001-weather-04.png")');
+    	             break;
+    	        case data02[i] == "W003":
+    	             var id = "weatherimg" + i;
+    	             $("#"+id).css("background-image",'url("img/0001-weather-01.png")');
+    	             break;
+    	        case data02[i] == "W004":
+    	             var id = "weatherimg" + i;
+    	             $("#"+id).css("background-image",'url("img/0001-weather-02.png")');
+    	             break;
+    	        case data02[i] == "W005":
+    	             var id = "weatherimg" + i;
+    	             $("#"+id).css("background-image",'url("img/0001-weather-03.png")');
+    	             break;
+    	        case data02[i] == "W006":
+    	            var id = "weatherimg" + i;  
+    	             $("#"+id).css("background-image",'url("img/0001-weather-07.png")');
+    	             break;
+    	        case data02[i] == "W007":
+    	                var id = "weatherimg" + i;  
+    	             $("#"+id).css("background-image",'url("img/0001-weather-08.png")');
+    	             break;
+    	        case data02[i] == "W008":
+    	            var id = "weatherimg" + i;  
+    	             $("#"+id).css("background-image",'url("img/0001-weather-10.png")');
+    	             break;
+    	        case data02[i] == "W009":
+    	             var id = "weatherimg" + i;  
+    	             $("#"+id).css("background-image",'url("img/0001-weather-06.png")');
+    	             break;
+    	        case data02[i] == "W010":
+    	             var id = "weatherimg" + i;  
+    	             $("#"+id).css("background-image",'url("img/0001-weather-09.png")');
+    	             break;
+	    }
+            }
+    },
 	
 	loadChart01 : function(){
 	    data_x3 = new Array("1.5", "1.6", "1.7", "1.35", "0.6", "1.0", "1.2");
