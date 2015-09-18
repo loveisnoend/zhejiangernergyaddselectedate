@@ -1,15 +1,28 @@
 sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 	onInit: function() {
-
 		this.getView().addEventDelegate({
 			// not added the controller as delegate to avoid controller functions with similar names as the events
 			onAfterShow: jQuery.proxy(function(evt) {
+			    var date = new Date();
+			    var dateStr = date.toLocaleDateString();
+			    var dateStrs = dateStr.split("/");
+			    $('#tab_content_head_01_date').html(dateStrs[0]+"年"+dateStrs[1]+"月"+dateStrs[2]+"日");
+        		var weekDay = ["星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+                var dateStrh = dateStrs[0]+"-"+dateStrs[1]+"-"+dateStrs[2];
+                var myDate = new Date(Date.parse(dateStrh.replace(/-/g, "/")));
+                $('#tab_content_head_01_week').html(weekDay[myDate.getDay()]);
+                // alert(weekDay[myDate.getDay()]);
 				this.onAfterShow(evt);
 			}, this)
 		});
 	},
 
 	onAfterShow: function(evt) {
+	    //给标题换时间 和 周几
+	   // var date = new Date();
+	   // var time2 = new Date().format("yyyy-MM-dd");
+	   // $('#tab_content_head_01_date').html(time2);
+	    
 	    data_x3 = new Array("1.2", "1.1", "1.4", "1.15", "1.2", "1.15", "1.2");
  		data_x4 = new Array("0.015", "0.01", "0.04", "0.02", "0.025", "0.015", "0.025");
 		this.loadChart();

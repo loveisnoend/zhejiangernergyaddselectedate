@@ -151,7 +151,8 @@
 .tab_center2_01_choose01
 {
     width:117px;
-    height:60px;
+    height:50px;
+    margin-top:7px;
     /*float:left;*/
 }
 .tab_center2_01_choose01 select option
@@ -182,6 +183,7 @@
     font-family:微软雅黑;
     font-size: 15px;
     margin-bottom:18px;
+    margin-top:7px;
 }
 .tab_center2_02_01
 {
