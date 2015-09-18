@@ -26,84 +26,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
                 shadows : false
             }
          });
-        //  $('.menu_bottom li').removeClass('but01 but02 but03 but04 but05 but06 but07 but08 nav_BI');
-        //  if (slidePageNum == 0){
-        //      mySwiper.swipeTo(0, 500, false);
-        //      $('#but01').addClass("but01 nav_BI");
-        //  }
-        //  if (slidePageNum == 1){
-        //      mySwiper.swipeTo(1, 500, false);
-        //      $('#but02').addClass("but02 nav_BI");
-        //  }
-        //  if (slidePageNum == 2){
-        //      mySwiper.swipeTo(2, 500, false);
-        //      $('#but03').addClass("but03 nav_BI");
-        //  }
-        //  if (slidePageNum == 3){
-        //      mySwiper.swipeTo(1, 500, false);
-        //      $('#but01').addClass("but01 nav_BI");
-        //  }
-        //  if (slidePageNum == 4){
-        //      mySwiper.swipeTo(4, 500, false);
-        //      $('#but05').addClass("but05 nav_BI");
-        //  }
-        //  if (slidePageNum == 5){
-        //      mySwiper.swipeTo(5, 500, false);
-        //      $('#but06').addClass("but06 nav_BI");
-        //  }
-        //  if (slidePageNum == 6){
-        //      mySwiper.swipeTo(6, 500, false);
-        //      $('#but07').addClass("but03 nav_BI");
-        //  }
-        // if (slidePageNum == 7){
-        //      mySwiper.swipeTo(7, 500, false);
-        //      $('#but08').addClass("but03 nav_BI");
-        //  }
-        //  $('#but01').click(function(){
-        //       mySwiper.swipeTo(0, 500, false);
-        //       $('.menu_bottom li').removeClass('but01 but02 but03 but04 but05 but06 but07 but08 nav_BI');
-        //       $('#but01').addClass("but01 nav_BI");
-        //  });
-        //  $('#but02').click(function(){
-        //       mySwiper.swipeTo(1, 500, false);
-        //       $('.menu_bottom li').removeClass('but01 but02 but03 but04 but05 but06 but07 but08 nav_BI');
-        //       $('#but02').addClass("but02 nav_BI");
-        //  });
-        //  $('#but03').click(function(){
-        //       mySwiper.swipeTo(2, 500, false);
-        //       $('.menu_bottom li').removeClass('but01 but02 but03 but04 but05 but06 but07 but08 nav_BI');
-        //       $('#but03').addClass("but03 nav_BI");
-        //  });
-        //  $('#but04').click(function(){
-        //       mySwiper.swipeTo(3, 500, false);
-        //       $('.menu_bottom li').removeClass('but01 but02 but03 but04 but05 but06 but07 but08 nav_BI');
-        //       $('#but04').addClass("but04 nav_BI");
-        //  });
-        //  $('#but05').click(function(){
-        //       mySwiper.swipeTo(4, 500, false);
-        //       $('.menu_bottom li').removeClass('but01 but02 but03 but04 but05 but06 but07 but08 nav_BI');
-        //       $('#but05').addClass("but05 nav_BI");
-        //  });
-        //  $('#but06').click(function(){
-        //       mySwiper.swipeTo(5, 500, false);
-        //       $('.menu_bottom li').removeClass('but01 but02 but03 but04 but05 but06 but07 but08 nav_BI');
-        //       $('#but06').addClass("but06 nav_BI");
-        //  });
-        // $('#but07').click(function(){
-        //       mySwiper.swipeTo(6, 500, false);
-        //       $('.menu_bottom li').removeClass('but01 but02 but03 but04 but05 but06 but07 but08 nav_BI');
-        //       $('#but07').addClass("but07 nav_BI");
-        //  });
-        // $('#but08').click(function(){
-        //       mySwiper.swipeTo(7, 500, false);
-        //       $('.menu_bottom li').removeClass('but01 but02 but03 but04 but05 but06 but07 but08 nav_BI');
-        //       $('#but08').addClass("but08 nav_BI");
-        //  });
 	},
 	
-		loadData_top : function(){
-	    allenergy = null;
-	    mom = null;
+    loadData_top : function(){
+	    var allenergy = null;
+	    var mom = null;
 	    var mParameters = {};
 		mParameters['async'] = true;
 		mParameters['success'] = jQuery.proxy(function(sRes) {
@@ -116,13 +43,27 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 				    mom = sRes.results[i].KPI_VALUE;
 				}
 				
-			};
-			this.loadData02();
+			}
+			this.loadData02(mom,allenergy);
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			alert("Get Data Error");
 		}, this);
 	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_01_V02", mParameters);
+	},
+	
+	// 设定全社会用电量和同比值
+	loadData02 : function(mom,allenergy){
+	    if(mom < 0){
+	        $('#mom_img').attr('src',"img/down.png");
+	        $('#mom').html("下降" + Math.abs(mom));
+	    }else if(mom >= 0){
+	        $('#mom_img').attr('src',"img/up.png");
+	        $('#mom').html("上升" + Math.abs(mom));
+	    }
+	    var allenergy_change = allenergy.substring(0,2);
+	    $('#allenergy').html(allenergy_change);
+	    
 	},
 	
 	loadData : function(){
@@ -168,6 +109,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 			// not added the controller as delegate to avoid controller functions with similar names as the events
 			onAfterShow: jQuery.proxy(function() {
                 this._drawSwiper();
+                this.loadData_top();
 			}, this)
 		});
 	},
