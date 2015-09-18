@@ -8,11 +8,11 @@
 	                $("#select2div").append("<select class='select'><option value='兰溪'>兰溪</option></select>");
                     tab.getController().loadChart01();
                     break;
-                case value==1:
-                    $("#select2div").empty();
-                    $("#select2div").append("<select class='select'><option value='集团'>集团</option></select>");
-                    tab.getController().loadChart02();
-                    break;select2
+                // case value==1:
+                //     $("#select2div").empty();
+                //     $("#select2div").append("<select class='select'><option value='集团'>集团</option></select>");
+                //     tab.getController().loadChart02();
+                //     break;
                 case value==2:
                     $("#select2div").empty();
                     $("#select2div").append("<select class='select'><option value='台二'>台二</option></select>");
@@ -38,45 +38,45 @@
             <div id="demo" style="color:white;margin-top:15px;margin-bottom:10px;margin-left:40px;font-weight:bold;font-family:微软雅黑;font-size: 17px;"><span id="demo"><b onClick="doit2()" style="cursor:pointer;">经营业绩</b> > 全社会用电量</span></div>
             <div class="tab_content">
                 <div class="tab_content_head">
-                    <div class="tab_content_head_01" id="tab_content_head_01_content_date">2015年8月11日</div>
-                    <div class="tab_content_head_01" id="tab_content_head_01_week">周二</div>
+                    <div class="tab_content_head_01" id="tab_daytime">2015年8月11日</div>
+                    <div class="tab_content_head_01" id="tab_weekday">周二</div>
                 </div>
                 <div class="tab_content_center1">
                     <div class="tab_center1_01">
                         <div class="tab_001 tab01">
-                            <div class="tab_001_date">08-11</div>
-                            <div class="tab_001_image img003"></div>
-                            <div class="tab_001_font">30℃</div>
+                            <div class="tab_001_date" id="temperature0_date">08-11</div>
+                            <div class="tab_001_image img003" id="weatherimg0"></div>
+                            <div class="tab_001_font"><b id="temperature0">30</b>℃</div>
                         </div>
                         <div class="tab_001 ">
-                            <div class="tab_001_date">08-12</div>
-                            <div class="tab_001_image img003"></div>
-                            <div class="tab_001_font">30℃</div>
+                            <div class="tab_001_date" id="temperature1_date">08-12</div>
+                            <div class="tab_001_image img003" id="weatherimg1"></div>
+                            <div class="tab_001_font"><b id="temperature1">30</b>℃</div>
                         </div>
                         <div class="tab_001 ">
-                            <div class="tab_001_date">08-13</div>
-                            <div class="tab_001_image img001"></div>
-                            <div class="tab_001_font">30℃</div>
+                            <div class="tab_001_date" id="temperature2_date">08-13</div>
+                            <div class="tab_001_image img001" id="weatherimg2"></div>
+                            <div class="tab_001_font"><b id="temperature2">30</b>℃</div>
                         </div>
                         <div class="tab_001 ">
-                            <div class="tab_001_date" style="font-weight:bold;font-size:22px;margin-top: 29px;">08-14</div>
-                            <div class="tab_001_image img003"></div>
-                            <div class="tab_001_font">30℃</div>
+                            <div class="tab_001_date" id="temperature3_date" >08-14</div>
+                            <div class="tab_001_image img003" id="weatherimg3"></div>
+                            <div class="tab_001_font"><b id="temperature3">30</b>℃</div>
                         </div>
                         <div class="tab_001 ">
-                            <div class="tab_001_date">08-15</div>
-                            <div class="tab_001_image img002"></div>
-                            <div class="tab_001_font">30℃</div>
+                            <div class="tab_001_date" id="temperature4_date">08-15</div>
+                            <div class="tab_001_image img002" id="weatherimg4"></div>
+                            <div class="tab_001_font"><b id="temperature4">30</b>℃</div>
                         </div>
                         <div class="tab_001 ">
-                            <div class="tab_001_date">08-16</div>
-                            <div class="tab_001_image img001"></div>
-                            <div class="tab_001_font">30℃</div>
+                            <div class="tab_001_date" id="temperature5_date">08-16</div>
+                            <div class="tab_001_image img001" id="weatherimg5"></div>
+                            <div class="tab_001_font"><b id="temperature5">30</b>℃</div>
                         </div>
                         <div class="tab_001">
-                            <div class="tab_001_date">08-17</div>
-                            <div class="tab_001_image img001"></div>
-                            <div class="tab_001_font">30℃</div>
+                            <div class="tab_001_date" id="temperature6_date" style="font-weight:bold;font-size:22px;margin-top: 29px;">08-17</div>
+                            <div class="tab_001_image img001" id="weatherimg6"></div>
+                            <div class="tab_001_font"><b id="temperature6">30</b>℃</div>
                         </div>
                     </div>
                     <div class="tab_center1_02" id="line01"></div>
@@ -98,9 +98,10 @@
                         <div class="tab_center2_01_font">按地市</div>
                         <div class="tab_center2_01_choose01">
                             <select class="select" id="select01" onchange="change(this.value)">
-                              <option value="1" seleted>杭州</option>
+                              <!--<option value="1" >杭州</option>-->
+                              <option value="4" seleted>淮南</option>
                               <option value="2">台州</option>
-                              <option value="4">淮南</option>
+                              
                               <option value="3">金华</option>
                               
                             </select>
@@ -108,7 +109,7 @@
                         <div class="tab_center2_01_font">按电厂</div>
                         <div class="tab_center2_01_choose01" id="select2div">
                             <select class="select">
-                              <option value="集团">集团</option>
+                              <option value="凤台">凤台</option>
                             </select>
                         </div>
                     </div>
