@@ -214,25 +214,57 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 	
 	// 设定头部跑马灯信息
 	_loadData03 : function(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal){
-	    
-	    $('#valueCPIhuanbiID').html( Math.abs(valueCPIhuanbi)+"%↓");
-	    $('#valueGDPID').html( Math.abs(valueGDP)+"%↑");
-	    $('#valueCPItongbiID').html( Math.abs(valueCPItongbi)+"%↑");
-	    $('#valuePPItongbiID').html( Math.abs(valuePPItongbi)+"%↑");
-	    $('#valuePMIproduceID').html( Math.abs(valuePMIproduce)+"%↓");
-	    $('#valuePMInonProduceID').html( Math.abs(valuePMInonProduce)+"%↑");
-	    $('#valueGDPTotalID').html( Math.abs(valueGDPTotal));
-	    
-	    
-	   // if(mom < 0){
-	   //     $('#mom_img').attr('src',"img/down.png");
-	   //     $('#mom').html("下降" + Math.abs(mom));
-	   // }else if(mom >= 0){
-	   //     $('#mom_img').attr('src',"img/up.png");
-	   //     $('#mom').html("上升" + Math.abs(mom));
-	   // }
-	   // var allenergy_change = allenergy.substring(0,2);
-	   // $('#allenergy').html(allenergy_change);
+
+	    // CPI环比
+        if (valueCPIhuanbi > 0) {
+            $('#valueCPIhuanbiID').html(valueCPIhuanbi+"%↑");
+            $('#valueCPIhuanbiID').css('color','#32FF32');
+        } else {
+            $('#valueCPIhuanbiID').html(valueCPIhuanbi+"%↓");
+            $('#valueCPIhuanbiID').css('color','red');
+        }
+        // GDP增长率
+        if (valueGDP > 0) {
+            $('#valueGDPID').html(valueGDP+"%↑");
+            $('#valueGDPID').css('color','#32FF32');
+        } else {
+            $('#valueGDPID').html(valueGDP+"%↓");
+            $('#valueGDPID').css('color','red');
+        }
+        // CPI同比
+        if (valueCPItongbi > 0) {
+            $('#valueCPItongbiID').html(valueCPItongbi+"%↑");
+            $('#valueCPItongbiID').css('color','#32FF32');
+        } else {
+            $('#valueCPItongbiID').html(valueCPItongbi+"%↓");
+            $('#valueCPItongbiID').css('color','red');
+        }
+        // PPI同比
+        if (parseFloat(valuePPItongbi) > 0) {
+            $('#valuePPItongbiID').html(valuePPItongbi+"%↑");
+            $('#valuePPItongbiID').css('color','#32FF32');
+        } else {
+            $('#valuePPItongbiID').html(valuePPItongbi+"%↓");
+            $('#valuePPItongbiID').css('color','red');
+        }
+        // 制造业-同比 PMI
+        if (valuePMIproduce > 0) {
+            $('#valuePMIproduceID').html(valuePMIproduce+"%↑");
+            $('#valuePMIproduceID').css('color','#32FF32');
+        } else {
+            $('#valuePMIproduceID').html(valuePMIproduce+"%↓");
+            $('#valuePMIproduceID').css('color','red');
+        }
+        // 非制造业-同比
+        if (valuePMInonProduce > 0) {
+            $('#valuePMInonProduceID').html(valuePMInonProduce+"%↑");
+            $('#valuePMInonProduceID').css('color','#32FF32');
+        } else {
+            $('#valuePMInonProduceID').html(valuePMInonProduce+"%↓");
+            $('#valuePMInonProduceID').css('color','red');
+        }
+        // GDP总值
+	    $('#valueGDPTotalID').html(valueGDPTotal);
 	},
 	
 /**
