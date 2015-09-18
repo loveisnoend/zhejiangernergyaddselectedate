@@ -57,7 +57,7 @@
 	font-family:Arial;
 	border: 2% solid rgb(142,191,224);
 	border-radius: 10px 10px 10px 10px;
-	background-color:rgb(25,25,25);
+	/*background-color:rgb(25,25,25);*/
 
 }
 .demo_header{
@@ -65,7 +65,7 @@
 	 padding: 3% 10%;
 	 text-align:center;
 	 color:#FFFFFF;
-	 background-color:rgb(44,44,44);
+	 /*background-color:rgb(44,44,44);*/
 	 font-size:130%;
 	 font-weight:bold;
 	 
