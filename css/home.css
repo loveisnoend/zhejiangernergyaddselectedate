@@ -155,7 +155,7 @@ width:11%;
 	text-align:center;
 	color:#FFFFFF;
 	font-size:400%;
-	font-family:SimHei;
+	font-family:微软雅黑;
 	vertical-align:top;
 
 }
@@ -266,4 +266,7 @@ progress::-webkit-progress-value  { border-radius: 4px 4px 4px 4px;background: r
 }
 .swiper-active-switch {
   background: #fff;
+}
+.span_shuxian{
+    color:white;
 }
