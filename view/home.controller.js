@@ -160,22 +160,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 	
 	// 获取跑马灯的动态信息
 	_loadTopDynamicShowData : function(){
-	    
-	    // CPI环比
-	    var valueCPIhuanbi;
-	    // GDP增长率
-        var valueGDP;
-        // CPI同比
-        var valueCPItongbi;
-        // PPI同比
-        var valuePPItongbi;
-        // 制造业-同比 PMI
-        var valuePMIproduce;
-        // 非制造业-同比
-        var valuePMInonProduce;
-        // GDP总值
-        var valueGDPTotal;
-        
+
 		var mParameters = {};
 		mParameters['async'] = true;
 	    

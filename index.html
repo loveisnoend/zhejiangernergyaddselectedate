@@ -28,6 +28,28 @@
 		<!--<script type="text/javascript" src="js/idangerous.swiper.3dflow-2.0.js"></script>-->
 		<script type="text/javascript" src="js/idangerous.swiper.js"></script>
 		<script>
+		    var usrid = "ERPTEST1";
+		    
+		    // 日利润
+		    var date, data1, data2, data3, data4;
+	       // var income , cost, profit;
+	        
+	        // CPI环比
+    	    var valueCPIhuanbi;
+    	    // GDP增长率
+            var valueGDP;
+            // CPI同比
+            var valueCPItongbi;
+            // PPI同比
+            var valuePPItongbi;
+            // 制造业-同比 PMI
+            var valuePMIproduce;
+            // 非制造业-同比
+            var valuePMInonProduce;
+            // GDP总值
+            var valueGDPTotal;
+		</script>
+		<script>
 		    require.config({
                 paths: {
                     echarts: '.'
@@ -196,6 +218,9 @@
             		 app.addPage(internetPowerVolume);
 					app.placeAt("content");
 				}
+				if(window.cordova && appContext && !window.sap_webide_companion) {
+                    usrid = appContext.registrationContext.user.toUpperCase();
+        		} 
                 startApp();
 		</script>
 		
