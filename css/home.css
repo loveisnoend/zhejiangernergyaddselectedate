@@ -86,24 +86,27 @@
 
 .demo_shuzi_white{
 	margin:0 auto;
-	font-size:580%;
+	font-size:650%;
 	color:#FFFFFF;
 	font-weight:600;
 	text-align:center;
+	font-family:微软雅黑;
 }
 .demo_shuzi_red{
 	margin:0 auto;
-	font-size:580%;
+	font-size:650%;
 	color:red;
 	font-weight:600;
 	text-align:center;
+	font-family:微软雅黑;
 }
 .demo_shuzi_green{
 	margin:0 auto;
-	font-size:580%;
+	font-size:650%;
 	color:#00ff00;
 	font-weight:600;
 	text-align:center;
+	font-family:微软雅黑;
 }
 .demo_jiange{
 height:15%;
@@ -133,6 +136,7 @@ width:11%;
 }
 .demo_content_top{
 	height:65%;
+	font-family:微软雅黑;
 }
 .demo_content_foot{
 	height:24%;

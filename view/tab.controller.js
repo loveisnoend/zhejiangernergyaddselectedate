@@ -6,7 +6,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 			    var date = new Date();
 			    var dateStr = date.toLocaleDateString();
 			    var dateStrs = dateStr.split("/");
-			    $('#tab_content_head_01_date').html(dateStrs[0]+"年"+dateStrs[1]+"月"+dateStrs[2]+"日");
+			    if(dateStrs[1]!=='undefined'){
+			        $('#tab_content_head_01_content_date').html(dateStrs[0]+"年"+dateStrs[1]+"月"+dateStrs[2]+"日"); 
+			    }
         		var weekDay = ["星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
                 var dateStrh = dateStrs[0]+"-"+dateStrs[1]+"-"+dateStrs[2];
                 var myDate = new Date(Date.parse(dateStrh.replace(/-/g, "/")));
