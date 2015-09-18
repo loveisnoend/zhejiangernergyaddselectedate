@@ -2,7 +2,8 @@
  <div class="nav_main">
     
         <div class="msg_top">
-            <marquee behavior="scroll"><div class="msg_text"><b style="color:#32FF32;">GDP 7.8 3%↓</b>&nbsp;&nbsp;<span class="span_shuxian">|</span> &nbsp;&nbsp;<b style="color:#32FF32;">PPI 250 2%↑</b>&nbsp;&nbsp;<span class="span_shuxian">|</span> &nbsp;&nbsp;PMI 50 2%↑ &nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;工业增加值6.8 &nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;<b style="color:red;">发电增速 1.1%</b> &nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;全社会用电量预测303亿千瓦时 &nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;PMI 50 2%↑ &nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;全国平均利用 668小时</div></marquee> 
+            <!--<marquee behavior="scroll"><div class="msg_text"><b style="color:#32FF32;" id="valueGDPID">GDP 7.8 3%↓</b>&nbsp;&nbsp;<span class="span_shuxian">|</span> &nbsp;&nbsp;<b style="color:#32FF32;">PPI 250 2%↑</b>&nbsp;&nbsp;<span class="span_shuxian">|</span> &nbsp;&nbsp;PMI 50 2%↑ &nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;工业增加值6.8 &nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;<b style="color:red;">发电增速 1.1%</b> &nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;全社会用电量预测303亿千瓦时 &nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;PMI 50 2%↑ &nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;全国平均利用 668小时</div></marquee> -->
+            <marquee behavior="scroll"><div class="msg_text">GDP增长率<b style="color:#32FF32;" id="valueGDPID">GDP 7.8 3%↓</b>&nbsp;&nbsp;<span class="span_shuxian">|</span> &nbsp;&nbsp;PPI同比<b style="color:#32FF32;" id="valuePPItongbiID">PPI 250 2%↑</b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;制造业-同比<b id="valuePMIproduceID">PMI 50 2%↑</b> &nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;非制造业-同比<b id="valuePMInonProduceID"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;GDP总值<b style="color:red;" id="valueGDPTotalID"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;CPI环比<b style="color:red;" id="valueCPIhuanbiID"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;CPI同比<b style="color:red;" id="valueCPItongbiID"></b></div></marquee> 
         </div>
         <div class="content_center">
             <!-- Swiper -->
@@ -17,17 +18,17 @@
                 				    <b id="allenergy"></b><span class="demo_shuzi_span_shangbiao" style="margin-left: -25px;">亿千瓦时</span>			
                 				<!--<span class="demo_shuzi_span_shangbiao">亿千瓦时</span>-->
                 				</div>
-                				<div class="demo_content_1">同比<b id="mom"></b>&nbsp;<img id="mom_img" src="img/write.png" class="demo_img_up" style="vertical-align:bottom;"/></div>
+                				<div class="demo_content_1">同比<b id="mom"></b>%&nbsp;<img id="mom_img" src="img/write.png" class="demo_img_up" style="vertical-align:bottom;"/></div>
                 				<div style="height:20%;"></div>
                 			</div>
                 			<div class="demo_content_foot">
                 				<div class="demo_jiange_2"></div>
                 				<div class="demo_content_1">
-                					<span class="demo_span_jiange">2015年8月11日</span><span class="demo_span_jiange">周二</span><span class="demo_span_jiange">杭州</span><span class="demo_span_jiange">多云</span>
+                					<span class="demo_span_jiange" id="home_daytime">2015年8月11日</span><span class="demo_span_jiange" id="home_Week">周二</span><span class="demo_span_jiange" id="home_place">杭州</span><span class="demo_span_jiange" id="home_weather">天气</span>
                 				</div>
                 				<div class="demo_content_foot_1">
-                					<span><img src="img/sun-ico.png" style="height:70px;weight:70px;"/></span>
-                					<span style="vertical-align:top;">37</span><span class="demo_shuzi_span_shangbiao" style="font-size:40%">o</span><span style="margin:0% 5%;vertical-align:top;">C</span>
+                					<span><img id="home_weather_img" src="img/sun-ico.png" style="height:70px;weight:70px;"/></span>
+                					<span style="vertical-align:top;" id="home_temperature">37</span><span class="demo_shuzi_span_shangbiao" style="font-size:40%">o</span><span style="margin:0% 5%;vertical-align:top;">C</span>
                 					</div>
                 			</div>
                 			<div style="font-family:微软雅黑;position:absolute;top:62%;left:38%;text-align:center;background-image:url(img/gaowenyujing.png);display:inline;width:100px;height:30px;font-size:16px;color:#FFFFFF;line-height:200%;">

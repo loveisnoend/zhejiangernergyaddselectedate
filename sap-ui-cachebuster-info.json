@@ -90,8 +90,8 @@
   "js/jquery-1.10.1.min.js": "1442561725413",
   "js/powerPlantMap.js": "1442561725693",
   "README.md": "1442561725713",
-  "view/home.controller.js": "1442562219594",
-  "view/home.view.html": "1442562165640",
+  "view/home.controller.js": "1442568690270",
+  "view/home.view.html": "1442568644990",
   "view/internetPowerVolume.controller.js": "1442561725763",
   "view/internetPowerVolume.view.html": "1442561725862",
   "view/jingyingyeji.controller.js": "1442561725433",
@@ -121,5 +121,15 @@
   "view/home07.view.html": "1442561725633",
   "view/home08.controller.js": "1442561725533",
   "view/home08.view.html": "1442561725823",
-  "img/bg-img-003.png": "1442561725443"
+  "img/bg-img-003.png": "1442561725443",
+  "img/0001-weather-01.png": "1442483481464",
+  "img/0001-weather-02.png": "1442483481399",
+  "img/0001-weather-03.png": "1442483481581",
+  "img/0001-weather-04.png": "1442483481498",
+  "img/0001-weather-05.png": "1442483481492",
+  "img/0001-weather-06.png": "1442483481404",
+  "img/0001-weather-07.png": "1442483481560",
+  "img/0001-weather-08.png": "1442483481527",
+  "img/0001-weather-09.png": "1442483481504",
+  "img/0001-weather-10.png": "1442483481378"
 }
