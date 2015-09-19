@@ -34,19 +34,16 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 		tab_usetime = "发电量";
 	},
 	onAfterShow: function(evt) {
-	    this.loadData_v01();
-		// 设定头部跑马灯信息 common.js
-		_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);
-    },
-	loadData_v01 : function(){
+	    
 	    data01 = new Array();
 	    data02 = new Array();
 	    data03 = new Array();
 	    data04= new Array();
-	    place_v01 = tab_place;
-	     daytime = new Date();
-	     year = daytime.getFullYear();
-	     month = daytime.getMonth();
+	    dataXName = new Array();
+	    
+	    daytime = new Date();
+        year = daytime.getFullYear();
+        month = daytime.getMonth();
 	    var month_true;
 	    if( month > 8){
 	        month_true = month + 1;
@@ -64,24 +61,63 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 	        day01 = "0" + day01;
 	    }
 	    final_daytime01 = year+month_true+day01;
+	    
+	    // 全社会用电量默认地区（浙江）  发电厂（浙江）
+	    this.loadChart01('金华','兰溪发电');
+		// 设定头部跑马灯信息 common.js
+		_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);
+    },
+    // 改变地区
+    loadChart01 : function(cityName, defaultPowerPlant){
+        tab_usetime = '发电量';
+	    // 加载发电量和利用小时数据
+	    this.loadData_v02(defaultPowerPlant,'发电量');
+	    // 加载天气温度好全社会用电量数据
+	    this.loadData_v01(cityName);
+	},
+	// 改变电厂
+	loadChart02 : function(currentPlantName){
+	    tab_usetime = '发电量';
+	    // 加载发电量和利用小时数据
+	    this.loadData_v02(currentPlantName,'发电量');
+	    this.loadChart();  
+	},
+	// 改变发电量和利用小时
+	loadChart03 : function(tab_usetime){
+	    // 加载发电量和利用小时数据
+	    this.loadData_v02(powerplant_v02, tab_usetime);
+	    // 加载天气温度好全社会用电量数据
+	    this.loadData_v01(place_v01);
+	},
+	loadData_v01 : function(cityName){
+
+	    data01 = [];
+	    data02 = [];
+	    data03 = [];
+	    data04= [];
+	    dataXName = [];
+	    place_v01 = cityName;
+
 	    var mParameters = {};
 		mParameters['async'] = true;
 		mParameters['success'] = jQuery.proxy(function(sRes) {
 			//设置数据
 			for (var i in sRes.results) {
-			 //   console.log(final_daytime);
-			 //   console.log(final_daytime01);
-				if (sRes.results[i].KPI_DESC == place_v01&& sRes.results[i].KPI_TYPE == '地市-最高温度'&& final_daytime >= sRes.results[i].KPI_DATE && sRes.results[i].KPI_DATE >=final_daytime01){  //温度
-				    data01.push(sRes.results[i].KPI_VALUE); 
-				    var date_yuan = sRes.results[i].KPI_DATE;
-				   data04.push(date_yuan.substring(4,6)+"-"+date_yuan.substring(6,8));
-				}else if (sRes.results[i].KPI_DESC == place_v01&& sRes.results[i].KPI_TYPE == '地市-气象'&& final_daytime >= sRes.results[i].KPI_DATE && sRes.results[i].KPI_DATE >=final_daytime01 ){
-				    data02.push(sRes.results[i].KPI_VALUE);
-				}else if (sRes.results[i].KPI_DESC == place_v01&& sRes.results[i].KPI_TYPE == '地市-社会用电量'&& final_daytime >= sRes.results[i].KPI_DATE && sRes.results[i].KPI_DATE >=final_daytime01 ){
-				    data03.push(sRes.results[i].KPI_VALUE);
-				}
-			};
-
+			    // 按地市抓取数据
+			    if (sRes.results[i].KPI_DESC == place_v01) {
+			       if (sRes.results[i].KPI_TYPE == '地市-最高温度'&& final_daytime >= sRes.results[i].KPI_DATE && sRes.results[i].KPI_DATE >=final_daytime01){  //温度
+    				    data01.push(sRes.results[i].KPI_VALUE); 
+    				    var date_yuan = sRes.results[i].KPI_DATE;
+    				    // 日期
+    				    data04.push(date_yuan.substring(4,6)+"-"+date_yuan.substring(6,8));
+    				    dataXName.push(date_yuan.substring(0,4)+'年'+date_yuan.substring(4,6)+"月"+date_yuan.substring(6,8)+'日');
+    				}else if (sRes.results[i].KPI_TYPE == '地市-气象'&& final_daytime >= sRes.results[i].KPI_DATE && sRes.results[i].KPI_DATE >=final_daytime01 ){
+    				    data02.push(sRes.results[i].KPI_VALUE);
+    				}else if (sRes.results[i].KPI_TYPE == '地市-社会用电量'&& final_daytime >= sRes.results[i].KPI_DATE && sRes.results[i].KPI_DATE >=final_daytime01 ){
+    				    data03.push(sRes.results[i].KPI_VALUE);
+    				} 
+			    }
+			}
 			this.loadChart();
 			this.loadData_weather();
 		}, this);
@@ -90,6 +126,40 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 		}, this);
 	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_02_V01", mParameters);
 	},
+	
+	// 发电量和利用小时chart加载
+	loadData_v02 : function(currentPowerPlant, tab_usetime){
+
+	    // 利用小时或发电量
+        data02_01 = new Array();
+        data02_02 = new Array();
+        // 电厂区分值
+        powerplant_v02 = currentPowerPlant;
+        // 发电量和利用小时指标区分值
+        usetime_v02 = tab_usetime;
+        var mParameters = {};
+		mParameters['async'] = true;
+		mParameters['success'] = jQuery.proxy(function(sRes) {
+		    
+			//设置数据
+			for (var i in sRes.results) {
+				if (sRes.results[i].KPI_DESC == powerplant_v02&& sRes.results[i].KPI_TYPE == usetime_v02 && final_daytime >= sRes.results[i].KPI_DATE && sRes.results[i].KPI_DATE > final_daytime01){
+				    data02_01.push(sRes.results[i].KPI_VALUE);    
+				}
+			}
+		}, this);
+		mParameters['error'] = jQuery.proxy(function(eRes) {
+			alert("Get Data Error");
+		}, this);
+		
+		if(window.cordova && appContext && !window.sap_webide_companion) {
+            var usrid = appContext.registrationContext.user.toUpperCase();
+		} else {
+			var usrid = "ZS_BI_DATA_ORG_2080";
+		}
+		//this.getView().bindElement("/EE_PERSONPHOTO_SET('" + usrid + "')");
+	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_02_V02?$filter=(BNAME eq 'ERPTEST1')", mParameters);
+    },
 	loadData_weather : function(){
             var d = new Date();
     	    var weekday=new Array(7);
@@ -102,7 +172,6 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
             weekday[6]="周六";
             $('#tab_weekday').html(weekday[d.getDay()%7]);
             $('#tab_daytime').html(year + "年" + month + "月" + day + "日");
-        
             
             $('#temperature0_date').html(data04[0]);
             $('#temperature1_date').html(data04[1]);
@@ -162,31 +231,25 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
     	             $("#"+id).css("background-image",'url("img/0001-weather-09.png")');
     	             break;
 	    }
-            }
+    }
     },
-	
-	loadChart01 : function(){
-	    data_x3 = new Array("1.5", "1.6", "1.7", "1.35", "0.6", "1.0", "1.2");
- 		data_x4 = new Array("0.015", "0.01", "0.04", "0.02", "0.025", "0.015", "0.025");
- 		this.loadChart();
-	},
-	
-	loadChart02 : function(){
-	    data_x3 = new Array("1.2", "1.1", "1.4", "1.15", "1.2", "1.15", "1.2");
- 		data_x4 = new Array("0.015", "0.01", "0.04", "0.02", "0.025", "0.015", "0.025");
- 		this.loadChart();
-	},
 
 	loadChart: function() {
-		var data_x1 = new Array("27", "30", "37", "30", "31", "29", "34");
-		var data_x2 = data_x1;
-  	    //data_x3 = new Array("1.2", "1.1", "1.4", "1.15", "1.2", "1.15", "1.2");
- 		//data_x4 = new Array("0.015", "0.01", "0.04", "0.02", "0.025", "0.015", "0.025");
+	    // 温度
+		var data_x1 = data01;
+		var data_x2 = data01;
+		// 全社会用电量
+  	    data_x3 = data03;
+  	    // 利用小时或发电量
+ 		data_x4 = data02_01;
+
+ 		// 横坐标名 日期
+ 		var data_xname = dataXName;
 		require(
             [
                 'echarts',
                 'echarts/chart/line',
-                'echarts/chart/bar',
+                'echarts/chart/bar'
             ],
 			draw);
 		function draw(e) {
@@ -202,297 +265,218 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 		}
 
 		function drawline01(e) {
-			drawline(e, 'line01', data_x1, data_x2, 40, 25, 40, 25, 3, 'white', 'white');
+			drawline(e, 'line01', data_x1, data_x2, data_xname, 40, 25, 40, 25, 3, 'white', 'white');
 		}
 
 		function drawline02(e) {
-			drawline(e, 'line02', data_x3, data_x4, 1.40, 1.00, 0.05, 0.01, 4, '#FFB300', 'rgb(51,255,50)');
+		    var temY3;
+		    var temY4;
+			if (usetime_v02 == "发电量"){
+			    temY3 = 5000;
+			    temY4 = 1000;
+			}else {
+			    temY3 = 20;
+			    temY4 = 0;
+			}
+			drawline(e, 'line02', data_x3, data_x4, data_xname, 20000, 5000, temY3, temY4, 4, '#FFB300', 'rgb(51,255,50)');
 		}
 
-		function drawline(e, id, datax1, datax2, y1, y2, y3, y4, n, color1, color2) {
+		function drawline(e, id, datax1, datax2, data_xname, y1, y2, y3, y4, n, color1, color2) {
 			mychart = e.init(document.getElementById(id));
 			var option="";
 			if(id == "line02"){
-			    option = {
-  		// 		legend: {
-    //               	orient:'vertical',
-    //               	zlevel : 2,
-    //               	x:'720',
-    //               	y:'20',
-    //               	textStyle:{
-				// 		color:'white',
-				// 		fontFamily:'微软雅黑'
-				// 	},
-    //     			data:['社会用电量','发电量']
-   	// 		 	},
-			    tooltip:{
-			       trigger:'axis' ,
-			       backgroundColor:'rgb(234,234,234)',
-			       textStyle:{
-			           color:'rgb(0,0,0)',
-			           baseline:'top'
-			       },
-			       axisPointer:{
-			           type: 'none'
-			       }
-			    },
-				color: [color1, color2],
-				grid: {
-					x: 50,
-					y: 20,
-					x2: 50,
-					y2: 20,
-					borderWidth: 0
-				},
-				xAxis: [
-					{
-						show: false,
-						type: 'category',
-						data: ['2015年8月11日', '2015年8月12日', '2015年8月13日', '2015年8月14日', '2015年8月15日', '2015年8月16日', '2015年8月17日']
-                    }
-                ],
-				yAxis: [
-					{
-						name: '社会用电量',
-						type: 'value',
-						axisLine: {
-							show: false
-						},
-						axisLabel: {
-							textStyle: {
-								color: 'rgb(255,179,0)'
-							},
-							formatter: '{value}'
-						},
-						// 		splitLine: {
-						// 			show: false
-						// 		},
-						splitLine: {
-							// 			show: false
-							lineStyle: {
-								color: 'rgba(64,64,64,0.5)'
-							}
-						},
-						max: y1,
-						min: y2,
-						splitNumber: n
-                    },
-					{
-						name: '发电量',
-						type: 'value',
-						axisLine: {
-							show: false
-						},
-						axisLabel: {
-							textStyle: {
-								color: 'rgb(51,255,50)'
-							},
-							formatter: '{value}'
-						},
-						splitLine: {
-							// 			show: false
-							lineStyle: {
-								color: 'rgba(64,64,64,0.5)',
-							}
-						},
-						max: y3,
-						min: y4,
-						splitNumber: n,
-                    }
-                ],
-				series: [
-					{
-						name: '社会用电量',
-						type: 'line',
-						smooth: true,
-						symbol:'emptyCircle',
-						symbolSize:5,
-						// itemStyle: {normal: {areaStyle: {type: 'default'}}},
-						data: datax1
-                    },
-					{
-						name: '发电量',
-						type: 'line',
-						smooth: true,
-						yAxisIndex: 1,
-						symbol:'emptyCircle',
-						symbolSize:5,
-						//itemStyle: {normal: {areaStyle: {type: 'default'}}},
-						data: datax2
-
-                    }
-                ]
-			};
+    			option = {
+      		// 		legend: {
+        //               	orient:'vertical',
+        //               	zlevel : 2,
+        //               	x:'720',
+        //               	y:'20',
+        //               	textStyle:{
+    				// 		color:'white',
+    				// 		fontFamily:'微软雅黑'
+    				// 	},
+        //     			data:['社会用电量','发电量']
+       	// 		 	},
+    			    tooltip:{
+    			       trigger:'axis' ,
+    			       backgroundColor:'rgb(234,234,234)',
+    			       textStyle:{
+    			           color:'rgb(0,0,0)',
+    			           baseline:'top'
+    			       },
+    			       axisPointer:{
+    			           type: 'none'
+    			       }
+    			    },
+    				color: [color1, color2],
+    				grid: {
+    					x: 50,
+    					y: 20,
+    					x2: 50,
+    					y2: 20,
+    					borderWidth: 0
+    				},
+    				xAxis: [
+    					{
+    						show: false,
+    						type: 'category',
+    						data: data_xname
+    					}
+                    ],
+    				yAxis: [
+    					{
+    						name: '社会用电量',
+    						type: 'value',
+    						axisLine: {
+    							show: false
+    						},
+    						axisLabel: {
+    							textStyle: {
+    								color: 'rgb(255,179,0)'
+    							},
+    							formatter: '{value}'
+    						},
+    						// 		splitLine: {
+    						// 			show: false
+    						// 		},
+    						splitLine: {
+    							// 			show: false
+    							lineStyle: {
+    								color: 'rgba(64,64,64,0.5)'
+    							}
+    						},
+    						max: y1,
+    						min: y2,
+    						splitNumber: n
+                        },
+    					{
+    						name: '发电量',
+    						type: 'value',
+    						axisLine: {
+    							show: false
+    						},
+    						axisLabel: {
+    							textStyle: {
+    								color: 'rgb(51,255,50)'
+    							},
+    							formatter: '{value}'
+    						},
+    						splitLine: {
+    							// 			show: false
+    							lineStyle: {
+    								color: 'rgba(64,64,64,0.5)'
+    							}
+    						},
+    						max: y3,
+    						min: y4,
+    						splitNumber: n
+                        }
+                    ],
+    				series: [
+    					{
+    						name: '社会用电量',
+    						type: 'line',
+    						smooth: true,
+    						symbol:'emptyCircle',
+    						symbolSize:5,
+    						// itemStyle: {normal: {areaStyle: {type: 'default'}}},
+    						data: datax1
+                        },
+    					{
+    						name: '发电量',
+    						type: 'line',
+    						smooth: true,
+    						yAxisIndex: 1,
+    						symbol:'emptyCircle',
+    						symbolSize:5,
+    						//itemStyle: {normal: {areaStyle: {type: 'default'}}},
+    						data: datax2
+    
+                        }
+                    ]
+    			};
+			
 			}else{
 			   option = {
-			 //   legend: {
-    //               	orient:'vertical',
-    //               	zlevel : 2,
-    //               	x:'720',
-    //               	y:'20',
-    //               	textStyle:{
-				// 		color:'white',
-				// 		fontFamily:'微软雅黑'
-				// 	},
-    //     			data:['气温']
-   	// 		 	},
-			    tooltip:{
-			       trigger:'axis' ,
-			       backgroundColor:'rgb(234,234,234)',
-			       textStyle:{
-			           color:'rgb(0,0,0)'
-			       },
-			       
-			       axisPointer:{
-			           type: 'none'
-			       }
-			    },
-				color: [color1, color2],
-				grid: {
-					x: 50,
-					y: 20,
-					x2: 50,
-					y2: 20,
-					borderWidth: 0
-				},
-				xAxis: [
-					{
-
-						show: false,
-						type: 'category',
-						data: ['2015年8月11日', '2015年8月12日', '2015年8月13日', '2015年8月14日', '2015年8月15日', '2015年8月16日', '2015年8月17日']
-                    }
-                ],
-				yAxis: [
-					{
-						name: '',
-						type: 'value',
-						axisLine: {
-							show: false
-						},
-						axisLabel: {
-							textStyle: {
-								color: 'white'
-							},
-							formatter: '{value}'
-						},
-						// 		splitLine: {
-						// 			show: false
-						// 		},
-						splitLine: {
-							// 			show: false
-							lineStyle: {
-								color: 'rgba(64,64,64,0.5)',
-							}
-						},
-						max: y1,
-						min: y2,
-						splitNumber: n,
-                    }
-                    
-                ],
-				series: [
-					{
-						name: '气温',
-						type: 'line',
-						smooth: true,
-						symbol:'emptyCircle',
-						symbolSize:5,
-						// itemStyle: {normal: {areaStyle: {type: 'default'}}},
-						data: datax1
-                    }
-                ]
-			}; 
+    			 //   legend: {
+        //               	orient:'vertical',
+        //               	zlevel : 2,
+        //               	x:'720',
+        //               	y:'20',
+        //               	textStyle:{
+    				// 		color:'white',
+    				// 		fontFamily:'微软雅黑'
+    				// 	},
+        //     			data:['气温']
+       	// 		 	},
+    			    tooltip:{
+    			       trigger:'axis' ,
+    			       backgroundColor:'rgb(234,234,234)',
+    			       textStyle:{
+    			           color:'rgb(0,0,0)'
+    			       },
+    			       
+    			       axisPointer:{
+    			           type: 'none'
+    			       }
+    			    },
+    				color: [color1, color2],
+    				grid: {
+    					x: 50,
+    					y: 20,
+    					x2: 50,
+    					y2: 20,
+    					borderWidth: 0
+    				},
+    				xAxis: [
+    					{
+    
+    						show: false,
+    						type: 'category',
+    						data: data_xname
+    					}
+                    ],
+    				yAxis: [
+    					{
+    						name: '',
+    						type: 'value',
+    						axisLine: {
+    							show: false
+    						},
+    						axisLabel: {
+    							textStyle: {
+    								color: 'white'
+    							},
+    							formatter: '{value}'
+    						},
+    						// 		splitLine: {
+    						// 			show: false
+    						// 		},
+    						splitLine: {
+    							// 			show: false
+    							lineStyle: {
+    								color: 'rgba(64,64,64,0.5)'
+    							}
+    						},
+    						max: y1,
+    						min: y2,
+    						splitNumber: n
+                        }
+                        
+                    ],
+    				series: [
+    					{
+    						name: '气温',
+    						type: 'line',
+    						smooth: true,
+    						symbol:'emptyCircle',
+    						symbolSize:5,
+    						// itemStyle: {normal: {areaStyle: {type: 'default'}}},
+    						data: datax1
+                        }
+                    ]
+    			}; 
 			}
-// 			var option = {
-// 				color: [color1, color2],
-// 				grid: {
-// 					x: 50,
-// 					y: 20,
-// 					x2: 50,
-// 					y2: 20,
-// 					borderWidth: 0
-// 				},
-// 				xAxis: [
-// 					{
-
-// 						show: false,
-// 						type: 'category',
-// 						data: ['q', 'q', 'q', 'q', 'q', 'q', 'q']
-//                     }
-//                 ],
-// 				yAxis: [
-// 					{
-// 						name: '',
-// 						type: 'value',
-// 						axisLine: {
-// 							show: false
-// 						},
-// 						axisLabel: {
-// 							textStyle: {
-// 								color: 'white'
-// 							},
-// 							formatter: '{value}'
-// 						},
-// 						// 		splitLine: {
-// 						// 			show: false
-// 						// 		},
-// 						splitLine: {
-// 							// 			show: false
-// 							lineStyle: {
-// 								color: 'rgba(64,64,64,0.5)',
-// 							}
-// 						},
-// 						max: y1,
-// 						min: y2,
-// 						splitNumber: n,
-//                     },
-// 					{
-// 						name: '',
-// 						type: 'value',
-// 						axisLine: {
-// 							show: false
-// 						},
-// 						axisLabel: {
-// 							textStyle: {
-// 								color: 'rgb(51,255,50)'
-// 							},
-// 							formatter: '{value}'
-// 						},
-// 						splitLine: {
-// 							// 			show: false
-// 							lineStyle: {
-// 								color: 'rgba(64,64,64,0.5)',
-// 							}
-// 						},
-// 						max: y3,
-// 						min: y4,
-// 						splitNumber: n,
-//                     }
-//                 ],
-// 				series: [
-// 					{
-// 						name: '',
-// 						type: 'line',
-// 						smooth: true,
-// 						symbol:'emptyCircle',
-// 						symbolSize:5,
-// 						// itemStyle: {normal: {areaStyle: {type: 'default'}}},
-// 						data: datax1
-//                     },
-// 					{
-// 						name: '',
-// 						type: 'line',
-// 						smooth: true,
-// 						yAxisIndex: 1,
-// 						symbol:'emptyCircle',
-// 						symbolSize:5,
-// 						//itemStyle: {normal: {areaStyle: {type: 'default'}}},
-// 						data: datax2
-
-//                     }
-//                 ]
-// 			};
 			mychart.setOption(option);
 		}
 

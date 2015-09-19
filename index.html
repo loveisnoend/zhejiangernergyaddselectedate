@@ -49,6 +49,10 @@
             var valuePMInonProduce;
             // GDP总值
             var valueGDPTotal;
+            
+            // 全社会用电量
+            var data01, data02, data03, data04, dataXName, place_v01;
+            var data02_01, data02_02, powerplant_v02, usetime_v02;
 		</script>
 		<script>
 		    require.config({
@@ -107,16 +111,18 @@
             }
 		</script>
 		<script>
-		    var rlcb_title,dwrlcb_data1,dwrlcb_data2,yj_data1,yj_data2,mj_data1,mj_data2,bmh_data1,bmh_data2,kw30w_data1,kw30w_data2,kw60w_data1,kw60w_data2,kcmf_data;
-		    var dwrlcb_dq_griddata,dwrlcb_qn_griddata,dwrlcb_zf_griddata,mj_griddata1,mj_griddata2,mj_griddata3,mj_griddata4,mj_griddata5;
-		    var dwrlcb_zf_gridx,mj_gridx;
-		    var swdl_title,hydl_data1,hydl_data2,zgdl_data1,zgdl_data2,cydl_data1,cydl_data2,tddl_data1,tddl_data2,ylyxs_data1,ylyxs_data2,fdl_data1,fdl_data2;
-		    var hydl_dq_griddata,hydl_qn_griddata,zgdl_dq_griddata,zgdl_qn_griddata,cydl_dq_griddata,cydl_qn_griddata,tddl_dq_griddata,tddl_qn_griddata,ylyxs_dq_griddata,ylyxs_qn_griddata,fdl_dq_griddata,fdl_qn_griddata;
-		    var swdl_gridx;
-		    var qtcb_title,zjf_data1,zjf_data2,rgcb_data1,rgcb_data2,xlf_data1,xlf_data2,cwglf_data1,cwglf_data2,qtyycb_data1,qtyycb_data2;
-		    var zjf_dq_griddata,zjf_qn_griddata,rgcb_dq_griddata,rgcb_qn_griddata,xlf_dq_griddata,xlf_qn_griddata,cwglf_dq_griddata,cwglf_qn_griddata,qtyycb_dq_griddata,qtyycb_qn_griddata;
-		    var qtcb_gridx;
+		  //  var rlcb_title,dwrlcb_data1,dwrlcb_data2,yj_data1,yj_data2,mj_data1,mj_data2,bmh_data1,bmh_data2,kw30w_data1,kw30w_data2,kw60w_data1,kw60w_data2,kcmf_data;
+		  //  var dwrlcb_dq_griddata,dwrlcb_qn_griddata,dwrlcb_zf_griddata,mj_griddata1,mj_griddata2,mj_griddata3,mj_griddata4,mj_griddata5;
+		  //  var dwrlcb_zf_gridx,mj_gridx;
+		  //  var swdl_title,hydl_data1,hydl_data2,zgdl_data1,zgdl_data2,cydl_data1,cydl_data2,tddl_data1,tddl_data2,ylyxs_data1,ylyxs_data2,fdl_data1,fdl_data2;
+		  //  var hydl_dq_griddata,hydl_qn_griddata,zgdl_dq_griddata,zgdl_qn_griddata,cydl_dq_griddata,cydl_qn_griddata,tddl_dq_griddata,tddl_qn_griddata,ylyxs_dq_griddata,ylyxs_qn_griddata,fdl_dq_griddata,fdl_qn_griddata;
+		  //  var swdl_gridx;
+		  //  var qtcb_title,zjf_data1,zjf_data2,rgcb_data1,rgcb_data2,xlf_data1,xlf_data2,cwglf_data1,cwglf_data2,qtyycb_data1,qtyycb_data2;
+		  //  var zjf_dq_griddata,zjf_qn_griddata,rgcb_dq_griddata,rgcb_qn_griddata,xlf_dq_griddata,xlf_qn_griddata,cwglf_dq_griddata,cwglf_qn_griddata,qtyycb_dq_griddata,qtyycb_qn_griddata;
+		  //  var qtcb_gridx;
 		    var usrid = "ERPTEST1";
+		    // 全社会用电量
+		    var data02_01;
 		</script>
 		<script>
 				sap.ui.localResources("view");

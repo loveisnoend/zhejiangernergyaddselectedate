@@ -1,27 +1,97 @@
 <template data-controller-name="com.zhenergy.pcbi.view.tab">
  <script>
-    function change(value){
-	    switch(true)
+    function changeCity(value){
+            
+            // 初始化发电量
+            $("#select03").val(1);
+            
+            var cityName = '';
+            if (value == 1) {
+                cityName = '杭州';
+            }
+            if (value == 4) {
+                cityName = '淮南';
+            }
+            if (value == 2) {
+                cityName = '台州';
+            }
+            if (value == 3) {
+                cityName = '金华';
+            }
+	        switch(true)
 	        {
+	            case value==1:
+	                $("#select2div").empty();
+	                var selectCon = "<select class='select' id='select02' onchange='changePowerPlant(this.value)'>";
+	                    selectCon += "<option value='杭州'>杭州电厂一</option>";
+	                    selectCon += "<option value='杭州'>杭州电厂二</option>";
+	                    selectCon += "</select>";
+	                $("#select2div").append(selectCon);
+                    tab.getController().loadChart01(cityName,'杭州');
+                    break;
 	            case value==3:
 	                $("#select2div").empty();
-	                $("#select2div").append("<select class='select'><option value='兰溪'>兰溪</option></select>");
-                    tab.getController().loadChart01();
+                	var selectCon = "<select class='select' id='select02' onchange='changePowerPlant(this.value)'>";
+                        selectCon += "<option value='兰溪发电'>兰溪电厂</option>";
+                        selectCon += "</select>";
+	                $("#select2div").append(selectCon);
+                    tab.getController().loadChart01(cityName,'兰溪发电');
                     break;
-                // case value==1:
-                //     $("#select2div").empty();
-                //     $("#select2div").append("<select class='select'><option value='集团'>集团</option></select>");
-                //     tab.getController().loadChart02();
-                //     break;
                 case value==2:
                     $("#select2div").empty();
-                    $("#select2div").append("<select class='select'><option value='台二'>台二</option></select>");
-                    tab.getController().loadChart01();
+                    var selectCon = "<select class='select' id='select02' onchange='changePowerPlant(this.value)'>";
+                        selectCon += "<option value='台二发电'>台二电厂</option>";
+                        selectCon += "</select>";
+                    $("#select2div").append(selectCon);
+                    tab.getController().loadChart01(cityName,'台二发电');
                     break;
                 case value==4:
                     $("#select2div").empty();
-                    $("#select2div").append("<select class='select'><option value='凤台'>凤台</option></select>");
-                    tab.getController().loadChart01();
+                    var selectCon = "<select class='select' id='select02' onchange='changePowerPlant(this.value)'>";
+                        selectCon += "<option value='凤台发电'>凤台电厂</option>";
+                        selectCon += "</select>";
+                    $("#select2div").append(selectCon);
+                    tab.getController().loadChart01(cityName,'凤台发电');
+                    break;
+	        }
+	}
+	// 改变电厂重绘echart
+	function changePowerPlant(value){
+        // 初始化发电量
+        $("#select03").val(1);
+	    tab.getController().loadChart02(value);
+	   // switch(true)
+    //     {
+    //         case value==1:
+    //             clear();
+    //             tab_powerplant = "凤台发电";
+    //             tab.getController().loadData_v02(value);
+    //             break;
+    //         case value==2:
+    //             clear();
+    //             tab_powerplant = "兰溪发电";
+    //             tab.getController().loadData_v02(value);
+    //             break;
+    //         case value==3:
+    //             clear();
+    //             tab_powerplant = "台二发电";
+    //             tab.getController().loadData_v02(value);
+    //             break;
+    //     }
+	}
+	function change_usetime(value){
+	    var tab_usetime;
+	    switch(true)
+	        {
+	            case value==1:
+	                clear();
+	                tab_usetime = "发电量";
+                    tab.getController().loadChart03(tab_usetime);
+                    break;
+                case value==2:
+                    clear();
+                    tab_usetime = "利用小时";
+                    tab.getController().loadChart03(tab_usetime);
                     break;
 	        }
 	}
@@ -97,19 +167,17 @@
                     <div class="tab_center2_01">
                         <div class="tab_center2_01_font">按地市</div>
                         <div class="tab_center2_01_choose01">
-                            <select class="select" id="select01" onchange="change(this.value)">
-                              <!--<option value="1" >杭州</option>-->
-                              <option value="4" seleted>淮南</option>
+                            <select class="select" id="select01" onchange="changeCity(this.value)">
+                              <option value="1">杭州</option>
                               <option value="2">台州</option>
-                              
-                              <option value="3">金华</option>
-                              
+                              <option value="3" selected="selected">金华</option>
+                              <option value="4">淮南</option>
                             </select>
                         </div>
                         <div class="tab_center2_01_font">按电厂</div>
                         <div class="tab_center2_01_choose01" id="select2div">
-                            <select class="select">
-                              <option value="凤台">凤台</option>
+                            <select class="select" id="select02" onchange="changePowerPlant(this.value)">
+                              <option value="兰溪发电">兰溪电厂</option>
                             </select>
                         </div>
                     </div>
@@ -126,7 +194,7 @@
                         <div class="tab_center2_02_table01">
                             <div class="tab_center2_02_01 table_bg1" style="float:left;"></div>
                             <div class="tab_center2_01_choose01" style="float:left;">
-                                <select onchange="change(this.value)" style="width: 160px;
+                                <select id="select03" onchange="change_usetime(this.value)" style="width: 160px;
                                     height: 25px;
                                     background-color: rgb(26,26,26);
                                     color: white;
