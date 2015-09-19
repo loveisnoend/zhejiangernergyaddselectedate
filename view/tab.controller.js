@@ -35,8 +35,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 	},
 	onAfterShow: function(evt) {
 	    this.loadData_v01();
-	   // this.loadData_v02();
-	},
+		// 设定头部跑马灯信息 common.js
+		_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);
+    },
 	loadData_v01 : function(){
 	    data01 = new Array();
 	    data02 = new Array();

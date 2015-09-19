@@ -34,10 +34,12 @@ sap.ui.controller("com.zhenergy.pcbi.view.home04", {
 			// not added the controller as delegate to avoid controller functions with similar names as the events
 			onAfterShow: jQuery.proxy(function() {
                 this._drawSwiper();
+                // 设定头部跑马灯信息 common.js
+    			_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);
 			}, this)
 		});
 	},
-		onAfterRendering: function() {
+	onAfterRendering: function() {
         this._drawSwiper();
 	}
 

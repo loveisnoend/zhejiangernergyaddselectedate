@@ -5,9 +5,17 @@ sap.ui.controller("com.zhenergy.pcbi.view.home06", {
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 * @memberOf com.zhenergy.pcbi.view.home06
 */
-//	onInit: function() {
-//
-//	},
+	onInit: function() {
+        
+	    this.getView().addEventDelegate({
+			
+			// not added the controller as delegate to avoid controller functions with similar names as the events
+			onAfterShow: jQuery.proxy(function() {
+    			// 设定头部跑马灯信息 common.js
+    			_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);
+			}, this)
+		});
+	}
 
 /**
 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered

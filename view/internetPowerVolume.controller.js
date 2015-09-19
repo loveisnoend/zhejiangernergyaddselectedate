@@ -20,7 +20,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
         document.getElementById('internetDetail').style.display = "none";
         document.getElementById('internetMain').style.display = "";
         this.loadChart();
-        //this.loadmjChart("mj_content_hid1", xdate, data_sj, data_qg);
+    	// 设定头部跑马灯信息 common.js
+		_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);
 	},
 	// 电价详细Chart
 	loadPriceChartdetail: function(chartDivId, priceChartName) {

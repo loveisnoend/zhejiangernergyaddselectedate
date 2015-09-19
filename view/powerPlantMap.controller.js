@@ -20,7 +20,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
         document.getElementById('mj_hid').style.display = "none";
         document.getElementById('rlcb_detail').style.display = "";
         this.loadChart();
-        //this.loadmjChart("mj_content_hid1", xdate, data_sj, data_qg);
+    	// 设定头部跑马灯信息 common.js
+		_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);
 	},
 	loadmjChart: function(divId){
         require(

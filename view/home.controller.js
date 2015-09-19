@@ -189,69 +189,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 				    valueGDPTotal = sRes.results[i].KPI_VALUE;
 				}
 			}
-			this._loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);
+			// 设定头部跑马灯信息 common.js
+			_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			alert("Get Data Error");
 		}, this);
 	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_01_V01", mParameters);
 	},
-	
-	// 设定头部跑马灯信息
-	_loadData03 : function(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal){
-
-	    // CPI环比
-        if (valueCPIhuanbi > 0) {
-            $('#valueCPIhuanbiID').html(valueCPIhuanbi+"%↑");
-            $('#valueCPIhuanbiID').css('color','#32FF32');
-        } else {
-            $('#valueCPIhuanbiID').html(valueCPIhuanbi+"%↓");
-            $('#valueCPIhuanbiID').css('color','red');
-        }
-        // GDP增长率
-        if (valueGDP > 0) {
-            $('#valueGDPID').html(valueGDP+"%↑");
-            $('#valueGDPID').css('color','#32FF32');
-        } else {
-            $('#valueGDPID').html(valueGDP+"%↓");
-            $('#valueGDPID').css('color','red');
-        }
-        // CPI同比
-        if (valueCPItongbi > 0) {
-            $('#valueCPItongbiID').html(valueCPItongbi+"%↑");
-            $('#valueCPItongbiID').css('color','#32FF32');
-        } else {
-            $('#valueCPItongbiID').html(valueCPItongbi+"%↓");
-            $('#valueCPItongbiID').css('color','red');
-        }
-        // PPI同比
-        if (parseFloat(valuePPItongbi) > 0) {
-            $('#valuePPItongbiID').html(valuePPItongbi+"%↑");
-            $('#valuePPItongbiID').css('color','#32FF32');
-        } else {
-            $('#valuePPItongbiID').html(valuePPItongbi+"%↓");
-            $('#valuePPItongbiID').css('color','red');
-        }
-        // 制造业-同比 PMI
-        if (valuePMIproduce > 0) {
-            $('#valuePMIproduceID').html(valuePMIproduce+"%↑");
-            $('#valuePMIproduceID').css('color','#32FF32');
-        } else {
-            $('#valuePMIproduceID').html(valuePMIproduce+"%↓");
-            $('#valuePMIproduceID').css('color','red');
-        }
-        // 非制造业-同比
-        if (valuePMInonProduce > 0) {
-            $('#valuePMInonProduceID').html(valuePMInonProduce+"%↑");
-            $('#valuePMInonProduceID').css('color','#32FF32');
-        } else {
-            $('#valuePMInonProduceID').html(valuePMInonProduce+"%↓");
-            $('#valuePMInonProduceID').css('color','red');
-        }
-        // GDP总值
-	    $('#valueGDPTotalID').html(valueGDPTotal);
-	},
-	
 /**
 * Called when a controller is instantiated and its View controls (if available) are already created.
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
