@@ -255,13 +255,18 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 		function draw(e) {
 			drawline01(e);
 			drawline02(e);
-			drawbar01(e);
-			drawbar02(e);
-			drawbar03(e);
-			drawbar04(e);
-			drawbar05(e);
-			drawbar06(e);
-			drawbar07(e);
+			if (usetime_v02 == "发电量") {
+			    $("#barplace").css("display","");
+			  	drawbar01(e);
+    			drawbar02(e);
+    			drawbar03(e);
+    			drawbar04(e);
+    			drawbar05(e);
+    			drawbar06(e);
+    			drawbar07(e);  
+			} else {
+			    $("#barplace").css("display","none");
+			}
 		}
 
 		function drawline01(e) {
@@ -540,7 +545,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 						],
 				series: [
     					{
-    						name: '直接访问',
+    						name: '社会用电量',
     						type: 'bar',
     						stack: '总量',
     						itemStyle: {
@@ -552,7 +557,6 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
     							}
     						},
     						data: [data1],
-    				// 		data: [data1],
     				        legendHoverLink : false,
     						markPoint : {
     						    symbol : 'droplet',
@@ -574,7 +578,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
                             }
 						},
     					{
-    						name: '邮件营销',
+    						name: '发电量',
     						type: 'bar',
     						stack: '总量',
     						itemStyle: {
