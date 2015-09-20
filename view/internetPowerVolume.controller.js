@@ -357,8 +357,15 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
                     
 					var mapSeries = option4.series[0];
                   
+                  	// 电厂名
+					var powerPlantName = '';
+					if (mapSeries.markPoint.data[param.dataIndex].name == '金华') {
+					    powerPlantName = '兰溪';
+					} else if (mapSeries.markPoint.data[param.dataIndex].name == '台州') {
+					    powerPlantName = '台二';
+					}
 					// 电厂名
-					document.getElementById('powerPlantName').innerHTML = mapSeries.markPoint.data[param.dataIndex].name;
+					document.getElementById('powerPlantName').innerHTML = powerPlantName+'电厂';
 					
 					var selectedData = {name: mapSeries.markPoint.data[param.dataIndex].name, value: mapSeries.markPoint.data[param.dataIndex].inputPlanValue};
 					option4.series[1].markPoint.data = [];
@@ -612,7 +619,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
                     myChart4.setOption(option4);
                     
 					// 电厂名
-					document.getElementById('powerPlantName').innerHTML = mapSeries.markPoint.data[param.dataIndex].name;
+					document.getElementById('powerPlantName').innerHTML = '凤台电厂';
 					
 					// 平均电价
 					var internetAverPrice1 = mapSeries.markPoint.data[param.dataIndex].costPer;
