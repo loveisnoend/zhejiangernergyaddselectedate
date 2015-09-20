@@ -145,6 +145,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 	    $('#home_temperature').html(temperature);
 	    $('#home_place').html(place);
 	    $('#home_daytime').html(daytime01 + "年" + daytime02 + "月" + daytime03 + "日");
+	    // 日利润日期
+	    $('#dateProfitDate').html(daytime01 + "年" + daytime02 + "月" + daytime03 + "日");
 	    
 	    var d = new Date();
 	    var weekday=new Array(7);
@@ -197,6 +199,96 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 		}, this);
 	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_01_V01", mParameters);
 	},
+	
+	_loadData_left : function(){
+	    var mParameters = {};
+		mParameters['async'] = true;
+		mParameters['success'] = jQuery.proxy(function(sRes) {
+			//设置数据
+			home_rlr=0;
+			for (var i in sRes.results) {
+				if (sRes.results[i].KPI_TYPE == '日利润'){  
+				    home_rlr = home_rlr+parseFloat(sRes.results[i].KPI_VALUE);
+				}
+			}
+			home_rlr=home_rlr/10000;
+// 			this.loadData03(home_rlr);
+		}, this);
+		mParameters['error'] = jQuery.proxy(function(eRes) {
+			alert("Get Data Error");
+		}, this);
+// 		if(window.cordova && appContext && !window.sap_webide_companion) {
+//             var usrid = appContext.registrationContext.user.toUpperCase();
+// 		} else {
+// 			var usrid = "ERPTEST1";
+// 		}
+	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_01_V03?$filter=(BNAME eq '" +usrid+ "')", mParameters);
+	},
+	
+	loadData03 : function(home_rlr){
+	    $('#home_rlr').html(Math.round(home_rlr));
+	},
+	
+	// 加载日润值
+	_loadDateProfitData : function() {
+	    var mParameters = {};
+	    var date = new Array();
+		var data1 = new Array();//上网电量
+		var data2 = new Array();//平均上网电价
+		var data3 = new Array();//燃料成本
+		var data4 = new Array();//其他成本
+		mParameters['async'] = true;
+		mParameters['success'] = jQuery.proxy(function(sRes) {
+			//设置数据
+			for (var i in sRes.results) {
+				if (sRes.results[i].KPI_TYPE == '上网电量'&&sRes.results[i].KPI_DESC==sRes.results[0].KPI_DESC){ 
+				    date.push(sRes.results[i].KPI_DATE);    
+				}
+			}
+			for(var j in date){
+			    var data1temp=0;
+			    var data2temp=0;
+			    var data3temp=0;
+			    var data4temp=0;
+    			for (var i in sRes.results) {
+    				if (sRes.results[i].KPI_TYPE == '上网电量'&&sRes.results[i].KPI_DATE==date[j]){ 
+    				    data1temp=data1temp+parseFloat(sRes.results[i].KPI_VALUE);    
+    				}
+    				if (sRes.results[i].KPI_TYPE == '平均上网电价'&&sRes.results[i].KPI_DATE==date[j]){ 
+    				    data2temp=data2temp+parseFloat(sRes.results[i].KPI_VALUE);    
+    				}
+    				if (sRes.results[i].KPI_TYPE == '日利润-燃料成本'&&sRes.results[i].KPI_DATE==date[j]){ 
+    				    data3temp=data3temp+parseFloat(sRes.results[i].KPI_VALUE);    
+    				}
+    				if (sRes.results[i].KPI_TYPE == '日利润-其他成本'&&sRes.results[i].KPI_DATE==date[j]){ 
+    				    data4temp=data4temp+parseFloat(sRes.results[i].KPI_VALUE);    
+    				}
+    			}
+    			data1.push(data1temp);
+    			data2.push(data2temp);
+    			data3.push(data3temp);
+    			data4.push(data4temp);
+			}
+    		var swdl_data = data1[data1.length - 1];
+    		var pjswdj_data = data2[data2.length - 1];
+    		if (isNaN(swdl_data)) {
+    		    swdl_data = 0;
+    		}
+    		if (isNaN(pjswdj_data)) {
+    		    pjswdj_data = 0;
+    		}
+    		//收入数据
+    		var sr_data = ((swdl_data * pjswdj_data)/100000000).toFixed(2);
+    		if (isNaN(sr_data)) {
+    		    sr_data = 0.00;
+    		}
+		    $('#home_rlr').html(sr_data);
+		}, this);
+		mParameters['error'] = jQuery.proxy(function(eRes) {
+			alert("Get Data Error");
+		}, this);
+	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_02_V03/?$filter=(BNAME eq '" + usrid + "')", mParameters);
+	},
 /**
 * Called when a controller is instantiated and its View controls (if available) are already created.
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
@@ -212,6 +304,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
                 this._loadData_top();
                 this._loadData();
                 this._loadTopDynamicShowData();
+                // this._loadData_left();
+                this._loadDateProfitData();
 			}, this)
 		});
 	},

@@ -274,8 +274,15 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 		var qtcb_data=data4[data4.length-1];
 		var a = 1;
 		
+	    if (isNaN(swdl_data)) {
+		    swdl_data = 0;
+		}
+		if (isNaN(pjswdj_data)) {
+		    pjswdj_data = 0;
+		}
+    		
 		//收入数据
-		var sr_data = (swdl_data * pjswdj_data).toFixed(1);
+		var sr_data = ((swdl_data * pjswdj_data)/100000000).toFixed(2);
 		var sr_prec = a.toFixed(1);
 		var sr_color="red";
 		//var sr_img ="";

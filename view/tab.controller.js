@@ -486,31 +486,59 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 		}
 
 		function drawbar01(e) {
-			drawbar(e, 4, 6, 'bar01');
+		    if (data_x4[0] != undefined && data_x3[0] != undefined) {
+    		    var percentValue = (data_x4[0]/(parseInt(data_x3[0])+parseInt(data_x4[0]))).toFixed(2).toString()+'%';
+    		    $('#percentbar01').html(percentValue);
+    			drawbar(e, data_x4[0], (parseInt(data_x3[0])+parseInt(data_x4[0])), 'bar01');
+		    }
 		}
 
 		function drawbar02(e) {
-			drawbar(e, 7, 3, 'bar02');
+		    if (data_x4[1] != undefined && data_x3[1] != undefined) {
+    		    var percentValue = (data_x4[1]/(parseInt(data_x3[1])+parseInt(data_x4[1]))).toFixed(2).toString()+'%';
+    		    $('#percentbar02').html(percentValue);
+    			drawbar(e, data_x4[1], (parseInt(data_x3[1])+parseInt(data_x4[1])), 'bar02');
+		    }
 		}
 
 		function drawbar03(e) {
-			drawbar(e, 3, 7, 'bar03');
+		    if (data_x4[2] != undefined && data_x3[2] != undefined) {
+    		    var percentValue = (data_x4[2]/(parseInt(data_x3[2])+parseInt(data_x4[2]))).toFixed(2).toString()+'%';
+    		    $('#percentbar03').html(percentValue);
+    			drawbar(e, data_x4[2], (parseInt(data_x3[2])+parseInt(data_x4[2])), 'bar03');
+		    }
 		}
 
 		function drawbar04(e) {
-			drawbar(e, 8, 2, 'bar04');
+		    if (data_x4[3] != undefined && data_x3[3] != undefined) {
+    		    var percentValue = (data_x4[3]/(parseInt(data_x3[3])+parseInt(data_x4[3]))).toFixed(2).toString()+'%';
+    		    $('#percentbar04').html(percentValue);
+    			drawbar(e, data_x4[3], (parseInt(data_x3[3])+parseInt(data_x4[3])), 'bar04');
+		    }
 		}
 
 		function drawbar05(e) {
-			drawbar(e, 8, 2, 'bar05');
+		    if (data_x4[4] != undefined && data_x3[4] != undefined) {
+    		    var percentValue = (data_x4[4]/(parseInt(data_x3[4])+parseInt(data_x4[4]))).toFixed(2).toString()+'%';
+    		    $('#percentbar05').html(percentValue);
+    			drawbar(e, data_x4[4], (parseInt(data_x3[4])+parseInt(data_x4[4])), 'bar05');
+		    }
 		}
 
 		function drawbar06(e) {
-			drawbar(e, 5, 5, 'bar06');
+		    if (data_x4[5] != undefined && data_x3[5] != undefined) {
+    		    var percentValue = (data_x4[5]/(parseInt(data_x3[5])+parseInt(data_x4[5]))).toFixed(2).toString()+'%';
+    		    $('#percentbar06').html(percentValue);
+    			drawbar(e, data_x4[5], (parseInt(data_x3[5])+parseInt(data_x4[5])), 'bar06');
+		    }
 		}
 
 		function drawbar07(e) {
-			drawbar(e, 8, 2, 'bar07');
+		    if (data_x4[6] != undefined && data_x3[6] != undefined) {
+		        var percentValue = (data_x4[6]/(parseInt(data_x3[6])+parseInt(data_x4[6]))).toFixed(2).toString()+'%';
+    		    $('#percentbar07').html(percentValue);
+    			drawbar(e, data_x4[6], (parseInt(data_x3[6])+parseInt(data_x4[6])), 'bar06');
+		    }
 		}
 
 		function drawbar(e, data1, data2, id) {
@@ -528,7 +556,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 					borderWidth: 0
 
 				},
-				color: ['#33FF32', '#FFB300'],
+				color: ['#FFB300','#33FF32'],
 
 				xAxis: [
 					{
@@ -556,26 +584,26 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
     								}
     							}
     						},
-    						data: [data1],
-    				        legendHoverLink : false,
-    						markPoint : {
-    						    symbol : 'droplet',
-    						    symbolSize : 20,
-    						    itemStyle:{
-    						      normal:{
-    						          color:'#FF5B00'                                                
-    						      }
-    						    },
-    						    effect : {
-    						        show : false
-    						    },
-                                data : [
-                                    {type : 'max', name: '最大值'}
-                                ]
-                            },
-                            markline : {
-                                clickable : false
-                            }
+    						data: [data1]
+    				//         legendHoverLink : false,
+    				// 		markPoint : {
+    				// 		    symbol : 'droplet',
+    				// 		    symbolSize : 20,
+    				// 		    itemStyle:{
+    				// 		      normal:{
+    				// 		          color:'#FF5B00'                                                
+    				// 		      }
+    				// 		    },
+    				// 		    effect : {
+    				// 		        show : false
+    				// 		    },
+        //                         data : [
+        //                             {type : 'max', name: '最大值'}
+        //                         ]
+        //                     },
+        //                     markline : {
+        //                         clickable : false
+        //                     }
 						},
     					{
     						name: '发电量',

@@ -122,6 +122,16 @@
     /*background-color:#111;*/
     float:left;
 }
+.tab_barPercent
+{
+    width:85px;
+    height:15px;
+    margin-top:-5px;
+    margin-left:25px;
+    color:white;
+    /*background-color:#111;*/
+    float:left;
+}
 .barft
 {
     margin-left:70px;
