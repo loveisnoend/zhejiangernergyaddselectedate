@@ -1,9 +1,9 @@
 var btnID, divID, oldbtn, olddivID;
 function toMJhid() {
-    document.getElementById('rlcb_detail').style.display = "none";
-    document.getElementById('mj_hid').style.display = "";
+    // document.getElementById('rlcb_detail').style.display = "none";
+    // document.getElementById('mj_hid').style.display = "";
     
-    powerPlantMap.getController().loadmjChart('pic4500');
+    // powerPlantMap.getController().loadmjChart('pic4500');
 }
 function back() {
     document.getElementById('mj_hid').style.display = "none";
@@ -40,10 +40,10 @@ function btnclick(no) {
     }
 }
 function detailAnother() {
-	document.getElementById("rlcb_detail").style.display = "none";
-	//document.getElementById("hidden01").style.display = "none";
-	document.getElementById("detail_another").style.display = "";
-	powerPlantMap.getController().loadChartdetail();
+// 	document.getElementById("rlcb_detail").style.display = "none";
+// 	//document.getElementById("hidden01").style.display = "none";
+// 	document.getElementById("detail_another").style.display = "";
+// 	powerPlantMap.getController().loadChartdetail();
 }
 
 function back_another() {
@@ -52,12 +52,12 @@ function back_another() {
 }
 
 function detailAnother002(machineType) {
-    if(document.getElementById('powerPlantMainDetailTitle').innerHTML != '集团'){
-    	document.getElementById("rlcb_detail").style.display = "none";
-    	//document.getElementById("hidden01").style.display = "none";
-    	document.getElementById("detail_another002").style.display = "";
-    	powerPlantMap.getController().loadChartdetail02(machineType);
-    }
+    // if(document.getElementById('powerPlantMainDetailTitle').innerHTML != '集团'){
+    // 	document.getElementById("rlcb_detail").style.display = "none";
+    // 	//document.getElementById("hidden01").style.display = "none";
+    // 	document.getElementById("detail_another002").style.display = "";
+    // 	powerPlantMap.getController().loadChartdetail02(machineType);
+    // }
 }
 
 function back_another002() {

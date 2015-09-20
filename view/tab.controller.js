@@ -490,7 +490,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 
 		function drawbar01(e) {
 		    if (data_x4[0] != undefined && data_x3[0] != undefined) {
-    		    var percentValue = (data_x4[0]/(parseInt(data_x3[0])+parseInt(data_x4[0]))).toFixed(2).toString()+'%';
+    		    var percentValue = ((data_x4[0]/(parseInt(data_x3[0])+parseInt(data_x4[0])))*100).toFixed(2).toString()+'%';
     		    $('#percentbar01').html(percentValue);
     			drawbar(e, data_x4[0], (parseInt(data_x3[0])+parseInt(data_x4[0])), 'bar01');
 		    }
@@ -498,7 +498,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 
 		function drawbar02(e) {
 		    if (data_x4[1] != undefined && data_x3[1] != undefined) {
-    		    var percentValue = (data_x4[1]/(parseInt(data_x3[1])+parseInt(data_x4[1]))).toFixed(2).toString()+'%';
+    		    var percentValue = ((data_x4[1]/(parseInt(data_x3[1])+parseInt(data_x4[1])))*100).toFixed(2).toString()+'%';
     		    $('#percentbar02').html(percentValue);
     			drawbar(e, data_x4[1], (parseInt(data_x3[1])+parseInt(data_x4[1])), 'bar02');
 		    }
@@ -506,7 +506,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 
 		function drawbar03(e) {
 		    if (data_x4[2] != undefined && data_x3[2] != undefined) {
-    		    var percentValue = (data_x4[2]/(parseInt(data_x3[2])+parseInt(data_x4[2]))).toFixed(2).toString()+'%';
+    		    var percentValue = ((data_x4[2]/(parseInt(data_x3[2])+parseInt(data_x4[2])))*100).toFixed(2).toString()+'%';
     		    $('#percentbar03').html(percentValue);
     			drawbar(e, data_x4[2], (parseInt(data_x3[2])+parseInt(data_x4[2])), 'bar03');
 		    }
@@ -514,7 +514,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 
 		function drawbar04(e) {
 		    if (data_x4[3] != undefined && data_x3[3] != undefined) {
-    		    var percentValue = (data_x4[3]/(parseInt(data_x3[3])+parseInt(data_x4[3]))).toFixed(2).toString()+'%';
+    		    var percentValue = ((data_x4[3]/(parseInt(data_x3[3])+parseInt(data_x4[3])))*100).toFixed(2).toString()+'%';
     		    $('#percentbar04').html(percentValue);
     			drawbar(e, data_x4[3], (parseInt(data_x3[3])+parseInt(data_x4[3])), 'bar04');
 		    }
@@ -522,7 +522,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 
 		function drawbar05(e) {
 		    if (data_x4[4] != undefined && data_x3[4] != undefined) {
-    		    var percentValue = (data_x4[4]/(parseInt(data_x3[4])+parseInt(data_x4[4]))).toFixed(2).toString()+'%';
+    		    var percentValue = ((data_x4[4]/(parseInt(data_x3[4])+parseInt(data_x4[4])))*100).toFixed(2).toString()+'%';
     		    $('#percentbar05').html(percentValue);
     			drawbar(e, data_x4[4], (parseInt(data_x3[4])+parseInt(data_x4[4])), 'bar05');
 		    }
@@ -530,7 +530,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 
 		function drawbar06(e) {
 		    if (data_x4[5] != undefined && data_x3[5] != undefined) {
-    		    var percentValue = (data_x4[5]/(parseInt(data_x3[5])+parseInt(data_x4[5]))).toFixed(2).toString()+'%';
+    		    var percentValue = ((data_x4[5]/(parseInt(data_x3[5])+parseInt(data_x4[5])))*100).toFixed(2).toString()+'%';
     		    $('#percentbar06').html(percentValue);
     			drawbar(e, data_x4[5], (parseInt(data_x3[5])+parseInt(data_x4[5])), 'bar06');
 		    }
@@ -538,7 +538,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 
 		function drawbar07(e) {
 		    if (data_x4[6] != undefined && data_x3[6] != undefined) {
-		        var percentValue = (data_x4[6]/(parseInt(data_x3[6])+parseInt(data_x4[6]))).toFixed(2).toString()+'%';
+		        var percentValue = ((data_x4[6]/(parseInt(data_x3[6])+parseInt(data_x4[6])))*100).toFixed(2).toString()+'%';
     		    $('#percentbar07').html(percentValue);
     			drawbar(e, data_x4[6], (parseInt(data_x3[6])+parseInt(data_x4[6])), 'bar06');
 		    }

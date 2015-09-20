@@ -66,11 +66,18 @@
 		        mychart.dispose();
 		    }
 		    function toDetailPage(detailName){
-		      //  app.to("idPowerPlantMap", "show");
-		      //  $('#detailName').html(detailName);
+		        if (detailName == "燃料成本") {
+		            app.to("idPowerPlantMap", "show");
+		        }
+		        if (detailName == "上网电量") {
+		            app.to("idInternetVolume", "show");
+		        }
+		        if (detailName == "其他成本") {
+		            app.to("idOthersCost", "show");
+		        }
 		    }
 		    function toInternetPowerDetailPage() {
-		      //  app.to("idInternetPowerVolume","show");
+		        app.to("idInternetPowerVolume","show");
 		    }
 		    function doit1() {
 		        slidePageNum = 0;
@@ -129,6 +136,8 @@
 				sap.ui.localResources("view");
 				var powerPlantMap;
 				var internetPowerVolume;
+				var internetVolume;
+				var othersCost;
 				var slidePageNum = 0;
 				var app = new sap.m.App({initialPage:"idhome"});
 				
@@ -217,6 +226,21 @@
             			type: sap.ui.core.mvc.ViewType.HTML
             		 });
             		 app.addPage(powerPlantMap);
+            		 
+            		 // 上网电量
+            		 internetVolume = sap.ui.view({
+            			id: "idInternetVolume",
+            			viewName: "com.zhenergy.pcbi.view.internetVolume",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(internetVolume);
+            		 // 其他成本
+            		 othersCost = sap.ui.view({
+            			id: "idOthersCost",
+            			viewName: "com.zhenergy.pcbi.view.othersCost",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(othersCost);
             		 
             		internetPowerVolume = sap.ui.view({
             			id: "idInternetPowerVolume",
