@@ -170,25 +170,25 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 			//设置数据
 			for (var i in sRes.results) {
 				if (sRes.results[i].KPI_ID == 'KPI_ENV_H_0001'){  //CPI环比
-				    valueCPIhuanbi = sRes.results[i].KPI_VALUE*100;
+				    valueCPIhuanbi = (sRes.results[i].KPI_VALUE*100).toFixed(2);
 				}
 				if (sRes.results[i].KPI_ID == 'KPI_ENV_H_0005'){  //GDP增长率
-				    valueGDP = sRes.results[i].KPI_VALUE*100;
+				    valueGDP = (sRes.results[i].KPI_VALUE*100).toFixed(2);
 				}
 				if (sRes.results[i].KPI_ID == 'KPI_ENV_T_0001'){  //CPI同比
-				    valueCPItongbi = sRes.results[i].KPI_VALUE*100;
+				    valueCPItongbi = (sRes.results[i].KPI_VALUE*100).toFixed(2);
 				}
 				if (sRes.results[i].KPI_ID == 'KPI_ENV_T_0002'){  //PPI同比
-				    valuePPItongbi = sRes.results[i].KPI_VALUE*100;
+				    valuePPItongbi = (sRes.results[i].KPI_VALUE*100).toFixed(2);
 				}
 				if (sRes.results[i].KPI_ID == 'KPI_ENV_T_0003'){  //制造业-同比
-				    valuePMIproduce = sRes.results[i].KPI_VALUE*100;
+				    valuePMIproduce = (sRes.results[i].KPI_VALUE*100).toFixed(2);
 				}
 				if (sRes.results[i].KPI_ID == 'KPI_ENV_T_0004'){  //非制造业-同比
-				    valuePMInonProduce = sRes.results[i].KPI_VALUE*100;
+				    valuePMInonProduce = (sRes.results[i].KPI_VALUE*100).toFixed(2);
 				}
 				if (sRes.results[i].KPI_ID == 'KPI_ENV_V_0005'){  //GDP总值
-				    valueGDPTotal = sRes.results[i].KPI_VALUE;
+				    valueGDPTotal = (sRes.results[i].KPI_VALUE*100).toFixed(2);
 				}
 			}
 			// 设定头部跑马灯信息 common.js
@@ -271,6 +271,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 			}
     		var swdl_data = data1[data1.length - 1];
     		var pjswdj_data = data2[data2.length - 1];
+    		var rlcb_data=data3[data3.length - 1];
+		    var qtcb_data=data4[data4.length-1];
     		if (isNaN(swdl_data)) {
     		    swdl_data = 0;
     		}
@@ -282,7 +284,17 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
     		if (isNaN(sr_data)) {
     		    sr_data = 0.00;
     		}
-		    $('#home_rlr').html(sr_data);
+    	    //成本数据
+		    var cb_data=((rlcb_data+qtcb_data)/100000000).toFixed(1);
+		    if (isNaN(cb_data)) {
+    		    cb_data = 0.00;
+    		}
+    		// 日利润
+    		var rlr_data=((sr_data-cb_data)/100000000).toFixed(1);
+    		if (isNaN(rlr_data)) {
+    		    rlr_data = 0.00;
+    		}
+		    $('#home_rlr').html(rlr_data);
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			alert("Get Data Error");
