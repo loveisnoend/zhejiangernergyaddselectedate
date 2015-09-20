@@ -170,22 +170,22 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 			//设置数据
 			for (var i in sRes.results) {
 				if (sRes.results[i].KPI_ID == 'KPI_ENV_H_0001'){  //CPI环比
-				    valueCPIhuanbi = sRes.results[i].KPI_VALUE;
+				    valueCPIhuanbi = sRes.results[i].KPI_VALUE*100;
 				}
 				if (sRes.results[i].KPI_ID == 'KPI_ENV_H_0005'){  //GDP增长率
-				    valueGDP = sRes.results[i].KPI_VALUE;
+				    valueGDP = sRes.results[i].KPI_VALUE*100;
 				}
 				if (sRes.results[i].KPI_ID == 'KPI_ENV_T_0001'){  //CPI同比
-				    valueCPItongbi = sRes.results[i].KPI_VALUE;
+				    valueCPItongbi = sRes.results[i].KPI_VALUE*100;
 				}
 				if (sRes.results[i].KPI_ID == 'KPI_ENV_T_0002'){  //PPI同比
-				    valuePPItongbi = sRes.results[i].KPI_VALUE;
+				    valuePPItongbi = sRes.results[i].KPI_VALUE*100;
 				}
 				if (sRes.results[i].KPI_ID == 'KPI_ENV_T_0003'){  //制造业-同比
-				    valuePMIproduce = sRes.results[i].KPI_VALUE;
+				    valuePMIproduce = sRes.results[i].KPI_VALUE*100;
 				}
 				if (sRes.results[i].KPI_ID == 'KPI_ENV_T_0004'){  //非制造业-同比
-				    valuePMInonProduce = sRes.results[i].KPI_VALUE;
+				    valuePMInonProduce = sRes.results[i].KPI_VALUE*100;
 				}
 				if (sRes.results[i].KPI_ID == 'KPI_ENV_V_0005'){  //GDP总值
 				    valueGDPTotal = sRes.results[i].KPI_VALUE;

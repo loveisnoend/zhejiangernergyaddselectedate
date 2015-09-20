@@ -12,6 +12,16 @@
     height:7%;
     float:left;
 }
+.msg_topLogout{
+    float:left;
+    color:white;
+    font-size:20px;
+    font-family:'微软雅黑';
+    margin-left:20px;
+    margin-top:10px;
+    text-decoration:none;
+    outline:none;
+}
 /* message text style*/
 .msg_text{
     color:#FFFFFF;
