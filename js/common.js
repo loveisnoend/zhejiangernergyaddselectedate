@@ -1,6 +1,6 @@
 // 设定头部跑马灯信息
 	function _loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal){
-        $('.userName').html(usrid);
+        // $('.userName').html(usrid);
 	    // CPI环比
         if (valueCPIhuanbi > 0) {
             $('.valueCPIhuanbiIDClass').html(valueCPIhuanbi+"%↑");
