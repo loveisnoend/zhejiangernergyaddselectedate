@@ -301,11 +301,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 			// not added the controller as delegate to avoid controller functions with similar names as the events
 			onAfterShow: jQuery.proxy(function() {
                 this._drawSwiper();
+                this._loadDateProfitData();
                 this._loadData_top();
                 this._loadData();
                 this._loadTopDynamicShowData();
                 // this._loadData_left();
-                this._loadDateProfitData();
 			}, this)
 		});
 	},

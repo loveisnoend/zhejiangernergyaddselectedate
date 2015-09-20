@@ -65,8 +65,9 @@
 		        mychart.clear();
 		        mychart.dispose();
 		    }
-		    function toDetailPage(){
+		    function toDetailPage(detailName){
 		        app.to("idPowerPlantMap", "show");
+		        $('#detailName').html(detailName);
 		    }
 		    function toInternetPowerDetailPage() {
 		        app.to("idInternetPowerVolume","show");
