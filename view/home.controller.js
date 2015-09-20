@@ -276,9 +276,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
     		//收入数据
     		var sr_data = ((swdl_data * pjswdj_data)/100000000).toFixed(2);
     	    //成本数据
-		    var cb_data=((rlcb_data+qtcb_data)/100000000).toFixed(1);
+		    var cb_data=((rlcb_data+qtcb_data)/100000000).toFixed(2);
     		// 日利润
-    		var rlr_data=sr_data-cb_data
+    		var rlr_data=(sr_data-cb_data).toFixed(2);
 		    $('#home_rlr').html(rlr_data);
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {

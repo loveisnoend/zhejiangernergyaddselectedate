@@ -284,7 +284,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 		}
 
 		//成本数据
-		var cb_data=((rlcb_data+qtcb_data)/100000000).toFixed(1);
+		var cb_data=((rlcb_data+qtcb_data)/100000000).toFixed(2);
 		var cb_prec= '';//a.toFixed(1);
 		var cb_color="red";
 		if(cb_prec>0){
@@ -299,7 +299,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 		+'<div class="main_content_sz"><span style="text-align:center;padding-left:5%;">同比'+sr_prec+'%<img src="img/arrow-'+sr_color+'2.png" class="content_img"/></span><span style="margin-left:18%;text-align:right;">同比'+cb_prec+'%<img src="img/arrow-'+cb_color+'2.png" class="content_img"/></sapn></div>';
 
 		//日利润数据
-		var rlr_data=sr_data-cb_data;
+		var rlr_data=(sr_data-cb_data).toFixed(2);
 		var rlr_prec='';//a.toFixed(1);
 		var rlr_color="red";
 		if(rlr_prec>0){
