@@ -33,7 +33,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 		draw);
 		
 		function draw(e){
-		    document.getElementById('caloriPowerPlantName').innerHTML = document.getElementById('powerPlantMainDetailTitle').innerHTML;
+		    document.getElementById('caloriPowerPlantNameCost').innerHTML = document.getElementById('powerPlantMainDetailTitleCost').innerHTML;
 		    var mychart = e.init(document.getElementById(divId));
 		    var option = {
 		        title:{
@@ -160,7 +160,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 			
 			function draw(e){
 			    mychart = e.init(document.getElementById('detail_another_01'));
-			    document.getElementById('bigCircleDetailTitle').innerHTML = document.getElementById('powerPlantMainDetailTitle').innerHTML;
+			    document.getElementById('bigCircleDetailTitle').innerHTML = document.getElementById('powerPlantMainDetailTitleCost').innerHTML;
 			    
 			    var fuelXaxisName = '';
 			    if (document.getElementById('bigCircleDetailTitle').innerHTML == '集团') {
@@ -310,7 +310,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 			    }
 			    
 			    mychart = e.init(document.getElementById('detail_another_02'));
-			    document.getElementById('bigCircleDetailTitle002').innerHTML = document.getElementById('powerPlantMainDetailTitle').innerHTML;
+			    document.getElementById('bigCircleDetailTitle002').innerHTML = document.getElementById('powerPlantMainDetailTitleCost').innerHTML;
 			    
 			    var fuelXaxisName = '';
 			    if (document.getElementById('bigCircleDetailTitle002').innerHTML == '集团') {
@@ -496,7 +496,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 				// 为echarts对象加载数据 
 				myChart3.setOption(option3); 
 
-                document.getElementById('powerPlantMainDetailTitle').innerHTML = '集团'
+                document.getElementById('powerPlantMainDetailTitleCost').innerHTML = '集团'
 	//////////////////////////////////浙江省地图//////////////////////////////////////////////////////////		
 			    // 基于准备好的dom，初始化echarts图表
                 myChart4 = ec.init(document.getElementById('powerPlantMap3'));
@@ -674,7 +674,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 					} else if (mapSeries.markPoint.data[param.dataIndex].name == '台州') {
 					    powerPlantName = '台二';
 					}
-					document.getElementById('powerPlantMainDetailTitle').innerHTML = powerPlantName+'电厂';
+					document.getElementById('powerPlantMainDetailTitleCost').innerHTML = powerPlantName+'电厂';
                  
 					var data1 = mapSeries.markPoint.data[param.dataIndex].inputPlanValue;
 					var data2 = mapSeries.markPoint.data[param.dataIndex].inputPlanTotal - mapSeries.markPoint.data[param.dataIndex].inputPlanValue
@@ -821,7 +821,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
                     myChart4.setOption(option4);
                     
 					// 电厂名
-					document.getElementById('powerPlantMainDetailTitle').innerHTML = '凤台电厂';//mapSeries.markPoint.data[param.dataIndex].name+'电厂';
+					document.getElementById('powerPlantMainDetailTitleCost').innerHTML = '凤台电厂';//mapSeries.markPoint.data[param.dataIndex].name+'电厂';
 					var data1 = mapSeries.markPoint.data[param.dataIndex].inputPlanValue;
 					var data2 = mapSeries.markPoint.data[param.dataIndex].inputPlanTotal - mapSeries.markPoint.data[param.dataIndex].inputPlanValue
 				    
