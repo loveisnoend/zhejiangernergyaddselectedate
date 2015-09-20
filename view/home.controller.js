@@ -273,27 +273,12 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
     		var pjswdj_data = data2[data2.length - 1];
     		var rlcb_data=data3[data3.length - 1];
 		    var qtcb_data=data4[data4.length-1];
-    		if (isNaN(swdl_data)) {
-    		    swdl_data = 0;
-    		}
-    		if (isNaN(pjswdj_data)) {
-    		    pjswdj_data = 0;
-    		}
     		//收入数据
     		var sr_data = ((swdl_data * pjswdj_data)/100000000).toFixed(2);
-    		if (isNaN(sr_data)) {
-    		    sr_data = 0.00;
-    		}
     	    //成本数据
 		    var cb_data=((rlcb_data+qtcb_data)/100000000).toFixed(1);
-		    if (isNaN(cb_data)) {
-    		    cb_data = 0.00;
-    		}
     		// 日利润
     		var rlr_data=((sr_data-cb_data)/100000000).toFixed(1);
-    		if (isNaN(rlr_data)) {
-    		    rlr_data = 0.00;
-    		}
 		    $('#home_rlr').html(rlr_data);
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
