@@ -80,7 +80,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 	    tab_usetime = '发电量';
 	    // 加载发电量和利用小时数据
 	    this.loadData_v02(currentPlantName,'发电量');
-	    this.loadChart();  
+	    // 加载天气温度好全社会用电量数据
+	    this.loadData_v01(place_v01);
 	},
 	// 改变发电量和利用小时
 	loadChart03 : function(tab_usetime){
@@ -147,6 +148,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 				    data02_01.push(sRes.results[i].KPI_VALUE);    
 				}
 			}
+			this.loadChart();
+			this.loadData_weather();
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			alert("Get Data Error");
