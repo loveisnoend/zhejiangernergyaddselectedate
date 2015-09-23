@@ -111,7 +111,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
             }
 
 	        //折线通用
-        function drawline(e, date, data, title, color, id, value) {
+        function drawline(e, date, data1, title, color, id, value) {
             mychart = e.init(document.getElementById(id));
             var w = document.getElementById(id).clientWidth;
             var h = document.getElementById(id).clientHeight;
@@ -129,9 +129,18 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
                         fontWeight: 'bold'
                     }
                 },
+                itemStyle : {
+                    normal : {
+                        label : {
+                            show : true,
+                            position : 'top'
+                        }
+                    }  
+                },
                 tooltip: {
                     show: false,
                     trigger: 'axis'
+                    // formatter: "Temperature : <br/>{b}km : {c}°C"
                 },
                 legend: {
                     show: false,
@@ -161,7 +170,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
                         },
                         splitLine: {
                             lineStyle: {
-                                color: '#31536f',
+                                color: '#31536f'
                             }
                         },
                         type: 'category',
@@ -187,7 +196,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
                         },
                         splitLine: {
                             lineStyle: {
-                                color: '#31536f',
+                                color: '#31536f'
                             }
                         },
                         scale: true
@@ -204,12 +213,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
                             // areaStyle: { type: 'default' },
                             color: color,
                             lineStyle: {
-                                color: color,
-
+                                color: color
                             }
                         }
                     },
-                    data: data
+                    data: data1
                 }]
             };
             mychart.setOption(option);

@@ -868,7 +868,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 						name: '1',
 						type: 'pie',
 				// 		center: ['31%','36%'],
-						radius: [122, 126],
+						radius: [135, 139],
 						startAngle : 0,
 						itemStyle: {
 							normal: {

@@ -12,7 +12,7 @@
 				data-sap-ui-theme="sap_bluecrystal">
 		</script>
 		<!-- css  -->
-		<link rel="stylesheet" type="text/css" href="css/home.css">
+		<link rel="stylesheet" type="text/css" href="css/home.css" id="homeCss">
 		<link rel="stylesheet" type="text/css" href="css/idangerous.swiper.css">
 		<!--<link rel="stylesheet" type="text/css" href="css/idangerous.swiper.3dflow.css">-->
 		<link rel="stylesheet" type="text/css" href="css/panel.css">
@@ -250,9 +250,16 @@
             		 app.addPage(internetPowerVolume);
 					app.placeAt("content");
 				}
-				if(window.cordova && appContext && !window.sap_webide_companion) {
-                    usrid = appContext.registrationContext.user.toUpperCase();
-        		} 
+				// if(window.cordova && appContext && !window.sap_webide_companion) {
+    //                 // usrid = appContext.registrationContext.user.toUpperCase();
+    //                 usrid = jQuery.sap.getUriParameters().get("usrid").toUpperCase();
+    //                 alert('sos'+usrid);
+    //     		} 
+        		if(jQuery.sap.getUriParameters().get("userId") != null){
+        		    usrid = jQuery.sap.getUriParameters().get("usrid").toUpperCase();
+        		} else {
+        		    usrid = 'ERPTEST1';
+        		}
                 startApp();
 		</script>
 		
