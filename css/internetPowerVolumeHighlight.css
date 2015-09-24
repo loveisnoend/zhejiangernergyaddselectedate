@@ -1,0 +1,123 @@
+.internetPowerTop{
+    height:7%;
+    width:100%;
+    float:left;
+}
+.internetPowerBottom{
+    height:95%;
+    width:100%;
+    float:left;
+}
+.internetPowerPlantLeft{
+    height : 100%;
+    width : 44%;
+    float : left;
+}
+.internetPowerPlantRight{
+    height : 100%;
+    width : 50%;
+    float : left;
+}
+.internetDetail{
+    width:740px;
+    height:450px;
+    background-size:cover;
+    border-radius: 20px 20px 20px 20px;
+    background-image: url(../img/bg-detail-pc-Blue.png);
+}
+.internetDetailTop{
+    height:6%;
+    width:100%;
+    float:left;
+}
+.internetDetailBottom{
+    width:100%;
+    height:94%;
+    float:left;
+}
+.internetDetailRow{
+    width:95%;
+    height:20%;
+    float:left;
+    margin-left:3%;
+}
+.internetDetailRow2{
+    width:95%;
+    height:20%;
+    float:left;
+    margin-left:3%;
+    background-color:#1212BA;
+}
+.internetDetailRowPlace1{
+    width:36%;
+    height:100%;
+    float:left;
+    color:white;
+}
+.internetDetailRowPlace2{
+    width:22%;
+    height:100%;
+    float:left;
+    color:white;
+}
+.internetDetailRowPlace3{
+    width:22%;
+    height:100%;
+    float:left;
+    color:white;
+}
+.internetDetailRowPlace4{
+    width:20%;
+    height:100%;
+    float:left;
+    color:white;
+}
+.internetDetailRowPlaceTitle1{
+    font-size:20px;
+    font-family:"Microsoft YaHei";
+    margin-left:20px;
+    margin-top:10px;
+}
+.internetDetailRowPlaceValue1{
+    font-size:35px;
+    font-family:"impact";
+    margin-left:20px;
+    margin-top:0px;
+}
+.gaugeChart{
+    width:100%;
+    height:100%;
+    margin-top:0px;
+}
+.multipleImg{
+    width:30px;
+    height:30px;
+    float:left;
+    margin-left:-40px;
+    margin-top:8px;
+    background-size:cover;
+    background-image: url(../img/multipleImg.png);
+}
+.equalsImg{
+    width:30px;
+    height:30px;
+    float:left;
+    margin-left:-40px;
+    margin-top:8px;
+    background-size:cover;
+    background-image: url(../img/equalsImg.png);
+}
+.priceDetail_another_01
+{
+    width:630px;
+    height:450px;
+    margin-top:20px;
+    float:left;
+}
+.priceDetail_another_font
+{
+    color: white;
+    font-family: 微软雅黑;
+    margin-top:45%;
+    float:left;
+}

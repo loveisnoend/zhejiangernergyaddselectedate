@@ -3,7 +3,7 @@
         <div class="msg_top">
            <!--<marquee behavior="scroll"><div class="msg_text">GDP增长率<b style="color:#32FF32;" id="valueGDPID">GDP 7.8 3%↓</b>&nbsp;&nbsp;<span class="span_shuxian">|</span> &nbsp;&nbsp;PPI同比<b style="color:#32FF32;" id="valuePPItongbiID">PPI 250 2%↑</b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;制造业-同比<b id="valuePMIproduceID" style="color:#32FF32;">PMI 50 2%↑</b> &nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;非制造业-同比<b id="valuePMInonProduceID" style="color:#32FF32;"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;GDP总值<b style="color:#32FF32;" id="valueGDPTotalID"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;CPI环比<b style="color:#32FF32;" id="valueCPIhuanbiID"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;CPI同比<b style="color:#32FF32;" id="valueCPItongbiID"></b></div></marquee> -->
            <div class="msg_top1"><marquee behavior="scroll"><div class="msg_text">GDP增长率<b style="color:#32FF32;" Class="valueGDPIDClass">GDP 7.8 3%↓</b>&nbsp;&nbsp;<span class="span_shuxian">|</span> &nbsp;&nbsp;PPI同比<b style="color:#32FF32;" Class="valuePPItongbiIDClass">PPI 250 2%↑</b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;制造业-同比<b Class="valuePMIproduceIDClass" style="color:#32FF32;">PMI 50 2%↑</b> &nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;非制造业-同比<b Class="valuePMInonProduceIDClass" style="color:#32FF32;"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;GDP总值<b style="color:#32FF32;" Class="valueGDPTotalIDClass"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;CPI环比<b style="color:#32FF32;" Class="valueCPIhuanbiIDClass"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;CPI同比<b style="color:#32FF32;" Class="valueCPItongbiIDClass"></b></div></marquee></div> 
-           <div class="msg_top2">
+            <div class="msg_top2">
                 <div class="topToolAll">
                     <div class="userNameIcon" onmouseover="userHoverOn('userNameCon')" onmouseout="userHoverOut('userNameCon')" ></div>
                     <div class="userNameCon"><b class="userName"></b></div>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="topToolAll">
                     <div class="userSkinIcon" onmouseover="userHoverOn('userSkinCon')" onmouseout="userHoverOut('userSkinCon')" ></div>
-                    <div class="userSkinCon"><b class="userSkin">换肤</b></div>
+                    <div class="userSkinCon"><b class="userSkin" onClick="changeSkinCss('othersCost')">夜间模式</b></div>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
     			  </div>
     			  <div class="mapBottom">
     			      <div class="chinaMap">
-    			          <div style="background-image:url(img/chinamap-border-pc.png);height:140px;width:190px;margin-top:-120px;margin-left:80px;">
+                         <div class="chinaMapCon">
         			          <div id="chinaMap3" style="float:left;height:110px;width:140px;margin-top:15px;margin-left:30px;">
         			              
         			          </div>
@@ -65,12 +65,12 @@
                         <div class="main_content_combition_1_1">
                             <div class="detail_02_03">
                                 <div class="detail_02_font1">折旧费(万元)</div>
-                                <div class="detail_02_font2" id="travelPriceCost">25.00</div>
+                                <div class="detail_02_font2" id="other_travelPrice">25.00</div>
                                 <div class="detail_02_img" id="detail_01Cost"></div>
                             </div>
                             <div class="detail_02_03 detail_position01" onclick="toMJhid()">
                                 <div class="detail_02_font1">人工成本(万元)</div>
-                                <div class="detail_02_font2" id="coalPriceCost">25.00</div>
+                                <div class="detail_02_font2" id="other_coalPrice">25.00</div>
                                 <div class="detail_02_img" id="detail_02Cost"></div>
                             </div>
                         </div>
@@ -84,12 +84,12 @@
                         <div class="main_content_combition_1_3">
                             <div class="detail_02_03" onclick="detailAnother002('30')">
                                 <div class="detail_02_font1">修理费<b id="wattVolume1Cost"></b>(万元)</div>
-                                <div class="detail_02_font2" id="watt1Cost">25.00</div>
+                                <div class="detail_02_font2" id="other_watt1">25.00</div>
                                 <div class="detail_02_img" id="detail_03Cost"></div>
                             </div>
                             <div class="detail_02_03" onclick="detailAnother002('60')">
                                 <div class="detail_02_font1">财务管理费<b id="wattVolume2Cost"></b>(万元)</div>
-                                <div class="detail_02_font2" id="watt2Cost">25.00</div>
+                                <div class="detail_02_font2" id="other_watt2">25.00</div>
                                 <div class="detail_02_img" id="detail_04Cost"></div>
                             </div>
                         </div>
@@ -98,7 +98,7 @@
                             <div class="detail_pie" id="detail_pieCost" onclick="detailAnother()"></div>
                             <div class="detail_02_02" style="cursor:pointer;">
                                 <div class="detail_02_font01">其他营业成本</div>
-                                <div class="detail_02_font01 font_size1" id="fuelCostCost">450</div>
+                                <div class="detail_02_font01 font_size1" id="other_fuelCost">450</div>
                                 <div class="detail_02_font01 font_size2">万元</div>
                                 <div class="detail_02_font01 font_size3">
                                     <div class="detail_02_font04_01 font_size4"><b id="fuelDownPercentCost">4</b>%</div>

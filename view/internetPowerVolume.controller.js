@@ -6,6 +6,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 * @memberOf com.zhenergy.bi.view.powerPlantMap
 */
 	onInit: function() {
+	    
         this.getView().addEventDelegate({
 			// not added the controller as delegate to avoid controller functions with similar names as the events
 			onAfterShow: jQuery.proxy(function(evt) {
@@ -157,6 +158,12 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
     },
 	// load the chart map
 	loadChart : function () {
+	    var skinColor = '';
+	    if (skinName == '夜间模式') {
+	        skinColor = 'Black';
+	    } else {
+	        skinColor = '#1717E9';
+	    }
 	    var myChart3
 		var myChart4;
 		var myChart5;
@@ -250,7 +257,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 							            }
 							        },
 							        areaStyle:{
-							            color: 'black',
+							            color: skinColor,
 							            type: 'default'
 							        },
 							        borderColor: 'white',
@@ -528,7 +535,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 							            }
 								    },
 								    areaStyle:{
-							            color: 'black',
+							            color: skinColor,
 							            type: 'default'
 							        },
 							        borderColor: 'white',

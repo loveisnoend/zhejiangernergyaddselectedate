@@ -74,7 +74,7 @@
     margin-top:20px;
     margin-bottom: 0;
     border: 2% solid rgb(47,233,48);
-    background:url("../img/combination_3.png") no-repeat center center;
+    background:url("../img/combination_3-Blue.png") no-repeat center center;
     background-size: cover;
 }
 .performance_main_content_right{
@@ -93,7 +93,7 @@
   margin-left:40px;
 
   margin-bottom: 24px;
-  background:url("../img/item-bg.png");
+  background:url("../img/item-bg-Blue.png");
   background-size: contain;
   background-repeat: no-repeat;
 }

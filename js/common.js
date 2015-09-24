@@ -1,19 +1,40 @@
 // 皮肤切换，更换CSS文件
-function changeSkinCss(e) {
-    var skinName = $('.userSkin').html();
+function changeSkinCss(pageName) {
+ 
+    var skinNameAlter = $('.userSkin').html();
     if (skinName == '夜间模式') {
         $('#homeCss').attr("href","css/homeHighlight.css");
         $('#bottomButCss').attr("href","css/bottom_buttonHighlight.css");
         $('#tabCss').attr("href","css/tabHighlight.css");
+        $('#performanceCss').attr("href","css/PerformanceHightlight.css");
+        $('#powerPlantMapCss').attr("href","css/powerPlantMapHighlight.css");
+        $('#internetPowerVolumeCss').attr("href","css/internetPowerVolumeHighlight.css");
         $('.userSkin').html('高亮模式');
+        skinName = '高亮模式';
     } else {
         $('#homeCss').attr("href","css/home.css");
         $('#bottomButCss').attr("href","css/bottom_button.css");
         $('#tabCss').attr("href","css/tab.css");
+        $('#performanceCss').attr("href","css/Performance.css");
+        $('#powerPlantMapCss').attr("href","css/powerPlantMap.css");
+        $('#internetPowerVolumeCss').attr("href","css/internetPowerVolume.css");
         $('.userSkin').html('夜间模式');
+        skinName = '夜间模式';
     }
-    skinName = $('.userSkin').html();
-    alert('您将切换到'+skinName);
+    skinNameAlter = $('.userSkin').html();
+    alert('您将切换到'+skinNameAlter);
+    if (pageName == 'internetPowerVolume') {
+        internetPowerVolume.getController().loadChart();
+    }
+    if (pageName == 'powerPlantMap') {
+        powerPlantMap.getController()._loadData01(); 
+    }
+    if (pageName == 'internetVolume') {
+        internetVolume.getController()._loadData01(); 
+    }
+    if (pageName == 'othersCost') {
+        othersCost.getController()._loadData01(); 
+    }
 }
 // 个人设定，用户名，肤色JS CSS 控制
 function userHoverOn(classNameId) {
