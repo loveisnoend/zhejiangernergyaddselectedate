@@ -4,10 +4,12 @@ function changeSkinCss(e) {
     if (skinName == '夜间模式') {
         $('#homeCss').attr("href","css/homeHighlight.css");
         $('#bottomButCss').attr("href","css/bottom_buttonHighlight.css");
+        $('#tabCss').attr("href","css/tabHighlight.css");
         $('.userSkin').html('高亮模式');
     } else {
         $('#homeCss').attr("href","css/home.css");
         $('#bottomButCss').attr("href","css/bottom_button.css");
+        $('#tabCss').attr("href","css/tab.css");
         $('.userSkin').html('夜间模式');
     }
     skinName = $('.userSkin').html();

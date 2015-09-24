@@ -21,7 +21,7 @@
     border-bottom-left-radius:10px;
     margin-left:100px;
     /*margin-top:40px;*/
-    background-image:url("../img/bg-001.png");
+    background-image:url("../img/bg-001-Blue.png");
     background-size: cover;
     z-index:-1;
 }
@@ -168,7 +168,7 @@
 }
 .tab_center2_01_choose01 select option
 {
-    background-color:black;
+    background-color:#1818C5;
 }
 .select
 {
@@ -184,7 +184,7 @@
 {
     width: 160px;
     height: 25px;
-    background-color: #1A1A1A;
+    background-color: #1717E9;
     color: white;
     font-family: 微软雅黑;
     font-size: 15px;
@@ -240,7 +240,7 @@
     position: absolute;
     top: 200px;
     left: 200px;
-    background-color: rgba(0,0,0,0.5);
+    background-color: #1818C5;
     z-index:0;
 }
 .position1

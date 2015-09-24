@@ -117,7 +117,7 @@
                 </div>
                 <div class="topToolAll">
                     <div class="userSkinIcon" onmouseover="userHoverOn('userSkinCon')" onmouseout="userHoverOut('userSkinCon')" ></div>
-                    <div class="userSkinCon"><b class="userSkin">换肤</b></div>
+                    <div class="userSkinCon"><b class="userSkin" onClick="changeSkinCss()">夜间模式</b></div>
                 </div>
             </div>
         </div>
@@ -223,13 +223,7 @@
                         <div class="tab_center2_02_table01">
                             <div class="tab_center2_02_01 table_bg1" style="float:left;"></div>
                             <div class="tab_center2_01_choose01" style="float:left;">
-                                <select id="select03" onchange="change_usetime(this.value)" style="width: 160px;
-                                    height: 25px;
-                                    background-color: rgb(26,26,26);
-                                    color: white;
-                                    font-family: 微软雅黑;
-                                    font-size: 15px;
-                                ">
+                                <select class="smallSelect" id="select03" onchange="change_usetime(this.value)">
                                   <option value="1">发电量(万千瓦时)</option>
                                   <option value="2">利用小时(小时)</option>
                                 </select>
