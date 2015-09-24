@@ -3,9 +3,11 @@ function changeSkinCss(e) {
     var skinName = $('.userSkin').html();
     if (skinName == '夜间模式') {
         $('#homeCss').attr("href","css/homeHighlight.css");
+        $('#bottomButCss').attr("href","css/bottom_buttonHighlight.css");
         $('.userSkin').html('高亮模式');
     } else {
         $('#homeCss').attr("href","css/home.css");
+        $('#bottomButCss').attr("href","css/bottom_button.css");
         $('.userSkin').html('夜间模式');
     }
     skinName = $('.userSkin').html();
