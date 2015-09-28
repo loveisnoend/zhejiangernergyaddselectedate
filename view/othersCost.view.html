@@ -57,37 +57,30 @@
     			  </div>
             </div>
             <div class="powerPlantRight">
-                <div id="rlcb_detail" class="detail_02">
+                <div id="othersCost_detail" class="detail_02">
                     <div class="detail_02_01">
                             <div id="powerPlantMainDetailTitleCost" style="margin-top:0px;">集团</div>
                     </div>
                     <div class="main_content_combition_1">
                         <div class="main_content_combition_1_1">
-                            <div class="detail_02_03">
+                            <div class="detail_02_03" onClick="priceDetailAnotherCost('detail001')">
                                 <div class="detail_02_font1">折旧费(万元)</div>
                                 <div class="detail_02_font2" id="other_travelPrice">25.00</div>
                                 <div class="detail_02_img" id="detail_01Cost"></div>
                             </div>
-                            <div class="detail_02_03 detail_position01" onclick="toMJhid()">
+                            <div class="detail_02_03 detail_position01" onClick="priceDetailAnotherCost('detail002')">
                                 <div class="detail_02_font1">人工成本(万元)</div>
                                 <div class="detail_02_font2" id="other_coalPrice">25.00</div>
                                 <div class="detail_02_img" id="detail_02Cost"></div>
                             </div>
                         </div>
-                        <!--<div class="main_content_combition_1_2">-->
-                        <!--    <div class="detail_02_04">-->
-                        <!--        <div class="detail_001">-->
-                        <!--            厂用电量<b id="coalCostCost">300</b>万千瓦时-->
-                        <!--        </div>-->
-                        <!--    </div>-->
-                        <!--</div>-->
                         <div class="main_content_combition_1_3">
-                            <div class="detail_02_03" onclick="detailAnother002('30')">
+                            <div class="detail_02_03" onClick="priceDetailAnotherCost('detail003')">
                                 <div class="detail_02_font1">修理费<b id="wattVolume1Cost"></b>(万元)</div>
                                 <div class="detail_02_font2" id="other_watt1">25.00</div>
                                 <div class="detail_02_img" id="detail_03Cost"></div>
                             </div>
-                            <div class="detail_02_03" onclick="detailAnother002('60')">
+                            <div class="detail_02_03" onClick="priceDetailAnotherCost('detail004')">
                                 <div class="detail_02_font1">财务管理费<b id="wattVolume2Cost"></b>(万元)</div>
                                 <div class="detail_02_font2" id="other_watt2">25.00</div>
                                 <div class="detail_02_img" id="detail_04Cost"></div>
@@ -95,8 +88,8 @@
                         </div>
                     </div>
                     <div class="main_content_combition_2">
-                            <div class="detail_pie" id="detail_pieCost" onclick="detailAnother()"></div>
-                            <div class="detail_02_02" style="cursor:pointer;">
+                            <div class="detail_pie" id="detail_pieCost" style="cursor:pointer;" onClick="priceDetailAnotherCost('detail005')"></div>
+                            <div class="detail_02_02" style="cursor:pointer;" onClick="priceDetailAnotherCost('detail005')">
                                 <div class="detail_02_font01">其他营业成本</div>
                                 <div class="detail_02_font01 font_size1" id="other_fuelCost">450</div>
                                 <div class="detail_02_font01 font_size2">万元</div>
@@ -107,81 +100,22 @@
                             </div>
                     </div>
                 </div>
-                <div class="detail_02_hid" style="display:none" id="detail_another">
-                    <div class="detail_02_01" style="font-size:14px;font-family: 微软雅黑;margin-left:0px;float:left;margin-top:0px;">
-                        <div class="detail_02_01" style="font-size:14px;font-family: 微软雅黑;margin-left:0px;">
-                            <span id="bigCircleDetailTitle">
+                <div class="internetDetail" style="display:none;margin-top:0px;" id="othersCostDetail2">
+                    <div class="internetDetailTop" style="font-size:14px;font-family: 微软雅黑;margin-left:10px;">
+                       <div style="color:#FFFFFF;margin-top:15px;margin-left:10px;float:left">
+                            <span style="float:left;" id="othersCostName">
                             集团
                             </span>
-                            <span onclick="back_another()" style="cursor:pointer;margin-left:20px;color:rgb(255,153,0);">返回</span>
-                        </div>
-                        <div class="detail_another_01" id="detail_another_01" style="float:left;">
-                            
-                        </div>
-                        <!--<div class="detail_another_font" style="float:left;">-->
-                        <!--    统计于<br/>2015.08.08-->
-                        <!--</div>-->
+                            <span onclick="othersCostback()" style="cursor:pointer;margin-left:20px;color:rgb(255,153,0);">返回</span>
+                       </div>
                     </div>
-                </div>
-                <div class="detail_02_hid" style="display:none" id="detail_another002">
-                    <div class="detail_02_01" style="font-size:14px;font-family: 微软雅黑;margin-left:0px;float:left;margin-top:0px;">
-                        <div class="detail_02_01" style="font-size:14px;font-family: 微软雅黑;margin-left:0px;">
-                            <span id="bigCircleDetailTitle002">
-                            集团
-                            </span>
-                            <span onclick="back_another002()" style="cursor:pointer;margin-left:20px;color:rgb(255,153,0);">返回</span>
-                        </div>
-                        <div class="detail_another_01" id="detail_another_02" style="float:left;">
-                            
-                        </div>
-                        <!--<div class="detail_another_font" style="float:left;">-->
-                        <!--    统计于<br/>2015.08.08-->
-                        <!--</div>-->
-                    </div>
-                </div>
-                <div id="mj_hid" class="detail_02_hid" style="display:none;">
-                     <div class="detail_02_01" style="font-size:14px;font-family: 微软雅黑;margin-left:0px;">
-                        <div style="float:left;margin-top:0px;" id="caloriPowerPlantNameCost">集团</div>
-                        <div onclick="back()" style="float:left;margin-top:0px;margin-left:20px;cursor:pointer;color:rgb(255,153,0);">返回</div>
-                        <ul style="float:left;margin-left:100px;margin-top:0px;">
-                            <li>
-                                <button id="btn1" class="active" onclick="btnclick('1')">4500大卡</button></li>
-                            <li>
-                                <button id="btn2" onclick="btnclick('2')">4800大卡</button></li>
-                            <li>
-                                <button id="btn3" onclick="btnclick('3')">5000大卡</button></li>
-                            <li>
-                                <button id="btn4" onclick="btnclick('4')">5200大卡</button></li>
-                            <li>
-                                <button id="btn5" onclick="btnclick('5')">5500大卡</button></li>
-                        </ul>
-                    </div>
-                <div id="mj_content_hid1" class="mj_content">
-                    <div id="pic4500" class="caloryChart">
+                    <div class="priceDetail_another_01" id="othersCostDetailDiv">
                         
                     </div>
-                </div>
-                <div id="mj_content_hid2" class="mj_content" style="display: none">
-                    <div id="pic4800" class="caloryChart">
-                        
+                    <div class="priceDetail_another_font">
+                        统计于<br/>2015.08.08
                     </div>
-                </div>
-                <div id="mj_content_hid3" class="mj_content" style="display: none">
-                    <div id="pic5000" class="caloryChart">
-                        
-                    </div>
-                </div>
-                <div id="mj_content_hid4" class="mj_content" style="display: none">
-                    <div id="pic5200" class="caloryChart">
-                        
-                    </div>
-                </div>
-                <div id="mj_content_hid5" class="mj_content" style="display: none">
-                    <div id="pic5500" class="caloryChart">
-                        
-                    </div>
-                </div>
-            </div>    
+                </div>   
             </div>
             
           </div>

@@ -17,8 +17,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 	// eventment before show the page 
 	onAfterShow : function () {
 	    
-        document.getElementById('mj_hid').style.display = "none";
-        document.getElementById('rlcb_detail').style.display = "";
+        document.getElementById('othersCostDetail2').style.display = "none";
+        document.getElementById('othersCost_detail').style.display = "";
         // this.loadChart();
         this._loadData01();
     	// 设定头部跑马灯信息 common.js
@@ -261,8 +261,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 		}
 	    
 	},
-	//大圆圈点进去的chart
-	loadChartdetail: function() {
+	// 电价详细Chart
+	loadPriceChartdetail: function(chartDivId, priceChartName) {
         	require(
             [
                 'echarts',
@@ -272,282 +272,123 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 			draw);
 			
 			function draw(e){
-			    mychart = e.init(document.getElementById('detail_another_01'));
-			    document.getElementById('bigCircleDetailTitle').innerHTML = document.getElementById('powerPlantMainDetailTitleCost').innerHTML;
-			    
+			    var mychart = e.init(document.getElementById(chartDivId));
+			    document.getElementById('othersCostName').innerHTML = document.getElementById('powerPlantMainDetailTitleCost').innerHTML;
 			    var fuelXaxisName = '';
-			    if (document.getElementById('bigCircleDetailTitle').innerHTML == '集团') {
+			    if (document.getElementById('powerPlantMainDetailTitleCost').innerHTML == '集团') {
 			        fuelXaxisName = ['电厂1', '电厂2', '电厂3', '电厂4'];
 			    } else {
-			        fuelXaxisName = ['机组1', '机组2', '机组3', '机组4'];
+			        fuelXaxisName = ['4', '5', '6', '7'];
 			    }
+			    
 			    var option = {
-    			    title:{
-                    	text:'单位燃料成本',
-                    	textStyle:{
-    						color:'white',
-    						fontFamily:'微软雅黑'
-    					},
-    					x:'50',
-    					y:'10'
+			        title:{
+                	text: priceChartName,
+                	textStyle:{
+						color:'white',
+						fontFamily:'微软雅黑'
+					},
+					x:'50',
+					y:'10'
+                },
+  				legend: {
+                  	orient:'horizontal',
+                  	x:'400',
+                  	y:'20',
+                  	textStyle:{
+						color:'white',
+						fontFamily:'微软雅黑'
+					},
+        			data:['当年','去年']
+   			 	},
+   				color: ['#2DE630', '#E52DE6','white'],
+				grid: {
+                    y1:100,
+                    y2:100
+				},
+				xAxis: [
+					{
+
+						//show: false,
+						type: 'category',
+						axisLabel: {
+							textStyle: {
+								color: 'white'
+							},
+							formatter: '{value}'
+						},
+						data: fuelXaxisName
+                    }
+                ],
+				yAxis: [
+					{
+						name: '',
+						type: 'value',
+						axisLine: {
+							show: false
+						},
+						axisLabel: {
+							textStyle: {
+								color: 'white'
+							},
+							formatter: '{value}'
+						},
+						// 		splitLine: {
+						// 			show: false
+						// 		},
+						splitLine: {
+							// 			show: false
+							lineStyle: {
+								color: 'rgba(64,64,64,0.5)'
+							}
+						},
+						max: 0.65,
+						min: 0,
+						splitNumber: 13
                     },
-      				legend: {
-                      	orient:'horizontal',
-                      	x:'300',
-                      	y:'20',
-                      	textStyle:{
-    						color:'white',
-    						fontFamily:'微软雅黑'
-    					},
-            			data:['当前单位成本','去年同期','涨幅']
-       			 	},
-       				color: ['#2DE630', '#E52DE6','white'],
-    				grid: {
-                        y1:100,
-                        y2:100
-    				},
-    				xAxis: [
-    					{
-    
-    						//show: false,
-    						type: 'category',
-    						axisLabel: {
-    							textStyle: {
-    								color: 'white'
-    							},
-    							formatter: '{value}'
-    						},
-    						data: fuelXaxisName
-                        }
-                    ],
-    				yAxis: [
-    					{
-    						name: '',
-    						type: 'value',
-    						axisLine: {
-    							show: false
-    						},
-    						axisLabel: {
-    							textStyle: {
-    								color: 'white'
-    							},
-    							formatter: '{value}'
-    						},
-    						// 		splitLine: {
-    						// 			show: false
-    						// 		},
-    						splitLine: {
-    							// 			show: false
-    							lineStyle: {
-    								color: 'rgba(64,64,64,0.5)'
-    							}
-    						},
-    						max: 0.65,
-    						min: 0,
-    						splitNumber: 13
-                        },
-    					{
-    						name: '',
-    						type: 'value',
-    						axisLine: {
-    							show: false
-    						},
-    						axisLabel: {
-    							textStyle: {
-    								color: 'white'
-    							},
-    							formatter: '{value}%'
-    						},
-    						splitLine: {
-    							// 			show: false
-    							lineStyle: {
-    								//color: 'rgba(64,64,64,0.5)',
-    							}
-    						},
-    						max: 8.5,
-    						min: 2.0,
-    						splitNumber: 13
-                        }
-                    ],
-    				series: [
-    					{
-    						name: '当前单位成本',
-    						type: 'bar',
-    						smooth: true,
-                         	barGap: '0%',
-                          	barCategoryGap: '50%',
-    						// itemStyle: {normal: {areaStyle: {type: 'default'}}},
-    						data: ['0.18','0.50','0.18','0.37']
-                        },
-    					{
-    						name: '去年同期',
-    						type: 'bar',
-    						smooth: true,
-    					
-    						//itemStyle: {normal: {areaStyle: {type: 'default'}}},
-    						data: ['0.12','0.43','0.20','0.30']
-    
-                        },
-                      	{
-    						name: '涨幅',
-    						type: 'line',
-    						smooth: true,
-    					
-    						//itemStyle: {normal: {areaStyle: {type: 'default'}}},
-    						data: ['0.12','0.43','0.20','0.30']
-    
-                        }
-                    ]
-			    };
-			    mychart.setOption(option);
-			}
-    },
-    //30KW and 60 kw
-	loadChartdetail02: function(machineType) {
-        	require(
-            [
-                'echarts',
-                'echarts/chart/line',
-                'echarts/chart/bar'
-            ],
-			draw);
-			
-			function draw(e){
-			    
-			    var machineTypeName = '';
-			    if (machineType == '30') {
-			        machineTypeName = '单位燃料成本--30瓦及以上机组';
-			    }
-			    if (machineType == '60') {
-			        machineTypeName = '单位燃料成本--60瓦及以上机组';
-			    }
-			    
-			    mychart = e.init(document.getElementById('detail_another_02'));
-			    document.getElementById('bigCircleDetailTitle002').innerHTML = document.getElementById('powerPlantMainDetailTitleCost').innerHTML;
-			    
-			    var fuelXaxisName = '';
-			    if (document.getElementById('bigCircleDetailTitle002').innerHTML == '集团') {
-			        fuelXaxisName = ['电厂1', '电厂2', '电厂3', '电厂4'];
-			    } else {
-			        fuelXaxisName = ['机组1', '机组2', '机组3', '机组4'];
-			    }
-			    var option = {
-    			    title:{
-                    	text: machineTypeName,
-                    	textStyle:{
-    						color:'white',
-    						fontFamily:'微软雅黑'
-    					},
-    					x:'50',
-    					y:'10'
+					{
+						name: '',
+						type: 'value',
+						axisLine: {
+							show: false
+						},
+						axisLabel: {
+							textStyle: {
+								color: 'white'
+							},
+							formatter: '{value}%'
+						},
+						splitLine: {
+							// 			show: false
+							lineStyle: {
+								//color: 'rgba(64,64,64,0.5)',
+							}
+						},
+						max: 8.5,
+						min: 2.0,
+						splitNumber: 13
+                    }
+                ],
+				series: [
+					{
+						name: '当年',
+						type: 'bar',
+						smooth: true,
+                     	barGap: '0%',
+                      	barCategoryGap: '50%',
+						// itemStyle: {normal: {areaStyle: {type: 'default'}}},
+						data: ['0.18','0.50','0.18','0.37']
                     },
-      				legend: {
-                      	orient:'horizontal',
-                      	x:'330',
-                      	y:'20',
-                      	textStyle:{
-    						color:'white',
-    						fontFamily:'微软雅黑'
-    					},
-            			data:['当前单位成本','去年同期','涨幅']
-       			 	},
-       				color: ['#2DE630', '#E52DE6','white'],
-    				grid: {
-                        y1:100,
-                        y2:100
-    				},
-    				xAxis: [
-    					{
-    
-    						//show: false,
-    						type: 'category',
-    						axisLabel: {
-    							textStyle: {
-    								color: 'white'
-    							},
-    							formatter: '{value}'
-    						},
-    						data: fuelXaxisName
-                        }
-                    ],
-    				yAxis: [
-    					{
-    						name: '',
-    						type: 'value',
-    						axisLine: {
-    							show: false
-    						},
-    						axisLabel: {
-    							textStyle: {
-    								color: 'white'
-    							},
-    							formatter: '{value}'
-    						},
-    						// 		splitLine: {
-    						// 			show: false
-    						// 		},
-    						splitLine: {
-    							// 			show: false
-    							lineStyle: {
-    								color: 'rgba(64,64,64,0.5)'
-    							}
-    						},
-    						max: 0.65,
-    						min: 0,
-    						splitNumber: 13
-                        },
-    					{
-    						name: '',
-    						type: 'value',
-    						axisLine: {
-    							show: false
-    						},
-    						axisLabel: {
-    							textStyle: {
-    								color: 'white'
-    							},
-    							formatter: '{value}%'
-    						},
-    						splitLine: {
-    							// 			show: false
-    							lineStyle: {
-    								//color: 'rgba(64,64,64,0.5)',
-    							}
-    						},
-    						max: 8.5,
-    						min: 2.0,
-    						splitNumber: 13
-                        }
-                    ],
-    				series: [
-    					{
-    						name: '当前单位成本',
-    						type: 'bar',
-    						smooth: true,
-                         	barGap: '0%',
-                          	barCategoryGap: '50%',
-    						// itemStyle: {normal: {areaStyle: {type: 'default'}}},
-    						data: ['0.18','0.50','0.18','0.37']
-                        },
-    					{
-    						name: '去年同期',
-    						type: 'bar',
-    						smooth: true,
-    					
-    						//itemStyle: {normal: {areaStyle: {type: 'default'}}},
-    						data: ['0.12','0.43','0.20','0.30']
-    
-                        },
-                      	{
-    						name: '涨幅',
-    						type: 'line',
-    						smooth: true,
-    					
-    						//itemStyle: {normal: {areaStyle: {type: 'default'}}},
-    						data: ['0.12','0.43','0.20','0.30']
-    
-                        }
-                    ]
+					{
+						name: '去年',
+						type: 'bar',
+						smooth: true,
+					
+						//itemStyle: {normal: {areaStyle: {type: 'default'}}},
+						data: ['0.12','0.43','0.20','0.30']
+
+                    }
+                ]
 			    };
 			    mychart.setOption(option);
 			}
@@ -770,10 +611,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 				}; 
 				myChart4.on(ecConfig.EVENT.CLICK, function (param){  
 					
-                	document.getElementById('mj_hid').style.display = "none";
-                    document.getElementById('rlcb_detail').style.display = "";
-                    document.getElementById("detail_another").style.display = "none";
-                    document.getElementById("detail_another002").style.display = "none";
+                    document.getElementById('othersCostDetail2').style.display = "none";
+                    document.getElementById('othersCost_detail').style.display = "";
     
 					var mapSeries = option4.series[0];
 					
@@ -924,10 +763,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 				}; 
 				myChart5.on(ecConfig.EVENT.CLICK, function (param){
 
-                	document.getElementById('mj_hid').style.display = "none";
-                    document.getElementById('rlcb_detail').style.display = "";
-                    document.getElementById("detail_another").style.display = "none";
-                    document.getElementById("detail_another002").style.display = "none";
+                    document.getElementById('othersCostDetail2').style.display = "none";
+                    document.getElementById('othersCost_detail').style.display = "";
                     
 					var mapSeries = option5.series[0];
 

@@ -96,9 +96,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 	},
 	
 	_loadData01 : function(daytime,weather,temperature,place){
-	    var daytime01 = daytime.substring(0,4);
-	    var daytime02 = daytime.substring(4,6);
-	    var daytime03 = daytime.substring(6,8);
+	    var daytime01;
+	    var daytime02;
+	    var daytime03;
+	    if (daytime != null) {
+	       daytime01 = daytime.substring(0,4);
+	       daytime02 = daytime.substring(4,6);
+	       daytime03 = daytime.substring(6,8); 
+	    }
 	    switch(weather !== null){
 	        case weather == "W001":
 	             $('#home_weather').html("晴天");

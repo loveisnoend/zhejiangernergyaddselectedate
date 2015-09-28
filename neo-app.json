@@ -5,10 +5,10 @@
       "path": "/sap/opu/odata",
       "target": {
         "type": "destination",
-        "name": "BWD",
+        "name": "BWP",
         "entryPath": "/sap/opu/odata"
       },
-      "description": "BWD"
+      "description": "BWP"
     },
     {
       "path": "/resources",
