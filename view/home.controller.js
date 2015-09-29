@@ -146,7 +146,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 	             $('#home_weather_img').attr('src',"img/0001-weather-09.png");
 	             break;
 	    }
-	    
+	    // 高温预警
+        if (temperature > 38) {
+            $('#home_temperature').css('color','red');
+        }
 	    $('#home_temperature').html(temperature);
 	    $('#home_place').html(place);
 	    $('#home_daytime').html(daytime01 + "年" + daytime02 + "月" + daytime03 + "日");

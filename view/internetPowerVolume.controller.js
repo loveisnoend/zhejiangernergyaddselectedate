@@ -551,17 +551,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
                     document.getElementById('internetMain').style.display = "";
                     
 					var mapSeries = option4.series[0];
-                  
-                  	// 电厂名
-					var powerPlantName = '';
-					if (mapSeries.markPoint.data[param.dataIndex].name == '金华') {
-					    powerPlantName = '兰溪';
-					} else if (mapSeries.markPoint.data[param.dataIndex].name == '台州') {
-					    powerPlantName = '台二';
-					}
-					// 电厂名
-					document.getElementById('powerPlantName').innerHTML = powerPlantName+'电厂';
-					
+
 					var selectedData = {name: mapSeries.markPoint.data[param.dataIndex].name, value: mapSeries.markPoint.data[param.dataIndex].inputPlanValue};
 					option4.series[1].markPoint.data = [];
 					option4.series[1].markPoint.data[0] = selectedData;
@@ -571,136 +561,17 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 					option5.series[1].markPoint.data = [{name:'上海',value:0}];
                     myChart5.setOption(option5);
                     
-					// 平均电价
-					var internetAverPrice1 = mapSeries.markPoint.data[param.dataIndex].averNetPrice;
-					internetAverPrice1 = internetAverPrice1.toString().substring(0, internetAverPrice1.toString().indexOf('.')+3);
-                    document.getElementById('internetAverPrice1').innerHTML =  internetAverPrice1;  
-                    
-                    var powerVolume1 = mapSeries.markPoint.data[param.dataIndex].normalPowerVolume;
-					powerVolume1 = powerVolume1.toString().substring(0, powerVolume1.toString().indexOf('.')+3);
-				    document.getElementById('powerVolume1').innerHTML = powerVolume1;
-				    
-				    var normalIncome = mapSeries.markPoint.data[param.dataIndex].normalIncome;
-				    document.getElementById('inputCash1').innerHTML = normalIncome.toString().substring(0, normalIncome.toString().indexOf('.')+3);
-
-					// 合约电价
-					var internetAverPrice2 = mapSeries.markPoint.data[param.dataIndex].contractPrice;
-					internetAverPrice2 = internetAverPrice2.toString().substring(0, internetAverPrice2.toString().indexOf('.')+3);
-                    document.getElementById('internetAverPrice2').innerHTML =  internetAverPrice2;  
-                    
-                    var powerVolume2 = mapSeries.markPoint.data[param.dataIndex].contractPowerVolume;
-					powerVolume2 = powerVolume2.toString().substring(0, powerVolume2.toString().indexOf('.')+3);
-				    document.getElementById('powerVolume2').innerHTML = powerVolume2;
-				    
-				    var contractIncome = mapSeries.markPoint.data[param.dataIndex].contractIncome;
-				    document.getElementById('inputCash2').innerHTML = contractIncome.toString().substring(0, contractIncome.toString().indexOf('.')+3);
-
-					// 直供电价
-					var internetAverPrice3 = mapSeries.markPoint.data[param.dataIndex].directlyPrice;
-					internetAverPrice3 = internetAverPrice3.toString().substring(0, internetAverPrice3.toString().indexOf('.')+3);
-                    document.getElementById('internetAverPrice3').innerHTML =  internetAverPrice3;  
-                    
-                    var powerVolume3 = mapSeries.markPoint.data[param.dataIndex].directlyPowerVolume;
-					powerVolume3 = powerVolume3.toString().substring(0, powerVolume3.toString().indexOf('.')+3);
-				    document.getElementById('powerVolume3').innerHTML = powerVolume3;
-				    
-				    var directlyIncome = mapSeries.markPoint.data[param.dataIndex].directlyIncome;
-				    document.getElementById('inputCash3').innerHTML = directlyIncome.toString().substring(0, directlyIncome.toString().indexOf('.')+3);
-
-
-					// 代替电价
-					var internetAverPrice4 = mapSeries.markPoint.data[param.dataIndex].replacePrice;
-					internetAverPrice4 = internetAverPrice4.toString().substring(0, internetAverPrice4.toString().indexOf('.')+3);
-                    document.getElementById('internetAverPrice4').innerHTML =  internetAverPrice4;  
-                    
-                    var powerVolume4 = mapSeries.markPoint.data[param.dataIndex].replacePowerVolume;
-					powerVolume4 = powerVolume4.toString().substring(0, powerVolume4.toString().indexOf('.')+3);
-				    document.getElementById('powerVolume4').innerHTML = powerVolume4
-				        
-				    var replaceIncome = mapSeries.markPoint.data[param.dataIndex].replaceIncome;
-				    document.getElementById('inputCash4').innerHTML = replaceIncome.toString().substring(0, replaceIncome.toString().indexOf('.')+3);
-					
-					var data1 = mapSeries.markPoint.data[param.dataIndex].huanbiIncomeUp;
-					var data2 = mapSeries.markPoint.data[param.dataIndex].contractIncomeUp;
-					var data3 = mapSeries.markPoint.data[param.dataIndex].directlyIncomeUp;
-					var data4 = mapSeries.markPoint.data[param.dataIndex].replaceIncomUp;
-					drawpie(ec, data1, 1, 'percentMap1');
-    			    drawpie(ec, data2, 1, 'percentMap2');
-    			    drawpie(ec, data3, 1, 'percentMap3');
-    			    drawpie(ec, data4, 1, 'percentMap4');
+                    setChartData(ec, mapSeries, param.dataIndex);
 				});	
 				
-				// 电厂名
-				document.getElementById('powerPlantName').innerHTML = "集团";
-				
-				// 平均电价
-				var internetCenterAverPrice1 = 23;
-                document.getElementById('internetAverPrice1').innerHTML =  internetCenterAverPrice1;  
-                
-                var powerCenterVolume1 = 12;
-				powerCenterVolume1 = powerCenterVolume1.toString().substring(0, powerCenterVolume1.toString().indexOf('.')+3);
-			    document.getElementById('powerVolume1').innerHTML = powerCenterVolume1;
-			    
-			    var inputCenterCash1 = internetCenterAverPrice1*powerCenterVolume1;
-			    document.getElementById('inputCash1').innerHTML = inputCenterCash1.toString().substring(0, inputCenterCash1.toString().indexOf('.')+3);
-
-				// 合约电价
-				var internetCenterAverPrice2 = 23;
-				internetCenterAverPrice2 = internetCenterAverPrice2.toString().substring(0, internetCenterAverPrice2.toString().indexOf('.')+3);
-                document.getElementById('internetAverPrice2').innerHTML =  internetCenterAverPrice2;  
-                
-                var powerCenterVolume2 = 22;
-				powerCenterVolume2 = powerCenterVolume2.toString().substring(0, powerCenterVolume2.toString().indexOf('.')+3);
-			    document.getElementById('powerVolume2').innerHTML = powerCenterVolume2;
-			    
-			    var inputCenterCash2 = internetCenterAverPrice2*powerCenterVolume2;
-			    document.getElementById('inputCash2').innerHTML = inputCenterCash2.toString().substring(0, inputCenterCash2.toString().indexOf('.')+3);
-
-				// 直供电价
-				var internetCenterAverPrice3 = 23;
-				internetCenterAverPrice3 = internetCenterAverPrice3.toString().substring(0, internetCenterAverPrice3.toString().indexOf('.')+3);
-                document.getElementById('internetAverPrice3').innerHTML =  internetCenterAverPrice3;  
-                
-                var powerCenterVolume3 = 32;
-				powerCenterVolume3 = powerCenterVolume3.toString().substring(0, powerCenterVolume3.toString().indexOf('.')+3);
-			    document.getElementById('powerVolume3').innerHTML = powerCenterVolume3;
-			    
-			    var inputCenterCash3 = internetCenterAverPrice3*powerCenterVolume3;
-			    document.getElementById('inputCash3').innerHTML = inputCenterCash3.toString().substring(0, inputCenterCash3.toString().indexOf('.')+3);
-
-				// 代替电价
-				var internetCenterAverPrice4 = 23;
-				internetCenterAverPrice4 = internetCenterAverPrice4.toString().substring(0, internetCenterAverPrice4.toString().indexOf('.')+3);
-                document.getElementById('internetAverPrice4').innerHTML =  internetCenterAverPrice4;  
-                
-                var powerCenterVolume4 = 42;
-				powerCenterVolume4 = powerCenterVolume4.toString().substring(0, powerCenterVolume4.toString().indexOf('.')+3);
-			    document.getElementById('powerVolume4').innerHTML = powerCenterVolume4;
-			    
-			    var inputCenterCash4 = internetCenterAverPrice4*powerCenterVolume4;
-			    document.getElementById('inputCash4').innerHTML = inputCenterCash4.toString().substring(0, inputCenterCash4.toString().indexOf('.')+3);
-
-
-				var dataCenter1 = 30;
-				var dataCenter2 = 57;
-				var dataCenter3 = 29;
-				var dataCenter4 = 90;
-				drawpie(ec, dataCenter1, 3, 'percentMap1');
-			    drawpie(ec, dataCenter2, 5, 'percentMap2');
-			    drawpie(ec, dataCenter3, 7, 'percentMap3');
-			    drawpie(ec, dataCenter4, 1, 'percentMap4');
-				
-				// document.getElementById('powerName').innerHTML = "杭州";
-				
+				var mapSeries = option4.series[0];
+				setChartData(ec, mapSeries, 0);
+                option4.series[1].markPoint.data[1] = {name:'上海',value:0};
                 // 为echarts对象加载数据 
                 myChart4.setOption(option4); 
 		///////////////////////////////安徽淮南市地图////////////////////////////////////////////
 				// 基于准备好的dom，初始化echarts图表
                 myChart5 = ec.init(document.getElementById('huaiNanMap')); 
-                
-				// var allPowerData2 = [
-				// 	{name: "淮南", value: 300, coal:1196820.02, coalDays:3, inputPlanTotal:"600", inputPlanValue:335, averUsePerH:11.8, averLoadRate: "65%", netPowerWPerH:6.19, costData:8580.15, costPer:0.45, otherAllCost:5646.66, otherCost:345.45, repairCost:580.9, peopleCost:3456.15, finaceCost:1000.56, depreciationCost:345.3},
-				// ];
 				var allPowerData2 = map2Data;			
 				option5 = {
 					title : {
@@ -812,68 +683,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
                     option4.series[1].markPoint.data[1] = {name:'上海',value:0};
                     myChart4.setOption(option4);
                     
-					// 电厂名
-					document.getElementById('powerPlantName').innerHTML = '凤台电厂';
-					
-					// 平均电价
-					var internetAverPrice1 = mapSeries.markPoint.data[param.dataIndex].costPer;
-					internetAverPrice1 = internetAverPrice1.toString().substring(0, internetAverPrice1.toString().indexOf('.')+3);
-                    document.getElementById('internetAverPrice1').innerHTML =  internetAverPrice1;  
-                    
-                    var powerVolume1 = mapSeries.markPoint.data[param.dataIndex].averUsePerH;
-					powerVolume1 = powerVolume1.toString().substring(0, powerVolume1.toString().indexOf('.')+3);
-				    document.getElementById('powerVolume1').innerHTML = powerVolume1;
-				    
-				    var inputCash1 = mapSeries.markPoint.data[param.dataIndex].costPer*mapSeries.markPoint.data[param.dataIndex].averUsePerH;
-				    document.getElementById('inputCash1').innerHTML = inputCash1.toString().substring(0, inputCash1.toString().indexOf('.')+3);
-
-					// 合约电价
-					var internetAverPrice2 = mapSeries.markPoint.data[param.dataIndex].costPer;
-					internetAverPrice2 = internetAverPrice2.toString().substring(0, internetAverPrice2.toString().indexOf('.')+3);
-                    document.getElementById('internetAverPrice2').innerHTML =  internetAverPrice2;  
-                    
-                    var powerVolume2 = mapSeries.markPoint.data[param.dataIndex].averUsePerH+0.5;
-					powerVolume2 = powerVolume2.toString().substring(0, powerVolume2.toString().indexOf('.')+3);
-				    document.getElementById('powerVolume2').innerHTML = powerVolume2;
-				    
-				    var inputCash2 = mapSeries.markPoint.data[param.dataIndex].costPer*(mapSeries.markPoint.data[param.dataIndex].averUsePerH+0.5);
-				    document.getElementById('inputCash2').innerHTML = inputCash2.toString().substring(0, inputCash2.toString().indexOf('.')+3);
-
-					// 直供电价
-					var internetAverPrice3 = mapSeries.markPoint.data[param.dataIndex].costPer;
-					internetAverPrice3 = internetAverPrice3.toString().substring(0, internetAverPrice3.toString().indexOf('.')+3);
-                    document.getElementById('internetAverPrice3').innerHTML =  internetAverPrice3;  
-                    
-                    var powerVolume3 = mapSeries.markPoint.data[param.dataIndex].averUsePerH+1.4;
-					powerVolume3 = powerVolume3.toString().substring(0, powerVolume3.toString().indexOf('.')+3);
-				    document.getElementById('powerVolume3').innerHTML = powerVolume3;
-				    
-				    var inputCash3 = mapSeries.markPoint.data[param.dataIndex].costPer*(mapSeries.markPoint.data[param.dataIndex].averUsePerH+1.4);
-				    document.getElementById('inputCash3').innerHTML = inputCash3.toString().substring(0, inputCash3.toString().indexOf('.')+3);
-
-
-					// 代替电价
-					var internetAverPrice4 = mapSeries.markPoint.data[param.dataIndex].costPer;
-					internetAverPrice4 = internetAverPrice4.toString().substring(0, internetAverPrice4.toString().indexOf('.')+3);
-                    document.getElementById('internetAverPrice4').innerHTML =  internetAverPrice4;  
-                    
-                    var powerVolume4 = mapSeries.markPoint.data[param.dataIndex].averUsePerH+2.8;
-					powerVolume4 = powerVolume4.toString().substring(0, powerVolume4.toString().indexOf('.')+3);
-				    document.getElementById('powerVolume4').innerHTML = powerVolume4
-				        
-				    var inputCash4 = mapSeries.markPoint.data[param.dataIndex].costPer*(mapSeries.markPoint.data[param.dataIndex].averUsePerH+2.8);
-				    document.getElementById('inputCash4').innerHTML = inputCash4.toString().substring(0, inputCash4.toString().indexOf('.')+3);
-					
-					var data1 = mapSeries.markPoint.data[param.dataIndex].coalDays;
-					var data2 = mapSeries.markPoint.data[param.dataIndex].averUsePerH;
-					var data3 = mapSeries.markPoint.data[param.dataIndex].netPowerWPerH;
-					var data4 = mapSeries.markPoint.data[param.dataIndex].costPer;
-					drawpie(ec, data1, 3, 'percentMap1');
-    			    drawpie(ec, data2, 5, 'percentMap2');
-    			    drawpie(ec, data3, 7, 'percentMap3');
-    			    drawpie(ec, data4, 1, 'percentMap4');
+                    setChartData(ec, mapSeries, param.dataIndex);
 				});	
 			
+			    option5.series[1].markPoint.data[0] = {name:'上海',value:0};
                 // 为echarts对象加载数据 
                 myChart5.setOption(option5); 
         }
@@ -891,7 +704,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
                             splitNumber: 10,       // 分割段数，默认为5
                             axisLine: {            // 坐标轴线
                                 lineStyle: {       // 属性lineStyle控制线条样式
-                                    color: [[0.2, '#34BC34'],[0.8, '#FFD400'],[1, '#FF4535']], 
+                                    color: [[0.2, '#FF4535'],[0.5, '#FFD400'],[1, '#34BC34']], 
                                     width: 4
                                 }
                             },
@@ -946,5 +759,109 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
                 };
 			mychart.setOption(option);
 		}
+		// 设置Chart的数据
+        function setChartData(ec, mapSeries, dataIndex) {
+            // 电厂名
+			var powerPlantName = '';
+			if (mapSeries.markPoint.data[dataIndex].name == '金华') {
+			    powerPlantName = '兰溪电厂';
+			} else if (mapSeries.markPoint.data[dataIndex].name == '台州') {
+			    powerPlantName = '台二电厂';
+			} else if (mapSeries.markPoint.data[dataIndex].name == '淮南') {
+			    powerPlantName = '凤台电厂';
+			}
+			// 电厂名
+			document.getElementById('powerPlantName').innerHTML = powerPlantName;
+			
+			// 平均电价
+			var internetAverPrice1 = mapSeries.markPoint.data[dataIndex].averNetPrice;
+			if (internetAverPrice1 != undefined) {
+			    document.getElementById('internetAverPrice1').innerHTML =  internetAverPrice1; 
+			} else {
+			    document.getElementById('internetAverPrice1').innerHTML =  0; 
+			}
+            var powerVolume1 = mapSeries.markPoint.data[dataIndex].normalPowerVolume;
+            if (powerVolume1 != undefined) {
+                document.getElementById('powerVolume1').innerHTML = powerVolume1;
+            } else {
+                document.getElementById('powerVolume1').innerHTML = 0;
+            }
+		    var normalIncome = mapSeries.markPoint.data[dataIndex].normalIncome;
+		    if (normalIncome != undefined) {
+		        document.getElementById('inputCash1').innerHTML =  normalIncome;
+		    } else {
+		        document.getElementById('inputCash1').innerHTML = 0;
+		    }
+
+			// 合约电价
+			var internetAverPrice2 = mapSeries.markPoint.data[dataIndex].contractPrice;
+			if (internetAverPrice2 != undefined) {
+			    document.getElementById('internetAverPrice2').innerHTML =  internetAverPrice2;
+			} else {
+			    document.getElementById('internetAverPrice2').innerHTML = 0;
+			}
+            
+            var powerVolume2 = mapSeries.markPoint.data[dataIndex].contractPowerVolume;
+            if (powerVolume2 != undefined) {
+                document.getElementById('powerVolume2').innerHTML = powerVolume2;
+            } else {
+                document.getElementById('powerVolume2').innerHTML = 0;
+            }
+		    
+		    
+		    var contractIncome = mapSeries.markPoint.data[dataIndex].contractIncome;
+		    if (contractIncome != undefined) {
+		        document.getElementById('inputCash2').innerHTML = contractIncome;
+		    } else {
+		        document.getElementById('inputCash2').innerHTML = 0;
+		    }
+			// 直供电价
+			var internetAverPrice3 = mapSeries.markPoint.data[dataIndex].directlyPrice;
+			if (internetAverPrice3 != undefined) {
+			    document.getElementById('internetAverPrice3').innerHTML =  internetAverPrice3;
+			} else {
+			    document.getElementById('internetAverPrice3').innerHTML =  0;
+			}
+            var powerVolume3 = mapSeries.markPoint.data[dataIndex].directlyPowerVolume;
+            if (powerVolume3 != undefined) {
+                document.getElementById('powerVolume3').innerHTML = powerVolume3;
+            } else {
+                document.getElementById('powerVolume3').innerHTML = 0;
+            }
+		    var directlyIncome = mapSeries.markPoint.data[dataIndex].directlyIncome;
+		    if (directlyIncome != undefined) {
+		        document.getElementById('inputCash3').innerHTML = directlyIncome;
+		    } else {
+		        document.getElementById('inputCash3').innerHTML = 0;
+		    }
+			// 代替电价
+			var internetAverPrice4 = mapSeries.markPoint.data[dataIndex].replacePrice;
+			if (internetAverPrice4 != undefined) {
+			    document.getElementById('internetAverPrice4').innerHTML =  internetAverPrice4;  
+			} else {
+			    document.getElementById('internetAverPrice4').innerHTML = 0;
+			}
+            var powerVolume4 = mapSeries.markPoint.data[dataIndex].replacePowerVolume;
+            if (powerVolume4 != undefined) {
+                document.getElementById('powerVolume4').innerHTML = powerVolume4;
+            } else {
+                document.getElementById('powerVolume4').innerHTML = 0;
+            }
+		    var replaceIncome = mapSeries.markPoint.data[dataIndex].replaceIncome;
+		    if (replaceIncome != undefined) {
+		        document.getElementById('inputCash4').innerHTML = replaceIncome;
+		    } else {
+		        document.getElementById('inputCash4').innerHTML = 0;
+		    }
+			
+			var data1 = mapSeries.markPoint.data[dataIndex].huanbiIncomeUp;
+			var data2 = mapSeries.markPoint.data[dataIndex].contractIncomeUp;
+			var data3 = mapSeries.markPoint.data[dataIndex].directlyIncomeUp;
+			var data4 = mapSeries.markPoint.data[dataIndex].replaceIncomUp;
+			drawpie(ec, data1, 1, 'percentMap1');
+		    drawpie(ec, data2, 1, 'percentMap2');
+		    drawpie(ec, data3, 1, 'percentMap3');
+		    drawpie(ec, data4, 1, 'percentMap4'); 
+        }
 	}
 });
