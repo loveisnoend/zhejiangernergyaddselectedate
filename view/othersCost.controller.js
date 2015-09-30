@@ -261,8 +261,33 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 		}
 	    
 	},
+	// 获取其他营业成本值
+	loadOthersCostChartData : function (chartDivId, priceChartName) {
+	    var mParameters = {};
+		mParameters['async'] = true;
+		mParameters['success'] = jQuery.proxy(function(sRes) {
+		    
+			//设置数据
+		    var dc=new Array();
+		    var dataThisYear = new Array();
+		    var dataLastYear = new Array();
+			for (var i in sRes.results) {
+				if (sRes.results[i].KPI_TYPE == '其他营业成本'){ 
+                    dataThisYear.push(sRes.results[i].KPI_VALUE);
+				}
+				if (sRes.results[i].KPI_TYPE == '其他营业成本同比'){ 
+                    dataLastYear.push(sRes.results[i].KPI_VALUE);
+				}
+			}
+    		this.loadPriceChartdetail(chartDivId, priceChartName, dataThisYear, dataLastYear);
+		}, this);
+		mParameters['error'] = jQuery.proxy(function(eRes) {
+			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});
+		}, this);
+	    sap.ui.getCore().getModel().read("ZJEY_CL_JYYJ_04_VQTCB/?$filter=(BNAME eq '" + usrid + "')", mParameters);
+	},
 	// 电价详细Chart
-	loadPriceChartdetail: function(chartDivId, priceChartName) {
+	loadPriceChartdetail: function(chartDivId, priceChartName, dataThisYear, dataLastYear) {
         	require(
             [
                 'echarts',
@@ -278,7 +303,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 			    if (document.getElementById('powerPlantMainDetailTitleCost').innerHTML == '集团') {
 			        fuelXaxisName = ['电厂1', '电厂2', '电厂3', '电厂4'];
 			    } else {
-			        fuelXaxisName = ['4', '5', '6', '7'];
+			        fuelXaxisName = ['机组1', '机组2', '机组3', '机组4'];
 			    }
 			    
 			    var option = {
@@ -377,7 +402,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
                      	barGap: '0%',
                       	barCategoryGap: '50%',
 						// itemStyle: {normal: {areaStyle: {type: 'default'}}},
-						data: ['0.18','0.50','0.18','0.37']
+						data: dataThisYear
                     },
 					{
 						name: '去年',
@@ -385,7 +410,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 						smooth: true,
 					
 						//itemStyle: {normal: {areaStyle: {type: 'default'}}},
-						data: ['0.12','0.43','0.20','0.30']
+						data: dataLastYear
 
                     }
                 ]

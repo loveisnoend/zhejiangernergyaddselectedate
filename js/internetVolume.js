@@ -15,9 +15,11 @@ function priceDetailAnotherNet(detailId) {
 	} else if(detailId == 'detail003'){
 	    priceChartName = '替代电量';   
 	} else if(detailId == 'detail004'){
-	    priceChartName = '月利用小时';   
+	    priceChartName = '厂用电量';   
 	} else if(detailId == 'detail005'){
 	    priceChartName = '发电量';   
+	} else if (detailId == 'detail006') {
+	    priceChartName = '厂用电量';
 	}
-	internetVolume.getController().loadPriceChartdetail(priceChartId, priceChartName);
+	internetVolume.getController().loadFactoryUseData(priceChartId, priceChartName);
 }

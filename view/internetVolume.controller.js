@@ -277,8 +277,40 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 		}
 	    
 	},
+	// 获取厂用电量
+	loadFactoryUseData : function (chartDivId, priceChartName) {
+	    
+	    var powerPlantName = document.getElementById('powerPlantMainDetailTitleNet').innerHTML;
+	    if (powerPlantName == '台二电厂') {
+	        powerPlantName = '台二发电';
+	    }
+	    if (powerPlantName == '兰溪电厂') {
+	        powerPlantName = '兰溪发电';
+	    }
+	    if (powerPlantName == '凤台电厂') {
+	        powerPlantName = '凤台发电';
+	    }
+	    var mParameters = {};
+		mParameters['async'] = true;
+		mParameters['success'] = jQuery.proxy(function(sRes) {
+		    
+			//设置数据
+		    var machineGroupData = new Array();
+			for (var i in sRes.results) {
+			    var plantName = sRes.results[i].KPI_DESC.toString().substring(0, 4);
+				if (sRes.results[i].KPI_TYPE == '机组上网电量' && plantName == powerPlantName){ 
+                    machineGroupData.push(sRes.results[i].KPI_VALUE);
+				}
+			}
+    		this.loadPriceChartdetail(chartDivId, priceChartName, machineGroupData);
+		}, this);
+		mParameters['error'] = jQuery.proxy(function(eRes) {
+			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});
+		}, this);
+	    sap.ui.getCore().getModel().read("ZJEY_CL_JYYJ_04_VFDL/?$filter=(BNAME eq '" + usrid + "')", mParameters);
+	},
 	// 电价详细Chart
-	loadPriceChartdetail: function(chartDivId, priceChartName) {
+	loadPriceChartdetail: function(chartDivId, priceChartName, machineGroupData) {
         	require(
             [
                 'echarts',
@@ -294,7 +326,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 			    if (document.getElementById('powerPlantMainDetailTitleNet').innerHTML == '集团') {
 			        fuelXaxisName = ['电厂1', '电厂2', '电厂3', '电厂4'];
 			    } else {
-			        fuelXaxisName = ['4', '5', '6', '7'];
+			        fuelXaxisName = ['机组1', '机组2', '机组3', '机组4'];
 			    }
 			    
 			    var option = {
@@ -308,6 +340,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 					y:'10'
                 },
   				legend: {
+  				    show : false,
                   	orient:'horizontal',
                   	x:'400',
                   	y:'20',
@@ -361,29 +394,29 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 						max: 0.65,
 						min: 0,
 						splitNumber: 13
-                    },
-					{
-						name: '',
-						type: 'value',
-						axisLine: {
-							show: false
-						},
-						axisLabel: {
-							textStyle: {
-								color: 'white'
-							},
-							formatter: '{value}%'
-						},
-						splitLine: {
-							// 			show: false
-							lineStyle: {
-								//color: 'rgba(64,64,64,0.5)',
-							}
-						},
-						max: 8.5,
-						min: 2.0,
-						splitNumber: 13
                     }
+				// 	{
+				// 		name: '',
+				// 		type: 'value',
+				// 		axisLine: {
+				// 			show: false
+				// 		},
+				// 		axisLabel: {
+				// 			textStyle: {
+				// 				color: 'white'
+				// 			},
+				// 			formatter: '{value}%'
+				// 		},
+				// 		splitLine: {
+				// 			// 			show: false
+				// 			lineStyle: {
+				// 				//color: 'rgba(64,64,64,0.5)',
+				// 			}
+				// 		},
+				// 		max: 8.5,
+				// 		min: 2.0,
+				// 		splitNumber: 13
+    //                 }
                 ],
 				series: [
 					{
@@ -393,17 +426,17 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
                      	barGap: '0%',
                       	barCategoryGap: '50%',
 						// itemStyle: {normal: {areaStyle: {type: 'default'}}},
-						data: ['0.18','0.50','0.18','0.37']
-                    },
-					{
-						name: '去年',
-						type: 'bar',
-						smooth: true,
-					
-						//itemStyle: {normal: {areaStyle: {type: 'default'}}},
-						data: ['0.12','0.43','0.20','0.30']
-
+						data: machineGroupData
                     }
+				// 	{
+				// 		name: '去年',
+				// 		type: 'bar',
+				// 		smooth: true,
+					
+				// 		//itemStyle: {normal: {areaStyle: {type: 'default'}}},
+				// 		data: ['0.12','0.43','0.20','0.30']
+
+    //                 }
                 ]
 			    };
 			    mychart.setOption(option);
