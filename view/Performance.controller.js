@@ -307,7 +307,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 		var rlr_data=(sr_data-cb_data).toFixed(2);
 		var rlr_prec='';//a.toFixed(1);
 		var rlr_color="red";
-		if(rlr_prec>0){
+		if(rlr_data>0){
 		    rlr_color="green";
 		}
 		var rlr_innerhtml='<div class="main_content_title">日利润<span style="font-size:20px;">(亿元)</span></div><div class="main_content_sz" style="font-size:70px;font-weight:bold;color:'+rlr_color+'">'+rlr_data+'</div><div class="main_content_sz">同比'+rlr_prec+'%<img src="img/arrow-'+rlr_color+'2.png" class="content_img"/></div>';
@@ -315,10 +315,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
                         
 		document.getElementById('sr').innerHTML = sr_innerhtml;
 		document.getElementById('rlr').innerHTML=rlr_innerhtml;
-        document.getElementById('swdl_span').innerHTML=swdl_data+'亿千瓦时';
+        document.getElementById('swdl_span').innerHTML=swdl_data/10000+'亿千瓦时';
         document.getElementById('pjswdj_span').innerHTML=pjswdj_data+'元/千瓦时';
         document.getElementById('rlcb_span').innerHTML=rlcb_data+'亿元';
-        document.getElementById('qtcb_span').innerHTML=qtcb_data+'亿元';
+        document.getElementById('qtcb_span').innerHTML=(qtcb_data/1000000000).toFixed(3)+'亿元';
 
 
 // 		document.getElementById('cb').innerHTML = cb_innerhtml;

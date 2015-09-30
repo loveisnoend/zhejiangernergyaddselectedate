@@ -287,6 +287,12 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 		    var cb_data=((rlcb_data+qtcb_data)/100000000).toFixed(2);
     		// 日利润
     		var rlr_data=(sr_data-cb_data).toFixed(2);
+    	    var rlr_color="red";
+    		if(rlr_data>0){
+    		    rlr_color="green";
+    		}
+    		$('#home_rlr').css('color',rlr_color);
+    		$('#demo_shuzi_span_shangbiao').css('color',rlr_color);
 		    $('#home_rlr').html(rlr_data);
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
