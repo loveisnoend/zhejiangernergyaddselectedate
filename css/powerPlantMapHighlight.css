@@ -325,6 +325,13 @@
         /*border: 1px solid red;*/
 
 }
+/*其他成本用CSS*/
+.main_content_combition_1_1-ForOthersCost{
+    width:100%;
+    height:35%;
+    padding-top:12%;
+    /*border: 1px solid green;*/
+}
 .main_content_combition_1_1{
     width:100%;
     height:35%;

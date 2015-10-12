@@ -196,7 +196,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 				    valuePMInonProduce = (sRes.results[i].KPI_VALUE*100).toFixed(2);
 				}
 				if (sRes.results[i].KPI_ID == 'KPI_ENV_V_0005'){  //GDP总值
-				    valueGDPTotal = (sRes.results[i].KPI_VALUE*100).toFixed(2);
+				    valueGDPTotal = sRes.results[i].KPI_VALUE*100;
 				}
 			}
 			// 设定头部跑马灯信息 common.js

@@ -61,7 +61,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 			    if (dc[j] == '台二发电') {
 			        powerPlantName = '台州';
 			    }
-			    if (dc[j] == '浙能集团') {
+			    if (dc[j] == '集团') {
 			        powerPlantName = '杭州';
 			    }
 

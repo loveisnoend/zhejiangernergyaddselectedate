@@ -34,7 +34,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 			//设置数据
 		    var dc=new Array();
 			for (var i in sRes.results) {
-			    if(sRes.results[i].KPI_DESC!="集团本部"&&sRes.results[i].KPI_DESC!=""&&sRes.results[i].KPI_DESC!="浙能集团"){
+			    if(sRes.results[i].KPI_DESC!="集团本部"&&sRes.results[i].KPI_DESC!=""){
     				if (dc==null||dc.length==0){ 
     				    dc.push(sRes.results[i].KPI_DESC);    
     				}else{
@@ -60,6 +60,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 			    }
 			    if (dc[j] == '台二发电') {
 			        powerPlantName = '台州';
+			    }
+			    if (dc[j] == '集团') {
+			        powerPlantName = '杭州';
 			    }
 
 			    var tempJsonStrData = '{';
@@ -602,7 +605,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 							geoCoord: {
 								// "温州":[120.65,28.01],
 								// "义乌":[120.06,29.32],
-								// "杭州":[120.19,30.26],
+								"杭州":[119.50,30],
 								// "绍兴":[120.58,30.01],
 								"金华":[119.64,29.12],
 								// "衢州":[118.88,28.97],
@@ -640,7 +643,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 								},
 								data : [
 								    {name: "金华", value: 300},
-								    {name: "台州", value: 300}
+								    {name: "台州", value: 300},
+								    {name: "杭州", value: 300}
 								    ]
 							}
 						}
@@ -657,6 +661,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 					option4.series[1].markPoint.data = [];
 					option4.series[1].markPoint.data[0] = selectedData;
 					option4.series[1].markPoint.data[1] = {name:'上海',value:0};
+					option4.series[1].markPoint.data[2] = {name:'上海',value:0};
                     myChart4.setOption(option4);
 					
 					option5.series[1].markPoint.data = [{name:'上海',value:0}];
@@ -665,9 +670,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 				});	
                 // 默认图表显示数据
                 var mapSeries = option4.series[0];
-                setChartData(ec, mapSeries, 0);
-			    option4.series[1].markPoint.data[1] = {name:'上海',value:0};
+                setChartData(ec, mapSeries, 2);
                 
+                // 默认集团数据显示
+				var selectedData = {name: mapSeries.markPoint.data[2].name, value: mapSeries.markPoint.data[2].inputPlanValue};
+				option4.series[1].markPoint.data[2] = selectedData;
+			    option4.series[1].markPoint.data[1] = {name:'上海',value:0};
+                option4.series[1].markPoint.data[0] = {name:'上海',value:0};
                 // 为echarts对象加载数据 
                 myChart4.setOption(option4); 
 		///////////////////////////////安徽淮南市地图////////////////////////////////////////////
@@ -940,6 +949,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 			    powerPlantName = '兰溪电厂';
 			} else if (mapSeries.markPoint.data[dataIndex].name == '台州') {
 			    powerPlantName = '台二电厂';
+			} else if (mapSeries.markPoint.data[dataIndex].name == '杭州') {
+			    powerPlantName = '集团';
 			} else if (mapSeries.markPoint.data[dataIndex].name == '淮南') {
 			    powerPlantName = '凤台电厂';
 			}
