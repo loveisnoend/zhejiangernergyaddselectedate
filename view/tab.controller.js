@@ -55,12 +55,12 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 	    if(day < 10){
 	        day = "0" + day;
 	    }
-	    final_daytime =year+month_true+day;
+	    final_daytime = year.toString()+month_true.toString()+day.toString();
 	    var day01 = day -6;
 	    if(day01 < 10){
 	        day01 = "0" + day01;
 	    }
-	    final_daytime01 = year+month_true+day01;
+	    final_daytime01 = year.toString()+month_true.toString()+day01.toString();
 	    
 	    // 全社会用电量默认地区（浙江）  发电厂（浙江）
 	    this.loadChart01('金华','兰溪发电');
@@ -102,6 +102,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 	    var mParameters = {};
 		mParameters['async'] = true;
 		mParameters['success'] = jQuery.proxy(function(sRes) {
+ 
 			//设置数据
 			for (var i in sRes.results) {
 			    // 按地市抓取数据

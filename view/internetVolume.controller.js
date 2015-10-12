@@ -943,6 +943,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 		}
 		// 设置Chart的数据
         function setChartData(ec, mapSeries, dataIndex) {
+            
     		// 电厂名
 			var powerPlantName = '';
 			if (mapSeries.markPoint.data[dataIndex].name == '金华') {
