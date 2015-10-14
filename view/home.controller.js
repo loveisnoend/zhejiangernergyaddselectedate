@@ -55,10 +55,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 	// 设定全社会用电量和同比值
 	_loadData02 : function(mom,allenergy){
 	    if(mom < 0){
-	        $('#mom_img').attr('src',"img/down.png");
+	        $('#mom_img').attr('src',"img/arrow-red2.png");
 	        $('#mom').html("下降" + Math.abs(mom));
 	    }else if(mom >= 0){
-	        $('#mom_img').attr('src',"img/up.png");
+	        $('#mom_img').attr('src',"img/arrow-green2.png");
 	        $('#mom').html("上升" + Math.abs(mom));
 	    }
 	    var allenergy_change = allenergy.substring(0,2);
@@ -220,7 +220,12 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 				}
 			}
 			home_rlr=home_rlr/10000;
-// 			this.loadData03(home_rlr);
+            // 日利润同比值
+            var dailyProfitTongBi = '';
+            $("#tongbiProfitImg").attr("src","img/arrow-green2.png");
+            // 日利润环比值
+            var dailyProfitHuanBi = '';
+            $("#huanbiProfitImg").attr('src','img/arrow-green2.png');
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			alert("Get Data Error");
@@ -292,8 +297,17 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
     		    rlr_color="green";
     		}
     		$('#home_rlr').css('color',rlr_color);
-    		$('#demo_shuzi_span_shangbiao').css('color',rlr_color);
+    		// 单位亿元颜色
+    // 		$('#demo_shuzi_span_shangbiao').css('color','white');
 		    $('#home_rlr').html(rlr_data);
+		    
+		    // 日利润同比值
+            var dailyProfitTongBi = '';
+            $("#tongbiProfitImg").attr("src","img/arrow-green2.png");
+            // 日利润环比值
+            var dailyProfitHuanBi = '';
+            $("#huanbiProfitImg").attr('src','img/arrow-green2.png');
+		    
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			alert("Get Data Error");

@@ -227,10 +227,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 						lineStyle: {
 							color: 'rgba(64,64,64,0.5)'
 						}
-					},
-					max: 0.65,
-					min: 0,
-					splitNumber: 13
+					}
                 },
 				{
 					name: '',
@@ -249,10 +246,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 						lineStyle: {
 							//color: 'rgba(64,64,64,0.5)',
 						}
-					},
-					max: 8.5,
-					min: 2.0,
-					splitNumber: 13
+					}
                 }
             ],
 			series: [
@@ -299,12 +293,18 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 		    
 			//设置数据
 		    var machineGroupData = new Array();
+		    var dataStatisticDate = '';
 			for (var i in sRes.results) {
 			    var plantName = sRes.results[i].KPI_DESC.toString().substring(0, 4);
 				if (sRes.results[i].KPI_TYPE == '机组上网电量' && plantName == powerPlantName){ 
                     machineGroupData.push(sRes.results[i].KPI_VALUE);
 				}
+				if (dataStatisticDate == '') {
+				    dataStatisticDate = sRes.results[i].KPI_DATE.substring(0,4)+'.'+sRes.results[i].KPI_DATE.substring(4,6)+"."+sRes.results[i].KPI_DATE.substring(6,8);
+				}
 			}
+			// 统计于日期
+			$('#internetVolumeStatisticDate').html(dataStatisticDate);
     		this.loadPriceChartdetail(chartDivId, priceChartName, machineGroupData);
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
@@ -351,7 +351,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 						color:'white',
 						fontFamily:'微软雅黑'
 					},
-        			data:['当年','去年']
+        			data:['当年']
    			 	},
    				color: ['#2DE630', '#E52DE6','white'],
 				grid: {
@@ -374,7 +374,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
                 ],
 				yAxis: [
 					{
-						name: '',
+						name: '万千瓦时',
 						type: 'value',
 						axisLine: {
 							show: false
@@ -393,33 +393,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 							lineStyle: {
 								color: 'rgba(64,64,64,0.5)'
 							}
-						},
-						max: 0.65,
-						min: 0,
-						splitNumber: 13
+						}
                     }
-				// 	{
-				// 		name: '',
-				// 		type: 'value',
-				// 		axisLine: {
-				// 			show: false
-				// 		},
-				// 		axisLabel: {
-				// 			textStyle: {
-				// 				color: 'white'
-				// 			},
-				// 			formatter: '{value}%'
-				// 		},
-				// 		splitLine: {
-				// 			// 			show: false
-				// 			lineStyle: {
-				// 				//color: 'rgba(64,64,64,0.5)',
-				// 			}
-				// 		},
-				// 		max: 8.5,
-				// 		min: 2.0,
-				// 		splitNumber: 13
-    //                 }
                 ],
 				series: [
 					{
@@ -428,18 +403,21 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 						smooth: true,
                      	barGap: '0%',
                       	barCategoryGap: '50%',
-						// itemStyle: {normal: {areaStyle: {type: 'default'}}},
+						itemStyle: {
+						    normal: {
+						      //  color: 'green',
+						        label : {
+						            show :true,
+						            position : 'top',
+						            textStyle:{
+						                color : 'white'
+						            }
+						        }
+						      //  areaStyle: {type: 'default'}
+						    }
+						},
 						data: machineGroupData
                     }
-				// 	{
-				// 		name: '去年',
-				// 		type: 'bar',
-				// 		smooth: true,
-					
-				// 		//itemStyle: {normal: {areaStyle: {type: 'default'}}},
-				// 		data: ['0.12','0.43','0.20','0.30']
-
-    //                 }
                 ]
 			    };
 			    mychart.setOption(option);
@@ -578,9 +556,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 								effect:{
 								  show: false,
 								  type: 'scale',
-								  scaleSize: 7,
+								  scaleSize: 3,
 								  loop: true,
-								  period: 7
+								  period: 10
 								},
 								itemStyle: {
 									normal: {
@@ -627,14 +605,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 									    show: false
 									}
 								},
-								symbol:'star50',
+								symbol:'circle',
 								effect:{
 								  show: true,
 								  type: 'scale',
 								  scaleSize: 3,
 								  loop: true,
 								  shadowColor: '#00FF00',
-								  period: 7
+								  period: 10
 								},
 								itemStyle:{
 									normal:{

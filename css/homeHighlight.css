@@ -182,7 +182,7 @@
 	 text-align:center;
 	 color:#FFFFFF;
 	 /*background-color:rgb(44,44,44);*/
-	 font-size:130%;
+	 font-size:20px;
 	 font-weight:bold;
 	 
  }
@@ -247,8 +247,8 @@ width:11%;
 	width:5%;
 }
 .demo_img_down{
-	height:6%;
-	width:6%;
+	height:5%;
+	width:5%;
 }
 .demo_content_top{
 	height:65%;
@@ -277,11 +277,12 @@ width:11%;
 }
 
 .demo_shuzi_span_shangbiao{
-	font-size:15%;
+	font-size:20px;
 	font-weight:bold;
 	position:absolute;
 	vertical-align:top;
 	text-align:left;
+	color:white;
 }
 progress {
 	text-align:center;

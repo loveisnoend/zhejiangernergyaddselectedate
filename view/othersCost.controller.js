@@ -273,6 +273,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 		    var eachCostData = new Array();
 		    // 各电厂名
 		    var eachPowerPlantName = new Array();
+		    // 统计于日期
+		    var dataStatisticDate = '';
 		    
 			for (var i in sRes.results) {
 				if (sRes.results[i].KPI_TYPE == priceChartName){ 
@@ -280,7 +282,15 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
                     eachCostData.push(tempCost);
                     eachPowerPlantName.push(sRes.results[i].KPI_DESC);
 				}
+				
+				if (dataStatisticDate == '') {
+				    dataStatisticDate = sRes.results[i].KPI_DATE.substring(0,4)+'.'+sRes.results[i].KPI_DATE.substring(4,6)+"."+sRes.results[i].KPI_DATE.substring(6,8);
+				}
 			}
+			
+			// 统计于日期
+			$('#othersCostStatisticDate').html(dataStatisticDate);
+			
     		this.loadEachCostChartdetail(chartDivId, priceChartName, eachPowerPlantName, eachCostData);
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {

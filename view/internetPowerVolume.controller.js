@@ -238,6 +238,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 		    var dc=new Array();
 		    var dataThisYear = new Array();
 		    var dataLastYear = new Array();
+		    var dataStatisticDate = '';
 			for (var i in sRes.results) {
 				if (sRes.results[i].KPI_TYPE == '平均上网电价'){ 
                     dataThisYear.push(sRes.results[i].KPI_VALUE);
@@ -245,7 +246,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 				if (sRes.results[i].KPI_TYPE == '去年同期平均上网电价'){ 
                     dataLastYear.push(sRes.results[i].KPI_VALUE);
 				}
+				
+				if (dataStatisticDate == '') {
+				    dataStatisticDate = sRes.results[i].KPI_DATE.substring(0,4)+'.'+sRes.results[i].KPI_DATE.substring(4,6)+"."+sRes.results[i].KPI_DATE.substring(6,8);
+				}
 			}
+			// 统计于日期
+			$('#internetPowerVolumeStatisticDate').html(dataStatisticDate);
+    		
     		this.loadPriceChartdetail(chartDivId, priceChartName, dataThisYear, dataLastYear);
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
@@ -314,7 +322,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
                 ],
 				yAxis: [
 					{
-						name: '',
+						name: '元千瓦时',
 						type: 'value',
 						axisLine: {
 							show: false
@@ -333,10 +341,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 							lineStyle: {
 								color: 'rgba(64,64,64,0.5)'
 							}
-						},
-						max: 0.65,
-						min: 0,
-						splitNumber: 13
+						}
                     },
 					{
 						name: '',
@@ -355,10 +360,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 							lineStyle: {
 								//color: 'rgba(64,64,64,0.5)',
 							}
-						},
-						max: 8.5,
-						min: 2.0,
-						splitNumber: 13
+						}
                     }
                 ],
 				series: [
@@ -368,7 +370,17 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 						smooth: true,
                      	barGap: '0%',
                       	barCategoryGap: '50%',
-						// itemStyle: {normal: {areaStyle: {type: 'default'}}},
+						itemStyle: {
+						    normal: {
+						        label : {
+						            show :true,
+						            position : 'top',
+						            textStyle:{
+						                color : 'white'
+						            }
+						        }
+						    }
+						},
 						data: dataThisYear
                     },
 					{

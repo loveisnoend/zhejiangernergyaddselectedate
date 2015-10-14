@@ -145,7 +145,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 		    
 			//设置数据
 			for (var i in sRes.results) {
-				if (sRes.results[i].KPI_DESC == powerplant_v02&& sRes.results[i].KPI_TYPE == usetime_v02 && final_daytime >= sRes.results[i].KPI_DATE && sRes.results[i].KPI_DATE > final_daytime01){
+			    
+				if (sRes.results[i].KPI_DESC == powerplant_v02&& sRes.results[i].KPI_TYPE == usetime_v02 && final_daytime >= sRes.results[i].KPI_DATE && sRes.results[i].KPI_DATE >= final_daytime01){
 				    data02_01.push(sRes.results[i].KPI_VALUE);    
 				}
 			}

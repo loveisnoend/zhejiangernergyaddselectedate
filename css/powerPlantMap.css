@@ -133,7 +133,7 @@
 .font_size1
 {
 	height: 80px;
-    font-size: 60px;
+    font-size: 50px;
     margin-bottom: -5px;
     line-height: 80px;
 }
@@ -242,8 +242,8 @@
     /*margin-left: 5%;*/
     /*top: 59px;*/
     z-index:0;
-    top: 22%;
-    margin-left: -7.5%;
+    top: 21.5%;
+    margin-left: -7.6%;
 }
 .another_font01
 {
