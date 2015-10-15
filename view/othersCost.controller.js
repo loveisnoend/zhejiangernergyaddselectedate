@@ -416,15 +416,31 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 		    var dc=new Array();
 		    var dataThisYear = new Array();
 		    var dataLastYear = new Array();
+		    
+		    // 统计于日期
+		    var dataStatisticDate = '';
+		    
+		    // 电厂名
+		    var powerPlantName = new Array();
+		    
 			for (var i in sRes.results) {
 				if (sRes.results[i].KPI_TYPE == '其他营业成本'){ 
-                    dataThisYear.push(sRes.results[i].KPI_VALUE);
+                    dataThisYear.push((sRes.results[i].KPI_VALUE/10000).toFixed(2));
+                    powerPlantName.push(sRes.results[i].KPI_DESC);
 				}
 				if (sRes.results[i].KPI_TYPE == '其他营业成本同比'){ 
-                    dataLastYear.push(sRes.results[i].KPI_VALUE);
+                    dataLastYear.push((sRes.results[i].KPI_VALUE/10000).toFixed(2));
+				}
+				
+				if (dataStatisticDate == '') {
+				    dataStatisticDate = sRes.results[i].KPI_DATE.substring(0,4)+'.'+sRes.results[i].KPI_DATE.substring(4,6)+"."+sRes.results[i].KPI_DATE.substring(6,8);
 				}
 			}
-    		this.loadPriceChartdetail(chartDivId, priceChartName, dataThisYear, dataLastYear);
+			
+			// 统计于日期
+			$('#othersCostStatisticDate').html(dataStatisticDate);
+			
+    		this.loadPriceChartdetail(chartDivId, priceChartName, dataThisYear, dataLastYear, powerPlantName);
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});
@@ -432,7 +448,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 	    sap.ui.getCore().getModel().read("ZJEY_CL_JYYJ_04_VQTCB/?$filter=(BNAME eq '" + usrid + "')", mParameters);
 	},
 	// 电价详细Chart
-	loadPriceChartdetail: function(chartDivId, priceChartName, dataThisYear, dataLastYear) {
+	loadPriceChartdetail: function(chartDivId, priceChartName, dataThisYear, dataLastYear, powerPlantName) {
         	require(
             [
                 'echarts',
@@ -444,12 +460,12 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 			function draw(e){
 			    var mychart = e.init(document.getElementById(chartDivId));
 			    document.getElementById('othersCostName').innerHTML = document.getElementById('powerPlantMainDetailTitleCost').innerHTML;
-			    var fuelXaxisName = '';
-			    if (document.getElementById('powerPlantMainDetailTitleCost').innerHTML == '集团') {
-			        fuelXaxisName = ['电厂1', '电厂2', '电厂3', '电厂4'];
-			    } else {
-			        fuelXaxisName = ['机组1', '机组2', '机组3', '机组4'];
-			    }
+			    var fuelXaxisName = powerPlantName;
+			 //   if (document.getElementById('powerPlantMainDetailTitleCost').innerHTML == '集团') {
+			 //       fuelXaxisName = ['电厂1', '电厂2', '电厂3', '电厂4'];
+			 //   } else {
+			 //       fuelXaxisName = ['机组1', '机组2', '机组3', '机组4'];
+			 //   }
 			    
 			    var option = {
 			        title:{
@@ -495,7 +511,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 						name: '单位:万元',
 						type: 'value',
 						axisLine: {
-							show: false
+							show: true
 						},
 						axisLabel: {
 							textStyle: {
@@ -511,12 +527,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 							lineStyle: {
 								color: 'rgba(64,64,64,0.5)'
 							}
-						},
-						max: 5000,
-						min: 0
+						}
                     }
 				// 	{
-				// 		name: '',
+				// 		name: '单位:万元',
 				// 		type: 'value',
 				// 		axisLine: {
 				// 			show: false
@@ -532,10 +546,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 				// 			lineStyle: {
 				// 				//color: 'rgba(64,64,64,0.5)',
 				// 			}
-				// 		},
-				// 		max: 8.5,
-				// 		min: 2.0,
-				// 		splitNumber: 13
+				// 		}
     //                 }
                 ],
 				series: [
@@ -545,15 +556,34 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 						smooth: true,
                      	barGap: '0%',
                       	barCategoryGap: '50%',
-						// itemStyle: {normal: {areaStyle: {type: 'default'}}},
+						itemStyle: {
+						    normal: {
+						        label : {
+						            show :true,
+						            position : 'top',
+						            textStyle:{
+						                color : 'white'
+						            }
+						        }
+						    }
+						},
 						data: dataThisYear
                     },
 					{
 						name: '去年',
 						type: 'bar',
 						smooth: true,
-					
-						//itemStyle: {normal: {areaStyle: {type: 'default'}}},
+						itemStyle: {
+						    normal: {
+						        label : {
+						            show :true,
+						            position : 'top',
+						            textStyle:{
+						                color : 'white'
+						            }
+						        }
+						    }
+						},
 						data: dataLastYear
 
                     }

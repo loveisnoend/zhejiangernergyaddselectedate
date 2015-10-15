@@ -315,7 +315,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
                         
 		document.getElementById('sr').innerHTML = sr_innerhtml;
 		document.getElementById('rlr').innerHTML=rlr_innerhtml;
-        document.getElementById('swdl_span').innerHTML=swdl_data/10000+'亿千瓦时';
+        document.getElementById('swdl_span').innerHTML=(swdl_data/10000).toFixed(2)+'亿千瓦时';
         document.getElementById('pjswdj_span').innerHTML=pjswdj_data+'元/千瓦时';
         document.getElementById('rlcb_span').innerHTML=rlcb_data+'亿元';
         document.getElementById('qtcb_span').innerHTML=(qtcb_data/1000000000).toFixed(3)+'亿元';
