@@ -24,7 +24,7 @@ function changeSkinCss(pageName) {
     skinNameAlter = $('.userSkin').html();
     alert('您将切换到'+skinNameAlter);
     if (pageName == 'internetPowerVolume') {
-        internetPowerVolume.getController().loadChart();
+        internetPowerVolume.getController()._loadData01();
     }
     if (pageName == 'powerPlantMap') {
         powerPlantMap.getController()._loadData01(); 

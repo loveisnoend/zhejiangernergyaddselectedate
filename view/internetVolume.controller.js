@@ -71,7 +71,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 			    tempJsonStrData += '",';
 			    var isFirst = true;
     			for (var i in sRes.results) {
-    				if (sRes.results[i].KPI_TYPE == '各电厂发电量'&&sRes.results[i].KPI_DESC==dc[j]){ 
+    				if ((sRes.results[i].KPI_TYPE == '各电厂发电量' || sRes.results[i].KPI_TYPE == '集团汇总发电量')&&sRes.results[i].KPI_DESC==dc[j]){ 
     				    if (isFirst != true) {
     				        tempJsonStrData += ',';
     				    }

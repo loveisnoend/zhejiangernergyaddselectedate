@@ -22,6 +22,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 		data2 = new Array();//平均上网电价
 		data3 = new Array();//燃料成本
 		data4 = new Array();//其他成本
+		// 数据类型，集团数据还是电厂数据
+		var dateTypeName = '';
 // 		income = 0//收入
 //         cost = 0;//成本
 //         profit = 0;//利润
@@ -30,8 +32,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 			//设置数据
 			for (var i in sRes.results) {
 				if (sRes.results[i].KPI_TYPE == '上网电量'&&sRes.results[i].KPI_DESC==sRes.results[0].KPI_DESC){ 
-				    date.push(sRes.results[i].KPI_DATE);    
+				    date.push(sRes.results[i].KPI_DATE);
 				}
+				if (dateTypeName == '' || sRes.results[i].KPI_DESC == '集团') {
+			        dateTypeName = sRes.results[i].KPI_DESC;
+			    }
 			}
 			for(var j in date){
 			    var data1temp=0;
@@ -39,16 +44,16 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 			    var data3temp=0;
 			    var data4temp=0;
     			for (var i in sRes.results) {
-    				if (sRes.results[i].KPI_TYPE == '上网电量'&&sRes.results[i].KPI_DATE==date[j]){ 
+    				if (sRes.results[i].KPI_TYPE == '上网电量'&&sRes.results[i].KPI_DESC == dateTypeName&&sRes.results[i].KPI_DATE==date[j]){ 
     				    data1temp=data1temp+parseFloat(sRes.results[i].KPI_VALUE);    
     				}
-    				if (sRes.results[i].KPI_TYPE == '平均上网电价'&&sRes.results[i].KPI_DATE==date[j]){ 
+    				if (sRes.results[i].KPI_TYPE == '平均上网电价'&&sRes.results[i].KPI_DESC == dateTypeName&&sRes.results[i].KPI_DATE==date[j]){
     				    data2temp=data2temp+parseFloat(sRes.results[i].KPI_VALUE);    
     				}
-    				if (sRes.results[i].KPI_TYPE == '日利润-燃料成本'&&sRes.results[i].KPI_DATE==date[j]){ 
+    				if (sRes.results[i].KPI_TYPE == '燃料成本'&&sRes.results[i].KPI_DESC == dateTypeName&&sRes.results[i].KPI_DATE==date[j]){ 
     				    data3temp=data3temp+parseFloat(sRes.results[i].KPI_VALUE);    
     				}
-    				if (sRes.results[i].KPI_TYPE == '日利润-其他成本'&&sRes.results[i].KPI_DATE==date[j]){ 
+    				if (sRes.results[i].KPI_TYPE == '日利润-其他成本'&&sRes.results[i].KPI_DESC == dateTypeName&&sRes.results[i].KPI_DATE==date[j]){ 
     				    data4temp=data4temp+parseFloat(sRes.results[i].KPI_VALUE);    
     				}
     			}
@@ -57,6 +62,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
     			data3.push(data3temp);
     			data4.push(data4temp);
 			}
+// 			alert('---data1---'+data1+'---data2---'+data2+'---data3----'+data3+'----data4---'+data4);
 			this.loadChart();
 			this.loadData();
 			// 设定头部跑马灯信息 common.js
@@ -315,10 +321,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
                         
 		document.getElementById('sr').innerHTML = sr_innerhtml;
 		document.getElementById('rlr').innerHTML=rlr_innerhtml;
-        document.getElementById('swdl_span').innerHTML=(swdl_data/10000).toFixed(2)+'亿千瓦时';
+        document.getElementById('swdl_span').innerHTML=swdl_data+'万千瓦时';
         document.getElementById('pjswdj_span').innerHTML=pjswdj_data+'元/千瓦时';
         document.getElementById('rlcb_span').innerHTML=rlcb_data+'亿元';
-        document.getElementById('qtcb_span').innerHTML=(qtcb_data/1000000000).toFixed(3)+'亿元';
+        document.getElementById('qtcb_span').innerHTML=qtcb_data+'亿元';
 
 
 // 		document.getElementById('cb').innerHTML = cb_innerhtml;

@@ -76,7 +76,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
     				        tempJsonStrData += ',';
     				    }
         			    tempJsonStrData += '"averNetPrice":';
-        			    tempJsonStrData += sRes.results[i].KPI_VALUE;
+        			    tempJsonStrData += new Number(sRes.results[i].KPI_VALUE).toFixed(2);
         			    isFirst = false;
     				}
     				if (sRes.results[i].KPI_TYPE == '发电量'&&sRes.results[i].KPI_DESC==dc[j]){ 
@@ -100,7 +100,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
     				        tempJsonStrData += ',';
     				    }
         			    tempJsonStrData += '"contractPrice":';
-        			    tempJsonStrData += sRes.results[i].KPI_VALUE;
+        			    tempJsonStrData += new Number(sRes.results[i].KPI_VALUE).toFixed(2);
         			    isFirst = false;
     				}
     				if (sRes.results[i].KPI_TYPE == '合约电量'&&sRes.results[i].KPI_DESC==dc[j]){ 
@@ -124,7 +124,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
     				        tempJsonStrData += ',';
     				    }
         			    tempJsonStrData += '"directlyPrice":';
-        			    tempJsonStrData += sRes.results[i].KPI_VALUE;
+        			    tempJsonStrData += new Number(sRes.results[i].KPI_VALUE).toFixed(2);
         			    isFirst = false;
     				}
     				if (sRes.results[i].KPI_TYPE == '直供电量'&&sRes.results[i].KPI_DESC==dc[j]){ 
@@ -148,7 +148,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
     				        tempJsonStrData += ',';
     				    }
         			    tempJsonStrData += '"replacePrice":';
-        			    tempJsonStrData += sRes.results[i].KPI_VALUE;
+        			    tempJsonStrData += new Number(sRes.results[i].KPI_VALUE).toFixed(2);
         			    isFirst = false;
     				}
     				if (sRes.results[i].KPI_TYPE == '替代电量'&&sRes.results[i].KPI_DESC==dc[j]){ 
@@ -238,10 +238,15 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 		    var dc=new Array();
 		    var dataThisYear = new Array();
 		    var dataLastYear = new Array();
+		    // 统计于时间
 		    var dataStatisticDate = '';
+		    // 电厂名
+		    var powerPlantName = new Array();
+		    
 			for (var i in sRes.results) {
 				if (sRes.results[i].KPI_TYPE == '平均上网电价'){ 
                     dataThisYear.push(sRes.results[i].KPI_VALUE);
+                    powerPlantName.push(sRes.results[i].KPI_DESC);
 				}
 				if (sRes.results[i].KPI_TYPE == '去年同期平均上网电价'){ 
                     dataLastYear.push(sRes.results[i].KPI_VALUE);
@@ -254,7 +259,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 			// 统计于日期
 			$('#internetPowerVolumeStatisticDate').html(dataStatisticDate);
     		
-    		this.loadPriceChartdetail(chartDivId, priceChartName, dataThisYear, dataLastYear);
+    		this.loadPriceChartdetail(chartDivId, priceChartName, dataThisYear, dataLastYear, powerPlantName);
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});
@@ -262,7 +267,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 	    sap.ui.getCore().getModel().read("ZJEY_CL_JYYJ_04_VPJDJ/?$filter=(BNAME eq '" + usrid + "')", mParameters);
 	},
 	// 电价详细Chart
-	loadPriceChartdetail: function(chartDivId, priceChartName, dataThisYear, dataLastYear) {
+	loadPriceChartdetail: function(chartDivId, priceChartName, dataThisYear, dataLastYear, powerPlantName) {
         	require(
             [
                 'echarts',
@@ -274,12 +279,12 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 			function draw(e){
 			    var mychart = e.init(document.getElementById(chartDivId));
 			    document.getElementById('profitName').innerHTML = document.getElementById('powerPlantName').innerHTML;
-			    var fuelXaxisName = '';
-			    if (document.getElementById('powerPlantName').innerHTML == '集团') {
-			        fuelXaxisName = ['电厂1', '电厂2', '电厂3', '电厂4'];
-			    } else {
-			        fuelXaxisName = ['机组1', '机组2', '机组3', '机组4'];
-			    }
+			    var fuelXaxisName = powerPlantName;
+			 //   if (document.getElementById('powerPlantName').innerHTML == '集团') {
+			 //       fuelXaxisName = ['电厂1', '电厂2', '电厂3', '电厂4'];
+			 //   } else {
+			 //       fuelXaxisName = ['机组1', '机组2', '机组3', '机组4'];
+			 //   }
 			    
 			    var option = {
 			        title:{
@@ -325,7 +330,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 						name: '元千瓦时',
 						type: 'value',
 						axisLine: {
-							show: false
+							show: true
 						},
 						axisLabel: {
 							textStyle: {
@@ -387,8 +392,17 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 						name: '去年',
 						type: 'bar',
 						smooth: true,
-					
-						//itemStyle: {normal: {areaStyle: {type: 'default'}}},
+						itemStyle: {
+						    normal: {
+						        label : {
+						            show :true,
+						            position : 'top',
+						            textStyle:{
+						                color : 'white'
+						            }
+						        }
+						    }
+						},
 						data: dataLastYear
 
                     }

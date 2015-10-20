@@ -73,15 +73,15 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
     			for (var i in sRes.results) {
     			    
     			    // 平均运价
-    				if (sRes.results[i].KPI_TYPE == '平均运价'&&sRes.results[i].KPI_DESC==dc[j]){ 
+    				if (sRes.results[i].KPI_TYPE == '运输价格'&&sRes.results[i].KPI_DESC==dc[j]){ 
     				    if (isFirst != true) {
     				        tempJsonStrData += ',';
     				    }
         			    tempJsonStrData += '"aveShipPrice":';
-        			    tempJsonStrData += sRes.results[i].KPI_VALUE;
+        			    tempJsonStrData += sRes.results[i].KPI_VALUE.toString().substring(0, sRes.results[i].KPI_VALUE.toString().indexOf(".")+3);
         			    isFirst = false;
     				}
-    				// 标准煤耗
+    				// 标准煤
     				if (sRes.results[i].KPI_TYPE == '标准煤耗'&&sRes.results[i].KPI_DESC==dc[j]){ 
     				    if (isFirst != true) {
     				        tempJsonStrData += ',';
@@ -91,7 +91,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
         			    isFirst = false;
     				}
     				// 300煤耗
-    				if (sRes.results[i].KPI_TYPE == '300煤耗'&&sRes.results[i].KPI_DESC==dc[j]){ 
+    				if (sRes.results[i].KPI_TYPE == '标煤耗30'&&sRes.results[i].KPI_DESC==dc[j]){ 
     				    if (isFirst != true) {
     				        tempJsonStrData += ',';
     				    }
@@ -100,7 +100,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
         			    isFirst = false;
     				} 
     				// 600煤耗
-    				if (sRes.results[i].KPI_TYPE == '600煤耗'&&sRes.results[i].KPI_DESC==dc[j]){ 
+    				if (sRes.results[i].KPI_TYPE == '标煤耗60'&&sRes.results[i].KPI_DESC==dc[j]){ 
     				    if (isFirst != true) {
     				        tempJsonStrData += ',';
     				    }
@@ -127,7 +127,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
         			    isFirst = false;
     				}
     				// 平均电价
-    				if (sRes.results[i].KPI_TYPE == '平均煤价'&&sRes.results[i].KPI_DESC==dc[j]){ 
+    				if (sRes.results[i].KPI_TYPE == '煤炭价格'&&sRes.results[i].KPI_DESC==dc[j]){ 
     				    if (isFirst != true) {
     				        tempJsonStrData += ',';
     				    }
@@ -156,6 +156,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 			huaiNan_dataStr += ']';
 			var zhejiang_JsonData = JSON.parse(zhejiang_dataStr)
 			var huaiNan_JsonData = JSON.parse(huaiNan_dataStr);
+			
     		this.loadChart(zhejiang_JsonData, huaiNan_JsonData);
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
@@ -808,13 +809,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 				
 				// 加载时默认值
 				var mapSeries = option4.series[0];
-                setChartData(ec, mapSeries, 0);
+                setChartData(ec, mapSeries, 2);
                 
 			    // 默认集团数据显示
-				var selectedData = {name: mapSeries.markPoint.data[0].name, value: mapSeries.markPoint.data[0].inputPlanValue};
-				option4.series[1].markPoint.data[0] = selectedData;
+				var selectedData = {name: mapSeries.markPoint.data[2].name, value: mapSeries.markPoint.data[2].inputPlanValue};
+				option4.series[1].markPoint.data[2] = selectedData;
 				option4.series[1].markPoint.data[1] = {name:'上海',value:0};
-				option4.series[1].markPoint.data[2] = {name:'上海',value:0};
+				option4.series[1].markPoint.data[0] = {name:'上海',value:0};
                 // 为echarts对象加载数据 
                 myChart4.setOption(option4); 
 		///////////////////////////////安徽淮南市地图////////////////////////////////////////////
@@ -1137,7 +1138,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 		    if (coalCost != undefined) {
 		        document.getElementById('coalCost').innerHTML = coalCost
 		    } else {
-		        document.getElementById('coalPrice').innerHTML = 0;
+		        document.getElementById('coalCost').innerHTML = 0;
 		    }
 		    // 30万kw
 		    var coalCost300 = mapSeries.markPoint.data[dataIndex].coalCost300;
