@@ -30,6 +30,7 @@
         <script type="text/javascript" src="js/common.js"></script>
 		<!--<script type="text/javascript" src="js/idangerous.swiper.3dflow-2.0.js"></script>-->
 		<script type="text/javascript" src="js/idangerous.swiper.js"></script>
+		<script type="text/javascript" src="js/pdfobject.js"></script>
 		<script>
 		    var usrid = "ERPTEST1";
 		    var skinName = '夜间模式'
@@ -120,6 +121,11 @@
             function powerWaste(){
                 app.to("idtab","show");
             }
+            // show the help page
+            function help() {
+                app.to("idHelpPage","show");
+                // var success = new PDFObject({ url: "./docSrc/EPR-Manual.pdf" }).embed("showPdfPlace");
+            }
 		</script>
 		<script>
 		  //  var rlcb_title,dwrlcb_data1,dwrlcb_data2,yj_data1,yj_data2,mj_data1,mj_data2,bmh_data1,bmh_data2,kw30w_data1,kw30w_data2,kw60w_data1,kw60w_data2,kcmf_data;
@@ -141,6 +147,7 @@
 				var internetPowerVolume;
 				var internetVolume;
 				var othersCost;
+				var helpPage;
 				var slidePageNum = 0;
 				var app = new sap.m.App({initialPage:"idhome"});
 				
@@ -251,6 +258,13 @@
             			type: sap.ui.core.mvc.ViewType.HTML
             		 });
             		 app.addPage(internetPowerVolume);
+            		 
+            		 helpPage = sap.ui.view({
+            			id: "idHelpPage",
+            			viewName: "com.zhenergy.pcbi.view.help",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(helpPage);
 					app.placeAt("content");
 				}
 				// if(window.cordova && appContext && !window.sap_webide_companion) {
