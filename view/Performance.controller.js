@@ -24,47 +24,75 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 		data4 = new Array();//其他成本
 		// 数据类型，集团数据还是电厂数据
 		var dateTypeName = '';
-// 		income = 0//收入
-//         cost = 0;//成本
-//         profit = 0;//利润
 		mParameters['async'] = true;
 		mParameters['success'] = jQuery.proxy(function(sRes) {
 			//设置数据
+// 			for (var i in sRes.results) {
+// 				if (sRes.results[i].KPI_TYPE == '上网电量'&&sRes.results[i].KPI_DESC==sRes.results[0].KPI_DESC){ 
+// 				    date.push(sRes.results[i].KPI_DATE);
+// 				}
+// 				if (dateTypeName == '' || sRes.results[i].KPI_DESC == '集团') {
+// 			        dateTypeName = sRes.results[i].KPI_DESC;
+// 			    }
+// 			}
+// 			for(var j in date){
+// 			    var data1temp=0;
+// 			    var data2temp=0;
+// 			    var data3temp=0;
+// 			    var data4temp=0;
+//     			for (var i in sRes.results) {
+//     				if (sRes.results[i].KPI_TYPE == '上网电量'&&sRes.results[i].KPI_DESC == dateTypeName&&sRes.results[i].KPI_DATE==date[j]){ 
+//     				    data1temp=data1temp+parseFloat(sRes.results[i].KPI_VALUE);    
+//     				}
+//     				if (sRes.results[i].KPI_TYPE == '平均上网电价'&&sRes.results[i].KPI_DESC == dateTypeName&&sRes.results[i].KPI_DATE==date[j]){
+//     				    data2temp=data2temp+parseFloat(sRes.results[i].KPI_VALUE);    
+//     				}
+//     				if (sRes.results[i].KPI_TYPE == '燃料成本'&&sRes.results[i].KPI_DESC == dateTypeName&&sRes.results[i].KPI_DATE==date[j]){ 
+//     				    data3temp=data3temp+parseFloat(sRes.results[i].KPI_VALUE);    
+//     				}
+//     				if (sRes.results[i].KPI_TYPE == '日利润-其他成本'&&sRes.results[i].KPI_DESC == dateTypeName&&sRes.results[i].KPI_DATE==date[j]){ 
+//     				    data4temp=data4temp+parseFloat(sRes.results[i].KPI_VALUE);    
+//     				}
+//     			}
+//     			data1.push(data1temp);
+//     			data2.push(data2temp);
+//     			data3.push(data3temp);
+//     			data4.push(data4temp);
+// 			}
+			// 收入同比
+			var incomeTongbi;
+			// 成本同比
+			var costTongbi;
+			// 日利润同比
+			var dailyProfitTongbi;
 			for (var i in sRes.results) {
-				if (sRes.results[i].KPI_TYPE == '上网电量'&&sRes.results[i].KPI_DESC==sRes.results[0].KPI_DESC){ 
-				    date.push(sRes.results[i].KPI_DATE);
+			    
+			    if (sRes.results[i].KPI_TYPE == '日利润-发电收入同比'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){ 
+                    incomeTongbi = sRes.results[i].KPI_VALUE
 				}
-				if (dateTypeName == '' || sRes.results[i].KPI_DESC == '集团') {
-			        dateTypeName = sRes.results[i].KPI_DESC;
-			    }
-			}
-			for(var j in date){
-			    var data1temp=0;
-			    var data2temp=0;
-			    var data3temp=0;
-			    var data4temp=0;
-    			for (var i in sRes.results) {
-    				if (sRes.results[i].KPI_TYPE == '上网电量'&&sRes.results[i].KPI_DESC == dateTypeName&&sRes.results[i].KPI_DATE==date[j]){ 
-    				    data1temp=data1temp+parseFloat(sRes.results[i].KPI_VALUE);    
-    				}
-    				if (sRes.results[i].KPI_TYPE == '平均上网电价'&&sRes.results[i].KPI_DESC == dateTypeName&&sRes.results[i].KPI_DATE==date[j]){
-    				    data2temp=data2temp+parseFloat(sRes.results[i].KPI_VALUE);    
-    				}
-    				if (sRes.results[i].KPI_TYPE == '燃料成本'&&sRes.results[i].KPI_DESC == dateTypeName&&sRes.results[i].KPI_DATE==date[j]){ 
-    				    data3temp=data3temp+parseFloat(sRes.results[i].KPI_VALUE);    
-    				}
-    				if (sRes.results[i].KPI_TYPE == '日利润-其他成本'&&sRes.results[i].KPI_DESC == dateTypeName&&sRes.results[i].KPI_DATE==date[j]){ 
-    				    data4temp=data4temp+parseFloat(sRes.results[i].KPI_VALUE);    
-    				}
-    			}
-    			data1.push(data1temp);
-    			data2.push(data2temp);
-    			data3.push(data3temp);
-    			data4.push(data4temp);
+				if (sRes.results[i].KPI_TYPE == '日利润-成本总计同比'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){ 
+                    costTongbi = sRes.results[i].KPI_VALUE
+				}
+				if (sRes.results[i].KPI_TYPE == '日利润同比'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){ 
+                    dailyProfitTongbi = sRes.results[i].KPI_VALUE
+				}
+				if (sRes.results[i].KPI_TYPE == '上网电量'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){ 
+				    date.push(sRes.results[i].KPI_DATE);
+				    data1.push(parseFloat(sRes.results[i].KPI_VALUE));    
+				}
+				if (sRes.results[i].KPI_TYPE == '平均上网电价'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){
+				    data2.push(parseFloat(sRes.results[i].KPI_VALUE));     
+				}
+				if (sRes.results[i].KPI_TYPE == '燃料成本'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){ 
+				    data3.push(parseFloat(sRes.results[i].KPI_VALUE));      
+				}
+				if (sRes.results[i].KPI_TYPE == '日利润-其他成本'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){ 
+				    data4.push(parseFloat(sRes.results[i].KPI_VALUE));    
+				}
 			}
 // 			alert('---data1---'+data1+'---data2---'+data2+'---data3----'+data3+'----data4---'+data4);
 			this.loadChart();
-			this.loadData();
+			this.loadData(incomeTongbi, costTongbi, dailyProfitTongbi);
 			// 设定头部跑马灯信息 common.js
 			_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);
 		}, this);
@@ -281,7 +309,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
             // mychart.setOption(option);
         }
 	},
-	loadData: function() {
+	loadData: function(incomeTongbi, costTongbi, dailyProfitTongbi) {
 		var swdl_data = data1[data1.length - 1];
 		var pjswdj_data = data2[data2.length - 1];
 		var rlcb_data=data3[data3.length - 1];
@@ -290,19 +318,19 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
     		
 		//收入数据
 		var sr_data = (swdl_data * pjswdj_data).toFixed(2);
-		var sr_prec = '';//a.toFixed(1);
+		var sr_prec = incomeTongbi
 		var sr_color="green";
-// 		if(sr_prec>0){
-// 		    sr_color="green";
-// 		}
+		if(sr_prec>0){
+		    sr_color="green";
+		}
 
 		//成本数据
 		var cb_data=(rlcb_data+qtcb_data).toFixed(2);
-		var cb_prec= '';//a.toFixed(1);
+		var cb_prec= costTongbi;
 		var cb_color="green";
-// 		if(cb_prec>0){
-// 		    cb_color="green";
-// 		}
+		if(cb_prec>0){
+		    cb_color="green";
+		}
 		var sr_innerhtml=
 		'<div class="main_content_title_1"><span style="margin-left:3%;">收入<span style="font-size:15px;">(万元)</span></span>'+
 		'<span style="margin-left:26%;">成本<span style="font-size:15px;">(万元)</span></span></div>'+
@@ -311,7 +339,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 
 		//日利润数据
 		var rlr_data=(sr_data-cb_data).toFixed(2);
-		var rlr_prec='';//a.toFixed(1);
+		var rlr_prec = dailyProfitTongbi;
 		var rlr_color="red";
 		if(rlr_data>0){
 		    rlr_color="green";

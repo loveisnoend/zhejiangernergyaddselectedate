@@ -212,20 +212,43 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 	    var mParameters = {};
 		mParameters['async'] = true;
 		mParameters['success'] = jQuery.proxy(function(sRes) {
+		    // 日利润同比值
+            var dailyProfitTongBi = '';
+            // 日利润环比值
+            var dailyProfitHuanBi = '';
 			//设置数据
 			home_rlr=0;
 			for (var i in sRes.results) {
-				if (sRes.results[i].KPI_TYPE == '日利润'){  
+				if (sRes.results[i].KPI_TYPE == '日利润' && sRes.results[i].KPI_DESC == '集团'){  
 				    home_rlr = home_rlr+parseFloat(sRes.results[i].KPI_VALUE);
 				}
+				if (sRes.results[i].KPI_TYPE == '日利润环比' && sRes.results[i].KPI_DESC == '集团'){  
+				    dailyProfitHuanBi = sRes.results[i].KPI_VALUE;
+				}
+				if (sRes.results[i].KPI_TYPE == '日利润同比' && sRes.results[i].KPI_DESC == '集团'){  
+				    dailyProfitTongBi = sRes.results[i].KPI_VALUE;
+				}
 			}
-			home_rlr=home_rlr/10000;
-            // 日利润同比值
-            var dailyProfitTongBi = '';
-            $("#tongbiProfitImg").attr("src","img/arrow-green2.png");
-            // 日利润环比值
-            var dailyProfitHuanBi = '';
-            $("#huanbiProfitImg").attr('src','img/arrow-green2.png');
+			var rlr_color="red";
+    		if(home_rlr>0){
+    		    rlr_color="green";
+    		}
+    		$('#home_rlr').css('color',rlr_color);
+    		$('#home_rlr').css('font-size','75px');
+			$('#home_rlr').html(home_rlr);
+			
+			$('#huanbiHome').html(dailyProfitHuanBi);
+            if (dailyProfitHuanBi > 0) {
+                $("#huanbiProfitImg").attr("src","img/arrow-green2.png");
+            } else {
+                $("#huanbiProfitImg").attr("src","img/arrow-red2.png");
+            }
+            $('#tongbiHome').html(dailyProfitTongBi);
+            if (dailyProfitTongBi > 0) {
+                $("#tongbiProfitImg").attr("src","img/arrow-green2.png");
+            } else {
+                $("#tongbiProfitImg").attr("src","img/arrow-red2.png");
+            }
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			alert("Get Data Error");
@@ -332,11 +355,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 			// not added the controller as delegate to avoid controller functions with similar names as the events
 			onAfterShow: jQuery.proxy(function() {
                 this._drawSwiper();
-                this._loadDateProfitData();
+                // this._loadDateProfitData();
                 this._loadData_top();
                 this._loadData();
                 this._loadTopDynamicShowData();
-                // this._loadData_left();
+                this._loadData_left();
 			}, this)
 		});
 	},
