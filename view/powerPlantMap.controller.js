@@ -931,6 +931,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
                 
                     option4.series[1].markPoint.data[0] = {name:'上海',value:0};
                     option4.series[1].markPoint.data[1] = {name:'上海',value:0};
+                    option4.series[1].markPoint.data[2] = {name:'上海',value:0};
                     myChart4.setOption(option4);
                     
                     setChartData(ec, mapSeries, param.dataIndex);

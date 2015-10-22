@@ -744,6 +744,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
                 
                     option4.series[1].markPoint.data[0] = {name:'上海',value:0};
                     option4.series[1].markPoint.data[1] = {name:'上海',value:0};
+                    option4.series[1].markPoint.data[2] = {name:'上海',value:0};
                     myChart4.setOption(option4);
                     
                     setChartData(ec, mapSeries, param.dataIndex);
@@ -762,6 +763,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
                     // },
                     series : [
                         {
+                            min : -1,
+                            max : 1,
                             name:'业务指标',
                             type:'gauge',
                             splitNumber: 10,       // 分割段数，默认为5
