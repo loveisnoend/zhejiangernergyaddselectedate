@@ -68,13 +68,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 			for (var i in sRes.results) {
 			    
 			    if (sRes.results[i].KPI_TYPE == '日利润-发电收入同比'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){ 
-                    incomeTongbi = sRes.results[i].KPI_VALUE
+                    incomeTongbi = sRes.results[i].KPI_VALUE*100;
 				}
 				if (sRes.results[i].KPI_TYPE == '日利润-成本总计同比'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){ 
-                    costTongbi = sRes.results[i].KPI_VALUE
+                    costTongbi = sRes.results[i].KPI_VALUE*100;
 				}
 				if (sRes.results[i].KPI_TYPE == '日利润同比'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){ 
-                    dailyProfitTongbi = sRes.results[i].KPI_VALUE
+                    dailyProfitTongbi = sRes.results[i].KPI_VALUE*100;
 				}
 				if (sRes.results[i].KPI_TYPE == '上网电量'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){ 
 				    date.push(sRes.results[i].KPI_DATE);

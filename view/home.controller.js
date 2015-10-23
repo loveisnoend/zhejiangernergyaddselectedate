@@ -223,10 +223,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 				    home_rlr = home_rlr+parseFloat(sRes.results[i].KPI_VALUE);
 				}
 				if (sRes.results[i].KPI_TYPE == '日利润环比' && sRes.results[i].KPI_DESC == '集团'){  
-				    dailyProfitHuanBi = sRes.results[i].KPI_VALUE;
+				    dailyProfitHuanBi = sRes.results[i].KPI_VALUE*100;
 				}
 				if (sRes.results[i].KPI_TYPE == '日利润同比' && sRes.results[i].KPI_DESC == '集团'){  
-				    dailyProfitTongBi = sRes.results[i].KPI_VALUE;
+				    dailyProfitTongBi = sRes.results[i].KPI_VALUE*100;
 				}
 			}
 			var rlr_color="red";

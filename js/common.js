@@ -76,6 +76,12 @@ function userHoverOut(classNameId) {
 // 设定头部跑马灯信息
 function _loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal){
     $('.userName').html(usrid);
+    // 最新消息
+    var newMsg = '系统版本已有更新，详情请查看帮助文档！！！';
+    if (newMsg != '') {
+        $('.newMsgIdClass').html(newMsg);
+        $('.newMsgIdClass').css('color','#C51616');
+    }
     // CPI环比
     if (valueCPIhuanbi > 0) {
         $('.valueCPIhuanbiIDClass').html(valueCPIhuanbi+"%↑");
