@@ -318,6 +318,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
     		
 		//收入数据
 		var sr_data = (swdl_data * pjswdj_data).toFixed(2);
+		if (incomeTongbi == undefined) {
+		    incomeTongbi = 0;
+		}
 		var sr_prec = incomeTongbi
 		var sr_color="green";
 		if(sr_prec>0){
@@ -326,6 +329,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 
 		//成本数据
 		var cb_data=(rlcb_data+qtcb_data).toFixed(2);
+		if (costTongbi == undefined) {
+		    costTongbi = 0;
+		}
 		var cb_prec= costTongbi;
 		var cb_color="green";
 		if(cb_prec>0){
@@ -339,6 +345,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 
 		//日利润数据
 		var rlr_data=(sr_data-cb_data).toFixed(2);
+		if (dailyProfitTongbi == undefined) {
+		    dailyProfitTongbi = 0;
+		}
 		var rlr_prec = dailyProfitTongbi;
 		var rlr_color="red";
 		if(rlr_data>0){

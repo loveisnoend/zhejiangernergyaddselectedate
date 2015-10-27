@@ -5,27 +5,35 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 
 	    require(
                 [
-                    'js/idangerous.swiper'
+                    'js/swiper'
                 ]
                 );
-		var mySwiper = new Swiper('.swiper-container',{
-	        onSlideClick: function(swiper){
-              swiper.swipeTo(mySwiper.clickedSlideIndex, 500, false);
-            },
-	        initialSlide : slidePageNum,
-            slidesPerView : 3,
-            centeredSlides : true,
-            grabCursor : true,
-            paginationClickable :true,
-            noSwiping : true,
-            tdFlow: {
-                rotate : 0,
-                stretch : 100,
-                depth : 400,
-                modifier : 1,
-                shadows : false
-            }
-         });
+		var mySwiper = new Swiper('.swiper-container', {
+			initialSlide: 0,
+			speed: 50,
+			loop: false,
+			freeMode: false,
+			threshold: 0,
+			// freeModeMomentum : true,
+			// freeModeMomentumRatio : 1,
+			// freeModeMomentumBounce : false,
+			// freeModeMomentumBounceRatio : 1,
+			freeModeSticky: true,
+			pagination: '.swiper-pagination',
+			paginationClickable: true,
+			centeredSlides: true,
+			effect: 'coverflow',
+			grabCursor: true,
+			slideToClickedSlide: true,
+			slidesPerView: 3,
+			coverflow: {
+				rotate: 0,
+				stretch: 0,
+				depth: 0,
+				modifier: 1,
+				slideShadows: false
+			}
+		});
 	},
 	
     _loadData_top : function(){
@@ -236,14 +244,17 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
     		$('#home_rlr').css('color',rlr_color);
     		$('#home_rlr').css('font-size','75px');
 			$('#home_rlr').html(home_rlr);
-			
-			$('#huanbiHome').html(dailyProfitHuanBi);
+			if (dailyProfitHuanBi != undefined) {
+			    $('#huanbiHome').html(dailyProfitHuanBi);
+			}
             if (dailyProfitHuanBi > 0) {
                 $("#huanbiProfitImg").attr("src","img/arrow-green2.png");
             } else {
                 $("#huanbiProfitImg").attr("src","img/arrow-red2.png");
             }
-            $('#tongbiHome').html(dailyProfitTongBi);
+            if (dailyProfitTongBi != undefined) {
+                $('#tongbiHome').html(dailyProfitTongBi);    
+            }
             if (dailyProfitTongBi > 0) {
                 $("#tongbiProfitImg").attr("src","img/arrow-green2.png");
             } else {

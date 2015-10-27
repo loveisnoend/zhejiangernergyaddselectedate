@@ -5,27 +5,54 @@ sap.ui.controller("com.zhenergy.pcbi.view.home04", {
 
 	    require(
                 [
-                    'js/idangerous.swiper'
+                    'js/swiper'
                 ]
                 );
-		var mySwiper = new Swiper('.swiper-container',{
-	        onSlideClick: function(swiper){
-              swiper.swipeTo(mySwiper.clickedSlideIndex, 500, false);
-            },
-	        initialSlide : slidePageNum,
-            slidesPerView : 3,
-            centeredSlides : true,
-            grabCursor : true,
-            paginationClickable :true,
-            noSwiping : true,
-            tdFlow: {
-                rotate : 0,
-                stretch : 100,
-                depth : 400,
-                modifier : 1,
-                shadows : false
-            }
-         });
+// 		var mySwiper = new Swiper('.swiper-container',{
+// 	        onSlideClick: function(swiper){
+//               swiper.swipeTo(mySwiper.clickedSlideIndex, 500, false);
+//             },
+// 	        initialSlide : slidePageNum,
+//             slidesPerView : 3,
+//             centeredSlides : true,
+//             grabCursor : true,
+//             paginationClickable :true,
+//             noSwiping : true,
+//             tdFlow: {
+//                 rotate : 0,
+//                 stretch : 100,
+//                 depth : 400,
+//                 modifier : 1,
+//                 shadows : false
+//             }
+//          });
+		var mySwiper = new Swiper('.swiper-container', {
+			initialSlide: 0,
+			speed: 50,
+			loop: false,
+			freeMode: false,
+			threshold: 0,
+			// freeModeMomentum : true,
+			// freeModeMomentumRatio : 1,
+			// freeModeMomentumBounce : false,
+			// freeModeMomentumBounceRatio : 1,
+			freeModeSticky: true,
+			pagination: '.swiper-pagination',
+			paginationClickable: true,
+			centeredSlides: true,
+			effect: 'coverflow',
+			grabCursor: true,
+			slideToClickedSlide: false,
+			centeredSlides: true,
+			slidesPerView: 3,
+			coverflow: {
+				rotate: 0,
+				stretch: -60,
+				depth: 200,
+				modifier: 2,
+				slideShadows: false
+			}
+		});
 	},
 	onInit: function() {
         
