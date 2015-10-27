@@ -156,7 +156,6 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 			huaiNan_dataStr += ']';
 			var zhejiang_JsonData = JSON.parse(zhejiang_dataStr)
 			var huaiNan_JsonData = JSON.parse(huaiNan_dataStr);
-			
     		this.loadChart(zhejiang_JsonData, huaiNan_JsonData);
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
@@ -164,7 +163,60 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 		}, this);
 	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_03_V01/?$filter=(BNAME eq '" + usrid + "')", mParameters);
 	},
-	loadmjChart: function(divId){
+	// 获取煤价数据
+	loadCoalPriceChartData : function (calorieTyle,divId,powerPlantName) {
+	    var mParameters = {};
+		mParameters['async'] = true;
+		mParameters['success'] = jQuery.proxy(function(sRes) {
+		    
+		    if (powerPlantName == '集团') {
+		         powerPlantName = '集团';
+		    } else if(powerPlantName == '台二电厂'){
+		         powerPlantName = '台二发电';
+		    } else if(powerPlantName == '兰溪电厂'){
+		         powerPlantName = '兰溪发电';
+		    }else if(powerPlantName == '凤台电厂'){
+		         powerPlantName = '凤台发电';
+		    }
+		    // 煤价大卡分类
+		    var reallyType = calorieTyle+'煤价';
+		    var qinGangType = '秦皇岛港挂牌煤价'+calorieTyle;
+		    
+			//设置数据
+			// 实际采购价格
+		    var reallyPrice = new Array();
+		    var qinGangPrice = new Array();
+
+		    // 统计于日期
+		  //  var dataStatisticDate = '';
+		    
+		    // 日期
+		    var date = new Array();
+			for (var i in sRes.results) {
+				if (sRes.results[i].KPI_TYPE == reallyType && sRes.results[i].KPI_DESC == powerPlantName){ 
+			        reallyPrice.push(sRes.results[i].KPI_VALUE);
+				}
+				if (sRes.results[i].KPI_TYPE == qinGangType && sRes.results[i].KPI_DESC == powerPlantName){ 
+                    qinGangPrice.push(sRes.results[i].KPI_VALUE);
+                    date.push(sRes.results[i].KPI_DATE);
+				}
+				
+				// if (dataStatisticDate == '') {
+				//     dataStatisticDate = sRes.results[i].KPI_DATE.substring(0,4)+'.'+sRes.results[i].KPI_DATE.substring(4,6)+"."+sRes.results[i].KPI_DATE.substring(6,8);
+				// }
+			}
+			
+			// 统计于日期
+// 			$('#othersCostStatisticDate').html(dataStatisticDate);
+			
+    		this.loadmjChart(divId,reallyPrice,qinGangPrice,date);
+		}, this);
+		mParameters['error'] = jQuery.proxy(function(eRes) {
+			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});
+		}, this);
+	    sap.ui.getCore().getModel().read("ZJEY_CL_JYYJ_04_MTJG/?$filter=(BNAME eq '" + usrid + "')", mParameters);
+	},
+	loadmjChart: function(divId,reallyPrice,qinGangPrice,date){
         require(
         [
             'echarts',
@@ -212,15 +264,15 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 						},
 						formatter: '{value}'
 					},
-					data: ['7/23', '7/24', '7/25', '7/26', '7/27', '7/28', '7/29', '7/30']
+					data: date
                 }
             ],
 			yAxis: [
 				{
-					name: '',
+					name: '元/吨',
 					type: 'value',
 					axisLine: {
-						show: false
+						show: true
 					},
 					axisLabel: {
 						textStyle: {
@@ -237,15 +289,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 							color: 'rgba(64,64,64,0.5)'
 						}
 					},
-					max: 0.65,
-					min: 0,
 					splitNumber: 13
                 },
 				{
-					name: '',
+					name: '元/吨',
 					type: 'value',
 					axisLine: {
-						show: false
+						show: true
 					},
 					axisLabel: {
 						textStyle: {
@@ -259,8 +309,6 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 							//color: 'rgba(64,64,64,0.5)',
 						}
 					},
-					max: 8.5,
-					min: 2.0,
 					splitNumber: 13
                 }
             ],
@@ -271,16 +319,29 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 					smooth: true,
                  	barGap: '0%',
                   	barCategoryGap: '50%',
-					// itemStyle: {normal: {areaStyle: {type: 'default'}}},
-					data: ['0.50','0.18','0.37','0.18','0.50','0.18','0.50','0.18','0.18','0.37','0.18']
+					itemStyle: {
+						normal: {
+							label: {
+								show: true
+								// position: 'insideRight'
+							}
+						}
+					},
+					data: reallyPrice
                 },
 				{
 					name: '秦港煤价',
 					type: 'line',
 					smooth: true,
-				
-					//itemStyle: {normal: {areaStyle: {type: 'default'}}},
-					data: ['0.30','0.14','0.34','0.13','0.40','0.12','0.40','0.08','0.15','0.27','0.14']
+					itemStyle: {
+						normal: {
+							label: {
+								show: true
+								// position: 'insideRight'
+							}
+						}
+					},
+					data: qinGangPrice
 
                 }
             ]
@@ -289,8 +350,56 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 		}
 	    
 	},
+	// 获取单位燃料成本值
+	loadFuelCostChartData : function () {
+	    var mParameters = {};
+		mParameters['async'] = true;
+		mParameters['success'] = jQuery.proxy(function(sRes) {
+		    
+			//设置数据
+		    var dc=new Array();
+		    var dataThisYear = new Array();
+		    var dataLastYear = new Array();
+		    var dataUpPercent = new Array();
+		    var tempDate = new Date();
+		    var thisYear = tempDate.getFullYear();
+		    
+		    // 统计于日期
+		  //  var dataStatisticDate = '';
+		    
+		    // 电厂名
+		    var powerPlantName = new Array();
+		    
+			for (var i in sRes.results) {
+				if (sRes.results[i].KPI_TYPE == '单位燃料成本'){ 
+				    if (sRes.results[i].KPI_DATE.toString().substring(0, 4) == thisYear) {
+				        dataThisYear.push(sRes.results[i].KPI_VALUE);
+				        powerPlantName.push(sRes.results[i].KPI_DESC);
+				    } else {
+				        dataLastYear.push(sRes.results[i].KPI_VALUE);
+				    }
+				}
+				if (sRes.results[i].KPI_TYPE == '单位燃料成本同比'){ 
+                    dataUpPercent.push(sRes.results[i].KPI_VALUE);
+				}
+				
+				// if (dataStatisticDate == '') {
+				//     dataStatisticDate = sRes.results[i].KPI_DATE.substring(0,4)+'.'+sRes.results[i].KPI_DATE.substring(4,6)+"."+sRes.results[i].KPI_DATE.substring(6,8);
+				// }
+			}
+			
+			// 统计于日期
+// 			$('#othersCostStatisticDate').html(dataStatisticDate);
+			
+    		this.loadChartdetail(dataThisYear, dataLastYear, dataUpPercent, powerPlantName);
+		}, this);
+		mParameters['error'] = jQuery.proxy(function(eRes) {
+			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});
+		}, this);
+	    sap.ui.getCore().getModel().read("ZJEY_CL_JYYJ_04_DWCB/?$filter=(BNAME eq '" + usrid + "')", mParameters);
+	},
 	//大圆圈点进去的chart
-	loadChartdetail: function() {
+	loadChartdetail: function(dataThisYear, dataLastYear, dataUpPercent, powerPlantName) {
         	require(
             [
                 'echarts',
@@ -303,12 +412,12 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 			    mychart = e.init(document.getElementById('detail_another_01'));
 			    document.getElementById('bigCircleDetailTitle').innerHTML = document.getElementById('powerPlantMainDetailTitle').innerHTML;
 			    
-			    var fuelXaxisName = '';
-			    if (document.getElementById('bigCircleDetailTitle').innerHTML == '集团') {
-			        fuelXaxisName = ['电厂1', '电厂2', '电厂3', '电厂4'];
-			    } else {
-			        fuelXaxisName = ['机组1', '机组2', '机组3', '机组4'];
-			    }
+			    var fuelXaxisName = powerPlantName;
+			 //   if (document.getElementById('bigCircleDetailTitle').innerHTML == '集团') {
+			 //       fuelXaxisName = ['电厂1', '电厂2', '电厂3', '电厂4'];
+			 //   } else {
+			 //       fuelXaxisName = ['机组1', '机组2', '机组3', '机组4'];
+			 //   }
 			    var option = {
     			    title:{
                     	text:'单位燃料成本',
@@ -370,12 +479,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
     								color: 'rgba(64,64,64,0.5)'
     							}
     						},
-    						max: 0.65,
-    						min: 0,
-    						splitNumber: 13
+    						splitNumber : 13
                         },
     					{
-    						name: '',
+    						name: '同比增长',
     						type: 'value',
     						axisLine: {
     							show: false
@@ -392,9 +499,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
     								//color: 'rgba(64,64,64,0.5)',
     							}
     						},
-    						max: 8.5,
-    						min: 2.0,
-    						splitNumber: 13
+    						min : 0,
+    						max : 1
                         }
                     ],
     				series: [
@@ -405,7 +511,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
                          	barGap: '0%',
                           	barCategoryGap: '50%',
     						// itemStyle: {normal: {areaStyle: {type: 'default'}}},
-    						data: ['0.18','0.50','0.18','0.37']
+    						data: dataThisYear
                         },
     					{
     						name: '去年同期',
@@ -413,7 +519,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
     						smooth: true,
     					
     						//itemStyle: {normal: {areaStyle: {type: 'default'}}},
-    						data: ['0.12','0.43','0.20','0.30']
+    						data: dataLastYear
     
                         },
                       	{
@@ -422,7 +528,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
     						smooth: true,
     					
     						//itemStyle: {normal: {areaStyle: {type: 'default'}}},
-    						data: ['0.12','0.43','0.20','0.30']
+    						data: dataUpPercent
     
                         }
                     ]
@@ -809,13 +915,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 				
 				// 加载时默认值
 				var mapSeries = option4.series[0];
-                setChartData(ec, mapSeries, 2);
+                setChartData(ec, mapSeries, 0);
                 
 			    // 默认集团数据显示
-				var selectedData = {name: mapSeries.markPoint.data[2].name, value: mapSeries.markPoint.data[2].inputPlanValue};
-				option4.series[1].markPoint.data[2] = selectedData;
+				var selectedData = {name: mapSeries.markPoint.data[0].name, value: mapSeries.markPoint.data[0].inputPlanValue};
+				option4.series[1].markPoint.data[0] = selectedData;
 				option4.series[1].markPoint.data[1] = {name:'上海',value:0};
-				option4.series[1].markPoint.data[0] = {name:'上海',value:0};
+				option4.series[1].markPoint.data[2] = {name:'上海',value:0};
                 // 为echarts对象加载数据 
                 myChart4.setOption(option4); 
 		///////////////////////////////安徽淮南市地图////////////////////////////////////////////
