@@ -1,0 +1,7 @@
+.content_center > table a {outline:none;text-decoration:underline;vertical-align: middle;font-size: 18px;color:white;}
+.content_center > table{width: 100%;border-collapse: collapse;color:white;font-size:18px;font-family:Microsoft Yahei;}
+.content_center > table th, .content_center > table td{border-bottom:1px solid #565F63;padding:5px;height: 30px}
+.content_center > table .table-head tr{border:1px solid #4E5152;background:Black;}
+.content_center > table .table-head tr th{text-align: left;}
+.content_center > table .odd{background-color: #1A1A1A}
+.content_center > table .even{background-color: #3B3B3B}

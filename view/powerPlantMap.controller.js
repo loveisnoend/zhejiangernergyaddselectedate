@@ -164,7 +164,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_03_V01/?$filter=(BNAME eq '" + usrid + "')", mParameters);
 	},
 	// 获取煤价数据
-	loadCoalPriceChartData : function (calorieTyle,divId,powerPlantName) {
+	loadCoalPriceChartData : function (calorieType,divId,powerPlantName) {
 	    var mParameters = {};
 		mParameters['async'] = true;
 		mParameters['success'] = jQuery.proxy(function(sRes) {
@@ -179,16 +179,16 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 		         powerPlantName = '凤台发电';
 		    }
 		    // 煤价大卡分类
-		    var reallyType = calorieTyle+'煤价';
-		    var qinGangType = '秦皇岛港挂牌煤价'+calorieTyle;
+		    var reallyType = calorieType+'煤价';
+		    var qinGangType = '秦皇岛港挂牌煤价'+calorieType;
 		    
 			//设置数据
 			// 实际采购价格
 		    var reallyPrice = new Array();
 		    var qinGangPrice = new Array();
 
-		    // 统计于日期
-		  //  var dataStatisticDate = '';
+		    //统计于日期
+		    var dataStatisticDate = '';
 		    
 		    // 日期
 		    var date = new Array();
@@ -201,13 +201,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
                     date.push(sRes.results[i].KPI_DATE);
 				}
 				
-				// if (dataStatisticDate == '') {
-				//     dataStatisticDate = sRes.results[i].KPI_DATE.substring(0,4)+'.'+sRes.results[i].KPI_DATE.substring(4,6)+"."+sRes.results[i].KPI_DATE.substring(6,8);
-				// }
+				if (dataStatisticDate == '') {
+				    dataStatisticDate = sRes.results[i].KPI_DATE.substring(0,4)+'.'+sRes.results[i].KPI_DATE.substring(4,6);//+"."+sRes.results[i].KPI_DATE.substring(6,8);
+				}
 			}
 			
 			// 统计于日期
-// 			$('#othersCostStatisticDate').html(dataStatisticDate);
+			$('#powerPlantStatisticDate').html(dataStatisticDate);
 			
     		this.loadmjChart(divId,reallyPrice,qinGangPrice,date);
 		}, this);
@@ -1257,7 +1257,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 		    // 60万kw
 		    var coalCost600 = mapSeries.markPoint.data[dataIndex].coalCost600;
 		    if (coalCost600 != undefined) {
-		        document.getElementById('watt2').innerHTML = coalCost600
+		        document.getElementById('watt2').innerHTML = coalCost600.toString().substring(0, coalCost600.toString().indexOf(".")+3);
 		    } else {
 		        document.getElementById('watt2').innerHTML = 0;
 		    }

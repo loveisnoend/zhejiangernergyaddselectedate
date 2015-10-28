@@ -3,8 +3,9 @@ function toMJhid() {
     document.getElementById('rlcb_detail').style.display = "none";
     document.getElementById('mj_hid').style.display = "";
     
-    var powerPlantName = document.getElementById('powerPlantMainDetailTitle').innerHTML;
-    powerPlantMap.getController().loadCoalPriceChartData('4500大卡','pic4500',powerPlantName);
+    btnclick('1');
+    // var powerPlantName = document.getElementById('powerPlantMainDetailTitle').innerHTML;
+    // powerPlantMap.getController().loadCoalPriceChartData('4500大卡','pic4500',powerPlantName);
 }
 function back() {
     document.getElementById('mj_hid').style.display = "none";
@@ -35,7 +36,6 @@ function btnclick(no) {
         chartDivId = 'pic5500';
     }
     var powerPlantName = document.getElementById('powerPlantMainDetailTitle').innerHTML;
-    
     if (document.getElementById(btnID).className != "active") {
         //clear();
         document.getElementById(olddivID).style.display = "none";
