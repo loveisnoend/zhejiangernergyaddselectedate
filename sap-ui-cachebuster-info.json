@@ -117,8 +117,8 @@
   "img/userSetting-icon.png": "1442886826244",
   "img/userSkin-icon.png": "1442888899103",
   "img/write.png": "1442561725713",
-  "index.html": "1446016441212",
-  "js/common.js": "1445562901261",
+  "index.html": "1446085140210",
+  "js/common.js": "1446100093112",
   "js/idangerous.swiper.js": "1442561725533",
   "js/idangerous.swiper.min.js": "1442561725443",
   "js/internetPowerVolume.js": "1443529744234",
@@ -130,8 +130,8 @@
   "swiper.js": "1442561725743",
   "view/home.controller.js": "1445909570119",
   "view/home.view.html": "1446012658374",
-  "view/home02.controller.js": "1442628187052",
-  "view/home02.view.html": "1445910746307",
+  "view/home02.controller.js": "1446100268821",
+  "view/home02.view.html": "1446100250854",
   "view/home03.controller.js": "1442628367284",
   "view/home03.view.html": "1445910755415",
   "view/home04.controller.js": "1445853615956",
@@ -160,7 +160,7 @@
   "view/rlcbDetailPage.view.html": "1442561725653",
   "view/tab.controller.js": "1444727585007",
   "view/tab.view.html": "1445563040429",
-  "view/Help.view.html": "1446018088826",
+  "view/Help.view.html": "1446084278832",
   "view/Help.controller.js": "1445423925746",
   "docSrc/ERP-Manual.pdf": "1445395589166",
   "js/pdfobject.js": "1445397320478",
@@ -168,5 +168,6 @@
   "view/ERP-Manual.pdf": "1445421502521",
   "css/swiper.css": "1440729714517",
   "js/swiper.js": "1440588875412",
-  "css/help.css": "1446020398046"
+  "css/help.css": "1446020398046",
+  "css/helpHighlight.css": "1446086006067"
 }

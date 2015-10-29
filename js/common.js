@@ -4,6 +4,7 @@ function changeSkinCss(pageName) {
     var skinNameAlter = $('.userSkin').html();
     if (skinName == '夜间模式') {
         $('#homeCss').attr("href","css/homeHighlight.css");
+        $('#helpCss').attr("href","css/helpHighlight.css");
         $('#bottomButCss').attr("href","css/bottom_buttonHighlight.css");
         $('#tabCss').attr("href","css/tabHighlight.css");
         $('#performanceCss').attr("href","css/PerformanceHightlight.css");
@@ -13,6 +14,7 @@ function changeSkinCss(pageName) {
         skinName = '高亮模式';
     } else {
         $('#homeCss').attr("href","css/home.css");
+        $('#helpCss').attr("href","css/help.css");
         $('#bottomButCss').attr("href","css/bottom_button.css");
         $('#tabCss').attr("href","css/tab.css");
         $('#performanceCss').attr("href","css/Performance.css");
@@ -131,5 +133,15 @@ function _loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,value
         $('.valuePMInonProduceIDClass').css('color','red');
     }
     // GDP总值
+    valueGDPTotal = (valueGDPTotal/10000).toFixed(1);
     $('.valueGDPTotalIDClass').html(valueGDPTotal);
+    var tempDate = new Date();
+    var thisYear = tempDate.getFullYear();
+    var thisMonth = tempDate.getMonth()+1;
+    var thisDate = tempDate.getDate();
+    var nowDate = thisYear + '年' + thisMonth + '月' + thisDate + '日';
+    // 今天的日期
+    $('.nowDateClass').html(nowDate);
+    
+    
 }
