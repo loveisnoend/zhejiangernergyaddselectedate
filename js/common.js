@@ -8,6 +8,7 @@ function changeSkinCss(pageName) {
         $('#bottomButCss').attr("href","css/bottom_buttonHighlight.css");
         $('#tabCss').attr("href","css/tabHighlight.css");
         $('#performanceCss').attr("href","css/PerformanceHightlight.css");
+        $('#mainBusinessCss').attr("href","css/mainBusinessHightlight.css");
         $('#powerPlantMapCss').attr("href","css/powerPlantMapHighlight.css");
         $('#internetPowerVolumeCss').attr("href","css/internetPowerVolumeHighlight.css");
         $('.userSkin').html('高亮模式');
@@ -18,6 +19,7 @@ function changeSkinCss(pageName) {
         $('#bottomButCss').attr("href","css/bottom_button.css");
         $('#tabCss').attr("href","css/tab.css");
         $('#performanceCss').attr("href","css/Performance.css");
+        $('#mainBusinessCss').attr("href","css/mainBusiness.css");
         $('#powerPlantMapCss').attr("href","css/powerPlantMap.css");
         $('#internetPowerVolumeCss').attr("href","css/internetPowerVolume.css");
         $('.userSkin').html('夜间模式');

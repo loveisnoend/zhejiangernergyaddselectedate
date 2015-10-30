@@ -20,6 +20,7 @@
 		<link rel="stylesheet" type="text/css" href="css/panel.css">
 		<link rel="stylesheet" type="text/css" href="css/tab.css" id="tabCss">
 		<link rel="stylesheet" type="text/css" href="css/Performance.css" id="performanceCss">
+		<link rel="stylesheet" type="text/css" href="css/mainBusiness.css" id="mainBusinessCss">
 		<link rel="stylesheet" type="text/css" href="css/bottom_button.css" id="bottomButCss">
 		<link rel="stylesheet" type="text/css" href="css/powerPlantMap.css" id="powerPlantMapCss">
         <link rel="stylesheet" type="text/css" href="css/internetPowerVolume.css" id="internetPowerVolumeCss">
@@ -127,7 +128,10 @@
             // show the help page
             function help() {
                 app.to("idHelpPage","show");
-                // var success = new PDFObject({ url: "./docSrc/EPR-Manual.pdf" }).embed("showPdfPlace");
+            }
+            // 主营业务页面
+            function toMainBusinessPage() {
+                app.to("idMainBusiness","show");
             }
 		</script>
 		<script>
@@ -151,6 +155,7 @@
 				var internetVolume;
 				var othersCost;
 				var helpPage;
+				var mainBusiness;
 				var slidePageNum = 0;
 				var app = new sap.m.App({initialPage:"idhome"});
 				
@@ -254,21 +259,28 @@
             			type: sap.ui.core.mvc.ViewType.HTML
             		 });
             		 app.addPage(othersCost);
-            		 
+            		 // 厂用电量
             		internetPowerVolume = sap.ui.view({
             			id: "idInternetPowerVolume",
             			viewName: "com.zhenergy.pcbi.view.internetPowerVolume",
             			type: sap.ui.core.mvc.ViewType.HTML
             		 });
             		 app.addPage(internetPowerVolume);
-            		 
+            		 // 帮助页面
             		 helpPage = sap.ui.view({
             			id: "idHelpPage",
             			viewName: "com.zhenergy.pcbi.view.help",
             			type: sap.ui.core.mvc.ViewType.HTML
             		 });
             		 app.addPage(helpPage);
-					app.placeAt("content");
+            		 // 主营业务
+            		 mainBusiness = sap.ui.view({
+            			id: "idMainBusiness",
+            			viewName: "com.zhenergy.pcbi.view.MainBusiness",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(mainBusiness);
+					 app.placeAt("content");
 				}
 				// if(window.cordova && appContext && !window.sap_webide_companion) {
     //                 // usrid = appContext.registrationContext.user.toUpperCase();
