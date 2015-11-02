@@ -1,5 +1,6 @@
 sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 	onInit: function() {
+		
 	    this.getView().addEventDelegate({
 			onBeforeShow: jQuery.proxy(function(evt) {
 				this.onBeforeShow(evt);
@@ -23,11 +24,6 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 		var myChart5;
 		var myChart6;
 		var myChart7;
-		var daytime;
-	    var year;
-	    var month;
-	    var day;
-		
 		//html参数
 		tab_place = "杭州";
 		tab_powerplant = "凤台发电";
@@ -40,28 +36,6 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 	    data03 = new Array();
 	    data04= new Array();
 	    dataXName = new Array();
-	    
-	    daytime = new Date();
-        year = daytime.getFullYear();
-        month = daytime.getMonth();
-	    var month_true;
-	    if( month > 8){
-	        month_true = month + 1;
-	    }else{
-	        month = month + 1;
-	        month_true = "0"+month;
-	    }
-	     day = daytime.getDate();
-	    if(day < 10){
-	        day = "0" + day;
-	    }
-	    final_daytime = year.toString()+month_true.toString()+day.toString();
-	    var day01 = day -6;
-	    if(day01 < 10){
-	        day01 = "0" + day01;
-	    }
-	    final_daytime01 = year.toString()+month_true.toString()+day01.toString();
-	    
 	    // 全社会用电量默认地区（浙江）  发电厂（浙江）
 	    this.loadChart01('金华','兰溪发电');
 		// 设定头部跑马灯信息 common.js
@@ -99,6 +73,38 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 	    dataXName = [];
 	    place_v01 = cityName;
 
+	    //定义当天的日期与7天前的日期 start
+		var daytime = new Date();
+		var date = new Date(daytime.getTime() - 7 * 24 * 3600 * 1000);
+		var year = daytime.getFullYear();
+		var month = daytime.getMonth();
+		var month_true;
+		if (month > 8) {
+			month_true = month + 1;
+		} else {
+			month = month + 1;
+			month_true = "0" + month;
+		}
+		var day = daytime.getDate();
+		if (day < 10) {
+			day = "0" + day;
+		}
+		final_daytime = year + '' + month_true + '' + day + '';
+		var year01 = date.getFullYear();
+		var month01 = date.getMonth();
+		var month_true_01;
+		if (month01 > 8) {
+			month_true_01 = month01 + 1;
+		} else {
+			month01 = month01 + 1;
+			month_true_01 = "0" + month01;
+		}
+		var day01 = date.getDate();
+		if (day01 < 10) {
+			day01 = "0" + day01;
+		}
+		final_daytime01 = year01 + '' + month_true_01 + '' + day01 + '';
+		
 	    var mParameters = {};
 		mParameters['async'] = true;
 		mParameters['success'] = jQuery.proxy(function(sRes) {
@@ -121,7 +127,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 			    }
 			}
 			this.loadChart();
-			this.loadData_weather();
+			this.loadData_weather(year,month_true,day);
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			alert("Get Data Error");
@@ -139,10 +145,42 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
         powerplant_v02 = currentPowerPlant;
         // 发电量和利用小时指标区分值
         usetime_v02 = tab_usetime;
+        
+        //定义当天的日期与7天前的日期 start
+		var daytime = new Date();
+		var date = new Date(daytime.getTime() - 7 * 24 * 3600 * 1000);
+		var year = daytime.getFullYear();
+		var month = daytime.getMonth();
+		var month_true;
+		if (month > 8) {
+			month_true = month + 1;
+		} else {
+			month = month + 1;
+			month_true = "0" + month;
+		}
+		var day = daytime.getDate();
+		if (day < 10) {
+			day = "0" + day;
+		}
+		final_daytime = year + '' + month_true + '' + day + '';
+		var year01 = date.getFullYear();
+		var month01 = date.getMonth();
+		var month_true_01;
+		if (month01 > 8) {
+			month_true_01 = month01 + 1;
+		} else {
+			month01 = month01 + 1;
+			month_true_01 = "0" + month01;
+		}
+		var day01 = date.getDate();
+		if (day01 < 10) {
+			day01 = "0" + day01;
+		}
+		final_daytime01 = year01 + '' + month_true_01 + '' + day01 + '';
+		
         var mParameters = {};
 		mParameters['async'] = true;
 		mParameters['success'] = jQuery.proxy(function(sRes) {
-		    
 			//设置数据
 			for (var i in sRes.results) {
 			    
@@ -151,7 +189,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 				}
 			}
 			this.loadChart();
-			this.loadData_weather();
+			this.loadData_weather(year,month_true,day);
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			alert("Get Data Error");
@@ -165,7 +203,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 		//this.getView().bindElement("/EE_PERSONPHOTO_SET('" + usrid + "')");
 	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_02_V02?$filter=(BNAME eq 'ERPTEST1')", mParameters);
     },
-	loadData_weather : function(){
+	loadData_weather : function(year,month,day){
             var d = new Date();
     	    var weekday=new Array(7);
             weekday[0]="周日";
@@ -177,7 +215,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
             weekday[6]="周六";
             $('#tab_weekday').html(weekday[d.getDay()%7]);
             $('#tab_daytime').html(year + "年" + month + "月" + day + "日");
-            
+
             $('#temperature0_date').html(data04[0]);
             $('#temperature1_date').html(data04[1]);
             $('#temperature2_date').html(data04[2]);

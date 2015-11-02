@@ -27,28 +27,36 @@
         <div class="content_center">
             <!-- Swiper -->
             <div class="swiper-container">
-                <div class="swiper-wrapper" style="margin-top:-15px;">
-        			<!--<div class="swiper-slide swiper-no-swiping" style="background-color:;">-->
-           <div class="demo_outer" style="position: relative;background-size:100% 100%;">
-                			<div class="demo_content_top">
-                				<div class="demo_header" style="height:7%;"></div>
-                				<div class="demo_jiange_1"></div>
-                				<div class="demo_shuzi_white" style="font-size:50px;margin-top: 10%;font-weight:bold;font-family: 微软雅黑;" >
-                				<span >资产负债率</span>				
-                				</div>
-                			</div>
-                			<div class="demo_content_foot">
-                				<div class="demo_jiange_2"></div>
-                				<div class="demo_content_1">
-                					<span style="font-size:35px;">持续完善中<br/>...</span>
-                				</div>
-                				<div class="demo_content_foot_1">
-                			    </div>
-                			</div>
-                		</div>
-                	</div>
-                <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
+            			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;">
+            				<div class="demo_header"><b class="nowDateClass"></b></div>
+            				<div class="demo_jiange"></div>
+            				<div class="demo_title">
+            					净资产
+            				</div>
+            				<div class="demo_shuzi_red">
+            				<span id="pureProperty">0</span>
+            				<span class="demo_shuzi_span_shangbiao">亿元</span>
+            				</div>
+            				<div class="demo_content_1"><b>净资产增长率</b><b id="purePropertyUpValue"></b>%&nbsp;<img  src="img/arrow-green2.png" id="purePropertyUpImg" class="demo_img_down"/></div>
+            			</div>
+        			</div>
+        			<div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
+            			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;">
+            				<div class="demo_header"><b class="nowDateClass"></b></div>
+            				<div class="demo_jiange"></div>
+            				<div class="demo_title">
+            					总资产
+            				</div>
+            				<div class="demo_shuzi_red">
+            				<span id="sumProperty">0</span>
+            				<span class="demo_shuzi_span_shangbiao">亿元</span>
+            				</div>
+            				<div class="demo_content_1"><b>总资产增长率</b><b id="sumPropertyUpValue"></b>%&nbsp;<img  src="img/arrow-green2.png" id="sumPropertyUpImg" class="demo_img_down"/></div>
+            			</div>
+        			</div>
+        		</div>
             </div>
         </div>
         <div class="menu_bottom">

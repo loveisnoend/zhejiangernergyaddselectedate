@@ -109,7 +109,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
         			    isFirst = false;
     				}
     				// 燃料成本
-    				if (sRes.results[i].KPI_TYPE == '燃料成本'&&sRes.results[i].KPI_DESC==dc[j]){ 
+    				if (sRes.results[i].KPI_TYPE == '单位燃料成本'&&sRes.results[i].KPI_DESC==dc[j]){ 
     				    if (isFirst != true) {
     				        tempJsonStrData += ',';
     				    }

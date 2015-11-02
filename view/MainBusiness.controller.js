@@ -18,10 +18,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.MainBusiness", {
         
 	    var mParameters = {};
 	    date = new Array();
-		data1 = new Array();//上网电量
-		data2 = new Array();//平均上网电价
-		data3 = new Array();//燃料成本
-		data4 = new Array();//其他成本
+		data1 = new Array();//发电收入
+		data2 = new Array();//供热收入
+		data3 = new Array();//劳务收入
+		data4 = new Array();//其他收入
+		data5 = new Array();// 主营业务收入
 		// 数据类型，集团数据还是电厂数据
 		var dateTypeName = '';
 		mParameters['async'] = true;
@@ -44,18 +45,21 @@ sap.ui.controller("com.zhenergy.pcbi.view.MainBusiness", {
 				if (sRes.results[i].KPI_TYPE == '日利润同比'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){ 
                     dailyProfitTongbi = sRes.results[i].KPI_VALUE*100;
 				}
-				if (sRes.results[i].KPI_TYPE == '上网电量'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){ 
+				if (sRes.results[i].KPI_TYPE == '主营业务收入发电'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){ 
 				    date.push(sRes.results[i].KPI_DATE);
 				    data1.push(parseFloat(sRes.results[i].KPI_VALUE));    
 				}
-				if (sRes.results[i].KPI_TYPE == '平均上网电价'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){
+				if (sRes.results[i].KPI_TYPE == '主营业务收入供热'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){
 				    data2.push(parseFloat(sRes.results[i].KPI_VALUE));     
 				}
-				if (sRes.results[i].KPI_TYPE == '燃料成本'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){ 
+				if (sRes.results[i].KPI_TYPE == '主营业务收入劳务'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){ 
 				    data3.push(parseFloat(sRes.results[i].KPI_VALUE));      
 				}
-				if (sRes.results[i].KPI_TYPE == '日利润-其他成本'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){ 
+				if (sRes.results[i].KPI_TYPE == '主营业务收入其他'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){ 
 				    data4.push(parseFloat(sRes.results[i].KPI_VALUE));    
+				}
+				if (sRes.results[i].KPI_TYPE == '主营业务收入'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){ 
+				    data5.push(parseFloat(sRes.results[i].KPI_VALUE));    
 				}
 			}
 // 			alert('---data1---'+data1+'---data2---'+data2+'---data3----'+data3+'----data4---'+data4);
@@ -67,7 +71,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.MainBusiness", {
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			alert("Get Data Error");
 		}, this);
-	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_02_V03/?$filter=(BNAME eq '" + usrid + "')", mParameters);
+	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_02_V04/?$filter=(BNAME eq '" + usrid + "')", mParameters);
 	},
 	onAfterShow: function(evt) {
 		// 		this.loadData();
@@ -301,13 +305,31 @@ sap.ui.controller("com.zhenergy.pcbi.view.MainBusiness", {
 		if(cb_prec>0){
 		    cb_color="green";
 		}
-		var sr_innerhtml=
-		'<div class="main_content_title_1"><span style="margin-left:3%;">收入<span style="font-size:15px;">(万元)</span></span>'+
-		'<span style="margin-left:26%;">成本<span style="font-size:15px;">(万元)</span></span></div>'+
-		'<div class="main_content_sz" style="font-size:30px;font-weight:bold;color:'+sr_color+'"><span>'+ sr_data +'</span><span style="margin-left:15%;font-weight:bold;color:'+cb_color+'">'+cb_data+'</span></div>'
-		+'<div class="main_content_sz"><span style="text-align:center;">同比'+sr_prec+'%<img src="img/arrow-'+sr_color+'2.png" class="content_img"/></span><span style="margin-left:25%;text-align:right;">同比'+cb_prec+'%<img src="img/arrow-'+cb_color+'2.png" class="content_img"/></sapn></div>';
+		
+		// 发电收入
+		var powerIncome = data1[data1.length - 1];
+		// 供热收入
+		var heatIncome = data2[data2.length - 1];
+		// 劳务收入
+		var laborIncome = data3[data3.length - 1];
+		// 其他收入
+		var othersIncome = data4[data4.length - 1];
+		
+		var sr_innerhtml1=
+		'<div class="MB-main_content_title_1"><span>发电收入<span style="font-size:15px;">(万元)</span></span>'+
+		'<span style="margin-left:125px;">供热收入<span style="font-size:15px;">(万元)</span></span></div>'+
+		'<div class="main_content_sz" style="font-size:30px;font-weight:bold;color:'+sr_color+'"><span>'+ powerIncome +'</span><span style="margin-left:25%;font-weight:bold;color:'+cb_color+'">'+heatIncome+'</span></div>'
+		+'<div class="main_content_sz"><span style="text-align:center;">同比'+sr_prec+'%<img src="img/arrow-'+sr_color+'2.png" class="content_img"/></span><span style="margin-left:33%;text-align:right;">同比'+cb_prec+'%<img src="img/arrow-'+cb_color+'2.png" class="content_img"/></sapn></div>';
 
-		//日利润数据
+		var sr_innerhtml2=
+		'<div class="MB-main_content_title_2"><span>劳务收入<span style="font-size:15px;">(万元)</span></span>'+
+		'<span style="margin-left:125px;">其他收入<span style="font-size:15px;">(万元)</span></span></div>'+
+		'<div class="main_content_sz" style="font-size:30px;font-weight:bold;color:'+sr_color+'"><span>'+ laborIncome +'</span><span style="margin-left:25%;font-weight:bold;color:'+cb_color+'">'+othersIncome+'</span></div>'
+		+'<div class="main_content_sz"><span style="text-align:center;">同比'+sr_prec+'%<img src="img/arrow-'+sr_color+'2.png" class="content_img"/></span><span style="margin-left:33%;text-align:right;">同比'+cb_prec+'%<img src="img/arrow-'+cb_color+'2.png" class="content_img"/></sapn></div>';
+
+		//主营业收入数据
+		var mainBusinessIncome = data5[data5.length - 1];
+		
 		var rlr_data=(sr_data-cb_data).toFixed(2);
 		if (dailyProfitTongbi == undefined) {
 		    dailyProfitTongbi = 0;
@@ -317,15 +339,16 @@ sap.ui.controller("com.zhenergy.pcbi.view.MainBusiness", {
 		if(rlr_data>0){
 		    rlr_color="green";
 		}
-		var rlr_innerhtml='<div class="main_content_title">日利润<span style="font-size:20px;">(万元)</span></div><div class="main_content_sz" style="font-size:65px;font-weight:bold;color:'+rlr_color+'">'+rlr_data+'</div><div class="main_content_sz">同比'+rlr_prec+'%<img src="img/arrow-'+rlr_color+'2.png" class="content_img"/></div>';
+		var rlr_innerhtml='<div class="MB-main_content_title">主营业务收入<span style="font-size:20px;">(万元)</span></div><div class="main_content_sz" style="font-size:65px;font-weight:bold;color:'+rlr_color+'">'+mainBusinessIncome+'</div><div class="main_content_sz">同比'+rlr_prec+'%<img src="img/arrow-'+rlr_color+'2.png" class="content_img"/></div>';
 
                         
-		document.getElementById('srMB').innerHTML = sr_innerhtml;
+		document.getElementById('srMB1').innerHTML = sr_innerhtml1;
+		document.getElementById('srMB2').innerHTML = sr_innerhtml2;
 		document.getElementById('rlrMB').innerHTML=rlr_innerhtml;
-        document.getElementById('powerIncome').innerHTML=swdl_data+'万千瓦时';
-        document.getElementById('heatIncome').innerHTML=pjswdj_data+'元/千瓦时';
-        document.getElementById('laborIncome').innerHTML=rlcb_data+'万元';
-        document.getElementById('laborIncome').innerHTML=qtcb_data+'万元';
+        document.getElementById('powerIncome').innerHTML=powerIncome+'元';
+        document.getElementById('heatIncome').innerHTML=heatIncome+'元/千瓦时';
+        document.getElementById('laborIncome').innerHTML=laborIncome+'万元';
+        document.getElementById('othersIncome').innerHTML=othersIncome+'万元';
 
 
 // 		document.getElementById('cb').innerHTML = cb_innerhtml;

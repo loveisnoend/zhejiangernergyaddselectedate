@@ -1,4 +1,4 @@
-#idMainBusiness .performance_main {
+#idMainBusiness .mainBusiness_main {
   width: 1300px;
   margin: 0px auto;
   margin-left:0px;
@@ -9,7 +9,7 @@
   color: #FFF;
   font-family: \5FAE\8F6F\96C5\9ED1;
  }
- #idMainBusiness .performance_head{
+ #idMainBusiness .mainBusiness_head{
   height: 200px;
   padding-top: 15px;
   background: url("../img/2-2-bg.png");
@@ -19,25 +19,25 @@
   background-size: auto 200px;
   color: #FFF;
  }
- #idMainBusiness .performance_head>.inner_text{
+ #idMainBusiness .mainBusiness_head>.inner_text{
        margin: 8px auto;
   width: 840px;
   text-align: center;
   height: 180px;
  }
- #idMainBusiness .performance_head>.inner_text>div{
+ #idMainBusiness .mainBusiness_head>.inner_text>div{
  display:inline-block;
  vertical-align: top;
  margin: 37px 58px;
  }
-  #idMainBusiness .performance_head>#rlr_circle{
+  #idMainBusiness .mainBusiness_head>#rlr_circle{
         width: 200px;
   height: 200px;
   position: absolute;
   top: 15px;
   left: 410px;
   }
-/*#idMainBusiness .performance_main > div {*/
+/*#idMainBusiness .mainBusiness_main > div {*/
 /*    display: inline-block;*/
 /*    vertical-align: top;*/
 /*    padding: 12px;*/
@@ -45,12 +45,12 @@
 /*    font-size: 12px;*/
 /*    float:left;*/
 /*    }*/
-.performance_main{
+.mainBusiness_main{
     width:100%;
     height:100%;
 	border: 2% solid rgb(142,191,224);
 }
-.performance_main_content{
+.mainBusiness_main_content{
     float:left;
     width:30%;
     height:82%;
@@ -58,7 +58,7 @@
     margin-bottom: 0;
     border: 2% solid rgb(47,233,48);
 }
-.performance_main_content_left{
+.mainBusiness_main_content_left{
     float:left;
     width:30%;
     height:82%;
@@ -66,7 +66,7 @@
     margin-bottom: 0;
     border: 2% solid rgb(47,233,48);
 }
-.performance_main_content_center{
+#idMainBusiness .mainBusiness_main_content_center{
     float:left;
     margin-left:7%;
     width:36%;
@@ -74,10 +74,10 @@
     margin-top:20px;
     margin-bottom: 0;
     border: 2% solid rgb(47,233,48);
-    background:url("../img/combination_3-Blue.png") no-repeat center center;
-    background-size: cover;
+    background:url("../img/combination_5-BigBlue.png") no-repeat center center;
+    /*background-size: cover;*/
 }
-.performance_main_content_right{
+.mainBusiness_main_content_right{
     float:left;
     margin-left:-3%;
     width:30%;
@@ -122,30 +122,30 @@
     height: 160px;
 }
 
-#idMainBusiness .performance_head .inner_panel{
+#idMainBusiness .mainBusiness_head .inner_panel{
     margin: 46px auto;
     width: 156px;
     text-align: center;
 }
- #idMainBusiness .performance_head .inner_panel .title{
+ #idMainBusiness .mainBusiness_head .inner_panel .title{
     font-size: 20px;
 }
- #idMainBusiness .performance_head .inner_panel .num{
+ #idMainBusiness .mainBusiness_head .inner_panel .num{
     font-size: 50px;
 }
- #idMainBusiness .performance_head .inner_panel .info{
+ #idMainBusiness .mainBusiness_head .inner_panel .info{
     font-size: 18px;
     line-height: 18px;
     height: 18px;
 }
- #idMainBusiness .performance_head .inner_panel .info img{
+ #idMainBusiness .mainBusiness_head .inner_panel .info img{
 width: 18px;
     height: 18px;
     vertical-align: bottom;
     padding-left: 10px;
 }
 
- .performance_main_con_title{
+ .mainBusiness_main_con_title{
 	margin:0 auto;
 	background-color:rgb(63,63,63);
 	border: 2% solid rgb(147,147,147);
@@ -158,22 +158,31 @@ width: 18px;
 	font-family:SimHei;
  }
  
-.main_content_title {
+.MB-main_content_title {
     text-align: left;
-    padding-left: 36%;
+    padding-left: 32%;
     padding-top: 10%;
     background-color:transparent;
     font-weight: 500;
-    font-size:30px;
+    font-size:20px;
     line-height: 40px;
 }
-.main_content_title_1{
+.MB-main_content_title_1{
     text-align: left;
-    padding-left: 20%;
-    padding-top: 23%;
+    padding-left: 13%;
+    padding-top: 8%;
     background-color:transparent;
     font-weight: 500;
-    font-size:25px;
+    font-size:18px;
+    line-height: 40px; 
+}
+.MB-main_content_title_2{
+    text-align: left;
+    padding-left: 13%;
+    padding-top: 4%;
+    background-color:transparent;
+    font-weight: 500;
+    font-size:18px;
     line-height: 40px; 
 }
 .main_content_sz{

@@ -89,7 +89,7 @@ function _loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,value
     // CPI环比
     if (valueCPIhuanbi > 0) {
         $('.valueCPIhuanbiIDClass').html(valueCPIhuanbi+"%↑");
-        $('.valueCPIhuanbiIDClass').css('color','.32FF32');
+        $('.valueCPIhuanbiIDClass').css('color','green');
     } else {
         $('.valueCPIhuanbiIDClass').html(valueCPIhuanbi+"%↓");
         $('.valueCPIhuanbiIDClass').css('color','red');
@@ -97,7 +97,7 @@ function _loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,value
     // GDP增长率
     if (valueGDP > 0) {
         $('.valueGDPIDClass').html(valueGDP+"%↑");
-        $('.valueGDPIDClass').css('color','.32FF32');
+        $('.valueGDPIDClass').css('color','green');
     } else {
         $('.valueGDPIDClass').html(valueGDP+"%↓");
         $('.valueGDPIDClass').css('color','red');
@@ -105,7 +105,7 @@ function _loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,value
     // CPI同比
     if (valueCPItongbi > 0) {
         $('.valueCPItongbiIDClass').html(valueCPItongbi+"%↑");
-        $('.valueCPItongbiIDClass').css('color','.32FF32');
+        $('.valueCPItongbiIDClass').css('color','green');
     } else {
         $('.valueCPItongbiIDClass').html(valueCPItongbi+"%↓");
         $('.valueCPItongbiIDClass').css('color','red');
@@ -113,7 +113,7 @@ function _loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,value
     // PPI同比
     if (parseFloat(valuePPItongbi) > 0) {
         $('.valuePPItongbiIDClass').html(valuePPItongbi+"%↑");
-        $('.valuePPItongbiIDClass').css('color','.32FF32');
+        $('.valuePPItongbiIDClass').css('color','green');
     } else {
         $('.valuePPItongbiIDClass').html(valuePPItongbi+"%↓");
         $('.valuePPItongbiIDClass').css('color','red');
@@ -121,7 +121,7 @@ function _loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,value
     // 制造业-同比 PMI
     if (valuePMIproduce > 0) {
         $('.valuePMIproduceIDClass').html(valuePMIproduce+"%↑");
-        $('.valuePMIproduceIDClass').css('color','.32FF32');
+        $('.valuePMIproduceIDClass').css('color','green');
     } else {
         $('.valuePMIproduceIDClass').html(valuePMIproduce+"%↓");
         $('.valuePMIproduceIDClass').css('color','red');
@@ -129,14 +129,20 @@ function _loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,value
     // 非制造业-同比
     if (valuePMInonProduce > 0) {
         $('.valuePMInonProduceIDClass').html(valuePMInonProduce+"%↑");
-        $('.valuePMInonProduceIDClass').css('color','.32FF32');
+        $('.valuePMInonProduceIDClass').css('color','green');
     } else {
         $('.valuePMInonProduceIDClass').html(valuePMInonProduce+"%↓");
         $('.valuePMInonProduceIDClass').css('color','red');
     }
     // GDP总值
     valueGDPTotal = (valueGDPTotal/10000).toFixed(1);
-    $('.valueGDPTotalIDClass').html(valueGDPTotal);
+    if (valueGDPTotal > 0) {
+        $('#GDPSum').html(valueGDPTotal);
+        $('#GDPSum').css('color','green');
+    } else {
+        $('#GDPSum').html(valueGDPTotal);
+        $('#GDPSum').css('color','red');
+    }
     var tempDate = new Date();
     var thisYear = tempDate.getFullYear();
     var thisMonth = tempDate.getMonth()+1;
