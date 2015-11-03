@@ -35,6 +35,70 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
 			}
 		});
 	},
+	// 人均营业收入值
+	_loadData_AverBusinessIncome : function(){
+	    var mParameters = {};
+		mParameters['async'] = true;
+		mParameters['success'] = jQuery.proxy(function(sRes) {
+		    // 人均营业收入同比值
+            var AverBusinessIncomeTongBi = '';
+            // 人均营业收入环比值
+            var AverBusinessIncomeHuanBi = '';
+            // 统计日期
+            var daytime = null;
+			// 人均营业收入值
+			var AverBusinessIncomeValue=0;
+			for (var i in sRes.results) {
+				if (sRes.results[i].KPI_TYPE == '人均营业收入' && sRes.results[i].KPI_DESC == '集团'){  
+				    AverBusinessIncomeValue = AverBusinessIncomeValue+parseFloat(sRes.results[i].KPI_VALUE);
+				    daytime = sRes.results[i].KPI_DATE;
+				}
+				if (sRes.results[i].KPI_TYPE == '人均营业收入环比' && sRes.results[i].KPI_DESC == '集团'){  
+				    AverBusinessIncomeHuanBi = sRes.results[i].KPI_VALUE*100;
+				}
+				if (sRes.results[i].KPI_TYPE == '人均营业收入同比' && sRes.results[i].KPI_DESC == '集团'){  
+				    AverBusinessIncomeTongBi = sRes.results[i].KPI_VALUE*100;
+				}
+			}
+			var rlr_color="red";
+    		if(AverBusinessIncomeValue>0){
+    		    rlr_color="green";
+    		}
+    		$('#averBusinessIncome').css('color',rlr_color);
+    		$('#averBusinessIncome').css('font-size','75px');
+			$('#averBusinessIncome').html(AverBusinessIncomeValue);
+// 			if (AverBusinessIncomeHuanBi != undefined) {
+// 			    $('#huanbiAverBusinessIncome').html(AverBusinessIncomeHuanBi);
+// 			}
+//             if (AverBusinessIncomeHuanBi > 0) {
+//                 $("#huanbiAverBusinessIncomeImg").attr("src","img/arrow-green2.png");
+//             } else {
+//                 $("#huanbiAverBusinessIncomeImg").attr("src","img/arrow-red2.png");
+//             }
+//             if (AverBusinessIncomeTongBi != undefined) {
+//                 $('#tongbiAverBusinessIncome').html(AverBusinessIncomeTongBi);    
+//             }
+//             if (AverBusinessIncomeTongBi > 0) {
+//                 $("#tongbiAverBusinessIncomeImg").attr("src","img/arrow-green2.png");
+//             } else {
+//                 $("#tongbiAverBusinessIncomeImg").attr("src","img/arrow-red2.png");
+//             }
+            var daytime01;
+    	    var daytime02;
+    	    var daytime03;
+    	    if (daytime != null) {
+    	       daytime01 = daytime.substring(0,4);
+    	       daytime02 = daytime.substring(4,6);
+    	       daytime03 = daytime.substring(6,8); 
+    	    }
+            // 人均营业收入日期
+	        $('#averBusinessIncomeDate').html(daytime01 + "年" + daytime02 + "月" + daytime03 + "日");
+		}, this);
+		mParameters['error'] = jQuery.proxy(function(eRes) {
+			alert("Get Data Error");
+		}, this);
+	    sap.ui.getCore().getModel().read("SCREEN_FZBZ_01_V01?$filter=(BNAME eq '" +usrid+ "')", mParameters);
+	},
 /**
 * Called when a controller is instantiated and its View controls (if available) are already created.
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
@@ -48,6 +112,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
 			onAfterShow: jQuery.proxy(function() {
 			    
 			    this._drawSwiper();
+			    this._loadData_AverBusinessIncome();
     			// 设定头部跑马灯信息 common.js
     			_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);
 			}, this)
