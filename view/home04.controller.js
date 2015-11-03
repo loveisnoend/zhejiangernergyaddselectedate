@@ -1,5 +1,40 @@
 sap.ui.controller("com.zhenergy.pcbi.view.home04", {
+    
+    /* initialize the swiper plugin*/
+	_drawSwiper: function() {
 
+	    require(
+                [
+                    'js/swiper'
+                ]
+                );
+		var mySwiper = new Swiper('.swiper-container', {
+			initialSlide: 2,
+			speed: 50,
+			loop: false,
+			freeMode: false,
+			threshold: 0,
+			// freeModeMomentum : true,
+			// freeModeMomentumRatio : 1,
+			// freeModeMomentumBounce : false,
+			// freeModeMomentumBounceRatio : 1,
+			freeModeSticky: true,
+			pagination: '.swiper-pagination',
+			paginationClickable: true,
+			centeredSlides: true,
+			effect: 'coverflow',
+			grabCursor: true,
+			slideToClickedSlide: true,
+			slidesPerView: 3,
+			coverflow: {
+				rotate: 0,
+				stretch: 0,
+				depth: 0,
+				modifier: 1,
+				slideShadows: false
+			}
+		});
+	},
 	// 获取天气温度数据
 	_loadData : function(){
 	    var daytime = null;
@@ -135,60 +170,6 @@ sap.ui.controller("com.zhenergy.pcbi.view.home04", {
 	    var allenergy_change = allenergy.substring(0,2);
 	    $('#allenergy').html(allenergy_change);
 	    
-	},
- /* initialize the swiper plugin*/
-	_drawSwiper: function() {
-
-	    require(
-                [
-                    'js/swiper'
-                ]
-                );
-// 		var mySwiper = new Swiper('.swiper-container',{
-// 	        onSlideClick: function(swiper){
-//               swiper.swipeTo(mySwiper.clickedSlideIndex, 500, false);
-//             },
-// 	        initialSlide : slidePageNum,
-//             slidesPerView : 3,
-//             centeredSlides : true,
-//             grabCursor : true,
-//             paginationClickable :true,
-//             noSwiping : true,
-//             tdFlow: {
-//                 rotate : 0,
-//                 stretch : 100,
-//                 depth : 400,
-//                 modifier : 1,
-//                 shadows : false
-//             }
-//          });
-		var mySwiper = new Swiper('.swiper-container', {
-			initialSlide: 0,
-			speed: 50,
-			loop: false,
-			freeMode: false,
-			threshold: 0,
-			// freeModeMomentum : true,
-			// freeModeMomentumRatio : 1,
-			// freeModeMomentumBounce : false,
-			// freeModeMomentumBounceRatio : 1,
-			freeModeSticky: true,
-			pagination: '.swiper-pagination',
-			paginationClickable: true,
-			centeredSlides: true,
-			effect: 'coverflow',
-			grabCursor: true,
-			slideToClickedSlide: false,
-			centeredSlides: true,
-			slidesPerView: 3,
-			coverflow: {
-				rotate: 0,
-				stretch: -60,
-				depth: 200,
-				modifier: 2,
-				slideShadows: false
-			}
-		});
 	},
 	onInit: function() {
         
