@@ -346,7 +346,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.MainBusiness", {
 		document.getElementById('srMB2').innerHTML = sr_innerhtml2;
 		document.getElementById('rlrMB').innerHTML=rlr_innerhtml;
         document.getElementById('powerIncome').innerHTML=powerIncome+'元';
-        document.getElementById('heatIncome').innerHTML=heatIncome+'元/千瓦时';
+        document.getElementById('heatIncome').innerHTML=heatIncome+'元';
         document.getElementById('laborIncome').innerHTML=laborIncome+'万元';
         document.getElementById('othersIncome').innerHTML=othersIncome+'万元';
 
