@@ -196,7 +196,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
     	       daytime03 = daytime.substring(6,8); 
     	    }
             // 日利润日期
-	        $('#mainBusinessDate').html(daytime01 + "年" + daytime02 + "月" + daytime03 + "日");
+	        $('#mainBusinessDate').html(daytime01 + "年" + daytime02 + "月");//  + daytime03 + "日"
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			alert("Get Data Error");

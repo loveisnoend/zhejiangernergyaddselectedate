@@ -35,6 +35,112 @@ sap.ui.controller("com.zhenergy.pcbi.view.home06", {
 			}
 		});
 	},
+    // 加载资金情况
+	_loadData_CashRate : function(){
+	    var mParameters = {};
+		mParameters['async'] = true;
+		mParameters['success'] = jQuery.proxy(function(sRes) {
+		    // 销售现金比率同比值
+            var salesCashRateTongBi = '';
+            // 销售现金比率环比值
+            var salesCashRateHuanBi = '';
+            // 统计日期
+            var daytime = null;
+			//设置数据
+			var salesCashRateValue=0;
+			
+			// 资产现金回收率同比值
+            var propertyCashBackRateTongBi = '';
+            // 资产现金回收率环比值
+            var propertyCashBackRateHuanBi = '';
+            // 统计日期
+            var daytimeSum = null;
+			//设置数据
+			var propertyCashBackRateValue=0;
+			
+			for (var i in sRes.results) {
+			    // 销售现金比率
+				if (sRes.results[i].KPI_TYPE == '销售现金比率' && sRes.results[i].KPI_DESC == '集团'){  
+				    salesCashRateValue = (sRes.results[i].KPI_VALUE*100).toFixed(2);
+				    daytime = sRes.results[i].KPI_DATE;
+				}
+				if (sRes.results[i].KPI_TYPE == '销售现金比率环比' && sRes.results[i].KPI_DESC == '集团'){  
+				    salesCashRateHuanBi = sRes.results[i].KPI_VALUE*100;
+				}
+				if (sRes.results[i].KPI_TYPE == '销售现金比率_同比' && sRes.results[i].KPI_DESC == '集团'){  
+				    salesCashRateTongBi = sRes.results[i].KPI_VALUE*100;
+				}
+				// 资产现金回收率
+				if (sRes.results[i].KPI_TYPE == '资产现金回收率' && sRes.results[i].KPI_DESC == '集团'){  
+				    propertyCashBackRateValue = (sRes.results[i].KPI_VALUE*100).toFixed(2);
+				    daytimeSum = sRes.results[i].KPI_DATE;
+				}
+				if (sRes.results[i].KPI_TYPE == '资产现金回收率环比' && sRes.results[i].KPI_DESC == '集团'){  
+				    propertyCashBackRateHuanBi = sRes.results[i].KPI_VALUE*100;
+				}
+				if (sRes.results[i].KPI_TYPE == '资产现金回收率_同比' && sRes.results[i].KPI_DESC == '集团'){  
+				    propertyCashBackRateTongBi = sRes.results[i].KPI_VALUE*100;
+				}
+			}
+			// 销售现金比率
+			var rlr_color="red";
+    		if(salesCashRateValue>0){
+    		    rlr_color="green";
+    		}
+    		$('#salesCashRate').css('color',rlr_color);
+    		$('#salesCashRate').css('font-size','75px');
+			$('#salesCashRate').html(salesCashRateValue);
+            if (salesCashRateTongBi != undefined) {
+                $('#tongbiSalesCashRate').html(salesCashRateTongBi);    
+            }
+            if (salesCashRateTongBi > 0) {
+                $("#tongbiSalesCashRateImg").attr("src","img/arrow-green2.png");
+            } else {
+                $("#tongbiSalesCashRateImg").attr("src","img/arrow-red2.png");
+            }
+            var daytime01;
+    	    var daytime02;
+    	    var daytime03;
+    	    if (daytime != null) {
+    	       daytime01 = daytime.substring(0,4);
+    	       daytime02 = daytime.substring(4,6);
+    	       daytime03 = daytime.substring(6,8); 
+    	    }
+            // 销售现金比率统计日期
+	        $('#salesCashRateDate').html(daytime01 + "年" + daytime02 + "月");//  + daytime03 + "日"
+	        
+	        // 资产现金回收率
+			var sumrlr_color="red";
+    		if(propertyCashBackRateValue>0){
+    		    sumrlr_color="green";
+    		}
+    		$('#propertyCashBackRate').css('color',sumrlr_color);
+    		$('#propertyCashBackRate').css('font-size','65px');
+			$('#propertyCashBackRate').html(propertyCashBackRateValue);
+            if (propertyCashBackRateTongBi != undefined) {
+                $('#tongbiPropertyCashBackRate').html(propertyCashBackRateTongBi);    
+            }
+            if (propertyCashBackRateTongBi > 0) {
+                $("#tongbiPropertyCashBackRateImg").attr("src","img/arrow-green2.png");
+            } else {
+                $("#tongbiPropertyCashBackRateImg").attr("src","img/arrow-red2.png");
+            }
+            var daytime01Sum;
+    	    var daytime02Sum;
+    	    var daytime03Sum;
+    	    if (daytimeSum != null) {
+    	       daytime01Sum = daytimeSum.substring(0,4);
+    	       daytime02Sum = daytimeSum.substring(4,6);
+    	       daytime03Sum = daytimeSum.substring(6,8); 
+    	    }
+            // 资产现金回收率统计日期
+	        $('#propertyCashBackRateDate').html(daytime01Sum + "年" + daytime02Sum + "月");//  + daytime03Sum + "日"
+		}, this);
+		mParameters['error'] = jQuery.proxy(function(eRes) {
+			alert("Get Data Error");
+		}, this);
+	    sap.ui.getCore().getModel().read("SCREEN_ZJQK_01_V01?$filter=(BNAME eq '" +usrid+ "')", mParameters);
+	},
 /**
 * Called when a controller is instantiated and its View controls (if available) are already created.
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
@@ -46,7 +152,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home06", {
 			
 			// not added the controller as delegate to avoid controller functions with similar names as the events
 			onAfterShow: jQuery.proxy(function() {
-			    
+			    this._loadData_CashRate();
 			    this._drawSwiper();
     			// 设定头部跑马灯信息 common.js
     			_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);

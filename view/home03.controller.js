@@ -108,7 +108,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home03", {
     	       daytime03 = daytime.substring(6,8); 
     	    }
             // 净资产统计日期
-	        $('#purePropertyDate').html(daytime01 + "年" + daytime02 + "月" + daytime03 + "日");
+	        $('#purePropertyDate').html(daytime01 + "年" + daytime02 + "月");//  + daytime03 + "日"
 	        
 	        // 总资产
 			var sumrlr_color="red";
@@ -116,7 +116,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home03", {
     		    sumrlr_color="green";
     		}
     		$('#sumProperty').css('color',sumrlr_color);
-    		$('#sumProperty').css('font-size','75px');
+    		$('#sumProperty').css('font-size','65px');
 			$('#sumProperty').html(sumPropertyValue);
             if (sumPropertyTongBi != undefined) {
                 $('#sumPropertyUpValue').html(sumPropertyTongBi);    
@@ -135,7 +135,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home03", {
     	       daytime03Sum = daytimeSum.substring(6,8); 
     	    }
             // 总资产统计日期
-	        $('#sumPropertyDate').html(daytime01Sum + "年" + daytime02Sum + "月" + daytime03Sum + "日");
+	        $('#sumPropertyDate').html(daytime01Sum + "年" + daytime02Sum + "月");//  + daytime03Sum + "日"
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			alert("Get Data Error");

@@ -48,7 +48,18 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
             var daytime = null;
 			// 人均营业收入值
 			var AverBusinessIncomeValue=0;
+			
+			// 单位万千瓦员工数同比值
+            var workerCountsPerKWTongBi = '';
+            // 单位万千瓦员工数环比值
+            var workerCountsPerKWHuanBi = '';
+            // 统计日期
+            var daytimeWorkerCountsPerKW = null;
+			// 单位万千瓦员工数值
+			var workerCountsPerKW=0;
+			
 			for (var i in sRes.results) {
+			    // 人均营业收入
 				if (sRes.results[i].KPI_TYPE == '人均营业收入' && sRes.results[i].KPI_DESC == '集团'){  
 				    AverBusinessIncomeValue = AverBusinessIncomeValue+parseFloat(sRes.results[i].KPI_VALUE);
 				    daytime = sRes.results[i].KPI_DATE;
@@ -58,6 +69,17 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
 				}
 				if (sRes.results[i].KPI_TYPE == '人均营业收入同比' && sRes.results[i].KPI_DESC == '集团'){  
 				    AverBusinessIncomeTongBi = sRes.results[i].KPI_VALUE*100;
+				}
+				// 单位千瓦员工人数
+				if (sRes.results[i].KPI_TYPE == '单位万千瓦员工数' && sRes.results[i].KPI_DESC == '集团'){  
+				    workerCountsPerKW = workerCountsPerKW+parseFloat(sRes.results[i].KPI_VALUE);
+				    daytimeNO1 = sRes.results[i].KPI_DATE;
+				}
+				if (sRes.results[i].KPI_TYPE == '单位万千瓦员工数环比' && sRes.results[i].KPI_DESC == '集团'){  
+				    workerCountsPerKWHuanBi = sRes.results[i].KPI_VALUE*100;
+				}
+				if (sRes.results[i].KPI_TYPE == '单位万千瓦员工数同比' && sRes.results[i].KPI_DESC == '集团'){  
+				    workerCountsPerKWTongBi = sRes.results[i].KPI_VALUE*100;
 				}
 			}
 			var rlr_color="red";
@@ -93,6 +115,34 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
     	    }
             // 人均营业收入日期
 	        $('#averBusinessIncomeDate').html(daytime01 + "年" + daytime02 + "月" + daytime03 + "日");
+	        
+	        // 总资产
+			var workerCountsPerKW_color="red";
+    		if(workerCountsPerKW>0){
+    		    workerCountsPerKW_color="green";
+    		}
+    		$('#workerCountsPerKW').css('color',workerCountsPerKW_color);
+    		$('#workerCountsPerKW').css('font-size','65px');
+			$('#workerCountsPerKW').html(workerCountsPerKW);
+			// 同比值
+            if (workerCountsPerKWTongBi != undefined) {
+                $('#tongbiWorkerCountsPerKW').html(workerCountsPerKWTongBi);    
+            }
+            if (workerCountsPerKWTongBi > 0) {
+                $("#tongbiWorkerCountsPerKWImg").attr("src","img/arrow-green2.png");
+            } else {
+                $("#tongbiWorkerCountsPerKWImg").attr("src","img/arrow-red2.png");
+            }
+            var daytime01NO1;
+    	    var daytime02NO1;
+    	    var daytime03NO1;
+    	    if (daytimeNO1 != null) {
+    	       daytime01NO1 = daytimeNO1.substring(0,4);
+    	       daytime02NO1 = daytimeNO1.substring(4,6);
+    	       daytime03NO1 = daytimeNO1.substring(6,8); 
+    	    }
+            // 总资产统计日期
+	        $('#workerCountsPerKWDate').html(daytime01NO1 + "年" + daytime02NO1 + "月");//  + daytime03NO1 + "日"
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			alert("Get Data Error");
