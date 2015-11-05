@@ -9,7 +9,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home04", {
                 ]
                 );
 		var mySwiper = new Swiper('.swiper-container', {
-			initialSlide: 2,
+			initialSlide: 0,
 			speed: 50,
 			loop: false,
 			freeMode: false,
@@ -132,7 +132,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home04", {
         weekday[4]="周四";
         weekday[5]="周五";
         weekday[6]="周六";
-        $('#home_Week').html(weekday[d.getDate()%7+1]);
+        $('#home_Week').html(weekday[d.getDay()]);
 	},
 	// 加载发电量值
 	_loadData_top : function(){

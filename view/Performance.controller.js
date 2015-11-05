@@ -340,8 +340,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 		var sr_innerhtml=
 		'<div class="main_content_title_1"><span style="margin-left:3%;">收入<span style="font-size:15px;">(万元)</span></span>'+
 		'<span style="margin-left:26%;">成本<span style="font-size:15px;">(万元)</span></span></div>'+
-		'<div class="main_content_sz" style="font-size:30px;font-weight:bold;color:'+sr_color+'"><span>'+ sr_data +'</span><span style="margin-left:15%;font-weight:bold;color:'+cb_color+'">'+cb_data+'</span></div>'
-		+'<div class="main_content_sz"><span style="text-align:center;">同比'+sr_prec+'%<img src="img/arrow-'+sr_color+'2.png" class="content_img"/></span><span style="margin-left:25%;text-align:right;">同比'+cb_prec+'%<img src="img/arrow-'+cb_color+'2.png" class="content_img"/></sapn></div>';
+		'<div class="MB-main_content_sz" style="font-size:30px;font-weight:bold;color:'+sr_color+'"><div style="width:60%;height:100%;float:left;text-align:center;">'+ sr_data +'</div><div style="width:20%;height:100%;float:left;text-align:center;font-weight:bold;color:'+cb_color+'">'+cb_data+'</div></div>'
+		+'<div class="MB-main_content_sz"><div style="width:60%;height:100%;float:left;text-align:center;">同比'+sr_prec+'%<img src="img/arrow-'+sr_color+'2.png" class="content_img"/></div><div style="width:25%;height:100%;float:left;text-align:center;">同比'+cb_prec+'%<img src="img/arrow-'+cb_color+'2.png" class="content_img"/></div></div>';
 
 		//日利润数据
 		var rlr_data=(sr_data-cb_data).toFixed(2);

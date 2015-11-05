@@ -152,7 +152,17 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
             var daytime = null;
 			//设置数据
 			var mainBusinessValue=0;
+			
+			// 净利润同比值
+            var pureProfitTongBi = '';
+            // 净利润环比值
+            var pureProfitHuanBi = '';
+            // 统计日期
+            var daytimeNO1 = null;
+			// 净利润值
+			var pureProfit=0;
 			for (var i in sRes.results) {
+			    // 主营业务
 				if (sRes.results[i].KPI_TYPE == '主营业务收入' && sRes.results[i].KPI_DESC == '集团'){  
 				    mainBusinessValue = mainBusinessValue+parseFloat(sRes.results[i].KPI_VALUE);
 				    daytime = sRes.results[i].KPI_DATE;
@@ -163,6 +173,18 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 				if (sRes.results[i].KPI_TYPE == '主营业务收入同比' && sRes.results[i].KPI_DESC == '集团'){  
 				    mainBusinessTongBi = sRes.results[i].KPI_VALUE*100;
 				}
+				
+				// 净利润
+				if (sRes.results[i].KPI_TYPE == '净利润' && sRes.results[i].KPI_DESC == '集团'){  
+				    pureProfit = pureProfit+parseFloat(sRes.results[i].KPI_VALUE);
+				    daytimeNO1 = sRes.results[i].KPI_DATE;
+				}
+				if (sRes.results[i].KPI_TYPE == '净利润环比' && sRes.results[i].KPI_DESC == '集团'){  
+				    pureProfitHuanBi = sRes.results[i].KPI_VALUE*100;
+				}
+				if (sRes.results[i].KPI_TYPE == '净利润同比' && sRes.results[i].KPI_DESC == '集团'){  
+				    pureProfitTongBi = sRes.results[i].KPI_VALUE*100;
+				}
 			}
 			var rlr_color="red";
     		if(mainBusinessValue>0){
@@ -171,6 +193,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
     		$('#mainBusiness').css('color',rlr_color);
     		$('#mainBusiness').css('font-size','75px');
 			$('#mainBusiness').html(mainBusinessValue);
+			// 同比
 			if (mainBusinessHuanBi != undefined) {
 			    $('#huanbiMainBusiness').html(mainBusinessHuanBi);
 			}
@@ -179,6 +202,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
             } else {
                 $("#huanbiMainBusinessImg").attr("src","img/arrow-red2.png");
             }
+            // 环比
             if (mainBusinessTongBi != undefined) {
                 $('#tongbiMainBusiness').html(mainBusinessTongBi);    
             }
@@ -195,8 +219,47 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
     	       daytime02 = daytime.substring(4,6);
     	       daytime03 = daytime.substring(6,8); 
     	    }
-            // 日利润日期
+            // 主营业务日期
 	        $('#mainBusinessDate').html(daytime01 + "年" + daytime02 + "月");//  + daytime03 + "日"
+	        
+	        // 净利润
+			var pureProfit_color="red";
+    		if(pureProfit>0){
+    		    pureProfit_color="green";
+    		}
+    		$('#pureProfit').css('color',pureProfit_color);
+    		$('#pureProfit').css('font-size','65px');
+			$('#pureProfit').html(pureProfit);
+			
+			// 同比值
+            if (pureProfitTongBi != undefined) {
+                $('#tongbiPureProfit').html(pureProfitTongBi);    
+            }
+            if (pureProfitTongBi > 0) {
+                $("#tongbiPureProfitImg").attr("src","img/arrow-green2.png");
+            } else {
+                $("#tongbiPureProfitImg").attr("src","img/arrow-red2.png");
+            }
+            
+            // 环比值
+            if (pureProfitHuanBi != undefined) {
+                $('#huanbiPureProfit').html(pureProfitHuanBi);    
+            }
+            if (pureProfitHuanBi > 0) {
+                $("#huanbiPureProfitImg").attr("src","img/arrow-green2.png");
+            } else {
+                $("#huanbiPureProfitImg").attr("src","img/arrow-red2.png");
+            }
+            var daytime01NO1;
+    	    var daytime02NO1;
+    	    var daytime03NO1;
+    	    if (daytimeNO1 != null) {
+    	       daytime01NO1 = daytimeNO1.substring(0,4);
+    	       daytime02NO1 = daytimeNO1.substring(4,6);
+    	       daytime03NO1 = daytimeNO1.substring(6,8); 
+    	    }
+            // 净利润统计日期
+	        $('#pureProfitDate').html(daytime01NO1 + "年" + daytime02NO1 + "月");//  + daytime03NO1 + "日"
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			alert("Get Data Error");

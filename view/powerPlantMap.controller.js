@@ -82,7 +82,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
         			    isFirst = false;
     				}
     				// 标准煤
-    				if (sRes.results[i].KPI_TYPE == '标准煤耗'&&sRes.results[i].KPI_DESC==dc[j]){ 
+    				if (sRes.results[i].KPI_TYPE == '标煤耗'&&sRes.results[i].KPI_DESC==dc[j]){ 
     				    if (isFirst != true) {
     				        tempJsonStrData += ',';
     				    }
