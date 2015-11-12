@@ -26,7 +26,7 @@ function changeSkinCss(pageName) {
         skinName = '夜间模式';
     }
     skinNameAlter = $('.userSkin').html();
-    alert('您将切换到'+skinNameAlter);
+    // alert('您将切换到'+skinNameAlter);
     if (pageName == 'internetPowerVolume') {
         internetPowerVolume.getController()._loadData01();
     }
@@ -38,6 +38,12 @@ function changeSkinCss(pageName) {
     }
     if (pageName == 'othersCost') {
         othersCost.getController()._loadData01(); 
+    }
+    if (pageName == 'powerIncome') {
+        powerIncome.getController()._loadData01(); 
+    }
+    if (pageName == 'heatIncome') {
+        heatIncome.getController()._loadData01(); 
     }
 }
 // 个人设定，用户名，肤色JS CSS 控制

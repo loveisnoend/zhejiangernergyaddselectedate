@@ -296,9 +296,15 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 		    var dataStatisticDate = '';
 			for (var i in sRes.results) {
 			    var plantName = sRes.results[i].KPI_DESC.toString().substring(0, 4);
-				if (sRes.results[i].KPI_TYPE == '机组上网电量' && plantName == powerPlantName){ 
-                    machineGroupData.push(sRes.results[i].KPI_VALUE);
-				}
+			    if (powerPlantName == '集团') {
+			        if (sRes.results[i].KPI_TYPE == '上网电量'&& plantName != '集团'){ 
+                        machineGroupData.push(sRes.results[i].KPI_VALUE);
+    				}
+			    } else {
+    				if (sRes.results[i].KPI_TYPE == '机组上网电量'&& plantName == powerPlantName){ 
+                        machineGroupData.push(sRes.results[i].KPI_VALUE);
+    				}
+			    }
 				if (dataStatisticDate == '') {
 				    dataStatisticDate = sRes.results[i].KPI_DATE.substring(0,4)+'.'+sRes.results[i].KPI_DATE.substring(4,6)+"."+sRes.results[i].KPI_DATE.substring(6,8);
 				}
@@ -327,7 +333,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 			    document.getElementById('profitNameNet').innerHTML = document.getElementById('powerPlantMainDetailTitleNet').innerHTML;
 			    var fuelXaxisName = '';
 			    if (document.getElementById('powerPlantMainDetailTitleNet').innerHTML == '集团') {
-			        fuelXaxisName = ['电厂1', '电厂2', '电厂3', '电厂4'];
+			        fuelXaxisName = ['兰溪发电', '台二发电', '凤台发电'];
 			    } else {
 			        fuelXaxisName = ['机组1', '机组2', '机组3', '机组4'];
 			    }

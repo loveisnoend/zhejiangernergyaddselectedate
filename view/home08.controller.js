@@ -114,7 +114,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
     	       daytime03 = daytime.substring(6,8); 
     	    }
             // 人均营业收入日期
-	        $('#averBusinessIncomeDate').html(daytime01 + "年" + daytime02 + "月" + daytime03 + "日");
+	        $('#averBusinessIncomeDate').html(daytime01 + "年" + daytime02 + "月");//  + daytime03 + "日"
 	        
 	        // 总资产
 			var workerCountsPerKW_color="red";

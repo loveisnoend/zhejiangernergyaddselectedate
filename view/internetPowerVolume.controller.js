@@ -135,7 +135,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
         			    tempJsonStrData += sRes.results[i].KPI_VALUE;
         			    isFirst = false;
     				}
-    				if (sRes.results[i].KPI_TYPE == '直供电收入'&&sRes.results[i].KPI_DESC==dc[j]){ 
+    				if (sRes.results[i].KPI_TYPE == '直供收入'&&sRes.results[i].KPI_DESC==dc[j]){ 
     				    if (isFirst != true) {
     				        tempJsonStrData += ',';
     				    }

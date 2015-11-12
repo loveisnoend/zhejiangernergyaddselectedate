@@ -313,7 +313,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 		}
 
 		function drawline01(e) {
-			drawline(e, 'line01', data_x1, data_x2, data_xname, 40, 25, 40, 25, 3, 'white', 'white');
+			drawline(e, 'line01', data_x1, data_x2, data_xname, 40, 25, 40, 25, 3, 'white', 'white',usetime_v02);
 		}
 
 		function drawline02(e) {
@@ -326,10 +326,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 			    temY3 = 20;
 			    temY4 = 0;
 			}
-			drawline(e, 'line02', data_x3, data_x4, data_xname, 20000, 5000, temY3, temY4, 4, '#FFB300', 'rgb(51,255,50)');
+			drawline(e, 'line02', data_x3, data_x4, data_xname, 20000, 5000, temY3, temY4, 4, '#FFB300', 'rgb(51,255,50)',usetime_v02);
 		}
 
-		function drawline(e, id, datax1, datax2, data_xname, y1, y2, y3, y4, n, color1, color2) {
+		function drawline(e, id, datax1, datax2, data_xname, y1, y2, y3, y4, n, color1, color2,usetime_v02) {
 			mychart = e.init(document.getElementById(id));
 			var option="";
 			if(id == "line02"){
@@ -398,7 +398,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
     						splitNumber: n
                         },
     					{
-    						name: '发电量',
+    						name: usetime_v02,
     						type: 'value',
     						axisLine: {
     							show: false
@@ -431,7 +431,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
     						data: datax1
                         },
     					{
-    						name: '发电量',
+    						name: usetime_v02,
     						type: 'line',
     						smooth: true,
     						yAxisIndex: 1,
