@@ -1202,16 +1202,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 			    powerPlantName = '凤台电厂';
 			}
 			document.getElementById('powerPlantMainDetailTitle').innerHTML = powerPlantName;
-         
-			var data1 = 0;
-			var data2 = 0;
-		    drawpie(ec, 1, 0, 'detail_pie');
-		    
-		    // drawbar(ec, data1, data2, 'detail_01');
-		    // drawbar(ec, data1, data2, 'detail_02');
-		    // drawbar(ec, data1, data2, 'detail_03');
-		    // drawbar(ec, data1, data2, 'detail_04');	
-		    
+
 		    // 单位燃料成本
 		    var fuelCost = mapSeries.markPoint.data[dataIndex].fuelCost
 		    if (fuelCost != undefined) {
@@ -1225,6 +1216,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 		        document.getElementById('fuelDownPercent').innerHTML = fuelCostUp;
 		    } else {
 		        document.getElementById('fuelDownPercent').innerHTML = 0;
+		        fuelCostUp = 0;
 		    }
 		    // 运价
 		    var travelPrice = mapSeries.markPoint.data[dataIndex].aveShipPrice;
@@ -1261,6 +1253,15 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 		    } else {
 		        document.getElementById('watt2').innerHTML = 0;
 		    }
+		    
+		    var data1 = 0;
+			var data2 = 0;
+		    drawpie(ec, fuelCostUp+50, 50, 'detail_pie');
+		    
+		    // drawbar(ec, data1, data2, 'detail_01');
+		    // drawbar(ec, data1, data2, 'detail_02');
+		    // drawbar(ec, data1, data2, 'detail_03');
+		    // drawbar(ec, data1, data2, 'detail_04');
         }   
 	}
 });

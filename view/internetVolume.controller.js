@@ -453,10 +453,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 			function draw(e) {
 			    drawPowerDistribution(e);
 			    
-			    drawpie01(e);
-    			drawbar01(e);
-    			drawbar02(e);
-    			drawbar03(e);
+			 //   drawpie01(e);
+    // 			drawbar01(e);
+    // 			drawbar02(e);
+    // 			drawbar03(e);
     // 			drawbar04(e);
 		    }
 		
@@ -908,8 +908,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 			};
 			mychart.setOption(option);
 		}
-		function drawpie01(e) {
-            drawpie(e, 3, 4, 'detail_pieNet');
+		function drawpie01(dataShow) {
+            drawpie(e, dataShow, 100, 'detail_pieNet');
         }
 		function drawbar01(e) {
 			drawbar(e, 4, 6, 'detail_01Net');
@@ -999,7 +999,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 		    if (dataAll == 0) {
 		        dataAll = 10;
 		    }
-		    drawpie(ec, 1, 0, 'detail_pieNet');
+		    
+		    drawpie(ec, powerPercentUp+50, 50, 'detail_pieNet');
 		    drawbar(ec, contractPV, dataAll, 'detail_01Net');
 		    drawbar(ec, directlyPV, dataAll, 'detail_02Net');
 		    drawbar(ec, replacePV, dataAll, 'detail_03Net');

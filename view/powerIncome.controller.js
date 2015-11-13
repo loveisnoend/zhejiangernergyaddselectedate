@@ -1749,10 +1749,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerIncome", {
 			function draw(e) {
 			    drawPowerDistribution(e);
 			    
-			    drawpie01(e);
-    			drawbar01(e);
-    			drawbar02(e);
-    			drawbar03(e);
+			 //   drawpie01(e);
+    // 			drawbar01(e);
+    // 			drawbar02(e);
+    // 			drawbar03(e);
     // 			drawbar04(e);
 		    }
 		
@@ -1950,13 +1950,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerIncome", {
 				});	
                 // 默认图表显示数据
                 var mapSeries = option4.series[0];
-                setChartData(ec, mapSeries, 2);
+                setChartData(ec, mapSeries, 0);
                 
                 // 默认集团数据显示
-				var selectedData = {name: mapSeries.markPoint.data[2].name, value: mapSeries.markPoint.data[2].inputPlanValue};
-				option4.series[1].markPoint.data[2] = selectedData;
+				var selectedData = {name: mapSeries.markPoint.data[0].name, value: mapSeries.markPoint.data[0].inputPlanValue};
+				option4.series[1].markPoint.data[0] = selectedData;
 			    option4.series[1].markPoint.data[1] = {name:'上海',value:0};
-                option4.series[1].markPoint.data[0] = {name:'上海',value:0};
+                option4.series[1].markPoint.data[2] = {name:'上海',value:0};
                 // 为echarts对象加载数据 
                 myChart4.setOption(option4); 
 		///////////////////////////////安徽淮南市地图////////////////////////////////////////////
@@ -2274,12 +2274,19 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerIncome", {
 		    } else {
 		        document.getElementById('fuelCostPower').innerHTML = 0;
 		    }
+		    // 发电收入同比
+		    var powerIncomeup = mapSeries.markPoint.data[dataIndex].powerIncomeup;
+		    if (powerIncomeup != undefined) {
+		        document.getElementById('fuelDownPercentPower').innerHTML = powerIncomeup;
+		    } else {
+		        document.getElementById('fuelDownPercentPower').innerHTML = 0;
+		    }
 
 		    var dataAll = salesIncomeValue + subsidyValue + serviceIncomeValue;
 		    if (dataAll == 0) {
 		        dataAll = 10;
 		    }
-		    drawpie(ec, 1, 0, 'detail_piePower');
+		    drawpie(ec, powerIncomeup+50, 50, 'detail_piePower');
 		    drawbar(ec, salesIncomeValue, dataAll, 'detail_01Power');
 		    drawbar(ec, subsidyValue, dataAll, 'detail_02Power');
 		    drawbar(ec, serviceIncomeValue, dataAll, 'detail_03Power');

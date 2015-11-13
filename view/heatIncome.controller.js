@@ -976,10 +976,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
 			function draw(e) {
 			    drawHeatDistribution(e);
 			    
-			    drawpie01(e);
-    			drawbar01(e);
-    			drawbar02(e);
-    			drawbar03(e);
+			 //   drawpie01(e);
+    // 			drawbar01(e);
+    // 			drawbar02(e);
+    // 			drawbar03(e);
     // 			drawbar04(e);
 		    }
 		
@@ -1177,13 +1177,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
 				});	
                 // 默认图表显示数据
                 var mapSeries = option4.series[0];
-                setChartData(ec, mapSeries, 2);
+                setChartData(ec, mapSeries, 0);
                 
                 // 默认集团数据显示
-				var selectedData = {name: mapSeries.markPoint.data[2].name, value: mapSeries.markPoint.data[2].inputPlanValue};
-				option4.series[1].markPoint.data[2] = selectedData;
+				var selectedData = {name: mapSeries.markPoint.data[0].name, value: mapSeries.markPoint.data[0].inputPlanValue};
+				option4.series[1].markPoint.data[0] = selectedData;
 			    option4.series[1].markPoint.data[1] = {name:'上海',value:0};
-                option4.series[1].markPoint.data[0] = {name:'上海',value:0};
+                option4.series[1].markPoint.data[2] = {name:'上海',value:0};
                 // 为echarts对象加载数据 
                 myChart4.setOption(option4); 
 		///////////////////////////////安徽淮南市地图////////////////////////////////////////////
@@ -1505,12 +1505,19 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
 		        document.getElementById('fuelCostHeat').innerHTML = 0;
 		        supplyHeatIncomeVal = 0;
 		    }
-		    
+		    // 供热收入同比
+		    var supplyHeatIncomeUP = mapSeries.markPoint.data[dataIndex].supplyHeatIncomeUP;
+		    if (supplyHeatIncomeUP != undefined) {
+		        document.getElementById('fuelDownPercentHeat').innerHTML = supplyHeatIncomeUP;
+		    } else {
+		        document.getElementById('fuelDownPercentHeat').innerHTML = 0;
+		        supplyHeatIncomeUP = 0;
+		    }
 		    var dataAll = selfSteamIncomeVal + outSteamIncomeVal + heatWaterIncomeVal + firstFeeIncomeVal;
 		    if (dataAll == 0) {
 		        dataAll = 10;
 		    }
-		    drawpie(ec, 1, 0, 'detail_pieHeat');
+		    drawpie(ec, supplyHeatIncomeUP+50, 50, 'detail_pieHeat');
 		    drawbar(ec, selfSteamIncomeVal, dataAll, 'detail_01Heat');
 		    drawbar(ec, outSteamIncomeVal, dataAll, 'detail_02Heat');
 		    drawbar(ec, heatWaterIncomeVal, dataAll, 'detail_03Heat');

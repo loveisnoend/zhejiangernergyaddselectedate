@@ -110,6 +110,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
         			    tempJsonStrData += (sRes.results[i].KPI_VALUE/10000).toFixed(2);
         			    isFirst = false;
     				}
+    				if (sRes.results[i].KPI_TYPE == '其他营业成本同比'&&sRes.results[i].KPI_DESC==dc[j]){ 
+    				    if (isFirst != true) {
+    				        tempJsonStrData += ',';
+    				    }
+        			    tempJsonStrData += '"otherRunningCostUP":';
+        			    tempJsonStrData += sRes.results[i].KPI_VALUE;
+        			    isFirst = false;
+    				}
     			}
     			tempJsonStrData += '}';
     			    				
@@ -1116,6 +1124,15 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 		    } else {
 		        document.getElementById('other_fuelCost').innerHTML = 0;
 		    }
+		    // 其他营业成本同比
+		    var otherRunningCostUP = mapSeries.markPoint.data[dataIndex].otherRunningCostUP;
+		    if (otherRunningCostUP != undefined) {
+		        document.getElementById('fuelDownPercentCost').innerHTML = otherRunningCostUP;
+		    } else {
+		        document.getElementById('fuelDownPercentCost').innerHTML = 0;
+		        otherRunningCostUP = 0;
+		    }
+		    
 		    // 折旧费
 		    var useCostFee = mapSeries.markPoint.data[dataIndex].useCostFee;
 		    if (useCostFee != undefined) {
@@ -1149,7 +1166,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 		        financeManCost = 0;
 		    }
 		    var dataAll = useCostFee + peopleCost + repairCost + financeManCost;
-		    drawpie(ec, 1, 0, 'detail_pieCost');
+		    drawpie(ec, otherRunningCostUP+50, 50, 'detail_pieCost');
 		    drawbar(ec, useCostFee, dataAll, 'detail_01Cost');
 		    drawbar(ec, peopleCost, dataAll, 'detail_02Cost');
 		    drawbar(ec, repairCost, dataAll, 'detail_03Cost');
