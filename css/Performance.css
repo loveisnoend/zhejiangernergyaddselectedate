@@ -69,8 +69,10 @@
 .performance_main_content_center{
     float:left;
     margin-left:7%;
-    width:36%;
-    height:82%;
+    /*width:36%;*/
+    /*height:82%;*/
+    width:450px;
+    height:420px;
     margin-top:20px;
     margin-bottom: 0;
     border: 2% solid rgb(47,233,48);

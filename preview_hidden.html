@@ -1,0 +1,319 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=10">
+		<!--<meta http-equiv='cache-control' content='no-store,no-cache'/>-->
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.m"
+				data-sap-ui-xx-bindingSyntax="complex"
+				data-sap-ui-resourceroots='{"com.zhenergy.pcbi": "./"}'
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- css  -->
+		<link rel="stylesheet" type="text/css" href="css/home.css" id="homeCss">
+		<link rel="stylesheet" type="text/css" href="css/help.css" id="helpCss">
+		<!--<link rel="stylesheet" type="text/css" href="css/idangerous.swiper.css">-->
+		<link rel="stylesheet" type="text/css" href="css/swiper.css">
+		<!--<link rel="stylesheet" type="text/css" href="css/idangerous.swiper.3dflow.css">-->
+		<link rel="stylesheet" type="text/css" href="css/panel.css">
+		<link rel="stylesheet" type="text/css" href="css/tab.css" id="tabCss">
+		<link rel="stylesheet" type="text/css" href="css/Performance.css" id="performanceCss">
+		<link rel="stylesheet" type="text/css" href="css/mainBusiness.css" id="mainBusinessCss">
+		<link rel="stylesheet" type="text/css" href="css/bottom_button.css" id="bottomButCss">
+		<link rel="stylesheet" type="text/css" href="css/powerPlantMap.css" id="powerPlantMapCss">
+        <link rel="stylesheet" type="text/css" href="css/internetPowerVolume.css" id="internetPowerVolumeCss">
+		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
+		<script src="echarts.js"></script>
+        <script type="text/javascript" src="js/powerPlantMap.js"></script>
+        <script type="text/javascript" src="js/internetPowerVolume.js"></script>
+        <script type="text/javascript" src="js/internetVolume.js"></script>
+        <script type="text/javascript" src="js/othersCost.js"></script>
+        <script type="text/javascript" src="js/common.js"></script>
+        <script type="text/javascript" src="js/powerIncome.js"></script>
+        <script type="text/javascript" src="js/heatIncome.js"></script>
+		<script type="text/javascript" src="swiper.js"></script>
+		<script type="text/javascript" src="js/pdfobject.js"></script>
+		<script>
+		    var usrid = "ERPTEST1";
+		    var skinName = '夜间模式'
+		    
+		    // 日利润
+		    var date, data1, data2, data3, data4;
+	       // var income , cost, profit;
+	        
+	        // CPI环比
+    	    var valueCPIhuanbi;
+    	    // GDP增长率
+            var valueGDP;
+            // CPI同比
+            var valueCPItongbi;
+            // PPI同比
+            var valuePPItongbi;
+            // 制造业-同比 PMI
+            var valuePMIproduce;
+            // 非制造业-同比
+            var valuePMInonProduce;
+            // GDP总值
+            var valueGDPTotal;
+            
+            // 全社会用电量
+            var data01, data02, data03, data04, dataXName, place_v01;
+            var data02_01, data02_02, powerplant_v02, usetime_v02;
+		</script>
+		<script>
+		    require.config({
+                paths: {
+                    echarts: '.'
+                }
+            });
+		    var mySwiper;
+		    function clear(){
+		        mychart.clear();
+		        mychart.dispose();
+		    }
+		    function toDetailPage(detailName){
+		        if (detailName == "燃料成本") {
+		            app.to("idPowerPlantMap", "show");
+		        }
+		        if (detailName == "上网电量") {
+		            app.to("idInternetVolume", "show");
+		        }
+		        if (detailName == "其他成本") {
+		            app.to("idOthersCost", "show");
+		        }
+		        if (detailName == "发电收入") {
+		            app.to("idPowerIncome", "show");
+		        }
+		        if (detailName == "供热收入") {
+		            app.to("idHeatIncome", "show");
+		        }
+		    }
+		    function toInternetPowerDetailPage() {
+		        app.to("idInternetPowerVolume","show");
+		    }
+		    function doit1() {
+		        slidePageNum = 0;
+                app.to("idhome02","show");
+            }
+            function doit2() {
+                slidePageNum = 3;
+                app.to("idhome","show");
+            }
+            function doit3() {
+                slidePageNum = 2;
+                app.to("idhome03","show");
+            }
+            function doit4() {
+                slidePageNum = 3;
+                app.to("idhome04","show");
+            }
+            function doit5() {
+                slidePageNum = 4;
+                app.to("idhome05","show");
+            }
+            function doit6() {
+                slidePageNum = 5;
+                app.to("idhome06","show");
+            }
+            function doit7() {
+                // slidePageNum = 6;
+                app.to("idhome07","show");
+            }
+            function doit8() {
+                // slidePageNum = 7;
+                app.to("idhome08","show");
+            } 
+            function dailyProfit(){
+                app.to("idPerformance","show");
+            }
+            function powerWaste(){
+                app.to("idtab","show");
+            }
+            // show the help page
+            function help() {
+                app.to("idHelpPage","show");
+            }
+            // 主营业务页面
+            function toMainBusinessPage() {
+                app.to("idMainBusiness","show");
+            }
+		</script>
+		<script>
+		    var usrid = "ERPTEST1";
+		    // 全社会用电量
+		    var data02_01;
+		</script>
+		<script>
+				sap.ui.localResources("view");
+				var powerPlantMap;
+				var internetPowerVolume;
+				var internetVolume;
+				var othersCost;
+				var helpPage;
+				var mainBusiness;
+				var powerIncome;
+				var heatIncome;
+				var slidePageNum = 0;
+				var app = new sap.m.App({initialPage:"idhome"});
+				
+				// var sServiceUrl = "/sap/opu/odata/sap/ZHANA003_SRV/";
+				var sServiceUrl = "/sap/opu/odata/sap/ZBIMS_SRV";
+                var oModel = new sap.ui.model.odata.ODataModel(sServiceUrl, true);
+                sap.ui.getCore().setModel(oModel);
+                
+				function startApp(context) {
+            		var home = sap.ui.view({
+            			id: "idhome",
+            			viewName: "com.zhenergy.pcbi.view.home",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		});
+            		app.addPage(home);
+            		 var home02= sap.ui.view({
+            			id: "idhome02",
+            			viewName: "com.zhenergy.pcbi.view.home02",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		});
+            		app.addPage(home02);
+            		var home03 = sap.ui.view({
+            			id: "idhome03",
+            			viewName: "com.zhenergy.pcbi.view.home03",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		});
+            		app.addPage(home03);
+            		var home04 = sap.ui.view({
+            			id: "idhome04",
+            			viewName: "com.zhenergy.pcbi.view.home04",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		});
+            		app.addPage(home04);
+            		var home05 = sap.ui.view({
+            			id: "idhome05",
+            			viewName: "com.zhenergy.pcbi.view.home05",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		});
+            		app.addPage(home05);
+            		var home06 = sap.ui.view({
+            			id: "idhome06",
+            			viewName: "com.zhenergy.pcbi.view.home06",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		});
+            		app.addPage(home06);
+            		var home07 = sap.ui.view({
+            			id: "idhome07",
+            			viewName: "com.zhenergy.pcbi.view.home07",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		});
+            		app.addPage(home07);
+            		var home08 = sap.ui.view({
+            			id: "idhome08",
+            			viewName: "com.zhenergy.pcbi.view.home08",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		});
+            		app.addPage(home08);
+            		var Performance = sap.ui.view({
+            			id: "idPerformance",
+            			viewName: "com.zhenergy.pcbi.view.Performance",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		});
+            		app.addPage(Performance);
+            		var rlcbDetailPage = sap.ui.view({
+            			id: "idrlcbDetailPage",
+            			viewName: "com.zhenergy.pcbi.view.rlcbDetailPage",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		});
+            		app.addPage(rlcbDetailPage);
+            		var jingyingyeji = sap.ui.view({
+            			id: "idjingyingyeji",
+            			viewName: "com.zhenergy.pcbi.view.jingyingyeji",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		});
+            		app.addPage(jingyingyeji);
+            		tab = sap.ui.view({
+            			id: "idtab",
+            			viewName: "com.zhenergy.pcbi.view.tab",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		});
+            		app.addPage(tab);
+            		
+            		powerPlantMap = sap.ui.view({
+            			id: "idPowerPlantMap",
+            			viewName: "com.zhenergy.pcbi.view.powerPlantMap",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(powerPlantMap);
+            		 
+            		 // 上网电量
+            		 internetVolume = sap.ui.view({
+            			id: "idInternetVolume",
+            			viewName: "com.zhenergy.pcbi.view.internetVolume",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(internetVolume);
+            		 // 其他成本
+            		 othersCost = sap.ui.view({
+            			id: "idOthersCost",
+            			viewName: "com.zhenergy.pcbi.view.othersCost",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(othersCost);
+            		 // 厂用电量
+            		internetPowerVolume = sap.ui.view({
+            			id: "idInternetPowerVolume",
+            			viewName: "com.zhenergy.pcbi.view.internetPowerVolume",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(internetPowerVolume);
+            		 // 帮助页面
+            		 helpPage = sap.ui.view({
+            			id: "idHelpPage",
+            			viewName: "com.zhenergy.pcbi.view.help",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(helpPage);
+            		 // 主营业务
+            		 mainBusiness = sap.ui.view({
+            			id: "idMainBusiness",
+            			viewName: "com.zhenergy.pcbi.view.MainBusiness",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(mainBusiness);
+            		 // 发电收入
+            		 powerIncome = sap.ui.view({
+            			id: "idPowerIncome",
+            			viewName: "com.zhenergy.pcbi.view.powerIncome",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(powerIncome);
+            		 // 供热收入
+            		 heatIncome = sap.ui.view({
+            			id: "idHeatIncome",
+            			viewName: "com.zhenergy.pcbi.view.heatIncome",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(heatIncome);
+            		 
+					 app.placeAt("content");
+				}
+				// if(window.cordova && appContext && !window.sap_webide_companion) {
+    //                 // usrid = appContext.registrationContext.user.toUpperCase();
+    //                 usrid = jQuery.sap.getUriParameters().get("usrid").toUpperCase();
+    //                 alert('sos'+usrid);
+    //     		} 
+        		if(jQuery.sap.getUriParameters().get("userId") != null){
+        		    usrid = jQuery.sap.getUriParameters().get("userId").toUpperCase();
+        		} else {
+        		    usrid = 'ERPTEST1';
+        		}
+                startApp();
+		</script>
+		
+	<script src='http://127.0.0.1:9088/webide/plugins/pluginrepository/hybrid/cordovafacade/cordova.js' data-original-url='index.html'></script>
+<style>#interactive.viewport video{width:320px;height:240px;}
+#interactive.viewport .drawingBuffer{width:320px;height:240px;position:absolute;}</style></head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>
