@@ -338,10 +338,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 		    cb_color="green";
 		}
 		var sr_innerhtml=
-		'<div class="main_content_title_1"><span style="margin-left:3%;">收入<span style="font-size:15px;">(万元)</span></span>'+
-		'<span style="margin-left:26%;">成本<span style="font-size:15px;">(万元)</span></span></div>'+
-		'<div class="MB-main_content_sz" style="font-size:30px;font-weight:bold;color:'+sr_color+'"><div style="width:60%;height:100%;float:left;text-align:center;">'+ sr_data +'</div><div style="width:20%;height:100%;float:left;text-align:center;font-weight:bold;color:'+cb_color+'">'+cb_data+'</div></div>'
-		+'<div class="MB-main_content_sz"><div style="width:60%;height:100%;float:left;text-align:center;">同比'+sr_prec+'%<img src="img/arrow-'+sr_color+'2.png" class="content_img"/></div><div style="width:25%;height:100%;float:left;text-align:center;">同比'+cb_prec+'%<img src="img/arrow-'+cb_color+'2.png" class="content_img"/></div></div>';
+		'<div class="main_content_title_1" style="padding-top:25%;"><span style="margin-left:5%;">收入<span style="font-size:15px;">(万元)</span></span>'+
+		'<span style="margin-left:36%;">成本<span style="font-size:15px;">(万元)</span></span></div>'+
+		'<div class="main_content_sz" style="font-size:30px;font-weight:bold;color:'+sr_color+'"><div style="width:60%;height:100%;float:left;text-align:center;">'+ sr_data +'</div><div style="width:20%;height:100%;float:left;text-align:center;font-weight:bold;color:'+cb_color+'">'+cb_data+'</div></div>'
+		+'<div class="main_content_sz"><div style="width:60%;height:100%;float:left;text-align:center;">同比'+sr_prec+'%<img src="img/arrow-'+sr_color+'2.png" class="content_img"/></div><div style="width:25%;height:100%;float:left;text-align:center;">同比'+cb_prec+'%<img src="img/arrow-'+cb_color+'2.png" class="content_img"/></div></div>';
 
 		//日利润数据
 		var rlr_data=(sr_data-cb_data).toFixed(2);
@@ -353,7 +353,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 		if(rlr_data>0){
 		    rlr_color="green";
 		}
-		var rlr_innerhtml='<div class="main_content_title">日利润<span style="font-size:20px;">(万元)</span></div><div class="main_content_sz" style="font-size:65px;font-weight:bold;color:'+rlr_color+'">'+rlr_data+'</div><div class="main_content_sz">同比'+rlr_prec+'%<img src="img/arrow-'+rlr_color+'2.png" class="content_img"/></div>';
+		var rlr_innerhtml='<div class="main_content_title" style="padding-top:30%;padding-left:40%;">日利润<span style="font-size:20px;">(万元)</span></div><div class="main_content_sz" style="font-size:65px;font-weight:bold;color:'+rlr_color+'">'+rlr_data+'</div><div class="main_content_sz">同比'+rlr_prec+'%<img src="img/arrow-'+rlr_color+'2.png" class="content_img"/></div>';
 
                         
 		document.getElementById('sr').innerHTML = sr_innerhtml;

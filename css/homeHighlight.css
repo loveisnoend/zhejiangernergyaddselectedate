@@ -10,7 +10,9 @@
     background-color:#1717E9;
     width:100%;
     margin-top:1%;
-    height:7%;
+    /*height:7%;*/
+    /*TODO*/
+    height:45px;
     float:left;
 }
 .msg_top1{
