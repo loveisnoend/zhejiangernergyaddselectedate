@@ -45,6 +45,12 @@ function changeSkinCss(pageName) {
     if (pageName == 'heatIncome') {
         heatIncome.getController()._loadData01(); 
     }
+    if (pageName == 'labourIncome') {
+        labourIncome.getController()._loadData01(); 
+    }
+    if (pageName == 'othersIncome') {
+        othersIncome.getController()._loadData01(); 
+    }
 }
 // 个人设定，用户名，肤色JS CSS 控制
 function userHoverOn(classNameId) {

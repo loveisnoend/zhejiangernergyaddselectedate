@@ -1,4 +1,4 @@
-sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
+sap.ui.controller("com.zhenergy.pcbi.view.labourIncome", {
 
 /**
 * Called when a controller detail_01 instantiated and its View controls (if available) are already created.
@@ -17,8 +17,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
 	// eventment before show the page 
 	onAfterShow : function () {
 	    
-        document.getElementById('internetDetailHeat').style.display = "none";
-        document.getElementById('rlcb_detailHeat').style.display = "";
+        document.getElementById('internetDetailLabour').style.display = "";
+        document.getElementById('rlcb_detailLabour').style.display = "none";
         // this.loadChart();
         this._loadData01();
     	// 设定头部跑马灯信息 common.js
@@ -27,157 +27,163 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
 	// 获取三级页面数据
 	_loadData01 : function () {
 
-        var mParameters = {};
-		mParameters['async'] = true;
-		mParameters['success'] = jQuery.proxy(function(sRes) {
+//         var mParameters = {};
+// 		mParameters['async'] = true;
+// 		mParameters['success'] = jQuery.proxy(function(sRes) {
 		    
-			//设置数据
-		    var dc=new Array();
-			for (var i in sRes.results) {
-			    if(sRes.results[i].KPI_DESC!="集团本部"&&sRes.results[i].KPI_DESC!=""){
-    				if (dc==null||dc.length==0){ 
-    				    dc.push(sRes.results[i].KPI_DESC);    
-    				}else{
-    				    if(dc.toString().indexOf(sRes.results[i].KPI_DESC) > -1){
-    				    }else{
-    				        dc.push(sRes.results[i].KPI_DESC);
-    				    }
-    				}
-			    }
-			}
+// 			//设置数据
+// 		    var dc=new Array();
+// 			for (var i in sRes.results) {
+// 			    if(sRes.results[i].KPI_DESC!="集团本部"&&sRes.results[i].KPI_DESC!=""){
+//     				if (dc==null||dc.length==0){ 
+//     				    dc.push(sRes.results[i].KPI_DESC);    
+//     				}else{
+//     				    if(dc.toString().indexOf(sRes.results[i].KPI_DESC) > -1){
+//     				    }else{
+//     				        dc.push(sRes.results[i].KPI_DESC);
+//     				    }
+//     				}
+// 			    }
+// 			}
 			
-			var zhejiang_dataStr = '[';
-		    var huaiNan_dataStr = '[';
-		    var isZhejiangDataFirst = true;
-		    var isHuaiNanDataFirst = true;
-			for(var j in dc){
-			    var powerPlantName = '';
-			    if (dc[j] == '凤台发电') {
-			        powerPlantName = '淮南';
-			    }
-			    if (dc[j] == '兰溪发电') {
-			        powerPlantName = '金华';
-			    }
-			    if (dc[j] == '台二发电') {
-			        powerPlantName = '台州';
-			    }
-			    if (dc[j] == '集团') {
-			        powerPlantName = '杭州';
-			    }
+// 			var zhejiang_dataStr = '[';
+// 		    var huaiNan_dataStr = '[';
+// 		    var isZhejiangDataFirst = true;
+// 		    var isHuaiNanDataFirst = true;
+// 			for(var j in dc){
+// 			    var powerPlantName = '';
+// 			    if (dc[j] == '凤台发电') {
+// 			        powerPlantName = '淮南';
+// 			    }
+// 			    if (dc[j] == '兰溪发电') {
+// 			        powerPlantName = '金华';
+// 			    }
+// 			    if (dc[j] == '台二发电') {
+// 			        powerPlantName = '台州';
+// 			    }
+// 			    if (dc[j] == '集团') {
+// 			        powerPlantName = '杭州';
+// 			    }
 
-			    var tempJsonStrData = '{';
-			    tempJsonStrData += '"name":"';
-			    tempJsonStrData += powerPlantName;
-			    tempJsonStrData += '",';
-			    var isFirst = true;
-    			for (var i in sRes.results) {
-    				if (sRes.results[i].KPI_TYPE == '自产蒸汽收入'&&sRes.results[i].KPI_DESC==dc[j]){ 
-    				    if (isFirst != true) {
-    				        tempJsonStrData += ',';
-    				    }
-        			    tempJsonStrData += '"selfSteamIncomeVal":';
-        			    tempJsonStrData += sRes.results[i].KPI_VALUE;
-        			    isFirst = false;
-    				}
-    				if (sRes.results[i].KPI_TYPE == '外购蒸汽收入'&&sRes.results[i].KPI_DESC==dc[j]){ 
-    				    if (isFirst != true) {
-    				        tempJsonStrData += ',';
-    				    }
-        			    tempJsonStrData += '"outSteamIncomeVal":';
-        			    tempJsonStrData += sRes.results[i].KPI_VALUE;
-        			    isFirst = false;
-    				}
-    				if (sRes.results[i].KPI_TYPE == '热水收入'&&sRes.results[i].KPI_DESC==dc[j]){ 
-    				    if (isFirst != true) {
-    				        tempJsonStrData += ',';
-    				    }
-        			    tempJsonStrData += '"heatWaterIncomeVal":';
-        			    tempJsonStrData += sRes.results[i].KPI_VALUE;
-        			    isFirst = false;
-    				}
-    				if (sRes.results[i].KPI_TYPE == '初装费收入'&&sRes.results[i].KPI_DESC==dc[j]){ 
-    				    if (isFirst != true) {
-    				        tempJsonStrData += ',';
-    				    }
-        			    tempJsonStrData += '"firstFeeIncomeVal":';
-        			    tempJsonStrData += sRes.results[i].KPI_VALUE;
-        			    isFirst = false;
-    				}
-    				if (sRes.results[i].KPI_TYPE == '供热收入'&&sRes.results[i].KPI_DESC==dc[j]){ 
-    				    if (isFirst != true) {
-    				        tempJsonStrData += ',';
-    				    }
-        			    tempJsonStrData += '"supplyHeatIncomeVal":';
-        			    tempJsonStrData += sRes.results[i].KPI_VALUE;
-        			    isFirst = false;
-    				}
-    				if (sRes.results[i].KPI_TYPE == '自产蒸汽收入_同比'&&sRes.results[i].KPI_DESC==dc[j]){ 
-    				    if (isFirst != true) {
-    				        tempJsonStrData += ',';
-    				    }
-        			    tempJsonStrData += '"selfSteamIncomeUP":';
-        			    tempJsonStrData += sRes.results[i].KPI_VALUE;
-        			    isFirst = false;
-    				}
-    				if (sRes.results[i].KPI_TYPE == '外购蒸汽收入_同比'&&sRes.results[i].KPI_DESC==dc[j]){ 
-    				    if (isFirst != true) {
-    				        tempJsonStrData += ',';
-    				    }
-        			    tempJsonStrData += '"outSteamIncomeUP":';
-        			    tempJsonStrData += sRes.results[i].KPI_VALUE;
-        			    isFirst = false;
-    				}
-    				if (sRes.results[i].KPI_TYPE == '热水收入_同比'&&sRes.results[i].KPI_DESC==dc[j]){ 
-    				    if (isFirst != true) {
-    				        tempJsonStrData += ',';
-    				    }
-        			    tempJsonStrData += '"heatWaterIncomeUP":';
-        			    tempJsonStrData += sRes.results[i].KPI_VALUE;
-        			    isFirst = false;
-    				}
-    				if (sRes.results[i].KPI_TYPE == '初装费收入_同比'&&sRes.results[i].KPI_DESC==dc[j]){ 
-    				    if (isFirst != true) {
-    				        tempJsonStrData += ',';
-    				    }
-        			    tempJsonStrData += '"firstFeeIncomeUP":';
-        			    tempJsonStrData += sRes.results[i].KPI_VALUE;
-        			    isFirst = false;
-    				}
-    				if (sRes.results[i].KPI_TYPE == '供热收入_同比'&&sRes.results[i].KPI_DESC==dc[j]){ 
-    				    if (isFirst != true) {
-    				        tempJsonStrData += ',';
-    				    }
-        			    tempJsonStrData += '"supplyHeatIncomeUP":';
-        			    tempJsonStrData += sRes.results[i].KPI_VALUE;
-        			    isFirst = false;
-    				}
-    			}
-    			tempJsonStrData += '}';
+// 			    var tempJsonStrData = '{';
+// 			    tempJsonStrData += '"name":"';
+// 			    tempJsonStrData += powerPlantName;
+// 			    tempJsonStrData += '",';
+// 			    var isFirst = true;
+//     			for (var i in sRes.results) {
+//     				if (sRes.results[i].KPI_TYPE == '自产蒸汽收入'&&sRes.results[i].KPI_DESC==dc[j]){ 
+//     				    if (isFirst != true) {
+//     				        tempJsonStrData += ',';
+//     				    }
+//         			    tempJsonStrData += '"selfSteamIncomeVal":';
+//         			    tempJsonStrData += sRes.results[i].KPI_VALUE;
+//         			    isFirst = false;
+//     				}
+//     				if (sRes.results[i].KPI_TYPE == '外购蒸汽收入'&&sRes.results[i].KPI_DESC==dc[j]){ 
+//     				    if (isFirst != true) {
+//     				        tempJsonStrData += ',';
+//     				    }
+//         			    tempJsonStrData += '"outSteamIncomeVal":';
+//         			    tempJsonStrData += sRes.results[i].KPI_VALUE;
+//         			    isFirst = false;
+//     				}
+//     				if (sRes.results[i].KPI_TYPE == '热水收入'&&sRes.results[i].KPI_DESC==dc[j]){ 
+//     				    if (isFirst != true) {
+//     				        tempJsonStrData += ',';
+//     				    }
+//         			    tempJsonStrData += '"labourWaterIncomeVal":';
+//         			    tempJsonStrData += sRes.results[i].KPI_VALUE;
+//         			    isFirst = false;
+//     				}
+//     				if (sRes.results[i].KPI_TYPE == '初装费收入'&&sRes.results[i].KPI_DESC==dc[j]){ 
+//     				    if (isFirst != true) {
+//     				        tempJsonStrData += ',';
+//     				    }
+//         			    tempJsonStrData += '"firstFeeIncomeVal":';
+//         			    tempJsonStrData += sRes.results[i].KPI_VALUE;
+//         			    isFirst = false;
+//     				}
+//     				if (sRes.results[i].KPI_TYPE == '供热收入'&&sRes.results[i].KPI_DESC==dc[j]){ 
+//     				    if (isFirst != true) {
+//     				        tempJsonStrData += ',';
+//     				    }
+//         			    tempJsonStrData += '"supplyLabourIncomeVal":';
+//         			    tempJsonStrData += sRes.results[i].KPI_VALUE;
+//         			    isFirst = false;
+//     				}
+//     				if (sRes.results[i].KPI_TYPE == '自产蒸汽收入_同比'&&sRes.results[i].KPI_DESC==dc[j]){ 
+//     				    if (isFirst != true) {
+//     				        tempJsonStrData += ',';
+//     				    }
+//         			    tempJsonStrData += '"selfSteamIncomeUP":';
+//         			    tempJsonStrData += sRes.results[i].KPI_VALUE;
+//         			    isFirst = false;
+//     				}
+//     				if (sRes.results[i].KPI_TYPE == '外购蒸汽收入_同比'&&sRes.results[i].KPI_DESC==dc[j]){ 
+//     				    if (isFirst != true) {
+//     				        tempJsonStrData += ',';
+//     				    }
+//         			    tempJsonStrData += '"outSteamIncomeUP":';
+//         			    tempJsonStrData += sRes.results[i].KPI_VALUE;
+//         			    isFirst = false;
+//     				}
+//     				if (sRes.results[i].KPI_TYPE == '热水收入_同比'&&sRes.results[i].KPI_DESC==dc[j]){ 
+//     				    if (isFirst != true) {
+//     				        tempJsonStrData += ',';
+//     				    }
+//         			    tempJsonStrData += '"labourWaterIncomeUP":';
+//         			    tempJsonStrData += sRes.results[i].KPI_VALUE;
+//         			    isFirst = false;
+//     				}
+//     				if (sRes.results[i].KPI_TYPE == '初装费收入_同比'&&sRes.results[i].KPI_DESC==dc[j]){ 
+//     				    if (isFirst != true) {
+//     				        tempJsonStrData += ',';
+//     				    }
+//         			    tempJsonStrData += '"firstFeeIncomeUP":';
+//         			    tempJsonStrData += sRes.results[i].KPI_VALUE;
+//         			    isFirst = false;
+//     				}
+//     				if (sRes.results[i].KPI_TYPE == '供热收入_同比'&&sRes.results[i].KPI_DESC==dc[j]){ 
+//     				    if (isFirst != true) {
+//     				        tempJsonStrData += ',';
+//     				    }
+//         			    tempJsonStrData += '"supplyLabourIncomeUP":';
+//         			    tempJsonStrData += sRes.results[i].KPI_VALUE;
+//         			    isFirst = false;
+//     				}
+//     			}
+//     			tempJsonStrData += '}';
     			    				
-    			if (powerPlantName == '淮南') {
-    			    if (isHuaiNanDataFirst != true){
-    			        huaiNan_dataStr += ',';
-    			    } 
-    			    huaiNan_dataStr += tempJsonStrData;
-    			    isHuaiNanDataFirst = false;
-    			} else {
-    			    if (isZhejiangDataFirst != true){
-    			        zhejiang_dataStr += ',';
-    			    }
-    			    zhejiang_dataStr += tempJsonStrData
-    			    isZhejiangDataFirst = false;
-    			}
-			}
-			zhejiang_dataStr += ']';
-			huaiNan_dataStr += ']';
-			var zhejiang_JsonData = JSON.parse(zhejiang_dataStr)
-			var huaiNan_JsonData = JSON.parse(huaiNan_dataStr);
-    		this.loadChart(zhejiang_JsonData, huaiNan_JsonData);
-		}, this);
-		mParameters['error'] = jQuery.proxy(function(eRes) {
-			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});
-		}, this);
-	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_03_V06/?$filter=(BNAME eq '" + usrid + "')", mParameters);
+//     			if (powerPlantName == '淮南') {
+//     			    if (isHuaiNanDataFirst != true){
+//     			        huaiNan_dataStr += ',';
+//     			    } 
+//     			    huaiNan_dataStr += tempJsonStrData;
+//     			    isHuaiNanDataFirst = false;
+//     			} else {
+//     			    if (isZhejiangDataFirst != true){
+//     			        zhejiang_dataStr += ',';
+//     			    }
+//     			    zhejiang_dataStr += tempJsonStrData
+//     			    isZhejiangDataFirst = false;
+//     			}
+// 			}
+// 			zhejiang_dataStr += ']';
+// 			huaiNan_dataStr += ']';
+// 			var zhejiang_JsonData = JSON.parse(zhejiang_dataStr)
+// 			var huaiNan_JsonData = JSON.parse(huaiNan_dataStr);
+//     		this.loadChart(zhejiang_JsonData, huaiNan_JsonData);
+// 		}, this);
+// 		mParameters['error'] = jQuery.proxy(function(eRes) {
+// 			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});
+// 		}, this);
+// 	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_03_V06/?$filter=(BNAME eq '" + usrid + "')", mParameters);
+	    
+	    var zhejiang_dataStr = '[{"name":"杭州","inputPlanValue":"0"},{"name":"金华","inputPlanValue":"0"},{"name":"台州","inputPlanValue":"0"}]';
+	    var huaiNan_dataStr = '[{"name":"淮南","inputPlanValue":"0"}]';
+	    var zhejiang_JsonData = JSON.parse(zhejiang_dataStr)
+		var huaiNan_JsonData = JSON.parse(huaiNan_dataStr);
+	    this.loadChart(zhejiang_JsonData, huaiNan_JsonData);
 	},
 	loadmjChart: function(divId){
         require(
@@ -189,7 +195,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
 		draw);
 		
 		function draw(e){
-		    document.getElementById('caloriHeatPlantNameHeat').innerHTML = document.getElementById('powerPlantMainDetailTitleHeat').innerHTML;
+		    document.getElementById('caloriLabourPlantNameLabour').innerHTML = document.getElementById('powerPlantMainDetailTitleLabour').innerHTML;
 		    var mychart = e.init(document.getElementById(divId));
 		    var option = {
 		        title:{
@@ -299,27 +305,15 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
 	    
 	},
 	
-	// 获取集团指标-供热收入 SCREEN_JYYJ_04_VGRSRJT
-	loadBase_SupplyHeatIncome : function (chartDivId, priceChartName) {
-
-        // 供热收入指标
-        // 自产蒸汽收入
-        var KPI_ZZS_V = new Array();
-        // 外购蒸汽收入
-        var KPI_WZS_V = new Array();
-        // 热水收入
-        var KPI_RSS_V = new Array();
-        // 初装费收入
-        var KPI_CZS_V = new Array();
+	// 获取集团指标-劳务收入 SCREEN_JYYJ_04_VLWSRJT
+	loadBase_SupplyLabourIncome : function (chartDivId, priceChartName) {
         
-        // 自产蒸汽收入同比
-        var KPI_ZZS_UP = new Array();
-        // 外购蒸汽收入同比
-        var KPI_WZS_UP = new Array();
-        // 热水收入同比
-        var KPI_RSS_UP = new Array();
-        // 初装费收入同比
-        var KPI_CZS_UP = new Array();
+        // 劳务收入指标
+        // 劳务收入
+        var KPI_LWS_V = new Array();
+        
+        // 劳务收入同比
+        var KPI_LWS_UP = new Array();
         
         var dataStatisticDate = '';
 	    var mParameters = {};
@@ -329,164 +323,76 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
 			// 各个电厂
 			var xData = new Array();
 			for (var i in sRes.results) {
-			    // 自产蒸汽收入同比
-				if (sRes.results[i].KPI_TYPE == '自产蒸汽收入_同比'){ 
-                    KPI_ZZS_UP.push(sRes.results[i].KPI_VALUE);
+			    // 劳务收入收入同比
+				if (sRes.results[i].KPI_TYPE == '劳务收入_同比'){ 
+                    KPI_LWS_UP.push(sRes.results[i].KPI_VALUE);
                     xData.push(sRes.results[i].KPI_DESC);
 				}
-				// 自产蒸汽收入
-				if (sRes.results[i].KPI_TYPE == '自产蒸汽收入'){ 
-                    KPI_ZZS_V.push(sRes.results[i].KPI_VALUE);
+				// 劳务收入收入
+				if (sRes.results[i].KPI_TYPE == '劳务收入'){ 
+                    KPI_LWS_V.push(sRes.results[i].KPI_VALUE);
 				}
-				
-				// 外购蒸汽收入同比
-				if (sRes.results[i].KPI_TYPE == '外购蒸汽收入_同比'){ 
-                    KPI_WZS_UP.push(sRes.results[i].KPI_VALUE);
-				}
-				// 外购蒸汽收入
-				if (sRes.results[i].KPI_TYPE == '外购蒸汽收入'){ 
-                    KPI_WZS_V.push(sRes.results[i].KPI_VALUE);
-				}
-				
-				// 热水收入同比
-				if (sRes.results[i].KPI_TYPE == '热水收入_同比'){ 
-                    KPI_RSS_UP.push(sRes.results[i].KPI_VALUE);
-				}
-				// 热水收入
-				if (sRes.results[i].KPI_TYPE == '热水收入'){ 
-                    KPI_RSS_V.push(sRes.results[i].KPI_VALUE);
-				}
-				
-				// 初装费收入同比
-				if (sRes.results[i].KPI_TYPE == '初装费收入_同比'){ 
-                    KPI_CZS_UP.push(sRes.results[i].KPI_VALUE);
-				}
-				// 初装费收入
-				if (sRes.results[i].KPI_TYPE == '初装费收入'){ 
-                    KPI_CZS_V.push(sRes.results[i].KPI_VALUE);
-				}
-				
 				// 收入统计日期
 				if (dataStatisticDate == '') {
 				    dataStatisticDate = sRes.results[i].KPI_DATE.substring(0,4)+'.'+sRes.results[i].KPI_DATE.substring(4,6);//+"."+sRes.results[i].KPI_DATE.substring(6,8);
 				}
 			}
 			// 统计于日期
-			$('#heatIncomeStatisticDate').html(dataStatisticDate);
-			if (priceChartName == '供热收入') {
-			    this.loadBaseDataDetail_SupplyHeatIncome(chartDivId, priceChartName,xData,KPI_ZZS_V,KPI_WZS_V,KPI_RSS_V,KPI_CZS_V,KPI_ZZS_UP,KPI_WZS_UP,KPI_RSS_UP,KPI_CZS_UP);
-			} else {
-			    if (priceChartName == '自产蒸汽') {
-			        this.loadBaseDataDetail_OtherHeatIncome(chartDivId, priceChartName,xData,KPI_ZZS_V);
-			    } else if (priceChartName == '外购蒸汽') {
-			        this.loadBaseDataDetail_OtherHeatIncome(chartDivId, priceChartName,xData,KPI_WZS_V);
-			    } else if (priceChartName == '热水') {
-			        this.loadBaseDataDetail_OtherHeatIncome(chartDivId, priceChartName,xData,KPI_RSS_V);
-			    } else if (priceChartName == '初装费') {
-			        this.loadBaseDataDetail_OtherHeatIncome(chartDivId, priceChartName,xData,KPI_CZS_V);
-			    }
+			$('#labourIncomeStatisticDate').html(dataStatisticDate);
+			if (priceChartName == '劳务收入') {
+			    this.loadBaseDataDetail_SupplyLabourIncome(chartDivId, priceChartName,xData,KPI_LWS_V,KPI_LWS_UP);
 			}
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});
 		}, this);
-	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_04_VGRSRJT/?$filter=(BNAME eq '" + usrid + "')", mParameters);
+	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_04_VLWSRJT/?$filter=(BNAME eq '" + usrid + "')", mParameters);
 	},
-	// 获取个电厂指标-供热收入 SCREEN_JYYJ_04_VGRSRDC
-	loadEachPlant_SupplyHeatIncome : function (chartDivId, priceChartName, powerPlantName) {
-
-        // 供热收入指标
-        // 自产蒸汽收入
-        var KPI_ZZS_V = new Array();
-        // 外购蒸汽收入
-        var KPI_WZS_V = new Array();
-        // 热水收入
-        var KPI_RSS_V = new Array();
-        // 初装费收入
-        var KPI_CZS_V = new Array();
+	// 获取个电厂指标-劳务收入 SCREEN_JYYJ_04_VLWSRDC
+	loadEachPlant_SupplyLabourIncome : function (chartDivId, priceChartName, powerPlantName) {
         
-        // 自产蒸汽收入同比
-        var KPI_ZZS_UP = new Array();
-        // 外购蒸汽收入同比
-        var KPI_WZS_UP = new Array();
-        // 热水收入同比
-        var KPI_RSS_UP = new Array();
-        // 初装费收入同比
-        var KPI_CZS_UP = new Array();
+        // 劳务收入指标
+        // 劳务收入
+        var KPI_LWS_V = new Array();
+        
+        // 劳务收入同比
+        var KPI_LWS_UP = new Array();
         
         var dataStatisticDate = '';
 	    var mParameters = {};
 		mParameters['async'] = true;
 		mParameters['success'] = jQuery.proxy(function(sRes) {
 		    
-			// 各个电厂
+			// 各个电厂月份指标
 			var xData = new Array();
 			for (var i in sRes.results) {
-			    // 自产蒸汽收入同比
-				if (sRes.results[i].KPI_TYPE == '自产蒸汽收入_同比'){ 
-                    KPI_ZZS_UP.push(sRes.results[i].KPI_VALUE);
+			    // 劳务收入收入同比
+				if (sRes.results[i].KPI_TYPE == '劳务收入_同比'){ 
+                    KPI_LWS_UP.push(sRes.results[i].KPI_VALUE);
 				}
-				// 自产蒸汽收入
-				if (sRes.results[i].KPI_TYPE == '自产蒸汽收入'  && sRes.results[i].KPI_DESC == powerPlantName){ 
-                    KPI_ZZS_V.push(sRes.results[i].KPI_VALUE);
+				// 劳务收入收入
+				if (sRes.results[i].KPI_TYPE == '劳务收入' && sRes.results[i].KPI_DESC == powerPlantName){ 
+                    KPI_LWS_V.push(sRes.results[i].KPI_VALUE);
                     xData.push(sRes.results[i].KPI_DATE);
 				}
-				
-				// 外购蒸汽收入同比
-				if (sRes.results[i].KPI_TYPE == '外购蒸汽收入_同比'){ 
-                    KPI_WZS_UP.push(sRes.results[i].KPI_VALUE);
-				}
-				// 外购蒸汽收入
-				if (sRes.results[i].KPI_TYPE == '外购蒸汽收入' && sRes.results[i].KPI_DESC == powerPlantName){ 
-                    KPI_WZS_V.push(sRes.results[i].KPI_VALUE);
-				}
-				
-				// 热水收入同比
-				if (sRes.results[i].KPI_TYPE == '热水收入_同比'){ 
-                    KPI_RSS_UP.push(sRes.results[i].KPI_VALUE);
-				}
-				// 热水收入
-				if (sRes.results[i].KPI_TYPE == '热水收入' && sRes.results[i].KPI_DESC == powerPlantName){ 
-                    KPI_RSS_V.push(sRes.results[i].KPI_VALUE);
-				}
-				
-				// 初装费收入同比
-				if (sRes.results[i].KPI_TYPE == '初装费收入_同比'){ 
-                    KPI_CZS_UP.push(sRes.results[i].KPI_VALUE);
-				}
-				// 初装费收入
-				if (sRes.results[i].KPI_TYPE == '初装费收入' && sRes.results[i].KPI_DESC == powerPlantName){ 
-                    KPI_CZS_V.push(sRes.results[i].KPI_VALUE);
-				}
-				
 				// 收入统计日期
 				if (dataStatisticDate == '') {
 				    dataStatisticDate = sRes.results[i].KPI_DATE.substring(0,4)+'.'+sRes.results[i].KPI_DATE.substring(4,6);//+"."+sRes.results[i].KPI_DATE.substring(6,8);
 				}
 			}
 			// 统计于日期
-			$('#heatIncomeStatisticDate').html(dataStatisticDate);
-			if (priceChartName == '供热收入') {
-			    this.loadBaseDataDetail_SupplyHeatIncome(chartDivId, priceChartName,xData,KPI_ZZS_V,KPI_WZS_V,KPI_RSS_V,KPI_CZS_V,KPI_ZZS_UP,KPI_WZS_UP,KPI_RSS_UP,KPI_CZS_UP);
-			} else {
-			    if (priceChartName == '自产蒸汽') {
-			        this.loadBaseDataDetail_OtherHeatIncome(chartDivId, priceChartName,xData,KPI_ZZS_V);
-			    } else if (priceChartName == '外购蒸汽') {
-			        this.loadBaseDataDetail_OtherHeatIncome(chartDivId, priceChartName,xData,KPI_WZS_V);
-			    } else if (priceChartName == '热水') {
-			        this.loadBaseDataDetail_OtherHeatIncome(chartDivId, priceChartName,xData,KPI_RSS_V);
-			    } else if (priceChartName == '初装费') {
-			        this.loadBaseDataDetail_OtherHeatIncome(chartDivId, priceChartName,xData,KPI_CZS_V);
-			    }
+			$('#labourIncomeStatisticDate').html(dataStatisticDate);
+			if (priceChartName == '劳务收入') {
+			    this.loadBaseDataDetail_OtherLabourIncome(chartDivId, priceChartName,xData,KPI_LWS_V,KPI_LWS_UP);
 			}
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});
 		}, this);
-	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_04_VGRSRDC/?$filter=(BNAME eq '" + usrid + "')", mParameters);
+	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_04_VLWSRDC/?$filter=(BNAME eq '" + usrid + "')", mParameters);
 	},
-	// 加载集团-供热收入
-	loadBaseDataDetail_SupplyHeatIncome: function(chartDivId, priceChartName,xData,KPI_ZZS_V,KPI_WZS_V,KPI_RSS_V,KPI_CZS_V,KPI_ZZS_UP,KPI_WZS_UP,KPI_RSS_UP,KPI_CZS_UP) {
+	// 加载集团-劳务收入
+	loadBaseDataDetail_SupplyLabourIncome: function(chartDivId, priceChartName,xData,KPI_LWS_V,KPI_LWS_UP) {
         	require(
             [
                 'echarts',
@@ -497,7 +403,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
 			
 			function draw(e){
 			    var mychart = e.init(document.getElementById(chartDivId));
-			    document.getElementById('profitNameHeat').innerHTML = document.getElementById('powerPlantMainDetailTitleHeat').innerHTML;
+			    document.getElementById('profitNameLabour').innerHTML = document.getElementById('powerPlantMainDetailTitleLabour').innerHTML;
     			var color1 = '#2DE630';
     			var color2 = '#E52DE6';
     			var option = {
@@ -519,7 +425,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
         						color:'white',
         						fontFamily:'微软雅黑'
         					},
-                			data:['自产蒸汽收入','外购蒸汽收入','热水收入','初装费收入']
+                			data:['劳务收入','劳务收入同比']
            			 	},
         			    tooltip:{
         			       trigger:'axis' ,
@@ -578,57 +484,77 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
                             }
                         ],
         				series: [
-            //                 {
-            //                     name:'辅助服务收入',
-            //                     type:'bar',
-            //                     symbol:'emptyCircle',
-        				// 		symbolSize:5,
-        				// 		itemStyle: {
-        				// 		    normal: {
-        				// 		        label : {
-        				// 		            show :true,
-        				// 		            position : 'top',
-        				// 		            textStyle:{
-        				// 		                color : 'white'
-        				// 		            }
-        				// 		        }
-        				// 		    }
-        				// 		},
-            //                     barWidth : 50,
-            //                     data:KPI_FZS_V
-            //                 },
                             {
-                                name:'自产蒸汽收入',
+                                name:'劳务收入',
                                 type:'bar',
-                                stack:'供热收入',
-                                data:KPI_ZZS_V
+                                symbol:'emptyCircle',
+        						symbolSize:5,
+        						itemStyle: {
+        						    normal: {
+        						        label : {
+        						            show :true,
+        						            position : 'top',
+        						            textStyle:{
+        						                color : 'white'
+        						            }
+        						        }
+        						    }
+        						},
+                                barWidth : 50,
+                                data:KPI_LWS_V
                             },
                             {
-                                name:'外购蒸汽收入',
-                                type:'bar',
-                                stack:'供热收入',
-                                data:KPI_WZS_V
-                            },
-                            {
-                                name:'热水收入',
-                                type:'bar',
-                                stack:'供热收入',
-                                data:KPI_RSS_V
-                            },
-                            {
-                                name:'初装费收入',
-                                type:'bar',
-                                stack:'供热收入',
-                                data:KPI_CZS_V
+                                name:'劳务收入同比',
+                                type:'line',
+                                symbol:'emptyCircle',
+        						symbolSize:5,
+        						itemStyle: {
+        						    normal: {
+        						        label : {
+        						            show :true,
+        						            position : 'top',
+        						            textStyle:{
+        						                color : 'white'
+        						            }
+        						        }
+        						    }
+        						},
+                                barWidth : 50,
+                                data:KPI_LWS_UP
                             }
+                            
+                            // {
+                            //     name:'自产蒸汽收入',
+                            //     type:'bar',
+                            //     stack:'供热收入',
+                            //     data:KPI_ZZS_V
+                            // },
+                            // {
+                            //     name:'外购蒸汽收入',
+                            //     type:'bar',
+                            //     stack:'供热收入',
+                            //     data:KPI_WZS_V
+                            // },
+                            // {
+                            //     name:'热水收入',
+                            //     type:'bar',
+                            //     stack:'供热收入',
+                            //     data:KPI_RSS_V
+                            // },
+                            // {
+                            //     name:'初装费收入',
+                            //     type:'bar',
+                            //     stack:'供热收入',
+                            //     data:KPI_CZS_V
+                            // }
                         ]
         			};
 			    
 			    mychart.setOption(option);
 			}
     },
-    // 加载集团-其他供热收入指标
-	loadBaseDataDetail_OtherHeatIncome: function(chartDivId, priceChartName,xData,heatData) {
+    // 加载集团-劳务收入指标
+	loadBaseDataDetail_OtherLabourIncome: function(chartDivId, priceChartName,xData,KPI_LWS_V,KPI_LWS_UP) {
         	require(
             [
                 'echarts',
@@ -639,7 +565,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
 			
 			function draw(e){
 			    var mychart = e.init(document.getElementById(chartDivId));
-			    document.getElementById('profitNameHeat').innerHTML = document.getElementById('powerPlantMainDetailTitleHeat').innerHTML;
+			    document.getElementById('profitNameLabour').innerHTML = document.getElementById('powerPlantMainDetailTitleLabour').innerHTML;
     			var color1 = '#2DE630';
     			var color2 = '#E52DE6';
     			var option = {
@@ -738,7 +664,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
         						    }
         						},
                                 barWidth : 50,
-                                data:heatData
+                                data:KPI_LWS_V
                             }
                         ]
         			};
@@ -751,7 +677,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
 // 	// 获取厂用电量
 // 	loadFactoryUseData : function (chartDivId, priceChartName) {
 
-// 	    var powerPlantName = document.getElementById('powerPlantMainDetailTitleHeat').innerHTML;
+// 	    var powerPlantName = document.getElementById('powerPlantMainDetailTitleLabour').innerHTML;
 // 	    if (powerPlantName == '台二电厂') {
 // 	        powerPlantName = '台二发电';
 // 	    }
@@ -766,12 +692,12 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
 // 		mParameters['success'] = jQuery.proxy(function(sRes) {
 		    
 // 			//设置数据
-// 		    var machineGroupDataHeat = new Array();
+// 		    var machineGroupDataLabour = new Array();
 // 		    var dataStatisticDate = '';
 // 			for (var i in sRes.results) {
 // 			    var plantName = sRes.results[i].KPI_DESC.toString().substring(0, 4);
 // 				if ((sRes.results[i].KPI_TYPE == '机组上网电量'&& plantName == powerPlantName) || (sRes.results[i].KPI_TYPE == '上网电量')){ 
-//                     machineGroupDataHeat.push(new Number(sRes.results[i].KPI_VALUE).toFixed(2));
+//                     machineGroupDataLabour.push(new Number(sRes.results[i].KPI_VALUE).toFixed(2));
 // 				}
 // 				if (dataStatisticDate == '') {
 // 				    dataStatisticDate = sRes.results[i].KPI_DATE.substring(0,4)+'.'+sRes.results[i].KPI_DATE.substring(4,6)+"."+sRes.results[i].KPI_DATE.substring(6,8);
@@ -779,7 +705,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
 // 			}
 // 			// 统计于日期
 // 			$('#internetVolumeStatisticDate').html(dataStatisticDate);
-//     		this.loadPriceChartdetail(chartDivId, priceChartName, machineGroupDataHeat);
+//     		this.loadPriceChartdetail(chartDivId, priceChartName, machineGroupDataLabour);
 // 		}, this);
 // 		mParameters['error'] = jQuery.proxy(function(eRes) {
 // 			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});
@@ -798,9 +724,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
 			
 // 			function draw(e){
 // 			    var mychart = e.init(document.getElementById(chartDivId));
-// 			    document.getElementById('profitNameHeat').innerHTML = document.getElementById('powerPlantMainDetailTitleHeat').innerHTML;
+// 			    document.getElementById('profitNameLabour').innerHTML = document.getElementById('powerPlantMainDetailTitleLabour').innerHTML;
 // 			    var fuelXaxisName = '';
-// 			    if (document.getElementById('powerPlantMainDetailTitleHeat').innerHTML == '集团') {
+// 			    if (document.getElementById('powerPlantMainDetailTitleLabour').innerHTML == '集团') {
 // 			        fuelXaxisName = ['兰溪发电', '台二发电', '凤台发电', '集团'];
 // 			    } else {
 // 			        fuelXaxisName = ['机组1', '机组2', '机组3', '机组4'];
@@ -974,7 +900,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
 			draw);
 			
 			function draw(e) {
-			    drawHeatDistribution(e);
+			    drawLabourDistribution(e);
 			    
 			 //   drawpie01(e);
     // 			drawbar01(e);
@@ -983,14 +909,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
     // 			drawbar04(e);
 		    }
 		
-		    function drawHeatDistribution(ec) {
+		    function drawLabourDistribution(ec) {
 		        
 		    // event configure    
             var ecConfig = require('echarts/config');
     
 	///////////////////////////////////中国地图/////////////////////////////////////			
 				// 基于准备好的dom，初始化echarts图表
-				myChart3 = ec.init(document.getElementById('chinaMapHeat')); 
+				myChart3 = ec.init(document.getElementById('chinaMapLabour')); 
 				option3 = {
 					tooltip : {
 						trigger: 'item',
@@ -1015,11 +941,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
 				// 为echarts对象加载数据 
 				myChart3.setOption(option3); 
 
-                document.getElementById('powerPlantMainDetailTitleHeat').innerHTML = '集团'
+                document.getElementById('powerPlantMainDetailTitleLabour').innerHTML = '集团'
 	//////////////////////////////////浙江省地图//////////////////////////////////////////////////////////		
 			    // 基于准备好的dom，初始化echarts图表
-                myChart4 = ec.init(document.getElementById('powerPlantMapHeat'));
-				var allHeatData = map1Data;		
+                myChart4 = ec.init(document.getElementById('powerPlantMapLabour'));
+				var allLabourData = map1Data;			
 		        var option4 = {
 
 					title : {
@@ -1107,7 +1033,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
 									},
 									large: true
 								},
-								data :allHeatData
+								data :allLabourData
 							},
 							geoCoord: {
 								// "温州":[120.65,28.01],
@@ -1159,8 +1085,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
 				}; 
 				myChart4.on(ecConfig.EVENT.CLICK, function (param){  
 					
-                	document.getElementById('internetDetailHeat').style.display = "none";
-                    document.getElementById('rlcb_detailHeat').style.display = "";
+                	document.getElementById('internetDetailLabour').style.display = "";
+                    document.getElementById('rlcb_detailLabour').style.display = "none";
     
 					var mapSeries = option4.series[0];
 					
@@ -1188,8 +1114,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
                 myChart4.setOption(option4); 
 		///////////////////////////////安徽淮南市地图////////////////////////////////////////////
 				// 基于准备好的dom，初始化echarts图表
-                myChart5 = ec.init(document.getElementById('huaiNanMapHeat')); 
-				var allHeatData2 = map2Data;
+                myChart5 = ec.init(document.getElementById('huaiNanMapLabour')); 
+				var allLabourData2 = map2Data;
 				option5 = {
 					title : {
 						text: '',
@@ -1252,7 +1178,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
     								  period: 5
     								}
 								},
-								data :allHeatData2
+								data :allLabourData2
 							},
 							geoCoord: {
                                 "淮南":[116.73,32.80],
@@ -1286,8 +1212,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
 				}; 
 				myChart5.on(ecConfig.EVENT.CLICK, function (param){
 
-                	document.getElementById('internetDetailHeat').style.display = "none";
-                    document.getElementById('rlcb_detailHeat').style.display = "";
+                	document.getElementById('internetDetailLabour').style.display = "";
+                    document.getElementById('rlcb_detailLabour').style.display = "none";
                     
 					var mapSeries = option5.series[0];
 
@@ -1432,22 +1358,22 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
 			mychart.setOption(option);
 		}
 		function drawpie01(e) {
-            drawpie(e, 3, 4, 'detail_pieHeat');
+            drawpie(e, 3, 4, 'detail_pieLabour');
         }
 		function drawbar01(e) {
-			drawbar(e, 4, 6, 'detail_01Heat');
+			drawbar(e, 4, 6, 'detail_01Labour');
 		}
 
 		function drawbar02(e) {
-			drawbar(e, 7, 3, 'detail_02Heat');
+			drawbar(e, 7, 3, 'detail_02Labour');
 		}
 
 		function drawbar03(e) {
-			drawbar(e, 3, 7, 'detail_03Heat');
+			drawbar(e, 3, 7, 'detail_03Labour');
 		}
 
 		function drawbar04(e) {
-			drawbar(e, 8, 2, 'detail_04Heat');
+			drawbar(e, 8, 2, 'detail_04Labour');
 		}
 		// 设置Chart的数据
         function setChartData(ec, mapSeries, dataIndex) {
@@ -1463,65 +1389,81 @@ sap.ui.controller("com.zhenergy.pcbi.view.heatIncome", {
 			} else if (mapSeries.markPoint.data[dataIndex].name == '淮南') {
 			    powerPlantName = '凤台电厂';
 			}
-			document.getElementById('powerPlantMainDetailTitleHeat').innerHTML = powerPlantName;
+			document.getElementById('powerPlantMainDetailTitleLabour').innerHTML = powerPlantName;
 
-		    // 自产蒸汽
-		    var selfSteamIncomeVal = mapSeries.markPoint.data[dataIndex].selfSteamIncomeVal;
-		    if (selfSteamIncomeVal != undefined) {
-		        document.getElementById('travelPriceHeat').innerHTML =  selfSteamIncomeVal;
-		    } else {
-		        document.getElementById('travelPriceHeat').innerHTML = 0;
-		        selfSteamIncomeVal = 0;
-		    }
-		    // 外购蒸汽
-		    var outSteamIncomeVal = mapSeries.markPoint.data[dataIndex].outSteamIncomeVal;
-		    if (outSteamIncomeVal != undefined) {
-		        document.getElementById('coalPriceHeat').innerHTML = outSteamIncomeVal;
-		    } else {
-		        document.getElementById('coalPriceHeat').innerHTML = 0;
-		        outSteamIncomeVal = 0;
-		    }
-		    // 热水
-		    var heatWaterIncomeVal = mapSeries.markPoint.data[dataIndex].heatWaterIncomeVal;
-		    if (heatWaterIncomeVal != undefined) {
-		        document.getElementById('watt1Heat').innerHTML =  heatWaterIncomeVal;
-		    } else {
-		        document.getElementById('watt1Heat').innerHTML = 0;
-		        heatWaterIncomeVal = 0;
-		    }
-		    // 初装费
-		    var firstFeeIncomeVal = mapSeries.markPoint.data[dataIndex].firstFeeIncomeVal;
-		    if (firstFeeIncomeVal != undefined) {
-		        document.getElementById('factoryUsePV').innerHTML = firstFeeIncomeVal;
-		    } else {
-		        document.getElementById('factoryUsePV').innerHTML = 0;
-		        firstFeeIncomeVal = 0;
-		    }
-		    // 供热收入
-		    var supplyHeatIncomeVal = mapSeries.markPoint.data[dataIndex].supplyHeatIncomeVal;
-		    if (supplyHeatIncomeVal != undefined) {
-		        document.getElementById('fuelCostHeat').innerHTML = supplyHeatIncomeVal;
-		    } else {
-		        document.getElementById('fuelCostHeat').innerHTML = 0;
-		        supplyHeatIncomeVal = 0;
-		    }
-		    // 供热收入同比
-		    var supplyHeatIncomeUP = mapSeries.markPoint.data[dataIndex].supplyHeatIncomeUP;
-		    if (supplyHeatIncomeUP != undefined) {
-		        document.getElementById('fuelDownPercentHeat').innerHTML = supplyHeatIncomeUP;
-		    } else {
-		        document.getElementById('fuelDownPercentHeat').innerHTML = 0;
-		        supplyHeatIncomeUP = 0;
-		    }
-		    var dataAll = selfSteamIncomeVal + outSteamIncomeVal + heatWaterIncomeVal + firstFeeIncomeVal;
-		    if (dataAll == 0) {
-		        dataAll = 10;
-		    }
-		    drawpie(ec, supplyHeatIncomeUP+50, 50, 'detail_pieHeat');
-		    drawbar(ec, selfSteamIncomeVal, dataAll, 'detail_01Heat');
-		    drawbar(ec, outSteamIncomeVal, dataAll, 'detail_02Heat');
-		    drawbar(ec, heatWaterIncomeVal, dataAll, 'detail_03Heat');
-		    drawbar(ec, firstFeeIncomeVal, dataAll, 'detail_04Heat');
+            var priceChartId = "priceDetailDivLabour";
+            var priceChartName = "劳务收入";
+            if (powerPlantName == '台二电厂') {
+                powerPlantName = '台二发电';
+            }
+            if (powerPlantName == '兰溪电厂') {
+                powerPlantName = '兰溪发电';
+            }
+            if (powerPlantName == '凤台电厂') {
+                powerPlantName = '凤台发电';
+            }
+        	if (powerPlantName == '集团') {
+        	   labourIncome.getController().loadBase_SupplyLabourIncome(priceChartId, priceChartName);
+        	} else {
+        	   labourIncome.getController().loadEachPlant_SupplyLabourIncome(priceChartId, priceChartName, powerPlantName);
+        	}
+		  //  // 自产蒸汽
+		  //  var selfSteamIncomeVal = mapSeries.markPoint.data[dataIndex].selfSteamIncomeVal;
+		  //  if (selfSteamIncomeVal != undefined) {
+		  //      document.getElementById('travelPriceLabour').innerHTML =  selfSteamIncomeVal;
+		  //  } else {
+		  //      document.getElementById('travelPriceLabour').innerHTML = 0;
+		  //      selfSteamIncomeVal = 0;
+		  //  }
+		  //  // 外购蒸汽
+		  //  var outSteamIncomeVal = mapSeries.markPoint.data[dataIndex].outSteamIncomeVal;
+		  //  if (outSteamIncomeVal != undefined) {
+		  //      document.getElementById('coalPriceLabour').innerHTML = outSteamIncomeVal;
+		  //  } else {
+		  //      document.getElementById('coalPriceLabour').innerHTML = 0;
+		  //      outSteamIncomeVal = 0;
+		  //  }
+		  //  // 热水
+		  //  var labourWaterIncomeVal = mapSeries.markPoint.data[dataIndex].labourWaterIncomeVal;
+		  //  if (labourWaterIncomeVal != undefined) {
+		  //      document.getElementById('watt1Labour').innerHTML =  labourWaterIncomeVal;
+		  //  } else {
+		  //      document.getElementById('watt1Labour').innerHTML = 0;
+		  //      labourWaterIncomeVal = 0;
+		  //  }
+		  //  // 初装费
+		  //  var firstFeeIncomeVal = mapSeries.markPoint.data[dataIndex].firstFeeIncomeVal;
+		  //  if (firstFeeIncomeVal != undefined) {
+		  //      document.getElementById('factoryUsePV').innerHTML = firstFeeIncomeVal;
+		  //  } else {
+		  //      document.getElementById('factoryUsePV').innerHTML = 0;
+		  //      firstFeeIncomeVal = 0;
+		  //  }
+		  //  // 供热收入
+		  //  var supplyLabourIncomeVal = mapSeries.markPoint.data[dataIndex].supplyLabourIncomeVal;
+		  //  if (supplyLabourIncomeVal != undefined) {
+		  //      document.getElementById('fuelCostLabour').innerHTML = supplyLabourIncomeVal;
+		  //  } else {
+		  //      document.getElementById('fuelCostLabour').innerHTML = 0;
+		  //      supplyLabourIncomeVal = 0;
+		  //  }
+		  //  // 供热收入同比
+		  //  var supplyLabourIncomeUP = mapSeries.markPoint.data[dataIndex].supplyLabourIncomeUP;
+		  //  if (supplyLabourIncomeUP != undefined) {
+		  //      document.getElementById('fuelDownPercentLabour').innerHTML = supplyLabourIncomeUP;
+		  //  } else {
+		  //      document.getElementById('fuelDownPercentLabour').innerHTML = 0;
+		  //      supplyLabourIncomeUP = 0;
+		  //  }
+		  //  var dataAll = selfSteamIncomeVal + outSteamIncomeVal + labourWaterIncomeVal + firstFeeIncomeVal;
+		  //  if (dataAll == 0) {
+		  //      dataAll = 10;
+		  //  }
+		  //  drawpie(ec, supplyLabourIncomeUP+50, 50, 'detail_pieLabour');
+		  //  drawbar(ec, selfSteamIncomeVal, dataAll, 'detail_01Labour');
+		  //  drawbar(ec, outSteamIncomeVal, dataAll, 'detail_02Labour');
+		  //  drawbar(ec, labourWaterIncomeVal, dataAll, 'detail_03Labour');
+		  //  drawbar(ec, firstFeeIncomeVal, dataAll, 'detail_04Labour');
         }
 	}
 });

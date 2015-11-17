@@ -34,6 +34,7 @@
         <script type="text/javascript" src="js/common.js"></script>
         <script type="text/javascript" src="js/powerIncome.js"></script>
         <script type="text/javascript" src="js/heatIncome.js"></script>
+        <script type="text/javascript" src="js/labourIncome.js"></script>
 		<script type="text/javascript" src="swiper.js"></script>
 		<script type="text/javascript" src="js/pdfobject.js"></script>
 		<script>
@@ -89,6 +90,12 @@
 		        }
 		        if (detailName == "供热收入") {
 		            app.to("idHeatIncome", "show");
+		        }
+		        if (detailName == "劳务收入") {
+		            app.to("idLabourIncome", "show");
+		        }
+		        if (detailName == "其他收入") {
+		            app.to("idOthersIncome", "show");
 		        }
 		    }
 		    function toInternetPowerDetailPage() {
@@ -156,6 +163,8 @@
 				var mainBusiness;
 				var powerIncome;
 				var heatIncome;
+				var labourIncome;
+				var othersIncome;
 				var slidePageNum = 0;
 				var app = new sap.m.App({initialPage:"idhome"});
 				
@@ -294,6 +303,20 @@
             			type: sap.ui.core.mvc.ViewType.HTML
             		 });
             		 app.addPage(heatIncome);
+            		 // 劳务收入
+            		 labourIncome = sap.ui.view({
+            			id: "idLabourIncome",
+            			viewName: "com.zhenergy.pcbi.view.labourIncome",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(labourIncome);
+            		 // 其他收入
+            		 othersIncome = sap.ui.view({
+            			id: "idOthersIncome",
+            			viewName: "com.zhenergy.pcbi.view.othersIncome",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(othersIncome);
             		 
 					 app.placeAt("content");
 				}
