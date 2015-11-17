@@ -1066,8 +1066,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 					    zlevel : 0,
 						name: '1',
 						type: 'pie',
-				// 		center: ['31%','36%'],
-						radius: [135, 139],
+				// 		center: ['34%','33.9%'],
+						radius: [175, 180],
 						startAngle : 0,
 						itemStyle: {
 							normal: {

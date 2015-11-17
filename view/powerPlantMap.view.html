@@ -30,18 +30,18 @@
                 </div>
             </div>
         </div>
-        <div class="content_center">
+        <div class="content_center" style="height:820px;">
           <div class="powerTop">
-                <div id="demo" style="color:white;margin-top:10px;margin-left:40px;font-weight:bold;"><span id="demo" style="height:100%;"><b onClick="dailyProfit()" style="cursor:pointer;">日利润</b> > <b>燃料成本</b></span></div>             
+                <div id="demo" style="color:white;margin-top:10px;margin-left:40px;font-weight:bold;font-size:20px;"><span id="demo" style="height:100%;"><b onClick="dailyProfit()" style="cursor:pointer;">日利润</b> > <b>燃料成本</b></span></div>             
           </div>
           <div class="powerBottom">
               <div class="powerPlantLeft">
     			  <div class="mapTop">
-    			      <div id="huaiNanMap1" style="position:absolute;z-index:2;left:230px;top:110px;height:80px;width:80px;"></div>
-    			      <div id="powerPlantMap1" style="margin-left:200px;margin-top:10px;height:400px;width:456px;"></div>
+    			      <div id="huaiNanMap1" style="position:absolute;z-index:2;left:230px;top:150px;height:100px;width:100px;"></div>
+    			      <div id="powerPlantMap1" style="margin-left:230px;margin-top:50px;height:550px;width:600px;"></div>
     			  </div>
     			  <div class="mapBottom">
-    			      <div class="chinaMap">
+    			      <div class="chinaMap" style="margin-left:40px;">
     			          <div class="chinaMapCon">
         			          <div id="chinaMap1" style="float:left;height:110px;width:140px;margin-top:15px;margin-left:30px;">
         			              
@@ -63,47 +63,47 @@
     			  </div>
             </div>
             <div class="powerPlantRight">
-                <div id="rlcb_detail" class="detail_02">
+                <div id="rlcb_detail" class="detail_02" style="width:1003px;height:648px;">
                     <div class="detail_02_01">
-                            <div id="powerPlantMainDetailTitle" style="margin-top:0px;">集团</div>
+                            <div id="powerPlantMainDetailTitle" style="margin-top:10px;font-size:20px;">集团</div>
                     </div>
                     <div class="main_content_combition_1">
                         <div class="main_content_combition_1_1">
-                            <div class="detail_02_03">
-                                <div class="detail_02_font1">运价（元/吨）</div>
+                            <div class="detail_02_03" style="margin-top:10%;">
+                                <div class="detail_02_font1" style="font-size:30px;">运价（元/吨）</div>
                                 <div class="detail_02_font2" id="travelPrice"></div>
                                 <div class="detail_02_img" id="detail_01"></div>
                             </div>
-                            <div class="detail_02_03 detail_position01" style="cursor:pointer;" onclick="toMJhid()">
-                                <div class="detail_02_font1">煤价（元/吨）</div>
+                            <div class="detail_02_03 detail_position01" style="cursor:pointer;margin-top:10%;" onclick="toMJhid()">
+                                <div class="detail_02_font1" style="font-size:30px;">煤价（元/吨）</div>
                                 <div class="detail_02_font2" id="coalPrice"></div>
                                 <div class="detail_02_img" id="detail_02"></div>
                             </div>
                         </div>
                         <div class="main_content_combition_1_2">
-                            <div class="detail_02_04">
-                                <div class="detail_001">
+                            <div class="detail_02_04" style="top:40%;">
+                                <div class="detail_001" style="font-size:35px;margin-top:20px;">
                                     标准煤耗<b id="coalCost"></b>克/度
                                 </div>
                             </div>
                         </div>
                         <div class="main_content_combition_1_3">
-                            <div class="detail_02_03" onclick="detailAnother002('30')">
-                                <div class="detail_02_font1"><b id="wattVolume1"></b>30万KW(克/度)</div>
+                            <div class="detail_02_03" style="margin-top:10%;" onclick="detailAnother002('30')">
+                                <div class="detail_02_font1" style="font-size:30px;"><b id="wattVolume1"></b>30万KW(克/度)</div>
                                 <div class="detail_02_font2" id="watt1"></div>
                                 <div class="detail_02_img" id="detail_03"></div>
                             </div>
-                            <div class="detail_02_03" onclick="detailAnother002('60')">
-                                <div class="detail_02_font1"><b id="wattVolume2"></b>60万KW(克/度)</div>
+                            <div class="detail_02_03" style="margin-top:10%;" onclick="detailAnother002('60')">
+                                <div class="detail_02_font1" style="font-size:30px;"><b id="wattVolume2"></b>60万KW(克/度)</div>
                                 <div class="detail_02_font2" id="watt2"></div>
                                 <div class="detail_02_img" id="detail_04"></div>
                             </div>
                         </div>
                     </div>
                     <div class="main_content_combition_2">
-                            <div class="detail_pie" id="detail_pie" style="cursor:pointer;" onclick="detailAnother()"></div>
-                            <div class="detail_02_02" style="cursor:pointer;" onclick="detailAnother()">
-                                <div class="detail_02_font01">单位燃料成本</div>
+                            <div class="detail_pie" id="detail_pie" style="top:16.5%;margin-left:-6.8%;cursor:pointer;" onclick="detailAnother()"></div>
+                            <div class="detail_02_02" style="cursor:pointer;left:25%;" onclick="detailAnother()">
+                                <div class="detail_02_font01" style="font-size:25px;">单位燃料成本</div>
                                 <div class="detail_02_font01 font_size1" id="fuelCost"></div>
                                 <div class="detail_02_font01 font_size2">元/吨</div>
                                 <div class="detail_02_font01 font_size3">
@@ -198,36 +198,36 @@
         </div>
         <div class="menu_bottom">
             <ul>
-                <li class="but01">
-                    <div class="But01" type="button"  onClick="doit1()"></div>
+                <li class="but01" style="width:180px;">
+                    <div class="But01" type="button"  onClick="doit1()" style="margin-left: 60px;"></div>
                 </li>
                 <li class="split_line"></li>
-                <li class="but02 nav_BI">
-                    <div class="But02" type="button"  onClick="doit2()"></div>
+                <li class="but02 nav_BI" style="width:180px;">
+                    <div class="But02" type="button"  onClick="doit2()" style="margin-left: 60px;"></div>
                 </li>
                 <li class="split_line"></li>
-                <li class="but03">
-                    <div class="But03" type="button"  onClick="doit3()"></div>
+                <li class="but03" style="width:180px;">
+                    <div class="But03" type="button"  onClick="doit3()" style="margin-left: 60px;"></div>
                 </li>
                 <li class="split_line"></li>
-                <li class="but04">
-                    <div class="But04" type="button"  onClick="doit4()"></div>
+                <li class="but04" style="width:180px;">
+                    <div class="But04" type="button"  onClick="doit4()" style="margin-left: 60px;"></div>
                 </li>
                 <li class="split_line"></li>
-                <li class="but05">
-                    <div class="But05" type="button"  onClick="doit5()"></div>
+                <li class="but05" style="width:180px;">
+                    <div class="But05" type="button"  onClick="doit5()" style="margin-left: 60px;"></div>
                 </li>
                 <li class="split_line"></li>
-                <li class="but06">
-                    <div class="But06" type="button"  onClick="doit6()"></div>
+                <li class="but06" style="width:180px;">
+                    <div class="But06" type="button"  onClick="doit6()" style="margin-left: 60px;"></div>
                 </li>
                 <li class="split_line"></li>
-                <li class="but07">
-                    <div class="But07" type="button"  onClick="doit7()"></div>
+                <li class="but07" style="width:180px;">
+                    <div class="But07" type="button"  onClick="doit7()" style="margin-left: 60px;"></div>
                 </li>
                 <li class="split_line"></li>
-                <li class="but08">
-                    <div class="But08" type="button"  onClick="doit8()"></div>
+                <li class="but08" style="width:180px;">
+                    <div class="But08" type="button"  onClick="doit8()" style="margin-left: 60px;"></div>
                 </li>
             </ul>
         </div>
