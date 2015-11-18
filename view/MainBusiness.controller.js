@@ -15,7 +15,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.MainBusiness", {
 		});
 	},
     onBeforeShow: function(evt) {
-        
+        this._loadData01();
+	},
+	onAfterShow: function(evt) {
+		// 		this.loadData();
+	},
+	// 获取二级页面数据
+	_loadData01 : function () {
+	    
 	    var mParameters = {};
 	    date = new Array();
 		data1 = new Array();//发电收入
@@ -73,9 +80,6 @@ sap.ui.controller("com.zhenergy.pcbi.view.MainBusiness", {
 		}, this);
 	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_02_V04/?$filter=(BNAME eq '" + usrid + "')", mParameters);
 	},
-	onAfterShow: function(evt) {
-		// 		this.loadData();
-	},
 	loadChart: function() {
 	    require(
                 [
@@ -114,6 +118,12 @@ sap.ui.controller("com.zhenergy.pcbi.view.MainBusiness", {
 
 	        //折线通用
         function drawline(e, date, data1, title, color, id, value) {
+            
+            if (skinName == '夜间模式') {
+    	        color="green";
+    	    } else {
+    	        color="#FF4F4F";
+    	    }
             mychart = e.init(document.getElementById(id));
             // var w = document.getElementById(id).clientWidth;
             // var h = document.getElementById(id).clientHeight;
@@ -291,8 +301,16 @@ sap.ui.controller("com.zhenergy.pcbi.view.MainBusiness", {
 		}
 		var sr_prec = incomeTongbi
 		var sr_color="green";
+		var sr_colorR01 = '';
+		if (skinName == '夜间模式') {
+	        sr_colorR01="green";
+	    } else {
+	        sr_colorR01="white";
+	    }
 		if(sr_prec>0){
-		    sr_color="green";
+            sr_color = "green";
+		} else {
+		    sr_color = "red";
 		}
 
 		//成本数据
@@ -302,14 +320,23 @@ sap.ui.controller("com.zhenergy.pcbi.view.MainBusiness", {
 		}
 		var cb_prec= costTongbi;
 		var cb_color="green";
+		var cb_colorR01 = '';
+	    if (skinName == '夜间模式') {
+	        cb_colorR01="green";
+	    } else {
+	        cb_colorR01="white";
+	    }
 		if(cb_prec>0){
-		    cb_color="green";
+		    cb_color = "green";
+		} else {
+		    cb_color = "red";
 		}
 		
 		// 发电收入
 		var powerIncome = data1[data1.length - 1];
 		// 供热收入
 		var heatIncome = data2[data2.length - 1];
+		
 		// 劳务收入
 		var laborIncome = data3[data3.length - 1];
 		// 其他收入
@@ -318,13 +345,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.MainBusiness", {
 		var sr_innerhtml1=
 		'<div class="MB-main_content_title_1"><span>发电收入<span style="font-size:15px;">(百万元)</span></span>'+
 		'<span style="margin-left:105px;">供热收入<span style="font-size:15px;">(百万元)</span></span></div>'+
-		'<div class="MB-main_content_sz" style="font-size:30px;font-weight:bold;color:'+sr_color+'"><span style="width:50%;height:100%;float:left;text-align:center;">'+ powerIncome +'</span><span style="width:50%;height:100%;float:left;text-align:center;font-weight:bold;color:'+cb_color+'">'+heatIncome+'</span></div>'
+		'<div class="MB-main_content_sz" style="font-size:30px;font-weight:bold;color:'+sr_colorR01+'"><span style="width:50%;height:100%;float:left;text-align:center;">'+ powerIncome +'</span><span style="width:50%;height:100%;float:left;text-align:center;font-weight:bold;color:'+cb_colorR01+'">'+heatIncome+'</span></div>'
 		+'<div class="MB-main_content_sz"><span style="width:50%;height:100%;float:left;text-align:center;">同比'+sr_prec+'%<img src="img/arrow-'+sr_color+'2.png" class="content_img"/></span><span style="width:50%;height:100%;text-align:center;">同比'+cb_prec+'%<img src="img/arrow-'+cb_color+'2.png" class="content_img"/></sapn></div>';
 
 		var sr_innerhtml2=
 		'<div class="MB-main_content_title_2"><span>劳务收入<span style="font-size:15px;">(百万元)</span></span>'+
 		'<span style="margin-left:105px;">其他收入<span style="font-size:15px;">(百万元)</span></span></div>'+
-		'<div class="MB-main_content_sz" style="font-size:30px;font-weight:bold;color:'+sr_color+'"><span style="width:50%;height:100%;float:left;text-align:center;">'+ laborIncome +'</span><span style="width:50%;height:100%;float:left;text-align:center;font-weight:bold;color:'+cb_color+'">'+othersIncome+'</span></div>'
+		'<div class="MB-main_content_sz" style="font-size:30px;font-weight:bold;color:'+sr_colorR01+'"><span style="width:50%;height:100%;float:left;text-align:center;">'+ laborIncome +'</span><span style="width:50%;height:100%;float:left;text-align:center;font-weight:bold;color:'+cb_colorR01+'">'+othersIncome+'</span></div>'
 		+'<div class="MB-main_content_sz"><span style="width:50%;height:100%;float:left;text-align:center;">同比'+sr_prec+'%<img src="img/arrow-'+sr_color+'2.png" class="content_img"/></span><span style="width:50%;height:100%;text-align:center;text-align:right;">同比'+cb_prec+'%<img src="img/arrow-'+cb_color+'2.png" class="content_img"/></sapn></div>';
 
 		//主营业收入数据
@@ -336,12 +363,19 @@ sap.ui.controller("com.zhenergy.pcbi.view.MainBusiness", {
 		}
 		var rlr_prec = dailyProfitTongbi;
 		var rlr_color="red";
+		var rlr_colorR01 = "";
+	    if (skinName == '夜间模式') {
+	        rlr_colorR01="green";
+	    } else {
+	        rlr_colorR01="white";
+	    }
 		if(rlr_data>0){
-		    rlr_color="green";
+            rlr_color = "green";
+		} else {
+		    rlr_color = "red";
 		}
-		var rlr_innerhtml='<div class="MB-main_content_title">主营业务收入<span style="font-size:20px;">(百万元)</span></div><div class="MB-main_content_sz" style="font-size:60px;font-weight:bold;color:'+rlr_color+'">'+mainBusinessIncome+'</div><div class="MB-main_content_sz">同比'+rlr_prec+'%<img src="img/arrow-'+rlr_color+'2.png" class="content_img"/></div>';
-
-                        
+		var rlr_innerhtml='<div class="MB-main_content_title">主营业务收入<span style="font-size:20px;">(百万元)</span></div><div class="MB-main_content_sz" style="font-size:60px;font-weight:bold;color:'+rlr_colorR01+'">'+mainBusinessIncome+'</div><div class="MB-main_content_sz">同比'+rlr_prec+'%<img src="img/arrow-'+rlr_color+'2.png" class="content_img"/></div>';
+               
 		document.getElementById('srMB1').innerHTML = sr_innerhtml1;
 		document.getElementById('srMB2').innerHTML = sr_innerhtml2;
 		document.getElementById('rlrMB').innerHTML=rlr_innerhtml;

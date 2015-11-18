@@ -42,6 +42,9 @@ function changeSkinCss(pageName) {
     if (pageName == 'powerIncome') {
         powerIncome.getController()._loadData01(); 
     }
+    if (pageName == 'mainBusiness') {
+        mainBusiness.getController()._loadData01(); 
+    }
     if (pageName == 'heatIncome') {
         heatIncome.getController()._loadData01(); 
     }
