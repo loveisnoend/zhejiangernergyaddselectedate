@@ -14,8 +14,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 			}, this)
 		});
 	},
-    onBeforeShow: function(evt) {
-        
+	// 获取二级页面数据
+	_loadData01 : function () {
 	    var mParameters = {};
 	    date = new Array();
 		data1 = new Array();//上网电量
@@ -26,39 +26,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 		var dateTypeName = '';
 		mParameters['async'] = true;
 		mParameters['success'] = jQuery.proxy(function(sRes) {
-			//设置数据
-// 			for (var i in sRes.results) {
-// 				if (sRes.results[i].KPI_TYPE == '上网电量'&&sRes.results[i].KPI_DESC==sRes.results[0].KPI_DESC){ 
-// 				    date.push(sRes.results[i].KPI_DATE);
-// 				}
-// 				if (dateTypeName == '' || sRes.results[i].KPI_DESC == '集团') {
-// 			        dateTypeName = sRes.results[i].KPI_DESC;
-// 			    }
-// 			}
-// 			for(var j in date){
-// 			    var data1temp=0;
-// 			    var data2temp=0;
-// 			    var data3temp=0;
-// 			    var data4temp=0;
-//     			for (var i in sRes.results) {
-//     				if (sRes.results[i].KPI_TYPE == '上网电量'&&sRes.results[i].KPI_DESC == dateTypeName&&sRes.results[i].KPI_DATE==date[j]){ 
-//     				    data1temp=data1temp+parseFloat(sRes.results[i].KPI_VALUE);    
-//     				}
-//     				if (sRes.results[i].KPI_TYPE == '平均上网电价'&&sRes.results[i].KPI_DESC == dateTypeName&&sRes.results[i].KPI_DATE==date[j]){
-//     				    data2temp=data2temp+parseFloat(sRes.results[i].KPI_VALUE);    
-//     				}
-//     				if (sRes.results[i].KPI_TYPE == '燃料成本'&&sRes.results[i].KPI_DESC == dateTypeName&&sRes.results[i].KPI_DATE==date[j]){ 
-//     				    data3temp=data3temp+parseFloat(sRes.results[i].KPI_VALUE);    
-//     				}
-//     				if (sRes.results[i].KPI_TYPE == '日利润-其他成本'&&sRes.results[i].KPI_DESC == dateTypeName&&sRes.results[i].KPI_DATE==date[j]){ 
-//     				    data4temp=data4temp+parseFloat(sRes.results[i].KPI_VALUE);    
-//     				}
-//     			}
-//     			data1.push(data1temp);
-//     			data2.push(data2temp);
-//     			data3.push(data3temp);
-//     			data4.push(data4temp);
-// 			}
+		    
 			// 收入同比
 			var incomeTongbi;
 			// 成本同比
@@ -101,6 +69,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 		}, this);
 	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_02_V03/?$filter=(BNAME eq '" + usrid + "')", mParameters);
 	},
+    onBeforeShow: function(evt) {
+        this._loadData01();
+    },
 	onAfterShow: function(evt) {
 		// 		this.loadData();
 	},

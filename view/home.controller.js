@@ -77,6 +77,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 	},
 	// 加载日利润值
 	_loadData_left : function(){
+
 	    var mParameters = {};
 		mParameters['async'] = true;
 		mParameters['success'] = jQuery.proxy(function(sRes) {
@@ -135,7 +136,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 	        $('#dateProfitDate').html(daytime01 + "年" + daytime02 + "月" + daytime03 + "日");
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
-			alert("Get Data Error");
+			sap.m.MessageToast.show("网络连接失败，请重试", {
+				offset: '0 -110'
+			});
 		}, this);
 	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_01_V03?$filter=(BNAME eq '" +usrid+ "')", mParameters);
 	},
@@ -284,7 +287,6 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 			}, this)
 		});
 	},
-	
 /**
 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
 * (NOT before the first rendering! onInit() is used for that one!).
