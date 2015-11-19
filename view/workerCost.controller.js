@@ -444,7 +444,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCost", {
                         ],
         				yAxis: [
         					{
-        						name: '单位:人',
+        						name: '单位:元',
         						type: 'value',
         						axisLine: {
         							show: true
