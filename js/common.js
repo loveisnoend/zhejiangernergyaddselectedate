@@ -60,6 +60,15 @@ function changeSkinCss(pageName) {
     if (pageName == 'workerCount') {
         workerCount.getController()._loadData01(); 
     }
+    if (pageName == 'workerCountPerHour') {
+        workerCountPerHour.getController()._loadData01(); 
+    }
+    if (pageName == 'workerCost') {
+        workerCost.getController()._loadData01(); 
+    }
+    if (pageName == 'workerCostPerHour') {
+        workerCostPerHour.getController()._loadData01(); 
+    }
 }
 // 个人设定，用户名，肤色JS CSS 控制
 function userHoverOn(classNameId) {

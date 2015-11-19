@@ -158,6 +158,18 @@
             function toWokerCountPage() {
                 app.to("idWorkerCount","show");
             }
+            // 单位万千瓦时员工数
+            function toWokerCountPerHourPage() {
+                app.to("idWorkerCountPerHour","show");
+            }
+            // 单位万千瓦人工成本
+            function toWokerCostPage() {
+                app.to("idWorkerCost","show");
+            }
+            // 单位万千瓦时人工成本
+            function toWokerCostPerHourPage() {
+                app.to("idWorkerCostPerHour","show");
+            }
 		</script>
 		<script>
 		    var usrid = "ERPTEST1";
@@ -184,6 +196,12 @@
 				var averBusinessIncome;
 				// 单位万千瓦员工数
 				var workerCount;
+				// 单位万千瓦时员工数
+				var workerCountPerHour;
+				// 单位万千瓦人工成本
+				var workerCost;
+				// 单位万千瓦时人工成本
+				var workerCostPerHour;
 				
 				var slidePageNum = 0;
 				var app = new sap.m.App({initialPage:"idhome"});
@@ -355,6 +373,27 @@
             			type: sap.ui.core.mvc.ViewType.HTML
             		 });
             		 app.addPage(workerCount);
+            		 // 单位万千瓦时员工数
+            		 workerCountPerHour = sap.ui.view({
+            			id: "idWorkerCountPerHour",
+            			viewName: "com.zhenergy.pcbi.view.workerCountPerHour",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(workerCountPerHour);
+            		 // 单位万千瓦员人工成本
+            		 workerCost = sap.ui.view({
+            			id: "idWorkerCost",
+            			viewName: "com.zhenergy.pcbi.view.workerCost",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(workerCost);
+            		 // 单位万千瓦时员人工成本
+            		 workerCostPerHour = sap.ui.view({
+            			id: "idWorkerCostPerHour",
+            			viewName: "com.zhenergy.pcbi.view.workerCostPerHour",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(workerCostPerHour);
 					 app.placeAt("content");
 				}
 				// if(window.cordova && appContext && !window.sap_webide_companion) {

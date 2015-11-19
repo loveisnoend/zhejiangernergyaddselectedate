@@ -444,7 +444,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.averBusinessIncome", {
                         ],
         				yAxis: [
         					{
-        						name: '单位:百万元',
+        						name: '单位:万元',
         						type: 'value',
         						axisLine: {
         							show: true
