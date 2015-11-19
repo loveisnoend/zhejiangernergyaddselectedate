@@ -107,8 +107,8 @@
 		        slidePageNum = 0;
                 app.to("idhome02","show");
             }
-            function doit2() {
-                slidePageNum = 3;
+            function doit2(slide02PageNumParam) {
+                slide02PageNum = slide02PageNumParam;
                 app.to("idhome","show");
             }
             function doit3() {
@@ -131,8 +131,8 @@
                 // slidePageNum = 6;
                 app.to("idhome07","show");
             }
-            function doit8() {
-                // slidePageNum = 7;
+            function doit8(slide08PageNumParam) {
+                slide08PageNum = slide08PageNumParam;
                 app.to("idhome08","show");
             } 
             function dailyProfit(){
@@ -147,6 +147,7 @@
             }
             // 主营业务页面
             function toMainBusinessPage() {
+                slide08PageNum = 0;
                 app.to("idMainBusiness","show");
             }
             // 人均营业收入
@@ -186,6 +187,10 @@
 				
 				var slidePageNum = 0;
 				var app = new sap.m.App({initialPage:"idhome"});
+				
+				// 每个tab块进入时定位slide
+				var slide08PageNum = 0;
+				var slide02PageNum = 0;
 				
 				// var sServiceUrl = "/sap/opu/odata/sap/ZHANA003_SRV/";
 				var sServiceUrl = "/sap/opu/odata/sap/ZBIMS_SRV";

@@ -9,7 +9,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
                 ]
                 );
 		var mySwiper = new Swiper('.swiper-container', {
-			initialSlide: 0,
+			initialSlide: slide08PageNum,
 			speed: 50,
 			loop: false,
 			freeMode: false,
@@ -58,6 +58,33 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
 			// 单位万千瓦员工数值
 			var workerCountsPerKW=0;
 			
+			// 单位万千瓦时员工数同比值
+            var workerCountsPerKWHourTongBi = '';
+            // 单位万千瓦时员工数环比值
+            var workerCountsPerKWHourHuanBi = '';
+            // 统计日期
+            var daytimeWorkerCountsPerKWHour = null;
+			// 单位万千瓦时员工数值
+			var workerCountsPerKWHour=0;
+			
+			// 单位万千瓦人工成本同比值
+            var workerCostPerKWTongBi = '';
+            // 单位万千瓦人工成本环比值
+            var workerCostPerKWHuanBi = '';
+            // 统计日期
+            var daytimeWorkerCostPerKW = null;
+			// 单位万千瓦人工成本值
+			var workerCostPerKW=0;
+			
+			// 单位万千瓦时人工成本同比值
+            var workerCostPerKWHourTongBi = '';
+            // 单位万千瓦时人工成本环比值
+            var workerCostPerKWHourHuanBi = '';
+            // 统计日期
+            var daytimeWorkerCostPerKWHour = null;
+			// 单位万千瓦时人工成本值
+			var workerCostPerKWHour=0;
+			
 			for (var i in sRes.results) {
 			    // 人均营业收入
 				if (sRes.results[i].KPI_TYPE == '人均营业收入' && sRes.results[i].KPI_DESC == '集团'){  
@@ -81,7 +108,42 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
 				if (sRes.results[i].KPI_TYPE == '单位万千瓦员工数同比' && sRes.results[i].KPI_DESC == '集团'){  
 				    workerCountsPerKWTongBi = sRes.results[i].KPI_VALUE*100;
 				}
+				// 单位万千瓦时员工人数
+				if (sRes.results[i].KPI_TYPE == '单位万千瓦时员工数' && sRes.results[i].KPI_DESC == '集团'){  
+				    workerCountsPerKWHour = workerCountsPerKWHour+parseFloat(sRes.results[i].KPI_VALUE);
+				    daytimeNO2 = sRes.results[i].KPI_DATE;
+				}
+				if (sRes.results[i].KPI_TYPE == '单位万千瓦时员工数环比' && sRes.results[i].KPI_DESC == '集团'){  
+				    workerCountsPerKWHourHuanBi = sRes.results[i].KPI_VALUE*100;
+				}
+				if (sRes.results[i].KPI_TYPE == '单位万千瓦时员工数同比' && sRes.results[i].KPI_DESC == '集团'){  
+				    workerCountsPerKWHourTongBi = sRes.results[i].KPI_VALUE*100;
+				}
+			    // 单位万千瓦人工成本
+				if (sRes.results[i].KPI_TYPE == '单位万千瓦人工成本' && sRes.results[i].KPI_DESC == '集团'){  
+				    workerCostPerKW = workerCostPerKW+parseFloat(sRes.results[i].KPI_VALUE);
+				    daytimeNO3 = sRes.results[i].KPI_DATE;
+				}
+				if (sRes.results[i].KPI_TYPE == '单位万千瓦人工成本环比' && sRes.results[i].KPI_DESC == '集团'){  
+				    workerCostPerKWHuanBi = sRes.results[i].KPI_VALUE*100;
+				}
+				if (sRes.results[i].KPI_TYPE == '单位万千瓦人工成本同比' && sRes.results[i].KPI_DESC == '集团'){  
+				    workerCostPerKWTongBi = sRes.results[i].KPI_VALUE*100;
+				} 
+				// 单位万千瓦时人工成本
+				if (sRes.results[i].KPI_TYPE == '单位万千瓦时人工成本' && sRes.results[i].KPI_DESC == '集团'){  
+				    workerCostPerKWHour = workerCostPerKWHour+parseFloat(sRes.results[i].KPI_VALUE);
+				    daytimeNO4 = sRes.results[i].KPI_DATE;
+				}
+				if (sRes.results[i].KPI_TYPE == '单位万千瓦时人工成本环比' && sRes.results[i].KPI_DESC == '集团'){  
+				    workerCostPerKWHourHuanBi = sRes.results[i].KPI_VALUE*100;
+				}
+				if (sRes.results[i].KPI_TYPE == '单位万千瓦时人工成本同比' && sRes.results[i].KPI_DESC == '集团'){  
+				    workerCostPerKWHourTongBi = sRes.results[i].KPI_VALUE*100;
+				}
 			}
+			
+			// 人均营业收入
 			var rlr_color="red";
     		if(AverBusinessIncomeValue>0){
     		    rlr_color="green";
@@ -97,14 +159,15 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
 //             } else {
 //                 $("#huanbiAverBusinessIncomeImg").attr("src","img/arrow-red2.png");
 //             }
-//             if (AverBusinessIncomeTongBi != undefined) {
-//                 $('#tongbiAverBusinessIncome').html(AverBusinessIncomeTongBi);    
-//             }
-//             if (AverBusinessIncomeTongBi > 0) {
-//                 $("#tongbiAverBusinessIncomeImg").attr("src","img/arrow-green2.png");
-//             } else {
-//                 $("#tongbiAverBusinessIncomeImg").attr("src","img/arrow-red2.png");
-//             }
+            if (typeof(AverBusinessIncomeTongBi) !== "undefined") {
+                $('#tongbiAverBusinessIncome').html(AverBusinessIncomeTongBi);    
+            }
+            if (AverBusinessIncomeTongBi > 0) {
+                $("#tongbiAverBusinessIncomeImg").attr("src","img/arrow-green2.png");
+            } else {
+                $("#tongbiAverBusinessIncomeImg").attr("src","img/arrow-red2.png");
+            }
+            
             var daytime01;
     	    var daytime02;
     	    var daytime03;
@@ -116,7 +179,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
             // 人均营业收入日期
 	        $('#averBusinessIncomeDate').html(daytime01 + "年" + daytime02 + "月");//  + daytime03 + "日"
 	        
-	        // 总资产
+	        // 单位千瓦员工人数
 			var workerCountsPerKW_color="red";
     		if(workerCountsPerKW>0){
     		    workerCountsPerKW_color="green";
@@ -141,8 +204,92 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
     	       daytime02NO1 = daytimeNO1.substring(4,6);
     	       daytime03NO1 = daytimeNO1.substring(6,8); 
     	    }
-            // 总资产统计日期
+            // 单位千瓦员工人数统计日期
 	        $('#workerCountsPerKWDate').html(daytime01NO1 + "年" + daytime02NO1 + "月");//  + daytime03NO1 + "日"
+	        
+	        // 单位千瓦时员工人数
+			var workerCountsPerKWHour_color="red";
+    		if(workerCountsPerKWHour>0){
+    		    workerCountsPerKWHour_color="green";
+    		}
+    		$('#workerCountsPerKWHour').css('color',workerCountsPerKWHour_color);
+    		$('#workerCountsPerKWHour').css('font-size','65px');
+			$('#workerCountsPerKWHour').html(workerCountsPerKWHour);
+			// 同比值
+            if (workerCountsPerKWHourTongBi != undefined) {
+                $('#tongbiWorkerCountsPerKWHour').html(workerCountsPerKWHourTongBi);    
+            }
+            if (workerCountsPerKWHourTongBi > 0) {
+                $("#tongbiWorkerCountsPerKWHourImg").attr("src","img/arrow-green2.png");
+            } else {
+                $("#tongbiWorkerCountsPerKWHourImg").attr("src","img/arrow-red2.png");
+            }
+            var daytime01NO2;
+    	    var daytime02NO2;
+    	    var daytime03NO2;
+    	    if (daytimeNO2 != null) {
+    	       daytime01NO2 = daytimeNO2.substring(0,4);
+    	       daytime02NO2 = daytimeNO2.substring(4,6);
+    	       daytime03NO2 = daytimeNO2.substring(6,8); 
+    	    }
+            // 单位千瓦时员工人数统计日期
+	        $('#workerCountsPerKWHourDate').html(daytime01NO2 + "年" + daytime02NO2 + "月");//  + daytime03NO2 + "日"
+	        
+	        // 单位万千瓦人工成本
+			var workerCostPerKW_color="red";
+    		if(workerCostPerKW>0){
+    		    workerCostPerKW_color="green";
+    		}
+    		$('#workerCostPerKW').css('color',workerCostPerKW_color);
+    		$('#workerCostPerKW').css('font-size','65px');
+			$('#workerCostPerKW').html(workerCostPerKW);
+			// 同比值
+            if (workerCostPerKWTongBi != undefined) {
+                $('#tongbiworkerCostPerKW').html(workerCostPerKWTongBi);    
+            }
+            if (workerCostPerKWTongBi > 0) {
+                $("#tongbiworkerCostPerKWImg").attr("src","img/arrow-green2.png");
+            } else {
+                $("#tongbiworkerCostPerKWImg").attr("src","img/arrow-red2.png");
+            }
+            var daytime01NO3;
+    	    var daytime02NO3;
+    	    var daytime03NO3;
+    	    if (daytimeNO3 != null) {
+    	       daytime01NO3 = daytimeNO3.substring(0,4);
+    	       daytime02NO3 = daytimeNO3.substring(4,6);
+    	       daytime03NO3 = daytimeNO3.substring(6,8); 
+    	    }
+            // 单位万千瓦人工成本统计日期
+	        $('#workerCostPerKWDate').html(daytime01NO3 + "年" + daytime02NO3 + "月");//  + daytime03NO3 + "日"
+	        
+	        // 单位万千瓦时人工成本
+			var workerCostPerKWHour_color="red";
+    		if(workerCostPerKWHour>0){
+    		    workerCostPerKWHour_color="green";
+    		}
+    		$('#workerCostPerKWHour').css('color',workerCostPerKWHour_color);
+    		$('#workerCostPerKWHour').css('font-size','65px');
+			$('#workerCostPerKWHour').html(workerCostPerKWHour);
+			// 同比值
+            if (workerCostPerKWHourTongBi != undefined) {
+                $('#tongbiworkerCostPerKWHour').html(workerCostPerKWHourTongBi);    
+            }
+            if (workerCostPerKWHourTongBi > 0) {
+                $("#tongbiworkerCostPerKWHourImg").attr("src","img/arrow-green2.png");
+            } else {
+                $("#tongbiworkerCostPerKWHourImg").attr("src","img/arrow-red2.png");
+            }
+            var daytime01NO4;
+    	    var daytime02NO4;
+    	    var daytime03NO4;
+    	    if (daytimeNO4 != null) {
+    	       daytime01NO4 = daytimeNO4.substring(0,4);
+    	       daytime02NO4 = daytimeNO4.substring(4,6);
+    	       daytime03NO4 = daytimeNO4.substring(6,8); 
+    	    }
+            // 单位万千瓦时人工成本统计日期
+	        $('#workerCostPerKWHourDate').html(daytime01NO4 + "年" + daytime02NO4 + "月");//  + daytime03NO4 + "日"
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			alert("Get Data Error");
