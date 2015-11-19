@@ -76,6 +76,7 @@
 		        mychart.dispose();
 		    }
 		    function toDetailPage(detailName){
+		        // 日利润
 		        if (detailName == "燃料成本") {
 		            app.to("idPowerPlantMap", "show");
 		        }
@@ -85,6 +86,7 @@
 		        if (detailName == "其他成本") {
 		            app.to("idOthersCost", "show");
 		        }
+		        // 主营业务
 		        if (detailName == "发电收入") {
 		            app.to("idPowerIncome", "show");
 		        }
@@ -147,6 +149,14 @@
             function toMainBusinessPage() {
                 app.to("idMainBusiness","show");
             }
+            // 人均营业收入
+            function toAverBusinessPage() {
+                app.to("idAverBusinessIncome","show");
+            }
+            // 单位万千瓦员工数
+            function toWokerCountPage() {
+                app.to("idWorkerCount","show");
+            }
 		</script>
 		<script>
 		    var usrid = "ERPTEST1";
@@ -155,17 +165,25 @@
 		</script>
 		<script>
 				sap.ui.localResources("view");
+				// 日利润
 				var powerPlantMap;
 				var internetPowerVolume;
 				var isInternetPowerVOlumeLoad = false;
 				var internetVolume;
 				var othersCost;
+				// 帮助页面
 				var helpPage;
+				// 主营业务
 				var mainBusiness;
 				var powerIncome;
 				var heatIncome;
 				var labourIncome;
 				var othersIncome;
+				// 人均营业收入
+				var averBusinessIncome;
+				// 单位万千瓦员工数
+				var workerCount;
+				
 				var slidePageNum = 0;
 				var app = new sap.m.App({initialPage:"idhome"});
 				
@@ -318,7 +336,20 @@
             			type: sap.ui.core.mvc.ViewType.HTML
             		 });
             		 app.addPage(othersIncome);
-            		 
+            		 // 人均营业收入
+            		 averBusinessIncome = sap.ui.view({
+            			id: "idAverBusinessIncome",
+            			viewName: "com.zhenergy.pcbi.view.averBusinessIncome",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(averBusinessIncome);
+            		 // 单位万千瓦员工数
+            		 workerCount = sap.ui.view({
+            			id: "idWorkerCount",
+            			viewName: "com.zhenergy.pcbi.view.workerCount",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(workerCount);
 					 app.placeAt("content");
 				}
 				// if(window.cordova && appContext && !window.sap_webide_companion) {
