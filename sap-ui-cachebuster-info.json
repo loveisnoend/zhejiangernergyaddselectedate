@@ -116,8 +116,8 @@
   "img/userSetting-icon.png": "1442886826244",
   "img/userSkin-icon.png": "1442888899103",
   "img/write.png": "1442561725713",
-  "index.html": "1447990089481",
-  "js/common.js": "1447990201651",
+  "index.html": "1448002870437",
+  "js/common.js": "1448002518792",
   "js/internetPowerVolume.js": "1443529744234",
   "js/internetVolume.js": "1444704375147",
   "js/jquery-1.10.1.min.js": "1442561725413",
@@ -135,8 +135,8 @@
   "view/home04.view.html": "1447055199242",
   "view/home05.controller.js": "1446534156536",
   "view/home05.view.html": "1446536722571",
-  "view/home06.controller.js": "1446625503999",
-  "view/home06.view.html": "1446624075077",
+  "view/home06.controller.js": "1448001730368",
+  "view/home06.view.html": "1448002450306",
   "view/home07.controller.js": "1442628479387",
   "view/home07.view.html": "1446536606129",
   "view/home08.controller.js": "1447919938578",
@@ -206,5 +206,9 @@
   "view/pureProperty.controller.js": "1447989694390",
   "view/pureProperty.view.html": "1447989613962",
   "view/sumProperty.controller.js": "1447989982764",
-  "view/sumProperty.view.html": "1447990316286"
+  "view/sumProperty.view.html": "1447990316286",
+  "view/salesPercent.controller.js": "1448001798641",
+  "view/salesPercent.view.html": "1448001840035",
+  "view/propertyPercent.controller.js": "1448002199083",
+  "view/propertyPercent.view.html": "1448002550325"
 }

@@ -78,6 +78,12 @@ function changeSkinCss(pageName) {
     if (pageName == 'sumProperty') {
         sumProperty.getController()._loadData01(); 
     }
+    if (pageName == 'salesPercent') {
+        salesPercent.getController()._loadData01(); 
+    }
+    if (pageName == 'propertyPercent') {
+        propertyPercent.getController()._loadData01(); 
+    }
 }
 // 个人设定，用户名，肤色JS CSS 控制
 function userHoverOn(classNameId) {
