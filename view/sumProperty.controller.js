@@ -1,4 +1,4 @@
-sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
+sap.ui.controller("com.zhenergy.pcbi.view.sumProperty", {
 
 /**
 * Called when a controller detail_01 instantiated and its View controls (if available) are already created.
@@ -17,8 +17,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
 	// eventment before show the page 
 	onAfterShow : function () {
 	    
-        document.getElementById('internetDetailWorkerCountPerHour').style.display = "";
-        document.getElementById('rlcb_detailWorkerCountPerHour').style.display = "none";
+        document.getElementById('internetDetailSumProperty').style.display = "";
+        document.getElementById('rlcb_detailSumProperty').style.display = "none";
         // this.loadChart();
         this._loadData01();
     	// 设定头部跑马灯信息 common.js
@@ -43,7 +43,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
 // 		draw);
 		
 // 		function draw(e){
-// 		    document.getElementById('caloriWorkerCountPerHourPlantNameWorkerCountPerHour').innerHTML = document.getElementById('powerPlantMainDetailTitleWorkerCountPerHour').innerHTML;
+// 		    document.getElementById('caloriSumPropertyPlantNameSumProperty').innerHTML = document.getElementById('powerPlantMainDetailTitleSumProperty').innerHTML;
 // 		    var mychart = e.init(document.getElementById(divId));
 // 		    var option = {
 // 		        title:{
@@ -153,58 +153,58 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
 	    
 // 	},
 	
-	// 获取集团指标-单位万千瓦时员工数 SCREEN_FZBZ_02_V02
-// 	loadBase_SupplyWorkerCountPerHourIncome : function (chartDivId, priceChartName) {
+	// 获取集团指标-总资产 SCREEN_ZCQK_02_V02
+	loadBase_SupplySumPropertyIncome : function (chartDivId, priceChartName) {
         
-//         // 单位万千瓦时员工数指标
-//         // 单位万千瓦时员工数
-//         var KPI_LWS_V = new Array();
+        // 总资产指标
+        // 总资产
+        var KPI_ZZC_V = new Array();
         
-//         // 单位万千瓦时员工数同比
-//         var KPI_LWS_UP = new Array();
+        // 总资产同比
+        var KPI_ZZC_UP = new Array();
         
-//         var dataStatisticDate = '';
-// 	    var mParameters = {};
-// 		mParameters['async'] = true;
-// 		mParameters['success'] = jQuery.proxy(function(sRes) {
+        var dataStatisticDate = '';
+	    var mParameters = {};
+		mParameters['async'] = true;
+		mParameters['success'] = jQuery.proxy(function(sRes) {
 		    
-// 			// 各个电厂
-// 			var xData = new Array();
-// 			for (var i in sRes.results) {
-// 			    // 单位万千瓦时员工数收入同比
-// 				if (sRes.results[i].KPI_TYPE == '单位万千瓦时员工数_同比'){ 
-//                     KPI_LWS_UP.push(sRes.results[i].KPI_VALUE);
-//                     xData.push(sRes.results[i].KPI_DESC);
-// 				}
-// 				// 单位万千瓦时员工数收入
-// 				if (sRes.results[i].KPI_TYPE == '单位万千瓦时员工数'){ 
-//                     KPI_LWS_V.push(sRes.results[i].KPI_VALUE);
-// 				}
-// 				// 收入统计日期
-// 				if (dataStatisticDate == '') {
-// 				    dataStatisticDate = sRes.results[i].KPI_DATE.substring(0,4)+'.'+sRes.results[i].KPI_DATE.substring(4,6);//+"."+sRes.results[i].KPI_DATE.substring(6,8);
-// 				}
-// 			}
-// 			// 统计于日期
-// 			$('#workerCountPerHourIncomeStatisticDate').html(dataStatisticDate);
-// 			if (priceChartName == '单位万千瓦时员工数') {
-// 			    this.loadBaseDataDetail_SupplyWorkerCountPerHourIncome(chartDivId, priceChartName,xData,KPI_LWS_V,KPI_LWS_UP);
-// 			}
-// 		}, this);
-// 		mParameters['error'] = jQuery.proxy(function(eRes) {
-// 			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});
-// 		}, this);
-// 	    sap.ui.getCore().getModel().read("SCREEN_FZBZ_02_V01/?$filter=(BNAME eq '" + usrid + "')", mParameters);
-// 	},
-	// 获取个电厂指标-单位万千瓦时员工数 SCREEN_FZBZ_02_V02
-	loadEachPlant_SupplyWorkerCountPerHourIncome : function (chartDivId, priceChartName, powerPlantName) {
+			// 各个电厂
+			var xData = new Array();
+			for (var i in sRes.results) {
+			    // 总资产同比
+				if (sRes.results[i].KPI_TYPE == '总资产_同比'){ 
+                    KPI_ZZC_UP.push(sRes.results[i].KPI_VALUE);
+				}
+				// 总资产
+				if (sRes.results[i].KPI_TYPE == '总资产' && sRes.results[i].KPI_DATE == sRes.results[sRes.results.length-1].KPI_DATE){ 
+                    KPI_ZZC_V.push(sRes.results[i].KPI_VALUE);
+                    xData.push(sRes.results[i].KPI_DESC);
+				}
+				// 收入统计日期
+				if (dataStatisticDate == '') {
+				    dataStatisticDate = sRes.results[i].KPI_DATE.substring(0,4)+'.'+sRes.results[i].KPI_DATE.substring(4,6);//+"."+sRes.results[i].KPI_DATE.substring(6,8);
+				}
+			}
+			// 统计于日期
+			$('#sumPropertyIncomeStatisticDate').html(dataStatisticDate);
+			if (priceChartName == '总资产') {
+			    this.sumProperty(chartDivId, priceChartName,xData,KPI_ZZC_V,KPI_ZZC_UP);
+			}
+		}, this);
+		mParameters['error'] = jQuery.proxy(function(eRes) {
+			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});
+		}, this);
+	    sap.ui.getCore().getModel().read("SCREEN_ZCQK_02_V02/?$filter=(BNAME eq '" + usrid + "')", mParameters);
+	},
+	// 获取个电厂指标-总资产 SCREEN_ZCQK_02_V02
+	loadEachPlant_SupplySumPropertyIncome : function (chartDivId, priceChartName, powerPlantName) {
         
-        // 单位万千瓦时员工数指标
-        // 单位万千瓦时员工数
-        var KPI_DLR_V = new Array();
+        // 总资产指标
+        // 总资产
+        var KPI_ZZC_V = new Array();
         
-        // 单位万千瓦时员工数同比
-        var KPI_DLR_UP = new Array();
+        // 总资产同比
+        var KPI_ZZC_UP = new Array();
         
         var dataStatisticDate = '';
 	    var mParameters = {};
@@ -214,13 +214,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
 			// 各个电厂月份指标
 			var xData = new Array();
 			for (var i in sRes.results) {
-			    // 单位万千瓦时员工数收入同比
-				if (sRes.results[i].KPI_TYPE == '单位万千瓦时员工数_同比'){ 
-                    KPI_DLR_UP.push(sRes.results[i].KPI_VALUE);
+			    // 总资产同比
+				if (sRes.results[i].KPI_TYPE == '总资产_同比'){ 
+                    KPI_ZZC_UP.push(sRes.results[i].KPI_VALUE);
 				}
-				// 单位万千瓦时员工数收入
-				if (sRes.results[i].KPI_TYPE == '单位万千瓦时员工数' && sRes.results[i].KPI_DESC == powerPlantName){ 
-                    KPI_DLR_V.push(sRes.results[i].KPI_VALUE);
+				// 总资产
+				if (sRes.results[i].KPI_TYPE == '总资产' && sRes.results[i].KPI_DESC == powerPlantName){ 
+                    KPI_ZZC_V.push(sRes.results[i].KPI_VALUE);
                     xData.push(sRes.results[i].KPI_DATE);
 				}
 				// 收入统计日期
@@ -229,155 +229,19 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
 				}
 			}
 			// 统计于日期
-			$('#workerCountPerHourIncomeStatisticDate').html(dataStatisticDate);
-			if (priceChartName == '单位万千瓦时员工数') {
-			    this.loadBaseDataDetail_WorkerCountPerHourIncome(chartDivId, priceChartName,xData,KPI_DLR_V,KPI_DLR_UP);
+			$('#sumPropertyIncomeStatisticDate').html(dataStatisticDate);
+			if (priceChartName == '总资产') {
+			    this.loadBaseDataDetail_SumPropertyIncome(chartDivId, priceChartName,xData,KPI_ZZC_V,KPI_ZZC_UP);
 			}
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});
 		}, this);
-	    sap.ui.getCore().getModel().read("SCREEN_FZBZ_02_V03/?$filter=(BNAME eq '" + usrid + "')", mParameters);
+	    sap.ui.getCore().getModel().read("SCREEN_ZCQK_02_V02/?$filter=(BNAME eq '" + usrid + "')", mParameters);
 	},
-	// 加载集团-单位万千瓦时员工数
-// 	loadBaseDataDetail_SupplyWorkerCountPerHourIncome: function(chartDivId, priceChartName,xData,KPI_RJS_V,KPI_RJS_UP) {
-//         	require(
-//             [
-//                 'echarts',
-//                 'echarts/chart/line',
-//                 'echarts/chart/bar'
-//             ],
-// 			draw);
-			
-// 			function draw(e){
-// 			    var mychart = e.init(document.getElementById(chartDivId));
-// 			    document.getElementById('profitNameWorkerCountPerHour').innerHTML = document.getElementById('powerPlantMainDetailTitleWorkerCountPerHour').innerHTML;
-//     			var color1 = '#2DE630';
-//     			var color2 = '#E52DE6';
-//     			var option = {
-//     			        title : {
-//                             text: priceChartName,
-//                             subtext: '',
-//                             x : 40,
-//                             y : 5,
-//                             textStyle:{
-//                                 fontSize : 15,
-//                                 color: 'green'
-//                             }
-//                         },
-//           				legend: {
-//                           	orient:'horizontal',
-//                           	x:'120',
-//                           	y:'35',
-//                           	textStyle:{
-//         						color:'white',
-//         						fontFamily:'微软雅黑'
-//         					},
-//                 			data:['单位万千瓦时员工数']
-//           			 	},
-//         			    tooltip:{
-//         			       trigger:'axis' ,
-//         			       backgroundColor:'rgb(234,234,234)',
-//         			       textStyle:{
-//         			           color:'rgb(0,0,0)',
-//         			           baseline:'top'
-//         			       },
-//         			       axisPointer:{
-//         			           type: 'none'
-//         			       }
-//         			    },
-//         				// color: [color1, color2],
-//         				grid: {
-//                             y1:100,
-//                             y2:100
-//         				},
-//         				xAxis: [
-//         					{
-//         						//show: false,
-//         						type: 'category',
-//         						axisLabel: {
-//         							textStyle: {
-//         								color: 'white'
-//         							},
-//         							formatter: '{value}'
-//         						},
-//         						data: xData
-//                             }
-//                         ],
-//         				yAxis: [
-//         					{
-//         						name: '单位:百万元',
-//         						type: 'value',
-//         						axisLine: {
-//         							show: true
-//         						},
-//         						axisLabel: {
-//         							textStyle: {
-//         								color: color1
-//         							},
-//         							formatter: '{value}'
-//         						},
-//         						// 		splitLine: {
-//         						// 			show: false
-//         						// 		},
-//         						splitLine: {
-//         							// 			show: false
-//         							lineStyle: {
-//         								color: 'rgba(64,64,64,0.5)'
-//         							}
-//         						},
-//         				// 		max: y1,
-//         				// 		min: y2,
-//         				// 		splitNumber: n
-//                             }
-//                         ],
-//         				series: [
-//                             {
-//                                 name:'单位万千瓦时员工数',
-//                                 type:'bar',
-//                                 symbol:'emptyCircle',
-//         						symbolSize:5,
-//         						itemStyle: {
-//         						    normal: {
-//         						        label : {
-//         						            show :true,
-//         						            position : 'top',
-//         						            textStyle:{
-//         						                color : 'white'
-//         						            }
-//         						        }
-//         						    }
-//         						},
-//                                 barWidth : 50,
-//                                 data:KPI_RJS_V
-//                             }
-//             //                 {
-//             //                     name:'单位万千瓦时员工数同比',
-//             //                     type:'line',
-//             //                     symbol:'emptyCircle',
-//         				// 		symbolSize:5,
-//         				// 		itemStyle: {
-//         				// 		    normal: {
-//         				// 		        label : {
-//         				// 		            show :true,
-//         				// 		            position : 'top',
-//         				// 		            textStyle:{
-//         				// 		                color : 'white'
-//         				// 		            }
-//         				// 		        }
-//         				// 		    }
-//         				// 		},
-//             //                     barWidth : 50,
-//             //                     data:KPI_LWS_UP
-//             //                 }
-//                         ]
-//         			};
-			    
-// 			    mychart.setOption(option);
-// 			}
-//     },
-    // 加载集团-单位万千瓦时员工数指标
-	loadBaseDataDetail_WorkerCountPerHourIncome: function(chartDivId, priceChartName,xData,KPI_DLR_V,KPI_DLR_UP) {
+	// 加载集团-总资产
+	sumProperty: function(chartDivId, priceChartName,xData,KPI_ZZC_V,KPI_ZZC_UP) {
+
         	require(
             [
                 'echarts',
@@ -388,7 +252,149 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
 			
 			function draw(e){
 			    var mychart = e.init(document.getElementById(chartDivId));
-			    document.getElementById('profitNameWorkerCountPerHour').innerHTML = document.getElementById('powerPlantMainDetailTitleWorkerCountPerHour').innerHTML;
+			    document.getElementById('profitNameSumProperty').innerHTML = document.getElementById('powerPlantMainDetailTitleSumProperty').innerHTML;
+    			var color1 = '#2DE630';
+    			var color2 = '#E52DE6';
+    			var option = {
+    			        title : {
+                            text: priceChartName,
+                            subtext: '',
+                            x : 40,
+                            y : 5,
+                            textStyle:{
+                                fontSize : 15,
+                                color: 'green'
+                            }
+                        },
+          				legend: {
+                          	orient:'horizontal',
+                          	show : false,
+                          	x:'120',
+                          	y:'35',
+                          	textStyle:{
+        						color:'white',
+        						fontFamily:'微软雅黑'
+        					},
+                			data:['总资产']
+          			 	},
+        			    tooltip:{
+        			       trigger:'axis' ,
+        			       backgroundColor:'rgb(234,234,234)',
+        			       textStyle:{
+        			           color:'rgb(0,0,0)',
+        			           baseline:'top'
+        			       },
+        			       axisPointer:{
+        			           type: 'none'
+        			       }
+        			    },
+        				// color: [color1, color2],
+        				grid: {
+                            y1:100,
+                            y2:100
+        				},
+        				xAxis: [
+        					{
+        						//show: false,
+        						type: 'category',
+        						axisLabel: {
+        							textStyle: {
+        								color: 'white'
+        							},
+        							formatter: '{value}'
+        						},
+        						data: xData
+                            }
+                        ],
+        				yAxis: [
+        					{
+        						name: '单位:千万元',
+        						type: 'value',
+        						axisLine: {
+        							show: true
+        						},
+        						axisLabel: {
+        							textStyle: {
+        								color: color1
+        							},
+        							formatter: '{value}'
+        						},
+        						// 		splitLine: {
+        						// 			show: false
+        						// 		},
+        						splitLine: {
+        							// 			show: false
+        							lineStyle: {
+        								color: 'rgba(64,64,64,0.5)'
+        							}
+        						},
+        				// 		max: y1,
+        				// 		min: y2,
+        				// 		splitNumber: n
+                            }
+                        ],
+        				series: [
+                            {
+                                name:'总资产',
+                                type:'bar',
+                                symbol:'emptyCircle',
+        						symbolSize:5,
+        						itemStyle: {
+        						    normal: {
+        						        label : {
+        						            show :true,
+        						            position : 'top',
+        						            textStyle:{
+        						                color : 'white'
+        						            }
+        						        }
+        						    }
+        						},
+                                barWidth : 50,
+                                data:KPI_ZZC_V
+                            }
+            //                 {
+            //                     name:'总资产同比',
+            //                     type:'line',
+            //                     symbol:'emptyCircle',
+        				// 		symbolSize:5,
+        				// 		itemStyle: {
+        				// 		    normal: {
+        				// 		        label : {
+        				// 		            show :true,
+        				// 		            position : 'top',
+        				// 		            textStyle:{
+        				// 		                color : 'white'
+        				// 		            }
+        				// 		        }
+        				// 		    }
+        				// 		},
+            //                     barWidth : 50,
+            //                     data:KPI_LWS_UP
+            //                 }
+                        ]
+        			};
+			    
+			    mychart.setOption(option);
+			    // 关闭加载事件
+			    if (busy) {
+        			busy.close();
+        		}
+			}
+    },
+    // 加载集团-总资产指标
+	loadBaseDataDetail_SumPropertyIncome: function(chartDivId, priceChartName,xData,KPI_ZZC_V,KPI_ZZC_UP) {
+        	require(
+            [
+                'echarts',
+                'echarts/chart/line',
+                'echarts/chart/bar'
+            ],
+			draw);
+			
+			function draw(e){
+			    var mychart = e.init(document.getElementById(chartDivId));
+			    document.getElementById('profitNameSumProperty').innerHTML = document.getElementById('powerPlantMainDetailTitleSumProperty').innerHTML;
     			var color1 = '#2DE630';
     			var color2 = '#E52DE6';
     			var option = {
@@ -444,7 +450,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
                         ],
         				yAxis: [
         					{
-        						name: '单位:人',
+        						name: '单位:千万元',
         						type: 'value',
         						axisLine: {
         							show: true
@@ -487,7 +493,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
         						    }
         						},
                                 barWidth : 50,
-                                data:KPI_DLR_V
+                                data:KPI_ZZC_V
                             }
                         ]
         			};
@@ -523,7 +529,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
 			draw);
 			
 			function draw(e) {
-			    drawWorkerCountPerHourDistribution(e);
+			    drawSumPropertyDistribution(e);
 			    
 			 //   drawpie01(e);
     // 			drawbar01(e);
@@ -532,14 +538,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
     // 			drawbar04(e);
 		    }
 		
-		    function drawWorkerCountPerHourDistribution(ec) {
+		    function drawSumPropertyDistribution(ec) {
 		        
 		    // event configure    
             var ecConfig = require('echarts/config');
     
 	///////////////////////////////////中国地图/////////////////////////////////////			
 				// 基于准备好的dom，初始化echarts图表
-				myChart3 = ec.init(document.getElementById('chinaMapWorkerCountPerHour')); 
+				myChart3 = ec.init(document.getElementById('chinaMapSumProperty')); 
 				option3 = {
 					tooltip : {
 						trigger: 'item',
@@ -564,11 +570,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
 				// 为echarts对象加载数据 
 				myChart3.setOption(option3); 
 
-                document.getElementById('powerPlantMainDetailTitleWorkerCountPerHour').innerHTML = '集团'
+                document.getElementById('powerPlantMainDetailTitleSumProperty').innerHTML = '集团'
 	//////////////////////////////////浙江省地图//////////////////////////////////////////////////////////		
 			    // 基于准备好的dom，初始化echarts图表
-                myChart4 = ec.init(document.getElementById('powerPlantMapWorkerCountPerHour'));
-				var allWorkerCountPerHourData = map1Data;			
+                myChart4 = ec.init(document.getElementById('powerPlantMapSumProperty'));
+				var allSumPropertyData = map1Data;			
 		        var option4 = {
 
 					title : {
@@ -656,7 +662,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
 									},
 									large: true
 								},
-								data :allWorkerCountPerHourData
+								data :allSumPropertyData
 							},
 							geoCoord: {
 								// "温州":[120.65,28.01],
@@ -708,8 +714,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
 				}; 
 				myChart4.on(ecConfig.EVENT.CLICK, function (param){  
 					
-                	document.getElementById('internetDetailWorkerCountPerHour').style.display = "";
-                    document.getElementById('rlcb_detailWorkerCountPerHour').style.display = "none";
+                	document.getElementById('internetDetailSumProperty').style.display = "";
+                    document.getElementById('rlcb_detailSumProperty').style.display = "none";
     
 					var mapSeries = option4.series[0];
 					
@@ -737,8 +743,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
                 myChart4.setOption(option4); 
 		///////////////////////////////安徽淮南市地图////////////////////////////////////////////
 				// 基于准备好的dom，初始化echarts图表
-                myChart5 = ec.init(document.getElementById('huaiNanMapWorkerCountPerHour')); 
-				var allWorkerCountPerHourData2 = map2Data;
+                myChart5 = ec.init(document.getElementById('huaiNanMapSumProperty')); 
+				var allSumPropertyData2 = map2Data;
 				option5 = {
 					title : {
 						text: '',
@@ -801,7 +807,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
     								  period: 5
     								}
 								},
-								data :allWorkerCountPerHourData2
+								data :allSumPropertyData2
 							},
 							geoCoord: {
                                 "淮南":[116.73,32.80],
@@ -835,8 +841,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
 				}; 
 				myChart5.on(ecConfig.EVENT.CLICK, function (param){
 
-                	document.getElementById('internetDetailWorkerCountPerHour').style.display = "";
-                    document.getElementById('rlcb_detailWorkerCountPerHour').style.display = "none";
+                	document.getElementById('internetDetailSumProperty').style.display = "";
+                    document.getElementById('rlcb_detailSumProperty').style.display = "none";
                     
 					var mapSeries = option5.series[0];
 
@@ -981,22 +987,22 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
 			mychart.setOption(option);
 		}
 		function drawpie01(e) {
-            drawpie(e, 3, 4, 'detail_pieWorkerCountPerHour');
+            drawpie(e, 3, 4, 'detail_pieSumProperty');
         }
 		function drawbar01(e) {
-			drawbar(e, 4, 6, 'detail_01WorkerCountPerHour');
+			drawbar(e, 4, 6, 'detail_01SumProperty');
 		}
 
 		function drawbar02(e) {
-			drawbar(e, 7, 3, 'detail_02WorkerCountPerHour');
+			drawbar(e, 7, 3, 'detail_02SumProperty');
 		}
 
 		function drawbar03(e) {
-			drawbar(e, 3, 7, 'detail_03WorkerCountPerHour');
+			drawbar(e, 3, 7, 'detail_03SumProperty');
 		}
 
 		function drawbar04(e) {
-			drawbar(e, 8, 2, 'detail_04WorkerCountPerHour');
+			drawbar(e, 8, 2, 'detail_04SumProperty');
 		}
 		// 设置Chart的数据
         function setChartData(ec, mapSeries, dataIndex) {
@@ -1020,10 +1026,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
 			} else if (mapSeries.markPoint.data[dataIndex].name == '淮南') {
 			    powerPlantName = '凤台电厂';
 			}
-			document.getElementById('powerPlantMainDetailTitleWorkerCountPerHour').innerHTML = powerPlantName;
+			document.getElementById('powerPlantMainDetailTitleSumProperty').innerHTML = powerPlantName;
 
-            var priceChartId = "priceDetailDivWorkerCountPerHour";
-            var priceChartName = "单位万千瓦时员工数";
+            var priceChartId = "priceDetailDivSumProperty";
+            var priceChartName = "总资产";
             if (powerPlantName == '台二电厂') {
                 powerPlantName = '台二发电';
             }
@@ -1035,34 +1041,34 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
             }
         	if (powerPlantName == '集团') {
         	    // TODO
-        	   //workerCountPerHour.getController().loadBase_SupplyWorkerCountPerHourIncome(priceChartId, priceChartName);
-        	   workerCountPerHour.getController().loadEachPlant_SupplyWorkerCountPerHourIncome(priceChartId, priceChartName, powerPlantName);
+        	   sumProperty.getController().loadBase_SupplySumPropertyIncome(priceChartId, priceChartName);
+        	   //sumProperty.getController().loadEachPlant_SupplySumPropertyIncome(priceChartId, priceChartName, powerPlantName);
         	} else {
-        	   workerCountPerHour.getController().loadEachPlant_SupplyWorkerCountPerHourIncome(priceChartId, priceChartName, powerPlantName);
+        	   sumProperty.getController().loadEachPlant_SupplySumPropertyIncome(priceChartId, priceChartName, powerPlantName);
         	}
 		  //  // 自产蒸汽
 		  //  var selfSteamIncomeVal = mapSeries.markPoint.data[dataIndex].selfSteamIncomeVal;
 		  //  if (selfSteamIncomeVal != undefined) {
-		  //      document.getElementById('travelPriceWorkerCountPerHour').innerHTML =  selfSteamIncomeVal;
+		  //      document.getElementById('travelPriceSumProperty').innerHTML =  selfSteamIncomeVal;
 		  //  } else {
-		  //      document.getElementById('travelPriceWorkerCountPerHour').innerHTML = 0;
+		  //      document.getElementById('travelPriceSumProperty').innerHTML = 0;
 		  //      selfSteamIncomeVal = 0;
 		  //  }
 		  //  // 外购蒸汽
 		  //  var outSteamIncomeVal = mapSeries.markPoint.data[dataIndex].outSteamIncomeVal;
 		  //  if (outSteamIncomeVal != undefined) {
-		  //      document.getElementById('coalPriceWorkerCountPerHour').innerHTML = outSteamIncomeVal;
+		  //      document.getElementById('coalPriceSumProperty').innerHTML = outSteamIncomeVal;
 		  //  } else {
-		  //      document.getElementById('coalPriceWorkerCountPerHour').innerHTML = 0;
+		  //      document.getElementById('coalPriceSumProperty').innerHTML = 0;
 		  //      outSteamIncomeVal = 0;
 		  //  }
 		  //  // 热水
-		  //  var workerCountPerHourWaterIncomeVal = mapSeries.markPoint.data[dataIndex].workerCountPerHourWaterIncomeVal;
-		  //  if (workerCountPerHourWaterIncomeVal != undefined) {
-		  //      document.getElementById('watt1WorkerCountPerHour').innerHTML =  workerCountPerHourWaterIncomeVal;
+		  //  var sumPropertyWaterIncomeVal = mapSeries.markPoint.data[dataIndex].sumPropertyWaterIncomeVal;
+		  //  if (sumPropertyWaterIncomeVal != undefined) {
+		  //      document.getElementById('watt1SumProperty').innerHTML =  sumPropertyWaterIncomeVal;
 		  //  } else {
-		  //      document.getElementById('watt1WorkerCountPerHour').innerHTML = 0;
-		  //      workerCountPerHourWaterIncomeVal = 0;
+		  //      document.getElementById('watt1SumProperty').innerHTML = 0;
+		  //      sumPropertyWaterIncomeVal = 0;
 		  //  }
 		  //  // 初装费
 		  //  var firstFeeIncomeVal = mapSeries.markPoint.data[dataIndex].firstFeeIncomeVal;
@@ -1073,30 +1079,30 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
 		  //      firstFeeIncomeVal = 0;
 		  //  }
 		  //  // 供热收入
-		  //  var supplyWorkerCountPerHourIncomeVal = mapSeries.markPoint.data[dataIndex].supplyWorkerCountPerHourIncomeVal;
-		  //  if (supplyWorkerCountPerHourIncomeVal != undefined) {
-		  //      document.getElementById('fuelCostWorkerCountPerHour').innerHTML = supplyWorkerCountPerHourIncomeVal;
+		  //  var supplySumPropertyIncomeVal = mapSeries.markPoint.data[dataIndex].supplySumPropertyIncomeVal;
+		  //  if (supplySumPropertyIncomeVal != undefined) {
+		  //      document.getElementById('fuelCostSumProperty').innerHTML = supplySumPropertyIncomeVal;
 		  //  } else {
-		  //      document.getElementById('fuelCostWorkerCountPerHour').innerHTML = 0;
-		  //      supplyWorkerCountPerHourIncomeVal = 0;
+		  //      document.getElementById('fuelCostSumProperty').innerHTML = 0;
+		  //      supplySumPropertyIncomeVal = 0;
 		  //  }
 		  //  // 供热收入同比
-		  //  var supplyWorkerCountPerHourIncomeUP = mapSeries.markPoint.data[dataIndex].supplyWorkerCountPerHourIncomeUP;
-		  //  if (supplyWorkerCountPerHourIncomeUP != undefined) {
-		  //      document.getElementById('fuelDownPercentWorkerCountPerHour').innerHTML = supplyWorkerCountPerHourIncomeUP;
+		  //  var supplySumPropertyIncomeUP = mapSeries.markPoint.data[dataIndex].supplySumPropertyIncomeUP;
+		  //  if (supplySumPropertyIncomeUP != undefined) {
+		  //      document.getElementById('fuelDownPercentSumProperty').innerHTML = supplySumPropertyIncomeUP;
 		  //  } else {
-		  //      document.getElementById('fuelDownPercentWorkerCountPerHour').innerHTML = 0;
-		  //      supplyWorkerCountPerHourIncomeUP = 0;
+		  //      document.getElementById('fuelDownPercentSumProperty').innerHTML = 0;
+		  //      supplySumPropertyIncomeUP = 0;
 		  //  }
-		  //  var dataAll = selfSteamIncomeVal + outSteamIncomeVal + workerCountPerHourWaterIncomeVal + firstFeeIncomeVal;
+		  //  var dataAll = selfSteamIncomeVal + outSteamIncomeVal + sumPropertyWaterIncomeVal + firstFeeIncomeVal;
 		  //  if (dataAll == 0) {
 		  //      dataAll = 10;
 		  //  }
-		  //  drawpie(ec, supplyWorkerCountPerHourIncomeUP+50, 50, 'detail_pieWorkerCountPerHour');
-		  //  drawbar(ec, selfSteamIncomeVal, dataAll, 'detail_01WorkerCountPerHour');
-		  //  drawbar(ec, outSteamIncomeVal, dataAll, 'detail_02WorkerCountPerHour');
-		  //  drawbar(ec, workerCountPerHourWaterIncomeVal, dataAll, 'detail_03WorkerCountPerHour');
-		  //  drawbar(ec, firstFeeIncomeVal, dataAll, 'detail_04WorkerCountPerHour');
+		  //  drawpie(ec, supplySumPropertyIncomeUP+50, 50, 'detail_pieSumProperty');
+		  //  drawbar(ec, selfSteamIncomeVal, dataAll, 'detail_01SumProperty');
+		  //  drawbar(ec, outSteamIncomeVal, dataAll, 'detail_02SumProperty');
+		  //  drawbar(ec, sumPropertyWaterIncomeVal, dataAll, 'detail_03SumProperty');
+		  //  drawbar(ec, firstFeeIncomeVal, dataAll, 'detail_04SumProperty');
         }
 	}
 });

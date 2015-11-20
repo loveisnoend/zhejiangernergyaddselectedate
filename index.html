@@ -111,8 +111,8 @@
                 slide02PageNum = slide02PageNumParam;
                 app.to("idhome","show");
             }
-            function doit3() {
-                slidePageNum = 2;
+            function doit3(slide03PageNumParam) {
+                slide03PageNum = slide03PageNumParam;
                 app.to("idhome03","show");
             }
             function doit4() {
@@ -147,8 +147,20 @@
             }
             // 主营业务页面
             function toMainBusinessPage() {
-                slide08PageNum = 0;
                 app.to("idMainBusiness","show");
+            }
+            // 净利润页面
+            function toPureProfitPage() {
+                app.to("idPureProfit","show");
+            }
+            //资产情况
+            //净资产页面
+            function toPurePropertyPage() {
+                app.to("idPureProperty","show");
+            }
+            //总资产页面
+            function toSumPropertyPage() {
+                app.to("idSumProperty","show");
             }
             // 人均营业收入
             function toAverBusinessPage() {
@@ -188,6 +200,15 @@
 				var helpPage;
 				// 主营业务
 				var mainBusiness;
+				// 净利润
+				var pureProfit;
+				
+				//资产情况
+				//净资产
+				var pureProperty;
+				//净资产
+				var sumProperty;
+				
 				var powerIncome;
 				var heatIncome;
 				var labourIncome;
@@ -209,6 +230,7 @@
 				// 每个tab块进入时定位slide
 				var slide08PageNum = 0;
 				var slide02PageNum = 0;
+				var slide03PageNum = 0;
 				
 				// var sServiceUrl = "/sap/opu/odata/sap/ZHANA003_SRV/";
 				var sServiceUrl = "/sap/opu/odata/sap/ZBIMS_SRV";
@@ -331,6 +353,27 @@
             			type: sap.ui.core.mvc.ViewType.HTML
             		 });
             		 app.addPage(mainBusiness);
+            		 // 净利润
+            		 pureProfit = sap.ui.view({
+            			id: "idPureProfit",
+            			viewName: "com.zhenergy.pcbi.view.pureProfit",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 // 资产情况
+            		 // 净资产
+            		 pureProperty = sap.ui.view({
+            			id: "idPureProperty",
+            			viewName: "com.zhenergy.pcbi.view.pureProperty",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(pureProperty);
+            		 // 总资产
+            		 sumProperty = sap.ui.view({
+            			id: "idSumProperty",
+            			viewName: "com.zhenergy.pcbi.view.sumProperty",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(sumProperty);
             		 // 发电收入
             		 powerIncome = sap.ui.view({
             			id: "idPowerIncome",
