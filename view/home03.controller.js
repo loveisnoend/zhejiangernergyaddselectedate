@@ -86,7 +86,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home03", {
 			// 净资产
 			var rlr_color="red";
     		if(purePropertyValue>0){
-    		    rlr_color="green";
+    		    if (skinName == '夜间模式') {
+    		        rlr_color="green";
+    		    } else {
+    		        rlr_color="white";
+    		    }
     		}
     		$('#pureProperty').css('color',rlr_color);
     		$('#pureProperty').css('font-size','75px');
@@ -113,7 +117,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home03", {
 	        // 总资产
 			var sumrlr_color="red";
     		if(sumPropertyValue>0){
-    		    sumrlr_color="green";
+    		    if (skinName == '夜间模式') {
+    		        sumrlr_color="green";
+    		    } else {
+    		        sumrlr_color="white";
+    		    }
     		}
     		$('#sumProperty').css('color',sumrlr_color);
     		$('#sumProperty').css('font-size','65px');
@@ -142,6 +150,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.home03", {
 		}, this);
 	    sap.ui.getCore().getModel().read("SCREEN_ZCQK_01_V01?$filter=(BNAME eq '" +usrid+ "')", mParameters);
 	},
+	// 获取二级页面数据
+	_loadData01 : function () {
+	    this._drawSwiper();
+	    this._loadData_Property();
+		// 设定头部跑马灯信息 common.js
+		_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);
+	},
 /**
 * Called when a controller is instantiated and its View controls (if available) are already created.
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
@@ -153,10 +168,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home03", {
 			
 			// not added the controller as delegate to avoid controller functions with similar names as the events
 			onAfterShow: jQuery.proxy(function() {
-			    this._drawSwiper();
-			    this._loadData_Property();
-    			// 设定头部跑马灯信息 common.js
-    			_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);
+                this._loadData01();
 			}, this)
 		});
 	},

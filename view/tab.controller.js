@@ -345,17 +345,17 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
     				// 	},
         //     			data:['社会用电量','发电量']
        	// 		 	},
-    			    tooltip:{
-    			       trigger:'axis' ,
-    			       backgroundColor:'rgb(234,234,234)',
-    			       textStyle:{
-    			           color:'rgb(0,0,0)',
-    			           baseline:'top'
-    			       },
-    			       axisPointer:{
-    			           type: 'none'
-    			       }
-    			    },
+    			 //   tooltip:{
+    			 //      trigger:'axis' ,
+    			 //      backgroundColor:'rgb(234,234,234)',
+    			 //      textStyle:{
+    			 //          color:'rgb(0,0,0)',
+    			 //          baseline:'top'
+    			 //      },
+    			 //      axisPointer:{
+    			 //          type: 'none'
+    			 //      }
+    			 //   },
     				color: [color1, color2],
     				grid: {
     					x: 50,
@@ -427,7 +427,17 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
     						smooth: true,
     						symbol:'emptyCircle',
     						symbolSize:5,
-    						// itemStyle: {normal: {areaStyle: {type: 'default'}}},
+    						itemStyle: {
+    						    normal: {
+    						        label : {
+    						            show :true,
+    						            position : 'top',
+    						            textStyle:{
+    						                color : 'white'
+    						            }
+    						        }
+    						    }
+    						},
     						data: datax1
                         },
     					{
@@ -437,7 +447,17 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
     						yAxisIndex: 1,
     						symbol:'emptyCircle',
     						symbolSize:5,
-    						//itemStyle: {normal: {areaStyle: {type: 'default'}}},
+    						itemStyle: {
+    						    normal: {
+    						        label : {
+    						            show :true,
+    						            position : 'top',
+    						            textStyle:{
+    						                color : 'white'
+    						            }
+    						        }
+    						    }
+    						},
     						data: datax2
     
                         }

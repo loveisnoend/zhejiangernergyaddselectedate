@@ -27,6 +27,21 @@ function changeSkinCss(pageName) {
     }
     skinNameAlter = $('.userSkin').html();
     // alert('您将切换到'+skinNameAlter);
+    if (pageName == 'home01') {
+        home.getController()._loadData01();
+    }
+    if (pageName == 'home02') {
+        home02.getController()._loadData01();
+    }
+    if (pageName == 'home03') {
+        home03.getController()._loadData01();
+    }
+    if (pageName == 'home06') {
+        home06.getController()._loadData01();
+    }
+    if (pageName == 'home08') {
+        home08.getController()._loadData01();
+    }
     if (pageName == 'internetPowerVolume') {
         internetPowerVolume.getController()._loadData01();
     }
@@ -134,7 +149,11 @@ function _loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,value
     // CPI环比
     if (valueCPIhuanbi > 0) {
         $('.valueCPIhuanbiIDClass').html(valueCPIhuanbi+"%↑");
-        $('.valueCPIhuanbiIDClass').css('color','green');
+        if (skinName == '夜间模式') {
+            $('.valueCPIhuanbiIDClass').css('color','green');
+        } else {
+            $('.valueCPIhuanbiIDClass').css('color','white');
+        }
     } else {
         $('.valueCPIhuanbiIDClass').html(valueCPIhuanbi+"%↓");
         $('.valueCPIhuanbiIDClass').css('color','red');
@@ -142,7 +161,11 @@ function _loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,value
     // GDP增长率
     if (valueGDP > 0) {
         $('.valueGDPIDClass').html(valueGDP+"%↑");
-        $('.valueGDPIDClass').css('color','green');
+        if (skinName == '夜间模式') {
+            $('.valueGDPIDClass').css('color','green');
+        } else {
+            $('.valueGDPIDClass').css('color','white');
+        }
     } else {
         $('.valueGDPIDClass').html(valueGDP+"%↓");
         $('.valueGDPIDClass').css('color','red');
@@ -150,7 +173,11 @@ function _loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,value
     // CPI同比
     if (valueCPItongbi > 0) {
         $('.valueCPItongbiIDClass').html(valueCPItongbi+"%↑");
-        $('.valueCPItongbiIDClass').css('color','green');
+        if (skinName == '夜间模式') {
+            $('.valueCPItongbiIDClass').css('color','green');
+        } else {
+            $('.valueCPItongbiIDClass').css('color','white');
+        }
     } else {
         $('.valueCPItongbiIDClass').html(valueCPItongbi+"%↓");
         $('.valueCPItongbiIDClass').css('color','red');
@@ -158,7 +185,11 @@ function _loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,value
     // PPI同比
     if (parseFloat(valuePPItongbi) > 0) {
         $('.valuePPItongbiIDClass').html(valuePPItongbi+"%↑");
-        $('.valuePPItongbiIDClass').css('color','green');
+        if (skinName == '夜间模式') {
+            $('.valuePPItongbiIDClass').css('color','green');
+        } else {
+            $('.valuePPItongbiIDClass').css('color','white');
+        }
     } else {
         $('.valuePPItongbiIDClass').html(valuePPItongbi+"%↓");
         $('.valuePPItongbiIDClass').css('color','red');
@@ -166,7 +197,11 @@ function _loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,value
     // 制造业-同比 PMI
     if (valuePMIproduce > 0) {
         $('.valuePMIproduceIDClass').html(valuePMIproduce+"%↑");
-        $('.valuePMIproduceIDClass').css('color','green');
+        if (skinName == '夜间模式') {
+            $('.valuePMIproduceIDClass').css('color','green');
+        } else {
+            $('.valuePMIproduceIDClass').css('color','white');
+        }
     } else {
         $('.valuePMIproduceIDClass').html(valuePMIproduce+"%↓");
         $('.valuePMIproduceIDClass').css('color','red');
@@ -174,7 +209,11 @@ function _loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,value
     // 非制造业-同比
     if (valuePMInonProduce > 0) {
         $('.valuePMInonProduceIDClass').html(valuePMInonProduce+"%↑");
-        $('.valuePMInonProduceIDClass').css('color','green');
+        if (skinName == '夜间模式') {
+            $('.valuePMInonProduceIDClass').css('color','green');
+        } else {
+            $('.valuePMInonProduceIDClass').css('color','white');
+        }
     } else {
         $('.valuePMInonProduceIDClass').html(valuePMInonProduce+"%↓");
         $('.valuePMInonProduceIDClass').css('color','red');
@@ -183,7 +222,11 @@ function _loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,value
     valueGDPTotal = (valueGDPTotal/10000).toFixed(1);
     if (valueGDPTotal > 0) {
         $('#GDPSum').html(valueGDPTotal);
-        $('#GDPSum').css('color','green');
+        if (skinName == '夜间模式') {
+            $('#GDPSum').css('color','green');
+        } else {
+            $('#GDPSum').css('color','white');
+        }
     } else {
         $('#GDPSum').html(valueGDPTotal);
         $('#GDPSum').css('color','red');

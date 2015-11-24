@@ -240,6 +240,17 @@
 				// 单位万千瓦时人工成本
 				var workerCostPerHour;
 				
+				// 经营业绩
+				var home;
+				// 宏观环境
+				var home02;
+				// 资产情况
+				var home03;
+				// 资金情况
+				var home06;
+				// 发展保障
+				var home08;
+				
 				var slidePageNum = 0;
 				var app = new sap.m.App({initialPage:"idhome"});
 				
@@ -255,21 +266,21 @@
                 sap.ui.getCore().setModel(oModel);
                 
 				function startApp(context) {
-            		var home = sap.ui.view({
+            		home = sap.ui.view({
             			id: "idhome",
             			viewName: "com.zhenergy.pcbi.view.home",
             			type: sap.ui.core.mvc.ViewType.HTML
             		});
             		app.addPage(home);
             		
-            		 var home02= sap.ui.view({
+            		home02= sap.ui.view({
             			id: "idhome02",
             			viewName: "com.zhenergy.pcbi.view.home02",
             			type: sap.ui.core.mvc.ViewType.HTML
             		});
             		app.addPage(home02);
             		
-            		var home03 = sap.ui.view({
+            		home03 = sap.ui.view({
             			id: "idhome03",
             			viewName: "com.zhenergy.pcbi.view.home03",
             			type: sap.ui.core.mvc.ViewType.HTML
@@ -290,7 +301,7 @@
             		});
             		app.addPage(home05);
             		
-            		var home06 = sap.ui.view({
+            		home06 = sap.ui.view({
             			id: "idhome06",
             			viewName: "com.zhenergy.pcbi.view.home06",
             			type: sap.ui.core.mvc.ViewType.HTML
@@ -304,7 +315,7 @@
             		});
             		app.addPage(home07);
             		
-            		var home08 = sap.ui.view({
+            		home08 = sap.ui.view({
             			id: "idhome08",
             			viewName: "com.zhenergy.pcbi.view.home08",
             			type: sap.ui.core.mvc.ViewType.HTML

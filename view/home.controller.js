@@ -103,7 +103,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 			}
 			var rlr_color="red";
     		if(home_rlr>0){
-    		    rlr_color="green";
+    		    if (skinName == '夜间模式') {
+    		        rlr_color="green";
+    		    } else {
+    		        rlr_color="white";
+    		    }
     		}
     		$('#home_rlr').css('color',rlr_color);
     		$('#home_rlr').css('font-size','75px');
@@ -191,7 +195,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 			}
 			var rlr_color="red";
     		if(mainBusinessValue>0){
-    		    rlr_color="green";
+    		    if (skinName == '夜间模式') {
+    		        rlr_color="green";
+    		    } else {
+    		        rlr_color="white";
+    		    }
     		}
     		$('#mainBusiness').css('color',rlr_color);
     		$('#mainBusiness').css('font-size','75px');
@@ -228,7 +236,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 	        // 净利润
 			var pureProfit_color="red";
     		if(pureProfit>0){
-    		    pureProfit_color="green";
+    		    if (skinName == '夜间模式') {
+    		        pureProfit_color="green";
+    		    } else {
+    		        pureProfit_color="white";
+    		    }
     		}
     		$('#pureProfit').css('color',pureProfit_color);
     		$('#pureProfit').css('font-size','65px');
@@ -269,6 +281,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 		}, this);
 	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_01_V04?$filter=(BNAME eq '" +usrid+ "')", mParameters);
 	},
+	
+	// 获取二级页面数据
+	_loadData01 : function () {
+        this._drawSwiper();
+        this._loadTopDynamicShowData();
+        this._loadData_left();
+        this._loadData_MainBusiness();
+	},
 /**
 * Called when a controller is instantiated and its View controls (if available) are already created.
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
@@ -280,10 +300,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 			
 			// not added the controller as delegate to avoid controller functions with similar names as the events
 			onAfterShow: jQuery.proxy(function() {
-                this._drawSwiper();
-                this._loadTopDynamicShowData();
-                this._loadData_left();
-                this._loadData_MainBusiness();
+                this._loadData01();
 			}, this)
 		});
 	},

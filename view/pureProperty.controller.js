@@ -182,7 +182,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProperty", {
 				}
 				// 收入统计日期
 				if (dataStatisticDate == '') {
-				    dataStatisticDate = sRes.results[i].KPI_DATE.substring(0,4)+'.'+sRes.results[i].KPI_DATE.substring(4,6);//+"."+sRes.results[i].KPI_DATE.substring(6,8);
+				    dataStatisticDate = sRes.results[sRes.results.length-1].KPI_DATE.substring(0,4)+'.'+sRes.results[sRes.results.length-1].KPI_DATE.substring(4,6);//+"."+sRes.results[i].KPI_DATE.substring(6,8);
 				}
 			}
 			// 统计于日期
@@ -225,7 +225,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProperty", {
 				}
 				// 收入统计日期
 				if (dataStatisticDate == '') {
-				    dataStatisticDate = sRes.results[i].KPI_DATE.substring(0,4)+'.'+sRes.results[i].KPI_DATE.substring(4,6);//+"."+sRes.results[i].KPI_DATE.substring(6,8);
+				    dataStatisticDate = sRes.results[sRes.results.length-1].KPI_DATE.substring(0,4)+'.'+sRes.results[sRes.results.length-1].KPI_DATE.substring(4,6);//+"."+sRes.results[i].KPI_DATE.substring(6,8);
 				}
 			}
 			// 统计于日期
@@ -253,7 +253,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProperty", {
 			function draw(e){
 			    var mychart = e.init(document.getElementById(chartDivId));
 			    document.getElementById('profitNamePureProperty').innerHTML = document.getElementById('powerPlantMainDetailTitlePureProperty').innerHTML;
-    			var color1 = '#2DE630';
+    			var color1 = '#A704CA';
     			var color2 = '#E52DE6';
     			var option = {
     			        title : {
@@ -288,7 +288,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProperty", {
         			           type: 'none'
         			       }
         			    },
-        				// color: [color1, color2],
+        				color: [color1, color2],
         				grid: {
                             y1:100,
                             y2:100
@@ -315,7 +315,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProperty", {
         						},
         						axisLabel: {
         							textStyle: {
-        								color: color1
+        								color: 'white'
         							},
         							formatter: '{value}'
         						},

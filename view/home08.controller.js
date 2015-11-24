@@ -146,7 +146,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
 			// 人均营业收入
 			var rlr_color="red";
     		if(AverBusinessIncomeValue>0){
-    		    rlr_color="green";
+    		    if (skinName == '夜间模式') {
+                    rlr_color="green";
+    		    } else {
+    		        rlr_color="white";
+    		    }
     		}
     		$('#averBusinessIncome').css('color',rlr_color);
     		$('#averBusinessIncome').css('font-size','75px');
@@ -182,7 +186,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
 	        // 单位千瓦员工人数
 			var workerCountsPerKW_color="red";
     		if(workerCountsPerKW>0){
-    		    workerCountsPerKW_color="green";
+    		    if (skinName == '夜间模式') {
+    		        workerCountsPerKW_color="green";
+    		    } else {
+    		        workerCountsPerKW_color="white";
+    		    }
     		}
     		$('#workerCountsPerKW').css('color',workerCountsPerKW_color);
     		$('#workerCountsPerKW').css('font-size','65px');
@@ -210,7 +218,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
 	        // 单位千瓦时员工人数
 			var workerCountsPerKWHour_color="red";
     		if(workerCountsPerKWHour>0){
-    		    workerCountsPerKWHour_color="green";
+    		    if (skinName == '夜间模式') {
+    		        workerCountsPerKWHour_color="green";
+    		    } else {
+    		        workerCountsPerKWHour_color="white";
+    		    }
     		}
     		$('#workerCountsPerKWHour').css('color',workerCountsPerKWHour_color);
     		$('#workerCountsPerKWHour').css('font-size','65px');
@@ -238,7 +250,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
 	        // 单位万千瓦人工成本
 			var workerCostPerKW_color="red";
     		if(workerCostPerKW>0){
-    		    workerCostPerKW_color="green";
+    		    if (skinName == '夜间模式') {
+                    workerCostPerKW_color="green";
+    		    } else {
+    		        workerCostPerKW_color="white";
+    		    }
     		}
     		$('#workerCostPerKW').css('color',workerCostPerKW_color);
     		$('#workerCostPerKW').css('font-size','65px');
@@ -266,7 +282,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
 	        // 单位万千瓦时人工成本
 			var workerCostPerKWHour_color="red";
     		if(workerCostPerKWHour>0){
-    		    workerCostPerKWHour_color="green";
+    		    if (skinName == '夜间模式') {
+    		        workerCostPerKWHour_color="green";
+    		    } else {
+    		        workerCostPerKWHour_color="white";
+    		    }
     		}
     		$('#workerCostPerKWHour').css('color',workerCostPerKWHour_color);
     		$('#workerCostPerKWHour').css('font-size','65px');
@@ -296,6 +316,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
 		}, this);
 	    sap.ui.getCore().getModel().read("SCREEN_FZBZ_01_V01?$filter=(BNAME eq '" +usrid+ "')", mParameters);
 	},
+	// 获取二级页面数据
+	_loadData01 : function () {
+		this._drawSwiper();
+	    this._loadData_AverBusinessIncome();
+		// 设定头部跑马灯信息 common.js
+		_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);
+	},
 /**
 * Called when a controller is instantiated and its View controls (if available) are already created.
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
@@ -307,11 +334,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
 			
 			// not added the controller as delegate to avoid controller functions with similar names as the events
 			onAfterShow: jQuery.proxy(function() {
-			    
-			    this._drawSwiper();
-			    this._loadData_AverBusinessIncome();
-    			// 设定头部跑马灯信息 common.js
-    			_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);
+                this._loadData01();
 			}, this)
 		});
 	},
