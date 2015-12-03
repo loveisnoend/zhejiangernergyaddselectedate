@@ -5,7 +5,8 @@ function internetPowerback() {
 }
 function priceDetailAnother(detailId) {
     
-    if (detailId == 'detail001') {
+    var plantName = document.getElementById('powerPlantName').innerHTML;
+    if (detailId == 'detail001' && plantName == '集团') {
     	document.getElementById("internetMain").style.display = "none";
     	document.getElementById("internetDetail").style.display = "";
     	var priceChartId = "priceDetailDiv";
@@ -19,6 +20,6 @@ function priceDetailAnother(detailId) {
     	} else if(detailId == 'detail004'){
     	    priceChartName = '代替电价';   
     	}
-    	internetPowerVolume.getController().loadPriceChartData(priceChartId, priceChartName);
+        internetPowerVolume.getController().loadPriceChartData(priceChartId, priceChartName);
     }
 }

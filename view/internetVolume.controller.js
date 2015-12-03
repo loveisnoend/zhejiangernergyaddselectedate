@@ -148,6 +148,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 			huaiNan_dataStr += ']';
 			var zhejiang_JsonData = JSON.parse(zhejiang_dataStr)
 			var huaiNan_JsonData = JSON.parse(huaiNan_dataStr);
+// 			alert('----'+zhejiang_dataStr+'------'+huaiNan_dataStr);
     		this.loadChart(zhejiang_JsonData, huaiNan_JsonData);
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
@@ -174,13 +175,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 					color:'white',
 					fontFamily:'微软雅黑'
 				},
-				x:'50',
-				y:'10'
+				x:'20',
+				y:'20'
             },
   			legend: {
               	orient:'horizontal',
-              	x:'350',
-              	y:'15',
+              	x:'250',
+              	y:'30',
               	textStyle:{
 					color:'white',
 					fontFamily:'微软雅黑'
@@ -189,8 +190,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
    		 	},
    			color: ['#2DE630', '#E52DE6','white'],
 			grid: {
-                y1:100,
-                y2:100
+                x:60,
+                y:70
 			},
 			xAxis: [
 				{
@@ -654,13 +655,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 				});	
                 // 默认图表显示数据
                 var mapSeries = option4.series[0];
-                setChartData(ec, mapSeries, 2);
+                setChartData(ec, mapSeries, 0);
                 
                 // 默认集团数据显示
-				var selectedData = {name: mapSeries.markPoint.data[2].name, value: mapSeries.markPoint.data[2].inputPlanValue};
-				option4.series[1].markPoint.data[2] = selectedData;
+				var selectedData = {name: mapSeries.markPoint.data[0].name, value: mapSeries.markPoint.data[0].inputPlanValue};
+				option4.series[1].markPoint.data[0] = selectedData;
 			    option4.series[1].markPoint.data[1] = {name:'上海',value:0};
-                option4.series[1].markPoint.data[0] = {name:'上海',value:0};
+                option4.series[1].markPoint.data[2] = {name:'上海',value:0};
                 // 为echarts对象加载数据 
                 myChart4.setOption(option4); 
 		///////////////////////////////安徽淮南市地图////////////////////////////////////////////
@@ -805,7 +806,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 						name: '1',
 						type: 'pie',
 				// 		center: ['31%','36%'],
-						radius: [135, 139],
+						radius: [175, 180],
 						startAngle : 0,
 						itemStyle: {
 							normal: {

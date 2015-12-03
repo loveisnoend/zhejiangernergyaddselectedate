@@ -95,10 +95,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 				    daytime = sRes.results[i].KPI_DATE;
 				}
 				if (sRes.results[i].KPI_TYPE == '日利润环比' && sRes.results[i].KPI_DESC == '集团'){  
-				    dailyProfitHuanBi = sRes.results[i].KPI_VALUE*100;
+				    dailyProfitHuanBi = sRes.results[i].KPI_VALUE;
 				}
 				if (sRes.results[i].KPI_TYPE == '日利润同比' && sRes.results[i].KPI_DESC == '集团'){  
-				    dailyProfitTongBi = sRes.results[i].KPI_VALUE*100;
+				    dailyProfitTongBi = sRes.results[i].KPI_VALUE;
 				}
 			}
 			var rlr_color="red";
@@ -175,10 +175,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 				    daytime = sRes.results[i].KPI_DATE;
 				}
 				if (sRes.results[i].KPI_TYPE == '主营业务收入环比' && sRes.results[i].KPI_DESC == '集团'){  
-				    mainBusinessHuanBi = sRes.results[i].KPI_VALUE*100;
+				    mainBusinessHuanBi = sRes.results[i].KPI_VALUE;
 				}
 				if (sRes.results[i].KPI_TYPE == '主营业务收入同比' && sRes.results[i].KPI_DESC == '集团'){  
-				    mainBusinessTongBi = sRes.results[i].KPI_VALUE*100;
+				    mainBusinessTongBi = sRes.results[i].KPI_VALUE;
 				}
 				
 				// 净利润
@@ -187,10 +187,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 				    daytimeNO1 = sRes.results[i].KPI_DATE;
 				}
 				if (sRes.results[i].KPI_TYPE == '净利润环比' && sRes.results[i].KPI_DESC == '集团'){  
-				    pureProfitHuanBi = sRes.results[i].KPI_VALUE*100;
+				    pureProfitHuanBi = sRes.results[i].KPI_VALUE;
 				}
 				if (sRes.results[i].KPI_TYPE == '净利润同比' && sRes.results[i].KPI_DESC == '集团'){  
-				    pureProfitTongBi = sRes.results[i].KPI_VALUE*100;
+				    pureProfitTongBi = sRes.results[i].KPI_VALUE;
 				}
 			}
 			var rlr_color="red";

@@ -5,24 +5,27 @@ function othersCostback() {
 }
 function priceDetailAnotherCost(detailId) {
 
-	document.getElementById("othersCost_detail").style.display = "none";
-	document.getElementById("othersCostDetail2").style.display = "";
-	var priceChartId = "othersCostDetailDiv";
-	var priceChartName = '';
-	if (detailId == 'detail001') {
-	    priceChartName = '折旧费';
-	    othersCost.getController().loadOthersCostEachCostChartData(priceChartId, priceChartName);
-	} else if(detailId == 'detail002'){
-	    priceChartName = '人工成本';   
-	    othersCost.getController().loadOthersCostEachCostChartData(priceChartId, priceChartName);
-	} else if(detailId == 'detail003'){
-	    priceChartName = '修理费';   
-	    othersCost.getController().loadOthersCostEachCostChartData(priceChartId, priceChartName);
-	} else if(detailId == 'detail004'){
-	    priceChartName = '财务管理费';  
-	    othersCost.getController().loadOthersCostEachCostChartData(priceChartId, priceChartName);
-	} else if(detailId == 'detail005'){
-	    priceChartName = '其他营业成本';  
-	    othersCost.getController().loadOthersCostChartData(priceChartId, priceChartName);
-	}
+    var plantName = document.getElementById('powerPlantMainDetailTitleCost').innerHTML;
+    if (plantName == '集团') {
+    	document.getElementById("othersCost_detail").style.display = "none";
+    	document.getElementById("othersCostDetail2").style.display = "";
+    	var priceChartId = "othersCostDetailDiv";
+    	var priceChartName = '';
+    	if (detailId == 'detail001') {
+    	    priceChartName = '折旧费';
+    	    othersCost.getController().loadOthersCostEachCostChartData(priceChartId, priceChartName);
+    	} else if(detailId == 'detail002'){
+    	    priceChartName = '人工成本';   
+    	    othersCost.getController().loadOthersCostEachCostChartData(priceChartId, priceChartName);
+    	} else if(detailId == 'detail003'){
+    	    priceChartName = '修理费';   
+    	    othersCost.getController().loadOthersCostEachCostChartData(priceChartId, priceChartName);
+    	} else if(detailId == 'detail004'){
+    	    priceChartName = '财务管理费';  
+    	    othersCost.getController().loadOthersCostEachCostChartData(priceChartId, priceChartName);
+    	} else if(detailId == 'detail005'){
+    	    priceChartName = '其他营业成本';  
+    	    othersCost.getController().loadOthersCostChartData(priceChartId, priceChartName);
+    	}
+    }
 }

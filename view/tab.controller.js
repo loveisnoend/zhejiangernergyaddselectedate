@@ -477,17 +477,17 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
     				// 	},
         //     			data:['气温']
        	// 		 	},
-    			    tooltip:{
-    			       trigger:'axis' ,
-    			       backgroundColor:'rgb(234,234,234)',
-    			       textStyle:{
-    			           color:'rgb(0,0,0)'
-    			       },
+    			 //   tooltip:{
+    			 //      trigger:'axis' ,
+    			 //      backgroundColor:'rgb(234,234,234)',
+    			 //      textStyle:{
+    			 //          color:'rgb(0,0,0)'
+    			 //      },
     			       
-    			       axisPointer:{
-    			           type: 'none'
-    			       }
-    			    },
+    			 //      axisPointer:{
+    			 //          type: 'none'
+    			 //      }
+    			 //   },
     				color: [color1, color2],
     				grid: {
     					x: 50,
@@ -539,7 +539,17 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
     						smooth: true,
     						symbol:'emptyCircle',
     						symbolSize:5,
-    						// itemStyle: {normal: {areaStyle: {type: 'default'}}},
+    						itemStyle: {
+    						    normal: {
+    						        label : {
+    						            show :true,
+    						            position : 'top',
+    						            textStyle:{
+    						                color : 'white'
+    						            }
+    						        }
+    						    }
+    						},
     						data: datax1
                         }
                     ]
@@ -552,56 +562,70 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 		    if (data_x4[0] != undefined && data_x3[0] != undefined) {
     		    var percentValue = ((data_x4[0]/(parseInt(data_x3[0])+parseInt(data_x4[0])))*100).toFixed(2).toString()+'%';
     		    $('#percentbar01').html(percentValue);
-    			drawbar(e, data_x4[0], (parseInt(data_x3[0])+parseInt(data_x4[0])), 'bar01');
+		    } else {
+		        $('#percentbar01').html('');
 		    }
+		    drawbar(e, data_x4[0], (parseInt(data_x3[0])+parseInt(data_x4[0])), 'bar01');
 		}
 
 		function drawbar02(e) {
 		    if (data_x4[1] != undefined && data_x3[1] != undefined) {
     		    var percentValue = ((data_x4[1]/(parseInt(data_x3[1])+parseInt(data_x4[1])))*100).toFixed(2).toString()+'%';
     		    $('#percentbar02').html(percentValue);
-    			drawbar(e, data_x4[1], (parseInt(data_x3[1])+parseInt(data_x4[1])), 'bar02');
+		    } else {
+		        $('#percentbar02').html('');
 		    }
+		    drawbar(e, data_x4[1], (parseInt(data_x3[1])+parseInt(data_x4[1])), 'bar02');
 		}
 
 		function drawbar03(e) {
 		    if (data_x4[2] != undefined && data_x3[2] != undefined) {
     		    var percentValue = ((data_x4[2]/(parseInt(data_x3[2])+parseInt(data_x4[2])))*100).toFixed(2).toString()+'%';
     		    $('#percentbar03').html(percentValue);
-    			drawbar(e, data_x4[2], (parseInt(data_x3[2])+parseInt(data_x4[2])), 'bar03');
+		    } else {
+		        $('#percentbar03').html('');
 		    }
+		    drawbar(e, data_x4[2], (parseInt(data_x3[2])+parseInt(data_x4[2])), 'bar03');
 		}
 
 		function drawbar04(e) {
 		    if (data_x4[3] != undefined && data_x3[3] != undefined) {
     		    var percentValue = ((data_x4[3]/(parseInt(data_x3[3])+parseInt(data_x4[3])))*100).toFixed(2).toString()+'%';
     		    $('#percentbar04').html(percentValue);
-    			drawbar(e, data_x4[3], (parseInt(data_x3[3])+parseInt(data_x4[3])), 'bar04');
+		    } else {
+		        $('#percentbar04').html('');
 		    }
+		    drawbar(e, data_x4[3], (parseInt(data_x3[3])+parseInt(data_x4[3])), 'bar04');
 		}
 
 		function drawbar05(e) {
 		    if (data_x4[4] != undefined && data_x3[4] != undefined) {
     		    var percentValue = ((data_x4[4]/(parseInt(data_x3[4])+parseInt(data_x4[4])))*100).toFixed(2).toString()+'%';
     		    $('#percentbar05').html(percentValue);
-    			drawbar(e, data_x4[4], (parseInt(data_x3[4])+parseInt(data_x4[4])), 'bar05');
+		    } else {
+		        $('#percentbar05').html('');
 		    }
+		    drawbar(e, data_x4[4], (parseInt(data_x3[4])+parseInt(data_x4[4])), 'bar05');
 		}
 
 		function drawbar06(e) {
 		    if (data_x4[5] != undefined && data_x3[5] != undefined) {
     		    var percentValue = ((data_x4[5]/(parseInt(data_x3[5])+parseInt(data_x4[5])))*100).toFixed(2).toString()+'%';
     		    $('#percentbar06').html(percentValue);
-    			drawbar(e, data_x4[5], (parseInt(data_x3[5])+parseInt(data_x4[5])), 'bar06');
+		    } else {
+		        $('#percentbar06').html('');
 		    }
+		    drawbar(e, data_x4[5], (parseInt(data_x3[5])+parseInt(data_x4[5])), 'bar06');
 		}
 
 		function drawbar07(e) {
 		    if (data_x4[6] != undefined && data_x3[6] != undefined) {
 		        var percentValue = ((data_x4[6]/(parseInt(data_x3[6])+parseInt(data_x4[6])))*100).toFixed(2).toString()+'%';
     		    $('#percentbar07').html(percentValue);
-    			drawbar(e, data_x4[6], (parseInt(data_x3[6])+parseInt(data_x4[6])), 'bar06');
+		    } else {
+                $('#percentbar07').html('');
 		    }
+		    drawbar(e, data_x4[6], (parseInt(data_x3[6])+parseInt(data_x4[6])), 'bar07');
 		}
 
 		function drawbar(e, data1, data2, id) {

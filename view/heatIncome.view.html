@@ -32,16 +32,16 @@
         </div>
         <div class="content_center">
           <div class="powerTop">
-                <div id="demo" style="color:white;margin-top:10px;margin-left:40px;font-weight:bold;"><span id="demo" style="height:100%;"><b onClick="toMainBusinessPage()" style="cursor:pointer;">主营业务</b> > <b>发电收入</b></span></div>             
+                <div id="demo" style="color:white;margin-top:10px;margin-left:40px;font-weight:bold;font-size:20px;"><span id="demo" style="height:100%;"><b onClick="toMainBusinessPage()" style="cursor:pointer;">主营业务</b> > <b>供热收入</b></span></div>             
           </div>
           <div class="powerBottom">
               <div class="powerPlantLeft">
     			  <div class="mapTop">
-    			      <div id="huaiNanMapHeat" style="position:absolute;z-index:2;left:230px;top:110px;height:80px;width:80px;"></div>
-    			      <div id="powerPlantMapHeat" style="margin-left:200px;margin-top:10px;height:400px;width:456px;"></div>
+    			      <div id="huaiNanMapHeat" style="position:absolute;z-index:2;left:230px;top:150px;height:100px;width:100px;"></div>
+    			      <div id="powerPlantMapHeat" style="margin-left:230px;margin-top:50px;height:550px;width:600px;"></div>
     			  </div>
     			  <div class="mapBottom">
-    			      <div class="chinaMap">
+    			      <div class="chinaMap" style="margin-left:40px;">
                           <div class="chinaMapCon">
         			          <div id="chinaMapHeat" style="float:left;height:110px;width:140px;margin-top:15px;margin-left:30px;">
         			              
@@ -58,13 +58,13 @@
                     </div>
                     <div class="main_content_combition_1">
                         <div class="main_content_combition_1_1">
-                            <div class="detail_02_03" onClick="priceDetailAnotherHeat('detail001')">
-                                <div class="detail_02_font1"><div style="float:left;cursor:pointer;">自产蒸汽<b>(百万元)</b></div><div style="float:left;margin-left:0px;margin-top:-2px;"><img height="25px" width="25px" src="img/iconfont-right.png"/></div></div>
+                            <div class="detail_02_03" style="margin-top:10%" onClick="priceDetailAnotherHeat('detail001')">
+                                <div class="detail_02_font1"><div style="float:left;cursor:pointer;">自产蒸汽<b>(百万元)</b></div><div style="float:left;margin-left:0px;margin-top:4px;"><img height="25px" width="25px" src="img/iconfont-right.png"/></div></div>
                                 <div class="detail_02_font2" style="width:100px;" id="travelPriceHeat"></div>
                                 <div class="detail_02_img" id="detail_01Heat"></div>
                             </div>
-                            <div class="detail_02_03 detail_position01" onClick="priceDetailAnotherHeat('detail002')">
-                                <div class="detail_02_font1"><div style="float:left;cursor:pointer;">外购蒸汽<b>(百万元)</b></div><div style="float:left;margin-left:0px;margin-top:-2px;"><img height="25px" width="25px" src="img/iconfont-right.png"/></div></div>
+                            <div class="detail_02_03 detail_position01" style="margin-top:10%" onClick="priceDetailAnotherHeat('detail002')">
+                                <div class="detail_02_font1"><div style="float:left;cursor:pointer;">外购蒸汽<b>(百万元)</b></div><div style="float:left;margin-left:0px;margin-top:4px;"><img height="25px" width="25px" src="img/iconfont-right.png"/></div></div>
                                 <div class="detail_02_font2" style="width:100px;" id="coalPriceHeat"></div>
                                 <div class="detail_02_img" id="detail_02Heat"></div>
                             </div>
@@ -78,12 +78,12 @@
                         </div>
                         <div class="main_content_combition_1_3">
                             <div class="detail_02_03" onClick="priceDetailAnotherHeat('detail003')">
-                                <div class="detail_02_font1"><div style="float:left;cursor:pointer;">热水<b id="wattVolume1Heat">(百万元)</b></div><div style="float:left;margin-left:0px;margin-top:-2px;"><img height="25px" width="25px" src="img/iconfont-right.png"/></div></div>
+                                <div class="detail_02_font1"><div style="float:left;cursor:pointer;">热水<b id="wattVolume1Heat">(百万元)</b></div><div style="float:left;margin-left:0px;margin-top:4px;"><img height="25px" width="25px" src="img/iconfont-right.png"/></div></div>
                                 <div class="detail_02_font2" style="width:100px;" id="watt1Heat"></div>
                                 <div class="detail_02_img" id="detail_03Heat"></div>
                             </div>
                             <div class="detail_02_03" onClick="priceDetailAnotherHeat('detail004')">
-                                <div class="detail_02_font1"><div style="float:left;cursor:pointer;">初装费<b id="wattVolume2Heat">(百万元)</b></div><div style="float:left;margin-left:0px;margin-top:-2px;"><img height="25px" width="25px" src="img/iconfont-right.png"/></div></div>
+                                <div class="detail_02_font1"><div style="float:left;cursor:pointer;">初装费<b id="wattVolume2Heat">(百万元)</b></div><div style="float:left;margin-left:0px;margin-top:4px;"><img height="25px" width="25px" src="img/iconfont-right.png"/></div></div>
                                 <div class="detail_02_font2" style="width:100px;" id="factoryUsePV"></div>
                                 <div class="detail_02_img" id="detail_04Heat"></div>
                             </div>
@@ -104,7 +104,7 @@
                     </div>
                 </div>
                 <div class="internetDetail" style="display:none;margin-top:0px;" id="internetDetailHeat">
-                    <div class="internetDetailTop" style="font-size:14px;font-family: 微软雅黑;margin-left:10px;">
+                    <div class="internetDetailTop" style="font-size:20px;font-family: 微软雅黑;margin-left:10px;">
                        <div style="color:#FFFFFF;margin-top:15px;margin-left:10px;float:left">
                             <span style="float:left;" id="profitNameHeat">
                             集团

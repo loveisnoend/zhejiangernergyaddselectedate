@@ -1,5 +1,5 @@
 #idMainBusiness .mainBusiness_main {
-  width: 1300px;
+  /*width: 1300px;*/
   margin: 0px auto;
   margin-left:0px;
   /*padding-left: 10px;*/
@@ -59,19 +59,21 @@
     border: 2% solid rgb(47,233,48);
 }
 .mainBusiness_main_content_left{
-    float:left;
-    width:30%;
+    float:left;    
+    margin-left:90px;
+    width:25%;
     height:82%;
-    margin-top:20px;
+    /*TODO pixel*/
+    margin-top:50px;
     margin-bottom: 0;
     border: 2% solid rgb(47,233,48);
 }
 #idMainBusiness .mainBusiness_main_content_center{
     float:left;
-    margin-left:7%;
-    width:36%;
+    /*margin-left:7%;*/
+    width:43%;
     height:82%;
-    margin-top:20px;
+    margin-top:50px;
     margin-bottom: 0;
     border: 2% solid rgb(47,233,48);
     background:url("../img/combination_5-Big.png") no-repeat center center;
@@ -82,7 +84,7 @@
     margin-left:-3%;
     width:30%;
     height:82%;
-    margin-top:20px;
+    margin-top:50px;
     margin-bottom: 0;
     border: 2% solid rgb(47,233,48);
 }
@@ -91,8 +93,8 @@
   padding: 3px;
   height: 200px;
   margin-left:40px;
-
-  margin-bottom: 24px;
+  /*TODO pixel*/
+  margin-bottom: 180px;
   background:url("../img/item-bg.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -160,8 +162,9 @@ width: 18px;
  
 .MB-main_content_title {
     text-align: left;
-    padding-left: 29%;
-    padding-top: 10%;
+    /*TODO pixel*/
+    padding-left: 38%;
+    padding-top: 13%;
     background-color:transparent;
     font-weight: 500;
     font-size:20px;
@@ -169,8 +172,9 @@ width: 18px;
 }
 .MB-main_content_title_1{
     text-align: left;
-    padding-left: 12%;
-    padding-top: 8%;
+    /*TODO pixel*/
+    padding-left: 28%;
+    padding-top: 16%;
     background-color:transparent;
     font-weight: 500;
     font-size:18px;
@@ -178,7 +182,8 @@ width: 18px;
 }
 .MB-main_content_title_2{
     text-align: left;
-    padding-left: 12%;
+    /*TODO pixel*/
+    padding-left: 29%;
     padding-top: 4%;
     background-color:transparent;
     font-weight: 500;

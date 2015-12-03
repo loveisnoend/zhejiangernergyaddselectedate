@@ -2101,7 +2101,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerIncome", {
 						name: '1',
 						type: 'pie',
 				// 		center: ['31%','36%'],
-						radius: [135, 139],
+						radius: [175, 180],
 						startAngle : 0,
 						itemStyle: {
 							normal: {

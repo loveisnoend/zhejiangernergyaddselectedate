@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <div class="content_center" style="height:820px;">
+        <div class="content_center">
           <div class="powerTop">
                 <div id="demo" style="color:white;margin-top:10px;margin-left:40px;font-weight:bold;font-size:20px;"><span id="demo" style="height:100%;"><b onClick="dailyProfit()" style="cursor:pointer;">日利润</b> > <b>燃料成本</b></span></div>             
           </div>
@@ -63,20 +63,27 @@
     			  </div>
             </div>
             <div class="powerPlantRight">
-                <div id="rlcb_detail" class="detail_02" style="width:1003px;height:648px;">
+                <div id="rlcb_detail" class="detail_02">
                     <div class="detail_02_01">
-                            <div id="powerPlantMainDetailTitle" style="margin-top:10px;font-size:20px;">集团</div>
+                            <div id="powerPlantMainDetailTitle">集团</div>
                     </div>
                     <div class="main_content_combition_1">
                         <div class="main_content_combition_1_1">
                             <div class="detail_02_03" style="margin-top:10%;">
-                                <div class="detail_02_font1" style="font-size:30px;">运价（元/吨）</div>
+                                <div class="detail_02_font1" style="font-size:30px;">
+                                    <div style="float:left;">运价（元/吨）</div>
+                                </div>
                                 <div class="detail_02_font2" id="travelPrice"></div>
                                 <div class="detail_02_img" id="detail_01"></div>
                             </div>
                             <div class="detail_02_03 detail_position01" style="cursor:pointer;margin-top:10%;" onclick="toMJhid()">
-                                <div class="detail_02_font1" style="font-size:30px;">煤价（元/吨）</div>
-                                <div class="detail_02_font2" id="coalPrice"></div>
+                                <div class="detail_02_font1" style="font-size:30px;">
+                                    <div style="float:left;">煤价（元/吨）</div>
+                                    <div style="float:left;margin-left:0px;margin-top:4px;">
+                                        <img height="35px" width="35px" src="img/iconfont-right.png"/>
+                                    </div>
+                                </div>
+                                <div class="detail_02_font2" id="coalPrice" style="float:left;margin-top:-5px;"></div>
                                 <div class="detail_02_img" id="detail_02"></div>
                             </div>
                         </div>
@@ -101,9 +108,14 @@
                         </div>
                     </div>
                     <div class="main_content_combition_2">
-                            <div class="detail_pie" id="detail_pie" style="top:16.5%;margin-left:-6.8%;cursor:pointer;" onclick="detailAnother()"></div>
+                            <div class="detail_pie" id="detail_pie"></div>
                             <div class="detail_02_02" style="cursor:pointer;left:25%;" onclick="detailAnother()">
-                                <div class="detail_02_font01" style="font-size:25px;">单位燃料成本</div>
+                                <div class="detail_02_font01" style="font-size:20px;">
+                                    <div style="float:left;">单位燃料成本</div>
+                                    <div style="float:left;margin-left:0px;margin-top:0px;">
+                                        <img height="25px" width="25px" src="img/iconfont-right.png"/>
+                                    </div>
+                                </div>
                                 <div class="detail_02_font01 font_size1" id="fuelCost"></div>
                                 <div class="detail_02_font01 font_size2">元/吨</div>
                                 <div class="detail_02_font01 font_size3">
@@ -114,8 +126,8 @@
                     </div>
                 </div>
                 <div class="detail_02_hid" style="display:none" id="detail_another">
-                    <div class="detail_02_01" style="font-size:14px;font-family: 微软雅黑;margin-left:0px;float:left;margin-top:0px;">
-                        <div class="detail_02_01" style="font-size:14px;font-family: 微软雅黑;margin-left:0px;">
+                    <div class="detail_02_01" style="font-family: 微软雅黑;margin-left:0px;float:left;margin-top:0px;">
+                        <div class="detail_02_01" style="font-family: 微软雅黑;margin-left:0px;">
                             <span id="bigCircleDetailTitle">
                             集团
                             </span>
@@ -130,12 +142,12 @@
                     </div>
                 </div>
                 <div class="detail_02_hid" style="display:none" id="detail_another002">
-                    <div class="detail_02_01" style="font-size:14px;font-family: 微软雅黑;margin-left:0px;float:left;margin-top:0px;">
-                        <div class="detail_02_01" style="font-size:14px;font-family: 微软雅黑;margin-left:0px;">
+                    <div class="detail_02_01" style="font-family: 微软雅黑;margin-left:0px;float:left;margin-top:0px;">
+                        <div class="detail_02_01" style="font-family: 微软雅黑;margin-left:0px;">
                             <span id="bigCircleDetailTitle002">
                             集团
                             </span>
-                            <span onclick="back_another002()" style="cursor:pointer;margin-left:20px;color:rgb(255,153,0);">返回</span>
+                            <span onclick="back_another002()" style="cursor:pointer;color:rgb(255,153,0);">返回</span>
                         </div>
                         <div class="detail_another_01" id="detail_another_02" style="float:left;">
                             
@@ -146,10 +158,10 @@
                     </div>
                 </div>
                 <div id="mj_hid" class="detail_02_hid" style="display:none;">
-                     <div class="detail_02_01" style="font-size:14px;font-family: 微软雅黑;margin-left:0px;">
+                     <div class="detail_02_01" style="font-family: 微软雅黑;margin-left:0px;">
                         <div style="float:left;margin-top:0px;" id="caloriPowerPlantName">集团</div>
                         <div onclick="back()" style="float:left;margin-top:0px;margin-left:20px;cursor:pointer;color:rgb(255,153,0);">返回</div>
-                        <ul style="float:left;margin-left:100px;margin-top:0px;">
+                        <ul style="float:left;margin-left:50px;margin-top:0px;">
                             <li>
                                 <button id="btn1" class="active" onclick="btnclick('1')">4500大卡</button></li>
                             <li>
@@ -187,7 +199,7 @@
                             
                         </div>
                     </div>
-                    <div style="float:left;margin-top:-130px;margin-left:620px;color:white;font-family:Microsoft YaHei;">
+                    <div style="float:left;margin-top:-115px;margin-left:910px;color:white;font-family:Microsoft YaHei;">
                         统计于<br/><b id="powerPlantStatisticDate"></b>
                     </div>
                 </div>    

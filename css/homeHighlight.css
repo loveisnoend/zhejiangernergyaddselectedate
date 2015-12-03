@@ -134,7 +134,9 @@
 /* content center layout*/
 .content_center{
     width:100%;
-    height:77%;
+    /*height:77%;*/
+    /*TODO*/
+    height:780px;
     float:left;
     background-color:inherit;
 }
@@ -151,7 +153,9 @@
 .swiper-container {
     width: 100%;
     height: 400px;
-    padding-top: 40px;
+    /*padding-top: 40px;*/
+    /*TODO*/
+    padding-top:8%;
     padding-bottom: 50px;
 }
 .swiper-slide {

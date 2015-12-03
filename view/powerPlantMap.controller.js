@@ -230,122 +230,121 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 		    var mychart = e.init(document.getElementById(divId));
 		    var option = {
 		        title:{
-            	text:'煤炭价格变化',
-            	textStyle:{
-					color:'white',
-					fontFamily:'微软雅黑'
-				},
-				x:'50',
-				y:'10'
-            },
-  			legend: {
-              	orient:'horizontal',
-              	x:'350',
-              	y:'15',
-              	textStyle:{
-					color:'white',
-					fontFamily:'微软雅黑'
-				},
-    			data:['实际采购价格','秦港煤价']
-   		 	},
-   			color: ['#2DE630', '#E52DE6','white'],
-			grid: {
-                y1:100,
-                y2:100
-			},
-			xAxis: [
-				{
-
-					//show: false,
-					type: 'category',
-					axisLabel: {
-						textStyle: {
-							color: 'white'
-						},
-						formatter: '{value}'
-					},
-					data: date
-                }
-            ],
-			yAxis: [
-				{
-					name: '元/吨',
-					type: 'value',
-					axisLine: {
-						show: true
-					},
-					axisLabel: {
-						textStyle: {
-							color: 'white'
-						},
-						formatter: '{value}'
-					},
-					// 		splitLine: {
-					// 			show: false
-					// 		},
-					splitLine: {
-						// 			show: false
-						lineStyle: {
-							color: 'rgba(64,64,64,0.5)'
-						}
-					},
-					splitNumber: 13
+                	text:'煤炭价格变化',
+                	textStyle:{
+    					color:'white',
+    					fontFamily:'微软雅黑'
+    				},
+    				x:'20',
+    				y:'20'
                 },
-				{
-					name: '元/吨',
-					type: 'value',
-					axisLine: {
-						show: true
-					},
-					axisLabel: {
-						textStyle: {
-							color: 'white'
-						},
-						formatter: '{value}%'
-					},
-					splitLine: {
-						// 			show: false
-						lineStyle: {
-							//color: 'rgba(64,64,64,0.5)',
-						}
-					},
-					splitNumber: 13
-                }
-            ],
-			series: [
-				{
-					name: '实际采购价格',
-					type: 'line',
-					smooth: true,
-                 	barGap: '0%',
-                  	barCategoryGap: '50%',
-					itemStyle: {
-						normal: {
-							label: {
-								show: true
-								// position: 'insideRight'
-							}
-						}
-					},
-					data: reallyPrice
-                },
-				{
-					name: '秦港煤价',
-					type: 'line',
-					smooth: true,
-					itemStyle: {
-						normal: {
-							label: {
-								show: true
-								// position: 'insideRight'
-							}
-						}
-					},
-					data: qinGangPrice
-
-                }
-            ]
-		    };
+      			legend: {
+                  	orient:'horizontal',
+                  	x:'250',
+                  	y:'30',
+                  	textStyle:{
+    					color:'white',
+    					fontFamily:'微软雅黑'
+    				},
+        			data:['实际采购价格','秦港煤价']
+       		 	},
+       			color: ['#2DE630', '#E52DE6','white'],
+    			grid: {
+                    x:60,
+                    y:70
+    			},
+    			xAxis: [
+    				{
+    					//show: false,
+    					type: 'category',
+    					axisLabel: {
+    						textStyle: {
+    							color: 'white'
+    						},
+    						formatter: '{value}'
+    					},
+    					data: date
+                    }
+                ],
+    			yAxis: [
+    				{
+    					name: '单位:元/吨',
+    					type: 'value',
+    					axisLine: {
+    						show: true
+    					},
+    					axisLabel: {
+    						textStyle: {
+    							color: 'white'
+    						},
+    						formatter: '{value}'
+    					},
+    					// 		splitLine: {
+    					// 			show: false
+    					// 		},
+    					splitLine: {
+    						// 			show: false
+    						lineStyle: {
+    							color: 'rgba(64,64,64,0.5)'
+    						}
+    					},
+    					splitNumber: 13
+                    },
+    				{
+    					name: '单位:元/吨',
+    					type: 'value',
+    					axisLine: {
+    						show: true
+    					},
+    					axisLabel: {
+    						textStyle: {
+    							color: 'white'
+    						},
+    						formatter: '{value}%'
+    					},
+    					splitLine: {
+    						// 			show: false
+    						lineStyle: {
+    							//color: 'rgba(64,64,64,0.5)',
+    						}
+    					},
+    					splitNumber: 13
+                    }
+                ],
+    			series: [
+    				{
+    					name: '实际采购价格',
+    					type: 'line',
+    					smooth: true,
+                     	barGap: '0%',
+                      	barCategoryGap: '50%',
+    					itemStyle: {
+    						normal: {
+    							label: {
+    								show: true
+    								// position: 'insideRight'
+    							}
+    						}
+    					},
+    					data: reallyPrice
+                    },
+    				{
+    					name: '秦港煤价',
+    					type: 'line',
+    					smooth: true,
+    					itemStyle: {
+    						normal: {
+    							label: {
+    								show: true
+    								// position: 'insideRight'
+    							}
+    						}
+    					},
+    					data: qinGangPrice
+    
+                    }
+                ]
+    		    };
 		    mychart.setOption(option);
 		}
 	    

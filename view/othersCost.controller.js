@@ -334,6 +334,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
                 },
   				legend: {
                   	orient:'horizontal',
+                  	show : false,
                   	x:'400',
                   	y:'20',
                   	textStyle:{
@@ -382,9 +383,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 							lineStyle: {
 								color: 'white'
 							}
-						},
-						max: 200,
-						min: 0
+						}
                     }
                 ],
 				series: [
@@ -432,14 +431,15 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 		    var powerPlantName = new Array();
 		    
 			for (var i in sRes.results) {
-				if (sRes.results[i].KPI_TYPE == '其他营业成本'){ 
-                    dataThisYear.push((sRes.results[i].KPI_VALUE/10000).toFixed(2));
-                    powerPlantName.push(sRes.results[i].KPI_DESC);
-				}
-				if (sRes.results[i].KPI_TYPE == '其他营业成本同比'){ 
-                    dataLastYear.push((sRes.results[i].KPI_VALUE/10000).toFixed(2));
-				}
-				
+			    if (sRes.results[i].KPI_DESC != '集团') {
+    				if (sRes.results[i].KPI_TYPE == '其他营业成本'){ 
+                        dataThisYear.push((sRes.results[i].KPI_VALUE/10000).toFixed(2));
+                        powerPlantName.push(sRes.results[i].KPI_DESC);
+    				}
+    				if (sRes.results[i].KPI_TYPE == '其他营业成本同比'){ 
+                        dataLastYear.push((sRes.results[i].KPI_VALUE/10000).toFixed(2));
+    				}
+			    }
 				if (dataStatisticDate == '') {
 				    dataStatisticDate = sRes.results[i].KPI_DATE.substring(0,4)+'.'+sRes.results[i].KPI_DATE.substring(4,6)+"."+sRes.results[i].KPI_DATE.substring(6,8);
 				}
@@ -980,7 +980,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 						name: '1',
 						type: 'pie',
 				// 		center: ['31%','36%'],
-						radius: [135, 139],
+                        radius: [175, 180],
 						startAngle : 0,
 						itemStyle: {
 							normal: {
