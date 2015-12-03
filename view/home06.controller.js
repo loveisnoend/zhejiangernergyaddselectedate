@@ -100,7 +100,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home06", {
             if (salesCashRateTongBi > 0) {
                 $("#tongbiSalesCashRateImg").attr("src","img/arrow-green2.png");
             } else {
-                $("#tongbiSalesCashRateImg").attr("src","img/arrow-red2.png");
+                if (salesCashRateTongBi < 0) {
+                    $("#tongbiSalesCashRateImg").attr("src","img/arrow-red2.png");
+                } else {
+                    $("#tongbiSalesCashRateImg").attr("src","img/horizontal-green.png");
+                }
             }
             var daytime01;
     	    var daytime02;
@@ -131,7 +135,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home06", {
             if (propertyCashBackRateTongBi > 0) {
                 $("#tongbiPropertyCashBackRateImg").attr("src","img/arrow-green2.png");
             } else {
-                $("#tongbiPropertyCashBackRateImg").attr("src","img/arrow-red2.png");
+                if (propertyCashBackRateTongBi < 0) {
+                    $("#tongbiPropertyCashBackRateImg").attr("src","img/arrow-red2.png");
+                } else {
+                    $("#tongbiPropertyCashBackRateImg").attr("src","img/horizontal-green.png");
+                }
             }
             var daytime01Sum;
     	    var daytime02Sum;

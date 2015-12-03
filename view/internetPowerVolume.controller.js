@@ -179,7 +179,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
     				        tempJsonStrData += ',';
     				    }
         			    tempJsonStrData += '"huanbiIncomeUp":';
-        			    tempJsonStrData += sRes.results[i].KPI_VALUE;
+        			    tempJsonStrData += (sRes.results[i].KPI_VALUE*100).toFixed(2);
         			    isFirst = false;
     				}
     				if (sRes.results[i].KPI_TYPE == '合约收入环比增长'&&sRes.results[i].KPI_DESC==dc[j]){ 
@@ -187,7 +187,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
     				        tempJsonStrData += ',';
     				    }
         			    tempJsonStrData += '"contractIncomeUp":';
-        			    tempJsonStrData += sRes.results[i].KPI_VALUE;
+        			    tempJsonStrData += (sRes.results[i].KPI_VALUE*100).toFixed(2);
         			    isFirst = false;
     				}
     				if (sRes.results[i].KPI_TYPE == '直供收入环比增长'&&sRes.results[i].KPI_DESC==dc[j]){ 
@@ -195,7 +195,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
     				        tempJsonStrData += ',';
     				    }
         			    tempJsonStrData += '"directlyIncomeUp":';
-        			    tempJsonStrData += sRes.results[i].KPI_VALUE;
+        			    tempJsonStrData += (sRes.results[i].KPI_VALUE*100).toFixed(2);
         			    isFirst = false;
     				}
     				if (sRes.results[i].KPI_TYPE == '替代收入环比增长'&&sRes.results[i].KPI_DESC==dc[j]){ 
@@ -203,7 +203,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
     				        tempJsonStrData += ',';
     				    }
         			    tempJsonStrData += '"replaceIncomUp":';
-        			    tempJsonStrData += sRes.results[i].KPI_VALUE;
+        			    tempJsonStrData += (sRes.results[i].KPI_VALUE*100).toFixed(2);
         			    isFirst = false;
     				}
     			}

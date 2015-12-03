@@ -101,7 +101,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home03", {
             if (purePropertyTongBi > 0) {
                 $("#purePropertyUpImg").attr("src","img/arrow-green2.png");
             } else {
-                $("#purePropertyUpImg").attr("src","img/arrow-red2.png");
+                if (purePropertyTongBi == 0) {
+                    $("#purePropertyUpImg").attr("src","img/horizontal-green.png"); 
+                } else {
+                    $("#purePropertyUpImg").attr("src","img/arrow-red2.png"); 
+                }
             }
             var daytime01;
     	    var daytime02;
@@ -132,7 +136,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home03", {
             if (sumPropertyTongBi > 0) {
                 $("#sumPropertyUpImg").attr("src","img/arrow-green2.png");
             } else {
-                $("#sumPropertyUpImg").attr("src","img/arrow-red2.png");
+                if (sumPropertyTongBi == 0) {
+                    $("#sumPropertyUpImg").attr("src","img/horizontal-green.png");
+                } else {
+                    $("#sumPropertyUpImg").attr("src","img/arrow-red2.png");
+                }
             }
             var daytime01Sum;
     	    var daytime02Sum;

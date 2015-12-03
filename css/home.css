@@ -249,12 +249,18 @@ width:11%;
 	font-family:SimHei;
 }
 .demo_img_up{
-	height:5%;
-	width:5%;
+	/*height:5%;*/
+	/*width:5%;*/
+	/*TODO*/
+	height:3.5%;
+	width:3.5%;
 }
 .demo_img_down{
-	height:5%;
-	width:5%;
+	/*height:5%;*/
+	/*width:5%;*/
+	/*TODO*/
+	height:3.5%;
+	width:3.5%;
 }
 .demo_content_top{
 	height:65%;

@@ -118,7 +118,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
             if (dailyProfitHuanBi > 0) {
                 $("#huanbiProfitImg").attr("src","img/arrow-green2.png");
             } else {
-                $("#huanbiProfitImg").attr("src","img/arrow-red2.png");
+                if (dailyProfitHuanBi == 0) {
+                    $("#huanbiProfitImg").attr("src","img/horizontal-green.png");
+                } else {
+                    $("#huanbiProfitImg").attr("src","img/arrow-red2.png");                    
+                }
             }
             if (dailyProfitTongBi != undefined) {
                 $('#tongbiHome').html(dailyProfitTongBi);    
@@ -126,7 +130,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
             if (dailyProfitTongBi > 0) {
                 $("#tongbiProfitImg").attr("src","img/arrow-green2.png");
             } else {
-                $("#tongbiProfitImg").attr("src","img/arrow-red2.png");
+                if (dailyProfitTongBi == 0) {
+                    $("#tongbiProfitImg").attr("src","img/horizontal-green.png");
+                } else {
+                    $("#tongbiProfitImg").attr("src","img/arrow-red2.png");
+                }
             }
             var daytime01;
     	    var daytime02;
@@ -211,7 +219,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
             if (mainBusinessHuanBi > 0) {
                 $("#huanbiMainBusinessImg").attr("src","img/arrow-green2.png");
             } else {
-                $("#huanbiMainBusinessImg").attr("src","img/arrow-red2.png");
+                if (mainBusinessHuanBi == 0) {
+                    $("#huanbiMainBusinessImg").attr("src","img/horizontal-green.png");                    
+                } else {
+                    $("#huanbiMainBusinessImg").attr("src","img/arrow-red2.png");   
+                }
             }
             // 环比
             if (mainBusinessTongBi != undefined) {
@@ -220,7 +232,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
             if (mainBusinessTongBi > 0) {
                 $("#tongbiMainBusinessImg").attr("src","img/arrow-green2.png");
             } else {
-                $("#tongbiMainBusinessImg").attr("src","img/arrow-red2.png");
+                if (mainBusinessTongBi == 0) {
+                    $("#tongbiMainBusinessImg").attr("src","img/horizontal-green.png");
+                } else {
+                    $("#tongbiMainBusinessImg").attr("src","img/arrow-red2.png");
+                }
             }
             var daytime01;
     	    var daytime02;
@@ -253,7 +269,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
             if (pureProfitTongBi > 0) {
                 $("#tongbiPureProfitImg").attr("src","img/arrow-green2.png");
             } else {
-                $("#tongbiPureProfitImg").attr("src","img/arrow-red2.png");
+                if (pureProfitTongBi == 0) {
+                    $("#tongbiPureProfitImg").attr("src","img/horizontal-green.png");  
+                } else {
+                    $("#tongbiPureProfitImg").attr("src","img/arrow-red2.png");
+                }
             }
             
             // 环比值
@@ -263,7 +283,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
             if (pureProfitHuanBi > 0) {
                 $("#huanbiPureProfitImg").attr("src","img/arrow-green2.png");
             } else {
-                $("#huanbiPureProfitImg").attr("src","img/arrow-red2.png");
+                if (pureProfitHuanBi == 0) {
+                    $("#huanbiPureProfitImg").attr("src","img/horizontal-green.png");
+                } else {
+                    $("#huanbiPureProfitImg").attr("src","img/arrow-red2.png");
+                }
             }
             var daytime01NO1;
     	    var daytime02NO1;

@@ -164,8 +164,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.home04", {
 	        $('#mom_img').attr('src',"img/arrow-red2.png");
 	        $('#mom').html("下降" + Math.abs(mom));
 	    }else if(mom >= 0){
-	        $('#mom_img').attr('src',"img/arrow-green2.png");
-	        $('#mom').html("上升" + Math.abs(mom));
+	        if (mom == 0) {
+	            $('#mom_img').attr('src',"img/horizontal-green.png");
+	            $('#mom').html(Math.abs(mom));	            
+	        } else {
+	            $('#mom_img').attr('src',"img/arrow-green2.png");
+	            $('#mom').html("上升" + Math.abs(mom));
+	        }
 	    }
 	    var allenergy_change = allenergy.substring(0,2);
 	    $('#allenergy').html(allenergy_change);

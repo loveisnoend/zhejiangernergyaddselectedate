@@ -169,7 +169,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
             if (AverBusinessIncomeTongBi > 0) {
                 $("#tongbiAverBusinessIncomeImg").attr("src","img/arrow-green2.png");
             } else {
-                $("#tongbiAverBusinessIncomeImg").attr("src","img/arrow-red2.png");
+                if (AverBusinessIncomeTongBi < 0) {
+                    $("#tongbiAverBusinessIncomeImg").attr("src","img/arrow-red2.png"); 
+                } else {
+                    $("#tongbiAverBusinessIncomeImg").attr("src","img/horizontal-green.png");  
+                }
             }
             
             var daytime01;
@@ -202,7 +206,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
             if (workerCountsPerKWTongBi > 0) {
                 $("#tongbiWorkerCountsPerKWImg").attr("src","img/arrow-green2.png");
             } else {
-                $("#tongbiWorkerCountsPerKWImg").attr("src","img/arrow-red2.png");
+                if (workerCountsPerKWTongBi < 0) {
+                    $("#tongbiWorkerCountsPerKWImg").attr("src","img/arrow-red2.png");
+                } else {
+                    $("#tongbiWorkerCountsPerKWImg").attr("src","img/horizontal-green.png");
+                }
             }
             var daytime01NO1;
     	    var daytime02NO1;
@@ -234,7 +242,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
             if (workerCountsPerKWHourTongBi > 0) {
                 $("#tongbiWorkerCountsPerKWHourImg").attr("src","img/arrow-green2.png");
             } else {
-                $("#tongbiWorkerCountsPerKWHourImg").attr("src","img/arrow-red2.png");
+                if (workerCountsPerKWHourTongBi < 0) {
+                    $("#tongbiWorkerCountsPerKWHourImg").attr("src","img/arrow-red2.png");   
+                } else {
+                    $("#tongbiWorkerCountsPerKWHourImg").attr("src","img/horizontal-green.png");  
+                }
             }
             var daytime01NO2;
     	    var daytime02NO2;
@@ -266,7 +278,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
             if (workerCostPerKWTongBi > 0) {
                 $("#tongbiworkerCostPerKWImg").attr("src","img/arrow-green2.png");
             } else {
-                $("#tongbiworkerCostPerKWImg").attr("src","img/arrow-red2.png");
+                if (workerCostPerKWTongBi < 0) {
+                    $("#tongbiworkerCostPerKWImg").attr("src","img/arrow-red2.png");
+                } else {
+                    $("#tongbiworkerCostPerKWImg").attr("src","img/horizontal-green.png");
+                }
             }
             var daytime01NO3;
     	    var daytime02NO3;
@@ -298,7 +314,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
             if (workerCostPerKWHourTongBi > 0) {
                 $("#tongbiworkerCostPerKWHourImg").attr("src","img/arrow-green2.png");
             } else {
-                $("#tongbiworkerCostPerKWHourImg").attr("src","img/arrow-red2.png");
+                if (workerCostPerKWHourTongBi < 0) {
+                    $("#tongbiworkerCostPerKWHourImg").attr("src","img/arrow-red2.png");
+                } else {
+                    $("#tongbiworkerCostPerKWHourImg").attr("src","img/horizontal-green.png");
+                }
             }
             var daytime01NO4;
     	    var daytime02NO4;
