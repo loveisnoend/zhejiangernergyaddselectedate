@@ -203,7 +203,33 @@
 				// 日利润
 				var powerPlantMap;
 				var internetPowerVolume;
-				var isInternetPowerVOlumeLoad = false;
+				// wait event
+				// 日利润
+				var isInternetPowerVolumeLoad = false;
+				var isInternetVolumeLoad = false;
+				var isPerformaneceLoad = false;
+				var isPowerPlantMapLoad = false;
+				var isOthersCostLoad = false;
+				// 主营业务
+				var isMainBusinessLoad = false;
+				var isPowerIncomeLoad = false;
+				var isHeatIncomeLoad = false;
+				var isLabourIncomeLoad = false;
+				var isOthersIncomeLoad = false;
+				// 净利润
+				var isPureProfit = false;
+				
+				
+				// home page
+				var isHomeLoad = false;
+				var isHome02Load = false;
+				var isHome03Load = false;
+				var isHome04Load = false;
+				var isHome05Load = false;
+				var isHome06Load = false;
+				var isHome07Load = false;
+				var isHome08Load = false;
+				
 				var internetVolume;
 				var othersCost;
 				// 帮助页面
@@ -240,16 +266,29 @@
 				// 单位万千瓦时人工成本
 				var workerCostPerHour;
 				
+				//业务情况
+				var tab;
+				
 				// 经营业绩
 				var home;
 				// 宏观环境
 				var home02;
 				// 资产情况
 				var home03;
+				// 业务情况
+				var home04 
+				// 投资情况
+				var home05; 
 				// 资金情况
 				var home06;
+				// 风险控制
+				var home07; 
 				// 发展保障
 				var home08;
+				
+				
+				// 日利润
+				var Performance;
 				
 				var slidePageNum = 0;
 				var app = new sap.m.App({initialPage:"idhome"});
@@ -287,14 +326,14 @@
             		});
             		app.addPage(home03);
             		
-            		var home04 = sap.ui.view({
+            		home04 = sap.ui.view({
             			id: "idhome04",
             			viewName: "com.zhenergy.pcbi.view.home04",
             			type: sap.ui.core.mvc.ViewType.HTML
             		});
             		app.addPage(home04);
             		
-            		var home05 = sap.ui.view({
+            		home05 = sap.ui.view({
             			id: "idhome05",
             			viewName: "com.zhenergy.pcbi.view.home05",
             			type: sap.ui.core.mvc.ViewType.HTML
@@ -308,7 +347,7 @@
             		});
             		app.addPage(home06);
             		
-            		var home07 = sap.ui.view({
+            		home07 = sap.ui.view({
             			id: "idhome07",
             			viewName: "com.zhenergy.pcbi.view.home07",
             			type: sap.ui.core.mvc.ViewType.HTML
@@ -322,7 +361,7 @@
             		});
             		app.addPage(home08);
             		
-            		var Performance = sap.ui.view({
+            		Performance = sap.ui.view({
             			id: "idPerformance",
             			viewName: "com.zhenergy.pcbi.view.Performance",
             			type: sap.ui.core.mvc.ViewType.HTML

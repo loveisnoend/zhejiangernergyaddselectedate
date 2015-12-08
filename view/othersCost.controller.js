@@ -26,7 +26,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 	},
 	// 获取三级页面数据
 	_loadData01 : function () {
-
+	    if (isOthersCostLoad == false) {
+            busy = new sap.m.BusyDialog({
+				close: function(event) {}
+			});
+    		if (busy) {
+    			busy.open();
+    		} 
+	    }
         var mParameters = {};
 		mParameters['async'] = true;
 		mParameters['success'] = jQuery.proxy(function(sRes) {
@@ -712,6 +719,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 								//width: "500px",
 								//height: "500px"
 							},
+							clickable:false,
 							marikline :{
 							  itemStyle : {
 							      normal : {
@@ -877,6 +885,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 							hoverable:false,
 							roam:false,
 							data : [],
+							clickable:false,
 							markPoint : {
 								clickable: true,
 							    symbol: 'star50',
@@ -958,6 +967,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 			    option5.series[1].markPoint.data[0] = {name:'上海',value:0};
                 // 为echarts对象加载数据 
                 myChart5.setOption(option5); 
+                if (isOthersCostLoad == false) {
+                    if (busy) {
+            			busy.close();
+            		} 
+            		changeTheSkinOfPage();
+            		isOthersCostLoad = true;
+                }
         }
         
         function drawpie(e, data1, data2, id) {

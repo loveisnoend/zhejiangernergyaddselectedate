@@ -22,7 +22,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.MainBusiness", {
 	},
 	// 获取二级页面数据
 	_loadData01 : function () {
-	    
+	    if (isMainBusinessLoad == false) {
+            busy = new sap.m.BusyDialog({
+				close: function(event) {}
+			});
+    		if (busy) {
+    			busy.open();
+    		} 
+	    }
 	    var mParameters = {};
 	    date = new Array();
 		data1 = new Array();//发电收入
@@ -240,6 +247,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.MainBusiness", {
                 }]
             };
             mychart.setOption(option);
+            if (isMainBusinessLoad == false) {
+                if (busy) {
+        			busy.close();
+        		} 
+        		changeTheSkinOfPage();
+        		isMainBusinessLoad = true;
+            }
         }
         
         function drawpie(e){
@@ -405,7 +419,18 @@ sap.ui.controller("com.zhenergy.pcbi.view.MainBusiness", {
 
 		//主营业收入数据
 		var mainBusinessIncome = data5[data5.length - 1];
-		
+		var mainBusinessIncomeImg="horizontal-green";
+		var mainBusinessIncomeTongbi = 0;
+ 		if(mainBusinessIncomeTongbi>0){
+ 		    mainBusinessIncomeImg="arrow-green2";
+ 		} else {
+ 		    if (mainBusinessIncomeTongbi == 0) {
+ 		        mainBusinessIncomeImg="horizontal-green";
+ 		    } else {
+ 		        mainBusinessIncomeImg="arrow-red2";
+ 		    }
+ 		}
+ 		
 		var rlr_data=(sr_data-cb_data).toFixed(2);
 		if (dailyProfitTongbi == undefined) {
 		    dailyProfitTongbi = 0;
@@ -423,7 +448,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.MainBusiness", {
 		} else {
 		    rlr_color = "red";
 		}
-		var rlr_innerhtml='<div class="MB-main_content_title">主营业务收入<span style="font-size:20px;">(百万元)</span></div><div class="MB-main_content_sz" style="font-size:60px;font-weight:bold;color:'+rlr_colorR01+'">'+mainBusinessIncome+'</div><div class="MB-main_content_sz">同比'+rlr_prec+'%<img src="img/arrow-'+rlr_color+'2.png" class="content_img"/></div>';
+		var rlr_innerhtml='<div class="MB-main_content_title">主营业务收入<span style="font-size:20px;">(百万元)</span></div><div class="MB-main_content_sz" style="font-size:60px;font-weight:bold;color:'+rlr_colorR01+'">'+mainBusinessIncome+'</div><div class="MB-main_content_sz">同比'+rlr_prec+'%<img src="img/'+mainBusinessIncomeImg+'.png" class="content_img"/></div>';
                
 		document.getElementById('srMB1').innerHTML = sr_innerhtml1;
 		document.getElementById('srMB2').innerHTML = sr_innerhtml2;

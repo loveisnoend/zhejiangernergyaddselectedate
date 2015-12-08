@@ -1,155 +1,157 @@
 <template data-controller-name="com.zhenergy.pcbi.view.help">
 	<div class="nav_main">
-        <div class="msg_top">
-           <div class="msg_top1">
-               <marquee behavior="scroll" scrollamount="5">
-                   <div class="msg_text">
-                   <b class="newMsgIdClass"></b>
-                   <!--GDP增长率<b style="color:#32FF32;" Class="valueGDPIDClass">GDP 7.8 3%↓</b>&nbsp;&nbsp;<span class="span_shuxian">|</span> &nbsp;&nbsp;PPI同比<b style="color:#32FF32;" Class="valuePPItongbiIDClass">PPI 250 2%↑</b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;制造业-同比<b Class="valuePMIproduceIDClass" style="color:#32FF32;">PMI 50 2%↑</b> &nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;非制造业-同比<b Class="valuePMInonProduceIDClass" style="color:#32FF32;"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;GDP总值<b style="color:#32FF32;" Class="valueGDPTotalIDClass"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;CPI环比<b style="color:#32FF32;" Class="valueCPIhuanbiIDClass"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;CPI同比<b style="color:#32FF32;" Class="valueCPItongbiIDClass"></b>-->
-                   </div>
-               </marquee>
-           </div> 
-           <div class="msg_top2">
-                <div class="topToolAll">
-                    <div class="userNameIcon" onmouseover="userHoverOn('userNameCon')" onmouseout="userHoverOut('userNameCon')" ></div>
-                    <div class="userNameCon"><b class="userName"></b></div>
-                </div>
-                <div class="topToolAll">
-                    <div class="userSettingIcon" onmouseover="userHoverOn('userSettingCon')" onmouseout="userHoverOut('userSettingCon')" ></div>
-                    <div class="userSettingCon">
-                        <a href="http://erp.zhenergy.com.cn/irj/servlet/prt/portal/prtroot/com.sap.portal.navigation.masthead.LogOutComponent?logout_submit=true" class="msg_topLogout">退出</a>
+	    <div class="main-center">
+            <div class="msg_top">
+               <div class="msg_top1">
+                   <marquee behavior="scroll" scrollamount="5">
+                       <div class="msg_text">
+                       <b class="newMsgIdClass"></b>
+                       <!--GDP增长率<b style="color:#32FF32;" Class="valueGDPIDClass">GDP 7.8 3%↓</b>&nbsp;&nbsp;<span class="span_shuxian">|</span> &nbsp;&nbsp;PPI同比<b style="color:#32FF32;" Class="valuePPItongbiIDClass">PPI 250 2%↑</b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;制造业-同比<b Class="valuePMIproduceIDClass" style="color:#32FF32;">PMI 50 2%↑</b> &nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;非制造业-同比<b Class="valuePMInonProduceIDClass" style="color:#32FF32;"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;GDP总值<b style="color:#32FF32;" Class="valueGDPTotalIDClass"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;CPI环比<b style="color:#32FF32;" Class="valueCPIhuanbiIDClass"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;CPI同比<b style="color:#32FF32;" Class="valueCPItongbiIDClass"></b>-->
+                       </div>
+                   </marquee>
+               </div> 
+               <div class="msg_top2">
+                    <div class="topToolAll">
+                        <div class="userNameIcon" onmouseover="userHoverOn('userNameCon')" onmouseout="userHoverOut('userNameCon')" ></div>
+                        <div class="userNameCon"><b class="userName"></b></div>
+                    </div>
+                    <div class="topToolAll">
+                        <div class="userSettingIcon" onmouseover="userHoverOn('userSettingCon')" onmouseout="userHoverOut('userSettingCon')" ></div>
+                        <div class="userSettingCon">
+                            <a href="http://erp.zhenergy.com.cn/irj/servlet/prt/portal/prtroot/com.sap.portal.navigation.masthead.LogOutComponent?logout_submit=true" class="msg_topLogout">退出</a>
+                        </div>
+                    </div>
+                    <div class="topToolAll">
+                        <div class="userHelpIcon" onmouseover="userHoverOn('userHelpCon')" onmouseout="userHoverOut('userHelpCon')" ></div>
+                        <div class="userHelpCon"><b class="userHelp" onClick="help()">帮助</b></div>
+                    </div>
+                    <div class="topToolAll">
+                        <div class="userSkinIcon" onmouseover="userHoverOn('userSkinCon')" onmouseout="userHoverOut('userSkinCon')" ></div>
+                        <div class="userSkinCon"><b class="userSkin" onClick="changeSkinCss()">夜间模式</b></div>
                     </div>
                 </div>
-                <div class="topToolAll">
-                    <div class="userHelpIcon" onmouseover="userHoverOn('userHelpCon')" onmouseout="userHoverOut('userHelpCon')" ></div>
-                    <div class="userHelpCon"><b class="userHelp" onClick="help()">帮助</b></div>
-                </div>
-                <div class="topToolAll">
-                    <div class="userSkinIcon" onmouseover="userHoverOn('userSkinCon')" onmouseout="userHoverOut('userSkinCon')" ></div>
-                    <div class="userSkinCon"><b class="userSkin" onClick="changeSkinCss()">夜间模式</b></div>
-                </div>
             </div>
-        </div>
-        <div class="content_center" id="showPdfPlace">
-            <!--<embed style="width:100%;height:100%;background-color:#24415F;" src="http://erp.zhenergy.com.cn/demo.sap.com~test123/helpdoc/ERP-Manual.pdf" />-->
-            <table>
-					<thead class="table-head">
-						<tr>
-							<th>模块</th>
-							<th>类型</th>
-							<th>文档名称</th>
-							<th>上传日期</th>
-							<th>下载</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr class="odd">
-							<td>管理驾驶舱</td>
-							<td>用户手册</td>
-							<td><a href="http://erp.zhenergy.com.cn/demo.sap.com~test123/helpdoc/ERP-Manual.pdf" target="_blank">BI帮助文档</a></td>
-							<td>2015年10月19日</td>
-							<td><a href="http://erp.zhenergy.com.cn/demo.sap.com~test123/helpdoc/ERP-Manual.pdf" target="_blank">PDF</a></td>
-						</tr>
-						<tr class="even">
-							<td>管理驾驶舱</td>
-							<td>更新记录</td>
-							<td><a href="http://erp.zhenergy.com.cn/demo.sap.com~test123/helpdoc/ERP-update09-15.pdf" target="_blank">BI更新记录9月15日</a></td>
-							<td>2015年09月15日</td>
-							<td><a href="http://erp.zhenergy.com.cn/demo.sap.com~test123/helpdoc/ERP-update09-15.pdf" target="_blank">PDF</a></td>
-						</tr>
-						<tr class="odd">
-							<td>管理驾驶舱</td>
-							<td>更新记录</td>
-							<td><a href="http://erp.zhenergy.com.cn/demo.sap.com~test123/helpdoc/ERP-update09-30.pdf" target="_blank">BI更新记录9月30日</a></td>
-							<td>2015年09月30日</td>
-							<td><a href="http://erp.zhenergy.com.cn/demo.sap.com~test123/helpdoc/ERP-update09-30.pdf" target="_blank">PDF</a></td>
-						</tr>
-						<tr class="even">
-							<td>管理驾驶舱</td>
-							<td>更新记录</td>
-							<td><a href="http://erp.zhenergy.com.cn/demo.sap.com~test123/helpdoc/ERP-update10-16.pdf" target="_blank">BI更新记录10月16日</a></td>
-							<td>2015年10月16日</td>
-							<td><a href="http://erp.zhenergy.com.cn/demo.sap.com~test123/helpdoc/ERP-update10-16.pdf" target="_blank">PDF</a></td>
-						</tr>
-						<tr class="odd">
-						<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr class="even">
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr class="odd">
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr class="even">
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr class="odd">
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr class="even">
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</tbody>
-				</table>
-        </div>
-        <div class="menu_bottom">
-            <ul>
-                <li class="but01" id="but01">
-                    <div class="But01" type="button" onClick="doit1()"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but02" id="but02">
-                    <div class="But02" type="button" onClick="doit2()"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but03" id="but03">
-                    <div class="But03" type="button" onClick="doit3()"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but04" id="but04">
-                    <div class="But04" type="button" onClick="doit4()"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but05" id="but05">
-                    <div class="But05" type="button" onClick="doit5()"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but06" id="but06">
-                    <div class="But06" type="button" onClick="doit6()"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but07" id="but07">
-                    <div class="But07" type="button" onClick="doit7()"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but08" id="but08">
-                    <div class="But08" type="button" onClick="doit8()"></div>
-                </li>
-            </ul>
+            <div class="content_center" id="showPdfPlace">
+                <!--<embed style="width:100%;height:100%;background-color:#24415F;" src="http://erp.zhenergy.com.cn/demo.sap.com~test123/helpdoc/ERP-Manual.pdf" />-->
+                <table>
+    					<thead class="table-head">
+    						<tr>
+    							<th>模块</th>
+    							<th>类型</th>
+    							<th>文档名称</th>
+    							<th>上传日期</th>
+    							<th>下载</th>
+    						</tr>
+    					</thead>
+    					<tbody>
+    						<tr class="odd">
+    							<td>管理驾驶舱</td>
+    							<td>用户手册</td>
+    							<td><a href="http://erp.zhenergy.com.cn/demo.sap.com~test123/helpdoc/ERP-Manual.pdf" target="_blank">BI帮助文档</a></td>
+    							<td>2015年10月19日</td>
+    							<td><a href="http://erp.zhenergy.com.cn/demo.sap.com~test123/helpdoc/ERP-Manual.pdf" target="_blank">PDF</a></td>
+    						</tr>
+    						<tr class="even">
+    							<td>管理驾驶舱</td>
+    							<td>更新记录</td>
+    							<td><a href="http://erp.zhenergy.com.cn/demo.sap.com~test123/helpdoc/ERP-update09-15.pdf" target="_blank">BI更新记录9月15日</a></td>
+    							<td>2015年09月15日</td>
+    							<td><a href="http://erp.zhenergy.com.cn/demo.sap.com~test123/helpdoc/ERP-update09-15.pdf" target="_blank">PDF</a></td>
+    						</tr>
+    						<tr class="odd">
+    							<td>管理驾驶舱</td>
+    							<td>更新记录</td>
+    							<td><a href="http://erp.zhenergy.com.cn/demo.sap.com~test123/helpdoc/ERP-update09-30.pdf" target="_blank">BI更新记录9月30日</a></td>
+    							<td>2015年09月30日</td>
+    							<td><a href="http://erp.zhenergy.com.cn/demo.sap.com~test123/helpdoc/ERP-update09-30.pdf" target="_blank">PDF</a></td>
+    						</tr>
+    						<tr class="even">
+    							<td>管理驾驶舱</td>
+    							<td>更新记录</td>
+    							<td><a href="http://erp.zhenergy.com.cn/demo.sap.com~test123/helpdoc/ERP-update10-16.pdf" target="_blank">BI更新记录10月16日</a></td>
+    							<td>2015年10月16日</td>
+    							<td><a href="http://erp.zhenergy.com.cn/demo.sap.com~test123/helpdoc/ERP-update10-16.pdf" target="_blank">PDF</a></td>
+    						</tr>
+    						<tr class="odd">
+    						<td></td>
+    							<td></td>
+    							<td></td>
+    							<td></td>
+    							<td></td>
+    						</tr>
+    						<tr class="even">
+    							<td></td>
+    							<td></td>
+    							<td></td>
+    							<td></td>
+    							<td></td>
+    						</tr>
+    						<tr class="odd">
+    							<td></td>
+    							<td></td>
+    							<td></td>
+    							<td></td>
+    							<td></td>
+    						</tr>
+    						<tr class="even">
+    							<td></td>
+    							<td></td>
+    							<td></td>
+    							<td></td>
+    							<td></td>
+    						</tr>
+    						<tr class="odd">
+    							<td></td>
+    							<td></td>
+    							<td></td>
+    							<td></td>
+    							<td></td>
+    						</tr>
+    						<tr class="even">
+    							<td></td>
+    							<td></td>
+    							<td></td>
+    							<td></td>
+    							<td></td>
+    						</tr>
+    					</tbody>
+    				</table>
+            </div>
+            <div class="menu_bottom">
+                <ul>
+                    <li class="but01" id="but01">
+                        <div class="But01" type="button" onClick="doit1()"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but02" id="but02">
+                        <div class="But02" type="button" onClick="doit2()"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but03" id="but03">
+                        <div class="But03" type="button" onClick="doit3()"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but04" id="but04">
+                        <div class="But04" type="button" onClick="doit4()"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but05" id="but05">
+                        <div class="But05" type="button" onClick="doit5()"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but06" id="but06">
+                        <div class="But06" type="button" onClick="doit6()"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but07" id="but07">
+                        <div class="But07" type="button" onClick="doit7()"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but08" id="but08">
+                        <div class="But08" type="button" onClick="doit8()"></div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </template>

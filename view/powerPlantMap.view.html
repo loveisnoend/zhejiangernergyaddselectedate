@@ -1,247 +1,249 @@
 <template data-controller-name="com.zhenergy.pcbi.view.powerPlantMap">
     <div class="nav_main">
-        <div class="msg_top">
-           <div class="msg_top1">
-               <marquee behavior="scroll" scrollamount="5">
-                   <div class="msg_text">
-                   <b class="newMsgIdClass"></b>
-                   <!--GDP增长率<b style="color:#32FF32;" Class="valueGDPIDClass">GDP 7.8 3%↓</b>&nbsp;&nbsp;<span class="span_shuxian">|</span> &nbsp;&nbsp;PPI同比<b style="color:#32FF32;" Class="valuePPItongbiIDClass">PPI 250 2%↑</b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;制造业-同比<b Class="valuePMIproduceIDClass" style="color:#32FF32;">PMI 50 2%↑</b> &nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;非制造业-同比<b Class="valuePMInonProduceIDClass" style="color:#32FF32;"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;GDP总值<b style="color:#32FF32;" Class="valueGDPTotalIDClass"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;CPI环比<b style="color:#32FF32;" Class="valueCPIhuanbiIDClass"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;CPI同比<b style="color:#32FF32;" Class="valueCPItongbiIDClass"></b>-->
-                   </div>
-               </marquee>
-           </div> 
-            <div class="msg_top2">
-                <div class="topToolAll">
-                    <div class="userNameIcon" onmouseover="userHoverOn('userNameCon')" onmouseout="userHoverOut('userNameCon')" ></div>
-                    <div class="userNameCon"><b class="userName"></b></div>
-                </div>
-                <div class="topToolAll">
-                    <div class="userSettingIcon" onmouseover="userHoverOn('userSettingCon')" onmouseout="userHoverOut('userSettingCon')" ></div>
-                    <div class="userSettingCon">
-                        <a href="http://erp.zhenergy.com.cn/irj/servlet/prt/portal/prtroot/com.sap.portal.navigation.masthead.LogOutComponent?logout_submit=true" class="msg_topLogout">退出</a>
+        <div class="main-center">
+            <div class="msg_top">
+               <div class="msg_top1">
+                   <marquee behavior="scroll" scrollamount="5">
+                       <div class="msg_text">
+                       <b class="newMsgIdClass"></b>
+                       <!--GDP增长率<b style="color:#32FF32;" Class="valueGDPIDClass">GDP 7.8 3%↓</b>&nbsp;&nbsp;<span class="span_shuxian">|</span> &nbsp;&nbsp;PPI同比<b style="color:#32FF32;" Class="valuePPItongbiIDClass">PPI 250 2%↑</b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;制造业-同比<b Class="valuePMIproduceIDClass" style="color:#32FF32;">PMI 50 2%↑</b> &nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;非制造业-同比<b Class="valuePMInonProduceIDClass" style="color:#32FF32;"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;GDP总值<b style="color:#32FF32;" Class="valueGDPTotalIDClass"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;CPI环比<b style="color:#32FF32;" Class="valueCPIhuanbiIDClass"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;CPI同比<b style="color:#32FF32;" Class="valueCPItongbiIDClass"></b>-->
+                       </div>
+                   </marquee>
+               </div> 
+                <div class="msg_top2">
+                    <div class="topToolAll">
+                        <div class="userNameIcon" onmouseover="userHoverOn('userNameCon')" onmouseout="userHoverOut('userNameCon')" ></div>
+                        <div class="userNameCon"><b class="userName"></b></div>
+                    </div>
+                    <div class="topToolAll">
+                        <div class="userSettingIcon" onmouseover="userHoverOn('userSettingCon')" onmouseout="userHoverOut('userSettingCon')" ></div>
+                        <div class="userSettingCon">
+                            <a href="http://erp.zhenergy.com.cn/irj/servlet/prt/portal/prtroot/com.sap.portal.navigation.masthead.LogOutComponent?logout_submit=true" class="msg_topLogout">退出</a>
+                        </div>
+                    </div>
+                    <div class="topToolAll">
+                        <div class="userHelpIcon" onmouseover="userHoverOn('userHelpCon')" onmouseout="userHoverOut('userHelpCon')" ></div>
+                        <div class="userHelpCon"><b class="userHelp" onClick="help()">帮助</b></div>
+                    </div>
+                    <div class="topToolAll">
+                        <div class="userSkinIcon" onmouseover="userHoverOn('userSkinCon')" onmouseout="userHoverOut('userSkinCon')" ></div>
+                        <div class="userSkinCon"><b class="userSkin" onClick="changeSkinCss('powerPlantMap')">夜间模式</b></div>
                     </div>
                 </div>
-                <div class="topToolAll">
-                    <div class="userHelpIcon" onmouseover="userHoverOn('userHelpCon')" onmouseout="userHoverOut('userHelpCon')" ></div>
-                    <div class="userHelpCon"><b class="userHelp" onClick="help()">帮助</b></div>
-                </div>
-                <div class="topToolAll">
-                    <div class="userSkinIcon" onmouseover="userHoverOn('userSkinCon')" onmouseout="userHoverOut('userSkinCon')" ></div>
-                    <div class="userSkinCon"><b class="userSkin" onClick="changeSkinCss('powerPlantMap')">夜间模式</b></div>
-                </div>
             </div>
-        </div>
-        <div class="content_center">
-          <div class="powerTop">
-                <div id="demo" style="color:white;margin-top:10px;margin-left:40px;font-weight:bold;font-size:20px;"><span id="demo" style="height:100%;"><b onClick="dailyProfit()" style="cursor:pointer;">日利润</b> > <b>燃料成本</b></span></div>             
-          </div>
-          <div class="powerBottom">
-              <div class="powerPlantLeft">
-    			  <div class="mapTop">
-    			      <div id="huaiNanMap1" style="position:absolute;z-index:2;left:230px;top:150px;height:100px;width:100px;"></div>
-    			      <div id="powerPlantMap1" style="margin-left:230px;margin-top:50px;height:550px;width:600px;"></div>
-    			  </div>
-    			  <div class="mapBottom">
-    			      <div class="chinaMap" style="margin-left:40px;">
-    			          <div class="chinaMapCon">
-        			          <div id="chinaMap1" style="float:left;height:110px;width:140px;margin-top:15px;margin-left:30px;">
-        			              
+            <div class="content_center">
+              <div class="powerTop">
+                    <div id="demo" style="color:white;margin-top:10px;margin-left:40px;font-weight:bold;font-size:20px;"><span id="demo" style="height:100%;"><b onClick="dailyProfit()" style="cursor:pointer;">日利润</b> > <b>燃料成本</b></span></div>             
+              </div>
+              <div class="powerBottom">
+                  <div class="powerPlantLeft">
+        			  <div class="mapTop">
+        			      <div id="huaiNanMap1" class="huiNanMap"></div>
+        			      <div id="powerPlantMap1" class="powerPlantMap"></div>
+        			  </div>
+        			  <div class="mapBottom">
+        			      <div class="chinaMap" style="margin-left:40px;">
+        			          <div class="chinaMapCon">
+            			          <div id="chinaMap1" style="float:left;height:110px;width:140px;margin-top:15px;margin-left:30px;">
+            			              
+            			          </div>
         			          </div>
-    			          </div>
-    			      </div>
-    			      <b id="powerName" style="color:#FEFF02;display:none;"></b>
-    			      <!--<div class="mapDetail">-->
-    		       <!--   		<div style="font-size:12px;color:white;background-color:;height:80%;width:100%;margin-top:40px;margin-left:-5px;">-->
-    						   <!--<div style="margin:20px;0px;0px;20px;width:90%;font-size:12px;font-family:Hiragino;">-->
-    							  <!-- 水电：<b id="powerName" style="color:#FEFF02;"></b>市电厂<br>-->
-    							  <!-- <br>-->
-    							  <!-- 管理型电：XX家<br>-->
-    							  <!-- <br>-->
-    							  <!-- 其他：XX家-->
-    						   <!--</div>-->
-    					    <!--</div>-->
-    			      <!--</div>-->
-    			  </div>
-            </div>
-            <div class="powerPlantRight">
-                <div id="rlcb_detail" class="detail_02">
-                    <div class="detail_02_01">
-                            <div id="powerPlantMainDetailTitle">集团</div>
-                    </div>
-                    <div class="main_content_combition_1">
-                        <div class="main_content_combition_1_1">
-                            <div class="detail_02_03" style="margin-top:10%;">
-                                <div class="detail_02_font1" style="font-size:30px;">
-                                    <div style="float:left;">运价（元/吨）</div>
+        			      </div>
+        			      <b id="powerName" style="color:#FEFF02;display:none;"></b>
+        			      <!--<div class="mapDetail">-->
+        		       <!--   		<div style="font-size:12px;color:white;background-color:;height:80%;width:100%;margin-top:40px;margin-left:-5px;">-->
+        						   <!--<div style="margin:20px;0px;0px;20px;width:90%;font-size:12px;font-family:Hiragino;">-->
+        							  <!-- 水电：<b id="powerName" style="color:#FEFF02;"></b>市电厂<br>-->
+        							  <!-- <br>-->
+        							  <!-- 管理型电：XX家<br>-->
+        							  <!-- <br>-->
+        							  <!-- 其他：XX家-->
+        						   <!--</div>-->
+        					    <!--</div>-->
+        			      <!--</div>-->
+        			  </div>
+                </div>
+                <div class="powerPlantRight">
+                    <div id="rlcb_detail" class="detail_02">
+                        <div class="detail_02_01">
+                                <div id="powerPlantMainDetailTitle">集团</div>
+                        </div>
+                        <div class="main_content_combition_1">
+                            <div class="main_content_combition_1_1">
+                                <div class="detail_02_03" style="margin-top:10%;">
+                                    <div class="detail_02_font1" style="font-size:30px;">
+                                        <div style="float:left;">运价（元/吨）</div>
+                                    </div>
+                                    <div class="detail_02_font2" id="travelPrice"></div>
+                                    <div class="detail_02_img" id="detail_01"></div>
                                 </div>
-                                <div class="detail_02_font2" id="travelPrice"></div>
-                                <div class="detail_02_img" id="detail_01"></div>
+                                <div class="detail_02_03 detail_position01" style="cursor:pointer;margin-top:10%;" onclick="toMJhid()">
+                                    <div class="detail_02_font1" style="font-size:30px;">
+                                        <div style="float:left;">煤价（元/吨）</div>
+                                        <div style="float:left;margin-left:0px;margin-top:4px;">
+                                            <img height="35px" width="35px" src="img/iconfont-right.png"/>
+                                        </div>
+                                    </div>
+                                    <div class="detail_02_font2" id="coalPrice" style="float:left;margin-top:-5px;"></div>
+                                    <div class="detail_02_img" id="detail_02"></div>
+                                </div>
                             </div>
-                            <div class="detail_02_03 detail_position01" style="cursor:pointer;margin-top:10%;" onclick="toMJhid()">
-                                <div class="detail_02_font1" style="font-size:30px;">
-                                    <div style="float:left;">煤价（元/吨）</div>
-                                    <div style="float:left;margin-left:0px;margin-top:4px;">
-                                        <img height="35px" width="35px" src="img/iconfont-right.png"/>
+                            <div class="main_content_combition_1_2">
+                                <div class="detail_02_04" style="top:400px;">
+                                    <div class="detail_001" style="font-size:35px;margin-top:20px;">
+                                        标准煤耗<b id="coalCost"></b>克/度
                                     </div>
                                 </div>
-                                <div class="detail_02_font2" id="coalPrice" style="float:left;margin-top:-5px;"></div>
-                                <div class="detail_02_img" id="detail_02"></div>
                             </div>
-                        </div>
-                        <div class="main_content_combition_1_2">
-                            <div class="detail_02_04" style="top:40%;">
-                                <div class="detail_001" style="font-size:35px;margin-top:20px;">
-                                    标准煤耗<b id="coalCost"></b>克/度
+                            <div class="main_content_combition_1_3">
+                                <div class="detail_02_03" style="margin-top:10%;" onclick="detailAnother002('30')">
+                                    <div class="detail_02_font1" style="font-size:30px;"><b id="wattVolume1"></b>30万KW(克/度)</div>
+                                    <div class="detail_02_font2" id="watt1"></div>
+                                    <div class="detail_02_img" id="detail_03"></div>
+                                </div>
+                                <div class="detail_02_03" style="margin-top:10%;" onclick="detailAnother002('60')">
+                                    <div class="detail_02_font1" style="font-size:30px;"><b id="wattVolume2"></b>60万KW(克/度)</div>
+                                    <div class="detail_02_font2" id="watt2"></div>
+                                    <div class="detail_02_img" id="detail_04"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="main_content_combition_1_3">
-                            <div class="detail_02_03" style="margin-top:10%;" onclick="detailAnother002('30')">
-                                <div class="detail_02_font1" style="font-size:30px;"><b id="wattVolume1"></b>30万KW(克/度)</div>
-                                <div class="detail_02_font2" id="watt1"></div>
-                                <div class="detail_02_img" id="detail_03"></div>
-                            </div>
-                            <div class="detail_02_03" style="margin-top:10%;" onclick="detailAnother002('60')">
-                                <div class="detail_02_font1" style="font-size:30px;"><b id="wattVolume2"></b>60万KW(克/度)</div>
-                                <div class="detail_02_font2" id="watt2"></div>
-                                <div class="detail_02_img" id="detail_04"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="main_content_combition_2">
-                            <div class="detail_pie" id="detail_pie"></div>
-                            <div class="detail_02_02" style="cursor:pointer;left:25%;" onclick="detailAnother()">
-                                <div class="detail_02_font01" style="font-size:20px;">
-                                    <div style="float:left;">单位燃料成本</div>
-                                    <div style="float:left;margin-left:0px;margin-top:0px;">
-                                        <img height="25px" width="25px" src="img/iconfont-right.png"/>
+                        <div class="main_content_combition_2">
+                                <div class="detail_pie" id="detail_pie"></div>
+                                <div class="detail_02_02" style="cursor:pointer;left:25%;" onclick="detailAnother()">
+                                    <div class="detail_02_font01" style="font-size:20px;">
+                                        <div style="float:left;">单位燃料成本</div>
+                                        <div style="float:left;margin-left:0px;margin-top:0px;">
+                                            <img height="25px" width="25px" src="img/iconfont-right.png"/>
+                                        </div>
+                                    </div>
+                                    <div class="detail_02_font01 font_size1" id="fuelCost"></div>
+                                    <div class="detail_02_font01 font_size2">元/吨</div>
+                                    <div class="detail_02_font01 font_size3">
+                                        <div class="detail_02_font04_01 font_size4"><b id="fuelDownPercent"></b>%</div>
+                                        <div class="detail_02_font04_02"></div>
                                     </div>
                                 </div>
-                                <div class="detail_02_font01 font_size1" id="fuelCost"></div>
-                                <div class="detail_02_font01 font_size2">元/吨</div>
-                                <div class="detail_02_font01 font_size3">
-                                    <div class="detail_02_font04_01 font_size4"><b id="fuelDownPercent"></b>%</div>
-                                    <div class="detail_02_font04_02"></div>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="detail_02_hid" style="display:none" id="detail_another">
+                        <div class="detail_02_01" style="font-family: 微软雅黑;margin-left:0px;float:left;margin-top:0px;">
+                            <div class="detail_02_01" style="font-family: 微软雅黑;margin-left:0px;">
+                                <span id="bigCircleDetailTitle">
+                                集团
+                                </span>
+                                <span onclick="back_another()" style="cursor:pointer;margin-left:20px;color:rgb(255,153,0);">返回</span>
                             </div>
+                            <div class="detail_another_01" id="detail_another_01" style="float:left;">
+                                
+                            </div>
+                            <!--<div class="detail_another_font" style="float:left;">-->
+                            <!--    统计于<br/>2015.08.08-->
+                            <!--</div>-->
+                        </div>
                     </div>
+                    <div class="detail_02_hid" style="display:none" id="detail_another002">
+                        <div class="detail_02_01" style="font-family: 微软雅黑;margin-left:0px;float:left;margin-top:0px;">
+                            <div class="detail_02_01" style="font-family: 微软雅黑;margin-left:0px;">
+                                <span id="bigCircleDetailTitle002">
+                                集团
+                                </span>
+                                <span onclick="back_another002()" style="cursor:pointer;color:rgb(255,153,0);">返回</span>
+                            </div>
+                            <div class="detail_another_01" id="detail_another_02" style="float:left;">
+                                
+                            </div>
+                            <!--<div class="detail_another_font" style="float:left;">-->
+                            <!--    统计于<br/>2015.08.08-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+                    <div id="mj_hid" class="detail_02_hid" style="display:none;">
+                         <div class="detail_02_01" style="font-family: 微软雅黑;margin-left:0px;">
+                            <div style="float:left;margin-top:0px;" id="caloriPowerPlantName">集团</div>
+                            <div onclick="back()" style="float:left;margin-top:0px;margin-left:20px;cursor:pointer;color:rgb(255,153,0);">返回</div>
+                            <ul style="float:left;margin-left:50px;margin-top:0px;">
+                                <li>
+                                    <button id="btn1" class="active" onclick="btnclick('1')">4500大卡</button></li>
+                                <li>
+                                    <button id="btn2" onclick="btnclick('2')">4800大卡</button></li>
+                                <li>
+                                    <button id="btn3" onclick="btnclick('3')">5000大卡</button></li>
+                                <li>
+                                    <button id="btn4" onclick="btnclick('4')">5200大卡</button></li>
+                                <li>
+                                    <button id="btn5" onclick="btnclick('5')">5500大卡</button></li>
+                            </ul>
+                        </div>
+                        <div id="mj_content_hid1" class="mj_content">
+                            <div id="pic4500" class="caloryChart">
+                                
+                            </div>
+                        </div>
+                        <div id="mj_content_hid2" class="mj_content" style="display: none">
+                            <div id="pic4800" class="caloryChart">
+                                
+                            </div>
+                        </div>
+                        <div id="mj_content_hid3" class="mj_content" style="display: none">
+                            <div id="pic5000" class="caloryChart">
+                                
+                            </div>
+                        </div>
+                        <div id="mj_content_hid4" class="mj_content" style="display: none">
+                            <div id="pic5200" class="caloryChart">
+                                
+                            </div>
+                        </div>
+                        <div id="mj_content_hid5" class="mj_content" style="display: none">
+                            <div id="pic5500" class="caloryChart">
+                                
+                            </div>
+                        </div>
+                        <div style="float:left;margin-top:-115px;margin-left:910px;color:white;font-family:Microsoft YaHei;">
+                            统计于<br/><b id="powerPlantStatisticDate"></b>
+                        </div>
+                    </div>    
                 </div>
-                <div class="detail_02_hid" style="display:none" id="detail_another">
-                    <div class="detail_02_01" style="font-family: 微软雅黑;margin-left:0px;float:left;margin-top:0px;">
-                        <div class="detail_02_01" style="font-family: 微软雅黑;margin-left:0px;">
-                            <span id="bigCircleDetailTitle">
-                            集团
-                            </span>
-                            <span onclick="back_another()" style="cursor:pointer;margin-left:20px;color:rgb(255,153,0);">返回</span>
-                        </div>
-                        <div class="detail_another_01" id="detail_another_01" style="float:left;">
-                            
-                        </div>
-                        <!--<div class="detail_another_font" style="float:left;">-->
-                        <!--    统计于<br/>2015.08.08-->
-                        <!--</div>-->
-                    </div>
-                </div>
-                <div class="detail_02_hid" style="display:none" id="detail_another002">
-                    <div class="detail_02_01" style="font-family: 微软雅黑;margin-left:0px;float:left;margin-top:0px;">
-                        <div class="detail_02_01" style="font-family: 微软雅黑;margin-left:0px;">
-                            <span id="bigCircleDetailTitle002">
-                            集团
-                            </span>
-                            <span onclick="back_another002()" style="cursor:pointer;color:rgb(255,153,0);">返回</span>
-                        </div>
-                        <div class="detail_another_01" id="detail_another_02" style="float:left;">
-                            
-                        </div>
-                        <!--<div class="detail_another_font" style="float:left;">-->
-                        <!--    统计于<br/>2015.08.08-->
-                        <!--</div>-->
-                    </div>
-                </div>
-                <div id="mj_hid" class="detail_02_hid" style="display:none;">
-                     <div class="detail_02_01" style="font-family: 微软雅黑;margin-left:0px;">
-                        <div style="float:left;margin-top:0px;" id="caloriPowerPlantName">集团</div>
-                        <div onclick="back()" style="float:left;margin-top:0px;margin-left:20px;cursor:pointer;color:rgb(255,153,0);">返回</div>
-                        <ul style="float:left;margin-left:50px;margin-top:0px;">
-                            <li>
-                                <button id="btn1" class="active" onclick="btnclick('1')">4500大卡</button></li>
-                            <li>
-                                <button id="btn2" onclick="btnclick('2')">4800大卡</button></li>
-                            <li>
-                                <button id="btn3" onclick="btnclick('3')">5000大卡</button></li>
-                            <li>
-                                <button id="btn4" onclick="btnclick('4')">5200大卡</button></li>
-                            <li>
-                                <button id="btn5" onclick="btnclick('5')">5500大卡</button></li>
-                        </ul>
-                    </div>
-                    <div id="mj_content_hid1" class="mj_content">
-                        <div id="pic4500" class="caloryChart">
-                            
-                        </div>
-                    </div>
-                    <div id="mj_content_hid2" class="mj_content" style="display: none">
-                        <div id="pic4800" class="caloryChart">
-                            
-                        </div>
-                    </div>
-                    <div id="mj_content_hid3" class="mj_content" style="display: none">
-                        <div id="pic5000" class="caloryChart">
-                            
-                        </div>
-                    </div>
-                    <div id="mj_content_hid4" class="mj_content" style="display: none">
-                        <div id="pic5200" class="caloryChart">
-                            
-                        </div>
-                    </div>
-                    <div id="mj_content_hid5" class="mj_content" style="display: none">
-                        <div id="pic5500" class="caloryChart">
-                            
-                        </div>
-                    </div>
-                    <div style="float:left;margin-top:-115px;margin-left:910px;color:white;font-family:Microsoft YaHei;">
-                        统计于<br/><b id="powerPlantStatisticDate"></b>
-                    </div>
-                </div>    
+                
+              </div>
+    
             </div>
-            
-          </div>
-
-        </div>
-        <div class="menu_bottom">
-            <ul>
-                <li class="but01" style="width:180px;">
-                    <div class="But01" type="button"  onClick="doit1()" style="margin-left: 60px;"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but02 nav_BI" style="width:180px;">
-                    <div class="But02" type="button"  onClick="doit2()" style="margin-left: 60px;"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but03" style="width:180px;">
-                    <div class="But03" type="button"  onClick="doit3()" style="margin-left: 60px;"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but04" style="width:180px;">
-                    <div class="But04" type="button"  onClick="doit4()" style="margin-left: 60px;"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but05" style="width:180px;">
-                    <div class="But05" type="button"  onClick="doit5()" style="margin-left: 60px;"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but06" style="width:180px;">
-                    <div class="But06" type="button"  onClick="doit6()" style="margin-left: 60px;"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but07" style="width:180px;">
-                    <div class="But07" type="button"  onClick="doit7()" style="margin-left: 60px;"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but08" style="width:180px;">
-                    <div class="But08" type="button"  onClick="doit8()" style="margin-left: 60px;"></div>
-                </li>
-            </ul>
+            <div class="menu_bottom">
+                <ul>
+                    <li class="but01" style="width:180px;">
+                        <div class="But01" type="button"  onClick="doit1()" style="margin-left: 60px;"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but02 nav_BI" style="width:180px;">
+                        <div class="But02" type="button"  onClick="doit2()" style="margin-left: 60px;"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but03" style="width:180px;">
+                        <div class="But03" type="button"  onClick="doit3()" style="margin-left: 60px;"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but04" style="width:180px;">
+                        <div class="But04" type="button"  onClick="doit4()" style="margin-left: 60px;"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but05" style="width:180px;">
+                        <div class="But05" type="button"  onClick="doit5()" style="margin-left: 60px;"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but06" style="width:180px;">
+                        <div class="But06" type="button"  onClick="doit6()" style="margin-left: 60px;"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but07" style="width:180px;">
+                        <div class="But07" type="button"  onClick="doit7()" style="margin-left: 60px;"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but08" style="width:180px;">
+                        <div class="But08" type="button"  onClick="doit8()" style="margin-left: 60px;"></div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </template>

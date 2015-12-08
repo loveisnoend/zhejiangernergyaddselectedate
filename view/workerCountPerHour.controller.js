@@ -493,11 +493,6 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
         			};
 			    
 			    mychart.setOption(option);
-			    
-			    // 关闭加载事件
-			    if (busy) {
-        			busy.close();
-        		} 
 			}
     },
 	// load the chart map
@@ -627,6 +622,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
 							      }
 							  }  
 							},
+							clickable:false,
 							markPoint : {
 							    clickable: true,
 							    symbol: 'star50',
@@ -773,6 +769,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
 							hoverable:false,
 							roam:false,
 							data : [],
+							clickable:false,
 							markPoint : {
 								clickable: true,
 							    symbol: 'star50',
@@ -1000,15 +997,6 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
 		}
 		// 设置Chart的数据
         function setChartData(ec, mapSeries, dataIndex) {
-            
-            // 加载等待事件
-            busy = new sap.m.BusyDialog({
-    			close: function(event) {}
-    		});
-    		if (busy) {
-    			busy.open();
-    		} 
-		
     		// 电厂名
 			var powerPlantName = '';
 			if (mapSeries.markPoint.data[dataIndex].name == '金华') {

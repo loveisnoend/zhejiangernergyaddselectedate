@@ -37,6 +37,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
 	},
 	// 人均营业收入值
 	_loadData_AverBusinessIncome : function(){
+	    if (isHome08Load == false) {
+            busy = new sap.m.BusyDialog({
+				close: function(event) {}
+			});
+    		if (busy) {
+    			busy.open();
+    		} 
+	    }
 	    var mParameters = {};
 		mParameters['async'] = true;
 		mParameters['success'] = jQuery.proxy(function(sRes) {
@@ -330,6 +338,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
     	    }
             // 单位万千瓦时人工成本统计日期
 	        $('#workerCostPerKWHourDate').html(daytime01NO4 + "年" + daytime02NO4 + "月");//  + daytime03NO4 + "日"
+	        if (isHome08Load == false) {
+                if (busy) {
+        			busy.close();
+        		} 
+        		changeTheSkinOfPage();
+        		isHome08Load = true;
+            }
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			alert("Get Data Error");

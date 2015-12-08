@@ -56,7 +56,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home04", {
 				    temperature = sRes.results[i].KPI_VALUE;
 				}
 			}
-			this._loadData01(daytime,weather,temperature,place);
+			this._loadDataInitial(daytime,weather,temperature,place);
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			alert("Get Data Error");
@@ -64,7 +64,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home04", {
 	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_01_V01", mParameters);
 	},
 	
-	_loadData01 : function(daytime,weather,temperature,place){
+	_loadDataInitial : function(daytime,weather,temperature,place){
 	    var daytime01;
 	    var daytime02;
 	    var daytime03;
@@ -133,9 +133,24 @@ sap.ui.controller("com.zhenergy.pcbi.view.home04", {
         weekday[5]="周五";
         weekday[6]="周六";
         $('#home_Week').html(weekday[d.getDay()]);
+    	if (isHome04Load == false) {
+            if (busy) {
+    			busy.close();
+    		} 
+    		changeTheSkinOfPage();
+    		isHome04Load = true;
+        }
 	},
 	// 加载发电量值
 	_loadData_top : function(){
+	    if (isHome04Load == false) {
+            busy = new sap.m.BusyDialog({
+				close: function(event) {}
+			});
+    		if (busy) {
+    			busy.open();
+    		} 
+	    }
 	    var allenergy = null;
 	    var mom = null;
 	    var mParameters = {};
@@ -176,17 +191,22 @@ sap.ui.controller("com.zhenergy.pcbi.view.home04", {
 	    $('#allenergy').html(allenergy_change);
 	    
 	},
+	
+	// 获取二级页面数据
+	_loadData01 : function () {
+        this._drawSwiper();
+        this._loadData();
+        this._loadData_top();
+        // 设定头部跑马灯信息 common.js
+		_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);  
+	},
 	onInit: function() {
         
 	    this.getView().addEventDelegate({
 			
 			// not added the controller as delegate to avoid controller functions with similar names as the events
 			onAfterShow: jQuery.proxy(function() {
-                this._drawSwiper();
-                this._loadData();
-                this._loadData_top();
-                // 设定头部跑马灯信息 common.js
-    			_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);
+                this._loadData01();
 			}, this)
 		});
 	},

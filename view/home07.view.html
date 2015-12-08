@@ -1,93 +1,95 @@
 <template data-controller-name="com.zhenergy.pcbi.view.home07">
 <div class="nav_main">
-        <div class="msg_top">
-           <div class="msg_top1">
-               <marquee behavior="scroll" scrollamount="5">
-                   <div class="msg_text">
-                   <b class="newMsgIdClass"></b>
-                   <!--GDP增长率<b style="color:#32FF32;" Class="valueGDPIDClass">GDP 7.8 3%↓</b>&nbsp;&nbsp;<span class="span_shuxian">|</span> &nbsp;&nbsp;PPI同比<b style="color:#32FF32;" Class="valuePPItongbiIDClass">PPI 250 2%↑</b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;制造业-同比<b Class="valuePMIproduceIDClass" style="color:#32FF32;">PMI 50 2%↑</b> &nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;非制造业-同比<b Class="valuePMInonProduceIDClass" style="color:#32FF32;"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;GDP总值<b style="color:#32FF32;" Class="valueGDPTotalIDClass"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;CPI环比<b style="color:#32FF32;" Class="valueCPIhuanbiIDClass"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;CPI同比<b style="color:#32FF32;" Class="valueCPItongbiIDClass"></b>-->
-                   </div>
-               </marquee>
-           </div> 
-           <div class="msg_top2">
-                <div class="topToolAll">
-                    <div class="userNameIcon" onmouseover="userHoverOn('userNameCon')" onmouseout="userHoverOut('userNameCon')" ></div>
-                    <div class="userNameCon"><b class="userName"></b></div>
-                </div>
-                <div class="topToolAll">
-                    <div class="userSettingIcon" onmouseover="userHoverOn('userSettingCon')" onmouseout="userHoverOut('userSettingCon')" ></div>
-                    <div class="userSettingCon">
-                        <a href="http://erp.zhenergy.com.cn/irj/servlet/prt/portal/prtroot/com.sap.portal.navigation.masthead.LogOutComponent?logout_submit=true" class="msg_topLogout">退出</a>
+    	<div class="main-center">
+            <div class="msg_top">
+               <div class="msg_top1">
+                   <marquee behavior="scroll" scrollamount="5">
+                       <div class="msg_text">
+                       <b class="newMsgIdClass"></b>
+                       <!--GDP增长率<b style="color:#32FF32;" Class="valueGDPIDClass">GDP 7.8 3%↓</b>&nbsp;&nbsp;<span class="span_shuxian">|</span> &nbsp;&nbsp;PPI同比<b style="color:#32FF32;" Class="valuePPItongbiIDClass">PPI 250 2%↑</b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;制造业-同比<b Class="valuePMIproduceIDClass" style="color:#32FF32;">PMI 50 2%↑</b> &nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;非制造业-同比<b Class="valuePMInonProduceIDClass" style="color:#32FF32;"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;GDP总值<b style="color:#32FF32;" Class="valueGDPTotalIDClass"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;CPI环比<b style="color:#32FF32;" Class="valueCPIhuanbiIDClass"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;CPI同比<b style="color:#32FF32;" Class="valueCPItongbiIDClass"></b>-->
+                       </div>
+                   </marquee>
+               </div> 
+               <div class="msg_top2">
+                    <div class="topToolAll">
+                        <div class="userNameIcon" onmouseover="userHoverOn('userNameCon')" onmouseout="userHoverOut('userNameCon')" ></div>
+                        <div class="userNameCon"><b class="userName"></b></div>
+                    </div>
+                    <div class="topToolAll">
+                        <div class="userSettingIcon" onmouseover="userHoverOn('userSettingCon')" onmouseout="userHoverOut('userSettingCon')" ></div>
+                        <div class="userSettingCon">
+                            <a href="http://erp.zhenergy.com.cn/irj/servlet/prt/portal/prtroot/com.sap.portal.navigation.masthead.LogOutComponent?logout_submit=true" class="msg_topLogout">退出</a>
+                        </div>
+                    </div>
+                    <div class="topToolAll">
+                        <div class="userHelpIcon" onmouseover="userHoverOn('userHelpCon')" onmouseout="userHoverOut('userHelpCon')" ></div>
+                        <div class="userHelpCon"><b class="userHelp" onClick="help()">帮助</b></div>
+                    </div>
+                    <div class="topToolAll">
+                        <div class="userSkinIcon" onmouseover="userHoverOn('userSkinCon')" onmouseout="userHoverOut('userSkinCon')" ></div>
+                        <div class="userSkinCon"><b class="userSkin" onClick="changeSkinCss('home07')">夜间模式</b></div>
                     </div>
                 </div>
-                <div class="topToolAll">
-                    <div class="userHelpIcon" onmouseover="userHoverOn('userHelpCon')" onmouseout="userHoverOut('userHelpCon')" ></div>
-                    <div class="userHelpCon"><b class="userHelp" onClick="help()">帮助</b></div>
-                </div>
-                <div class="topToolAll">
-                    <div class="userSkinIcon" onmouseover="userHoverOn('userSkinCon')" onmouseout="userHoverOut('userSkinCon')" ></div>
-                    <div class="userSkinCon"><b class="userSkin" onClick="changeSkinCss()">夜间模式</b></div>
+            </div>
+            <div class="content_center">
+                <!-- Swiper -->
+                <div class="swiper-container">
+                    <div class="swiper-wrapper" style="margin-top:-15px;">
+                        <div class="demo_outer" style="position: relative;background-size:100% 100%;">
+                    			<div class="demo_content_top">
+                    				<div class="demo_header" style="height:7%;"></div>
+                    				<div class="demo_jiange_1"></div>
+                    				<div class="demo_shuzi_white" style="font-size:50px;margin-top: 10%;font-family: 微软雅黑;" >
+                    				<span >电厂安全日天数</span>				
+                    				</div>
+                    			</div>
+                    			<div class="demo_content_foot">
+                    				<div class="demo_jiange_2"></div>
+                    				<div class="demo_content_1">
+                    					<span style="font-size:35px;">持续完善中<br/>...</span>
+                    				</div>
+                    				<div class="demo_content_foot_1">
+                    			    </div>
+                    			</div>
+                    		</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="content_center">
-            <!-- Swiper -->
-            <div class="swiper-container">
-                <div class="swiper-wrapper" style="margin-top:-15px;">
-                    <div class="demo_outer" style="position: relative;background-size:100% 100%;">
-                			<div class="demo_content_top">
-                				<div class="demo_header" style="height:7%;"></div>
-                				<div class="demo_jiange_1"></div>
-                				<div class="demo_shuzi_white" style="font-size:50px;margin-top: 10%;font-family: 微软雅黑;" >
-                				<span >电厂安全日天数</span>				
-                				</div>
-                			</div>
-                			<div class="demo_content_foot">
-                				<div class="demo_jiange_2"></div>
-                				<div class="demo_content_1">
-                					<span style="font-size:35px;">持续完善中<br/>...</span>
-                				</div>
-                				<div class="demo_content_foot_1">
-                			    </div>
-                			</div>
-                		</div>
-                </div>
+            <div class="menu_bottom">
+                <ul>
+                    <li class="but01" id="but01">
+                        <div class="But01" type="button" onClick="doit1()"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but02" id="but02">
+                        <div class="But02" type="button" onClick="doit2()"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but03" id="but03">
+                        <div class="But03" type="button" onClick="doit3()"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but04" id="but04">
+                        <div class="But04" type="button" onClick="doit4()"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but05" id="but05">
+                        <div class="But05" type="button" onClick="doit5()"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but06" id="but06">
+                        <div class="But06" type="button" onClick="doit6()"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but07 nav_BI" id="but07">
+                        <div class="But07" type="button" onClick="doit7()"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but08" id="but08">
+                        <div class="But08" type="button" onClick="doit8()"></div>
+                    </li>
+                </ul>
             </div>
-        </div>
-        <div class="menu_bottom">
-            <ul>
-                <li class="but01" id="but01">
-                    <div class="But01" type="button" onClick="doit1()"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but02" id="but02">
-                    <div class="But02" type="button" onClick="doit2()"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but03" id="but03">
-                    <div class="But03" type="button" onClick="doit3()"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but04" id="but04">
-                    <div class="But04" type="button" onClick="doit4()"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but05" id="but05">
-                    <div class="But05" type="button" onClick="doit5()"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but06" id="but06">
-                    <div class="But06" type="button" onClick="doit6()"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but07 nav_BI" id="but07">
-                    <div class="But07" type="button" onClick="doit7()"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but08" id="but08">
-                    <div class="But08" type="button" onClick="doit8()"></div>
-                </li>
-            </ul>
         </div>
     </div>
 </template>

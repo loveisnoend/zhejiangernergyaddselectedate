@@ -32,6 +32,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProfit", {
 	    var zhejiang_JsonData = JSON.parse(zhejiang_dataStr)
 		var huaiNan_JsonData = JSON.parse(huaiNan_dataStr);
 	    this.loadChart(zhejiang_JsonData, huaiNan_JsonData);
+	    // change the page skin
+	    changeTheSkinOfPage();
 	},
 // 	loadmjChart: function(divId){
 //         require(
@@ -155,7 +157,6 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProfit", {
 	
 	// 获取集团指标-净利润 SCREEN_JYYJ_02_V05
 	loadBase_SupplyPureProfitIncome : function (chartDivId, priceChartName) {
-        
         // 净利润指标
         // 净利润
         var KPI_JLR_V = new Array();
@@ -378,6 +379,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProfit", {
 			    // 关闭加载事件
 			    if (busy) {
         			busy.close();
+        			changeTheSkinOfPage();
         		}
 			}
     },
@@ -498,11 +500,6 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProfit", {
         			};
 			    
 			    mychart.setOption(option);
-			    
-			    // 关闭加载事件
-			    if (busy) {
-        			busy.close();
-        		} 
 			}
     },
 	// load the chart map
@@ -612,6 +609,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProfit", {
 							hoverable: false,
 							roam:false,
 							data : [],
+							clickable:false,
 							mapLocation : {
 							    x: "center",
 								y: "center"
@@ -778,6 +776,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProfit", {
 							hoverable:false,
 							roam:false,
 							data : [],
+							clickable:false,
 							markPoint : {
 								clickable: true,
 							    symbol: 'star50',
@@ -1006,14 +1005,6 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProfit", {
 		// 设置Chart的数据
         function setChartData(ec, mapSeries, dataIndex) {
             
-            // 加载等待事件
-            busy = new sap.m.BusyDialog({
-    			close: function(event) {}
-    		});
-    		if (busy) {
-    			busy.open();
-    		} 
-		
     		// 电厂名
 			var powerPlantName = '';
 			if (mapSeries.markPoint.data[dataIndex].name == '金华') {

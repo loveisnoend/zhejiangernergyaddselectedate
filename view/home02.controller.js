@@ -38,9 +38,24 @@ sap.ui.controller("com.zhenergy.pcbi.view.home02", {
 	
 	// 获取二级页面数据
 	_loadData01 : function () {
+	    if (isHome02Load == false) {
+            busy = new sap.m.BusyDialog({
+				close: function(event) {}
+			});
+    		if (busy) {
+    			busy.open();
+    		} 
+	    } 
 		this._drawSwiper();
 		// 设定头部跑马灯信息 common.js
 		_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);
+        if (isHome02Load == false) {
+            if (busy) {
+    			busy.close();
+    		} 
+    		changeTheSkinOfPage();
+    		isHome02Load = true;
+        }
 	},
 /**
 * Called when a controller is instantiated and its View controls (if available) are already created.

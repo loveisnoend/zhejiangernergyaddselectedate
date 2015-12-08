@@ -1,5 +1,6 @@
 <template data-controller-name="com.zhenergy.pcbi.view.averBusinessIncome">
     <div class="nav_main">
+       <div class="main-center">
         <div class="msg_top">
            <div class="msg_top1">
                <marquee behavior="scroll" scrollamount="5">
@@ -37,8 +38,8 @@
           <div class="powerBottom">
               <div class="powerPlantLeft">
     			  <div class="mapTop">
-    			      <div id="huaiNanMapAverBusiness" style="position:absolute;z-index:2;left:230px;top:150px;height:100px;width:100px;"></div>
-    			      <div id="powerPlantMapAverBusiness" style="margin-left:230px;margin-top:50px;height:550px;width:600px;"></div>
+    			      <div id="huaiNanMapAverBusiness" class="huiNanMap"></div>
+    			      <div id="powerPlantMapAverBusiness" class="powerPlantMap"></div>
     			  </div>
     			  <div class="mapBottom">
     			      <div class="chinaMap"  style="margin-left:40px;">
@@ -158,5 +159,6 @@
                 </li>
             </ul>
         </div>
+       </div>
     </div>
 </template>

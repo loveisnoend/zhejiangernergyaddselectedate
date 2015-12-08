@@ -27,7 +27,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 	},
 	// 获取三级页面数据
 	_loadData01 : function () {
-	    if (isInternetPowerVOlumeLoad == false) {
+	    if (isInternetPowerVolumeLoad == false) {
             busy = new sap.m.BusyDialog({
 				close: function(event) {}
 			});
@@ -527,6 +527,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 								//width: "500px",
 								//height: "500px"
 							},
+							clickable:false,
 							markPoint : {
 							    clickable: true,
 							    symbol: 'star50',
@@ -677,6 +678,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 							hoverable:false,
 							roam:false,
 							data : [],
+							clickable:false,
 							markPoint : {
 								clickable: true,
 							    symbol: 'star50',
@@ -760,11 +762,12 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 			    option5.series[1].markPoint.data[0] = {name:'上海',value:0};
                 // 为echarts对象加载数据 
                 myChart5.setOption(option5); 
-                if (isInternetPowerVOlumeLoad == false) {
+                if (isInternetPowerVolumeLoad == false) {
                     if (busy) {
             			busy.close();
             		} 
-            		isInternetPowerVOlumeLoad = true;
+            		changeTheSkinOfPage();
+            		isInternetPowerVolumeLoad = true;
                 }
         }
         

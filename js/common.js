@@ -1,87 +1,96 @@
 // 皮肤切换，更换CSS文件
 function changeSkinCss(pageName) {
- 
     var skinNameAlter = $('.userSkin').html();
     if (skinName == '夜间模式') {
-        $('#homeCss').attr("href","css/homeHighlight.css");
-        $('#helpCss').attr("href","css/helpHighlight.css");
-        $('#bottomButCss').attr("href","css/bottom_buttonHighlight.css");
-        $('#tabCss').attr("href","css/tabHighlight.css");
-        $('#performanceCss').attr("href","css/PerformanceHightlight.css");
-        $('#mainBusinessCss').attr("href","css/mainBusinessHightlight.css");
-        $('#powerPlantMapCss').attr("href","css/powerPlantMapHighlight.css");
-        $('#internetPowerVolumeCss').attr("href","css/internetPowerVolumeHighlight.css");
-        $('.userSkin').html('高亮模式');
         skinName = '高亮模式';
     } else {
-        $('#homeCss').attr("href","css/home.css");
-        $('#helpCss').attr("href","css/help.css");
-        $('#bottomButCss').attr("href","css/bottom_button.css");
-        $('#tabCss').attr("href","css/tab.css");
-        $('#performanceCss').attr("href","css/Performance.css");
-        $('#mainBusinessCss').attr("href","css/mainBusiness.css");
-        $('#powerPlantMapCss').attr("href","css/powerPlantMap.css");
-        $('#internetPowerVolumeCss').attr("href","css/internetPowerVolume.css");
-        $('.userSkin').html('夜间模式');
         skinName = '夜间模式';
     }
     skinNameAlter = $('.userSkin').html();
-    // alert('您将切换到'+skinNameAlter);
     if (pageName == 'home01') {
+        isHomeLoad = false;
         home.getController()._loadData01();
     }
     if (pageName == 'home02') {
+        isHome02Load = false;
         home02.getController()._loadData01();
     }
     if (pageName == 'home03') {
+        isHome03Load = false;
         home03.getController()._loadData01();
     }
+    if (pageName == 'home04') {
+        isHome04Load = false;
+        home04.getController()._loadData01();
+    }
+    if (pageName == 'home05') {
+        changeTheSkinOfPage();
+    }
     if (pageName == 'home06') {
+        isHome06Load = false;
         home06.getController()._loadData01();
     }
+    if (pageName == 'home07') {
+        changeTheSkinOfPage();
+    }
     if (pageName == 'home08') {
+        isHome08Load = false;
         home08.getController()._loadData01();
     }
     if (pageName == 'internetPowerVolume') {
+        isInternetPowerVolumeLoad = false;
         internetPowerVolume.getController()._loadData01();
     }
     if (pageName == 'powerPlantMap') {
+        isPowerPlantMapLoad = false;
         powerPlantMap.getController()._loadData01(); 
     }
     if (pageName == 'internetVolume') {
+        isInternetVolumeLoad = false;
         internetVolume.getController()._loadData01(); 
     }
     if (pageName == 'othersCost') {
+        isOthersCostLoad = false;
         othersCost.getController()._loadData01(); 
     }
     if (pageName == 'powerIncome') {
+        isPowerIncomeLoad = false;
         powerIncome.getController()._loadData01(); 
     }
     if (pageName == 'mainBusiness') {
+        isMainBusinessLoad = false;
         mainBusiness.getController()._loadData01(); 
     }
     if (pageName == 'heatIncome') {
+        isHeatIncomeLoad = false;
         heatIncome.getController()._loadData01(); 
     }
     if (pageName == 'labourIncome') {
+        isLabourIncomeLoad = false;
         labourIncome.getController()._loadData01(); 
     }
     if (pageName == 'othersIncome') {
+        isOthersIncomeLoad = false;
         othersIncome.getController()._loadData01(); 
     }
     if (pageName == 'averBusinessIncome') {
+        changeTheSkinOfPage();
         averBusinessIncome.getController()._loadData01(); 
     }
     if (pageName == 'workerCount') {
+        changeTheSkinOfPage();
         workerCount.getController()._loadData01(); 
     }
     if (pageName == 'workerCountPerHour') {
+        changeTheSkinOfPage();
         workerCountPerHour.getController()._loadData01(); 
     }
     if (pageName == 'workerCost') {
+        changeTheSkinOfPage();
         workerCost.getController()._loadData01(); 
     }
     if (pageName == 'workerCostPerHour') {
+        changeTheSkinOfPage();
         workerCostPerHour.getController()._loadData01(); 
     }
     if (pageName == 'pureProfit') {
@@ -99,6 +108,39 @@ function changeSkinCss(pageName) {
     if (pageName == 'propertyPercent') {
         propertyPercent.getController()._loadData01(); 
     }
+    if (pageName == 'performance') {
+        isPerformaneceLoad = false;
+        Performance.getController()._loadData01(); 
+    }
+    if (pageName == 'tab') {
+        changeTheSkinOfPage();
+    }
+}
+// change the skin of the page
+function changeTheSkinOfPage() {
+    if (skinName == '高亮模式') {
+        $('#homeCss').attr("href","css/homeHighlight.css");
+        $('#helpCss').attr("href","css/helpHighlight.css");
+        $('#bottomButCss').attr("href","css/bottom_buttonHighlight.css");
+        $('#tabCss').attr("href","css/tabHighlight.css");
+        $('#performanceCss').attr("href","css/PerformanceHightlight.css");
+        $('#mainBusinessCss').attr("href","css/mainBusinessHightlight.css");
+        $('#powerPlantMapCss').attr("href","css/powerPlantMapHighlight.css");
+        $('#internetPowerVolumeCss').attr("href","css/internetPowerVolumeHighlight.css");
+        $('.userSkin').html('高亮模式');
+    } else {
+        $('#homeCss').attr("href","css/home.css");
+        $('#helpCss').attr("href","css/help.css");
+        $('#bottomButCss').attr("href","css/bottom_button.css");
+        $('#tabCss').attr("href","css/tab.css");
+        $('#performanceCss').attr("href","css/Performance.css");
+        $('#mainBusinessCss').attr("href","css/mainBusiness.css");
+        $('#powerPlantMapCss').attr("href","css/powerPlantMap.css");
+        $('#internetPowerVolumeCss').attr("href","css/internetPowerVolume.css");
+        $('.userSkin').html('夜间模式');
+    }
+    skinNameAlter = $('.userSkin').html();
+    // alert('您将切换到'+skinNameAlter);
 }
 // 个人设定，用户名，肤色JS CSS 控制
 function userHoverOn(classNameId) {

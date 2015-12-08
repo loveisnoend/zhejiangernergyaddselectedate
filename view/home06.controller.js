@@ -37,6 +37,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.home06", {
 	},
     // 加载资金情况
 	_loadData_CashRate : function(){
+	    if (isHome06Load == false) {
+            busy = new sap.m.BusyDialog({
+				close: function(event) {}
+			});
+    		if (busy) {
+    			busy.open();
+    		} 
+	    }
 	    var mParameters = {};
 		mParameters['async'] = true;
 		mParameters['success'] = jQuery.proxy(function(sRes) {
@@ -151,6 +159,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.home06", {
     	    }
             // 资产现金回收率统计日期
 	        $('#propertyCashBackRateDate').html(daytime01Sum + "年" + daytime02Sum + "月");//  + daytime03Sum + "日"
+	        if (isHome06Load == false) {
+                if (busy) {
+        			busy.close();
+        		} 
+        		changeTheSkinOfPage();
+        		isHome06Load = true;
+            }
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			alert("Get Data Error");

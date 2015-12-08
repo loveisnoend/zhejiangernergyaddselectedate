@@ -121,8 +121,9 @@
 {
     color: white;
     font-family: 微软雅黑;
-    margin-top:45%;
     float:left;
+    margin-top: -140px;
+    margin-left: 900px;
 }
 /*TODO pixel*/
 .Power-main_content_combition_1_1{

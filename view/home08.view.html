@@ -1,156 +1,158 @@
 <template data-controller-name="com.zhenergy.pcbi.view.home08">
 	<div class="nav_main">
-        <div class="msg_top">
-           <div class="msg_top1">
-               <marquee behavior="scroll" scrollamount="5">
-                   <div class="msg_text">
-                   <b class="newMsgIdClass"></b>
-                   <!--GDP增长率<b style="color:#32FF32;" Class="valueGDPIDClass">GDP 7.8 3%↓</b>&nbsp;&nbsp;<span class="span_shuxian">|</span> &nbsp;&nbsp;PPI同比<b style="color:#32FF32;" Class="valuePPItongbiIDClass">PPI 250 2%↑</b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;制造业-同比<b Class="valuePMIproduceIDClass" style="color:#32FF32;">PMI 50 2%↑</b> &nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;非制造业-同比<b Class="valuePMInonProduceIDClass" style="color:#32FF32;"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;GDP总值<b style="color:#32FF32;" Class="valueGDPTotalIDClass"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;CPI环比<b style="color:#32FF32;" Class="valueCPIhuanbiIDClass"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;CPI同比<b style="color:#32FF32;" Class="valueCPItongbiIDClass"></b>-->
-                   </div>
-               </marquee>
-           </div> 
-           <div class="msg_top2">
-                <div class="topToolAll">
-                    <div class="userNameIcon" onmouseover="userHoverOn('userNameCon')" onmouseout="userHoverOut('userNameCon')" ></div>
-                    <div class="userNameCon"><b class="userName"></b></div>
-                </div>
-                <div class="topToolAll">
-                    <div class="userSettingIcon" onmouseover="userHoverOn('userSettingCon')" onmouseout="userHoverOut('userSettingCon')" ></div>
-                    <div class="userSettingCon">
-                        <a href="http://erp.zhenergy.com.cn/irj/servlet/prt/portal/prtroot/com.sap.portal.navigation.masthead.LogOutComponent?logout_submit=true" class="msg_topLogout">退出</a>
+		<div class="main-center">
+            <div class="msg_top">
+               <div class="msg_top1">
+                   <marquee behavior="scroll" scrollamount="5">
+                       <div class="msg_text">
+                       <b class="newMsgIdClass"></b>
+                       <!--GDP增长率<b style="color:#32FF32;" Class="valueGDPIDClass">GDP 7.8 3%↓</b>&nbsp;&nbsp;<span class="span_shuxian">|</span> &nbsp;&nbsp;PPI同比<b style="color:#32FF32;" Class="valuePPItongbiIDClass">PPI 250 2%↑</b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;制造业-同比<b Class="valuePMIproduceIDClass" style="color:#32FF32;">PMI 50 2%↑</b> &nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;非制造业-同比<b Class="valuePMInonProduceIDClass" style="color:#32FF32;"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;GDP总值<b style="color:#32FF32;" Class="valueGDPTotalIDClass"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;CPI环比<b style="color:#32FF32;" Class="valueCPIhuanbiIDClass"></b>&nbsp;&nbsp;<span class="span_shuxian">|</span>&nbsp;&nbsp;CPI同比<b style="color:#32FF32;" Class="valueCPItongbiIDClass"></b>-->
+                       </div>
+                   </marquee>
+               </div> 
+               <div class="msg_top2">
+                    <div class="topToolAll">
+                        <div class="userNameIcon" onmouseover="userHoverOn('userNameCon')" onmouseout="userHoverOut('userNameCon')" ></div>
+                        <div class="userNameCon"><b class="userName"></b></div>
+                    </div>
+                    <div class="topToolAll">
+                        <div class="userSettingIcon" onmouseover="userHoverOn('userSettingCon')" onmouseout="userHoverOut('userSettingCon')" ></div>
+                        <div class="userSettingCon">
+                            <a href="http://erp.zhenergy.com.cn/irj/servlet/prt/portal/prtroot/com.sap.portal.navigation.masthead.LogOutComponent?logout_submit=true" class="msg_topLogout">退出</a>
+                        </div>
+                    </div>
+                    <div class="topToolAll">
+                        <div class="userHelpIcon" onmouseover="userHoverOn('userHelpCon')" onmouseout="userHoverOut('userHelpCon')" ></div>
+                        <div class="userHelpCon"><b class="userHelp" onClick="help()">帮助</b></div>
+                    </div>
+                    <div class="topToolAll">
+                        <div class="userSkinIcon" onmouseover="userHoverOn('userSkinCon')" onmouseout="userHoverOut('userSkinCon')" ></div>
+                        <div class="userSkinCon"><b class="userSkin" onClick="changeSkinCss('home08')">夜间模式</b></div>
                     </div>
                 </div>
-                <div class="topToolAll">
-                    <div class="userHelpIcon" onmouseover="userHoverOn('userHelpCon')" onmouseout="userHoverOut('userHelpCon')" ></div>
-                    <div class="userHelpCon"><b class="userHelp" onClick="help()">帮助</b></div>
-                </div>
-                <div class="topToolAll">
-                    <div class="userSkinIcon" onmouseover="userHoverOn('userSkinCon')" onmouseout="userHoverOut('userSkinCon')" ></div>
-                    <div class="userSkinCon"><b class="userSkin" onClick="changeSkinCss('home08')">夜间模式</b></div>
+            </div>
+            <div class="content_center">
+                <!-- Swiper -->
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
+                			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;" ondblclick="toAverBusinessPage()">
+                				<div class="demo_header" id="averBusinessIncomeDate">-年-月-日</div>
+                				<div class="demo_jiange"></div>
+                				<div class="demo_title">
+                					人均营业收入
+                				</div>
+                				<div class="demo_shuzi_red">
+                				<span id="averBusinessIncome">0</span>
+                				<span class="demo_shuzi_span_shangbiao">万元</span>
+                				</div>
+                				<div class="demo_content_1">同比<b id="tongbiAverBusinessIncome"></b>%&nbsp;<img  src="img/horizontal-green.png" id="tongbiAverBusinessIncomeImg" class="demo_img_down"/>
+                				<!--&nbsp;环比<b id="huanbiAverBusinessIncome"></b>%&nbsp;<img  id="huanbiAverBusinessIncomeImg" src="img/horizontal-green.png" class="demo_img_up"/>-->
+                				</div>
+                			</div>
+            		   </div>
+            		   <div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
+                			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;" ondblclick="toWokerCountPage()">
+                				<div class="demo_header" id="workerCountsPerKWDate">-年-月-日</div>
+                				<div class="demo_jiange"></div>
+                				<div class="demo_title">
+                					单位万千瓦员工人数
+                				</div>
+                				<div class="demo_shuzi_red">
+                				<span id="workerCountsPerKW">0</span>
+                				<span class="demo_shuzi_span_shangbiao">人</span>
+                				</div>
+                				<div class="demo_content_1">同比<b id="tongbiWorkerCountsPerKW"></b>%&nbsp;<img  src="img/horizontal-green.png" id="tongbiWorkerCountsPerKWImg" class="demo_img_down"/>
+                				<!--&nbsp;环比<b id="huanbiWorkerCountsPerKW"></b>%&nbsp;<img  id="huanbiWorkerCountsPerKWImg" src="img/horizontal-green.png" class="demo_img_up"/>-->
+                				</div>
+                			</div>
+            		   </div>
+                        <div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
+                			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;" ondblclick="toWokerCountPerHourPage()">
+                				<div class="demo_header" id="workerCountsPerKWHourDate">-年-月-日</div>
+                				<div class="demo_jiange"></div>
+                				<div class="demo_title">
+                					单位万千瓦时员工人数
+                				</div>
+                				<div class="demo_shuzi_red">
+                				<span id="workerCountsPerKWHour">0</span>
+                				<span class="demo_shuzi_span_shangbiao">人</span>
+                				</div>
+                				<div class="demo_content_1">同比<b id="tongbiWorkerCountsPerKWHour"></b>%&nbsp;<img  src="img/horizontal-green.png" id="tongbiWorkerCountsPerKWHourImg" class="demo_img_down"/>
+                				<!--&nbsp;环比<b id="huanbiWorkerCountsPerKWHour"></b>%&nbsp;<img  id="huanbiWorkerCountsPerKWHourImg" src="img/horizontal-green.png" class="demo_img_up"/>-->
+                				</div>
+                			</div>
+            		   </div>
+            		   <div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
+                			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;" ondblclick="toWokerCostPage()">
+                				<div class="demo_header" id="workerCostPerKWDate">-年-月-日</div>
+                				<div class="demo_jiange"></div>
+                				<div class="demo_title">
+                					单位万千瓦人工成本
+                				</div>
+                				<div class="demo_shuzi_red">
+                				<span id="workerCostPerKW">0</span>
+                				<span class="demo_shuzi_span_shangbiao">元</span>
+                				</div>
+                				<div class="demo_content_1">同比<b id="tongbiWorkerCostPerKW"></b>%&nbsp;<img  src="img/horizontal-green.png" id="tongbiWorkerCostPerKWImg" class="demo_img_down"/>
+                				<!--&nbsp;环比<b id="huanbiWorkerCostPerKW"></b>%&nbsp;<img  id="huanbiWorkerCostPerKWImg" src="img/horizontal-green.png" class="demo_img_up"/>-->
+                				</div>
+                			</div>
+            		   </div>
+            		   <div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
+                			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;" ondblclick="toWokerCostPerHourPage()">
+                				<div class="demo_header" id="workerCostPerKWHourDate">-年-月-日</div>
+                				<div class="demo_jiange"></div>
+                				<div class="demo_title">
+                					单位万千瓦时人工成本
+                				</div>
+                				<div class="demo_shuzi_red">
+                				<span id="workerCostPerKWHour">0</span>
+                				<span class="demo_shuzi_span_shangbiao">元</span>
+                				</div>
+                				<div class="demo_content_1">同比<b id="tongbiWorkerCostPerKWHour"></b>%&nbsp;<img  src="img/horizontal-green.png" id="tongbiWorkerCostPerKWHourImg" class="demo_img_down"/>
+                				<!--&nbsp;环比<b id="huanbiWorkerCostPerKWHour"></b>%&nbsp;<img  id="huanbiWorkerCostPerKWHourImg" src="img/horizontal-green.png" class="demo_img_up"/>-->
+                				</div>
+                			</div>
+            		   </div>
+                    </div>
                 </div>
             </div>
+            <div class="menu_bottom">
+                <ul>
+                    <li class="but01" id="but01">
+                        <div class="But01" type="button" onClick="doit1()"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but02" id="but02">
+                        <div class="But02" type="button" onClick="doit2()"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but03" id="but03">
+                        <div class="But03" type="button" onClick="doit3()"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but04" id="but04">
+                        <div class="But04" type="button" onClick="doit4()"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but05" id="but05">
+                        <div class="But05" type="button" onClick="doit5()"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but06" id="but06">
+                        <div class="But06" type="button" onClick="doit6()"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but07" id="but07">
+                        <div class="But07" type="button" onClick="doit7()"></div>
+                    </li>
+                    <li class="split_line"></li>
+                    <li class="but08 nav_BI" id="but08">
+                        <div class="But08" type="button" onClick="doit8()"></div>
+                    </li>
+                </ul>
         </div>
-        <div class="content_center">
-            <!-- Swiper -->
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
-            			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;" ondblclick="toAverBusinessPage()">
-            				<div class="demo_header" id="averBusinessIncomeDate">-年-月-日</div>
-            				<div class="demo_jiange"></div>
-            				<div class="demo_title">
-            					人均营业收入
-            				</div>
-            				<div class="demo_shuzi_red">
-            				<span id="averBusinessIncome">0</span>
-            				<span class="demo_shuzi_span_shangbiao">万元</span>
-            				</div>
-            				<div class="demo_content_1">同比<b id="tongbiAverBusinessIncome"></b>%&nbsp;<img  src="img/horizontal-green.png" id="tongbiAverBusinessIncomeImg" class="demo_img_down"/>
-            				<!--&nbsp;环比<b id="huanbiAverBusinessIncome"></b>%&nbsp;<img  id="huanbiAverBusinessIncomeImg" src="img/horizontal-green.png" class="demo_img_up"/>-->
-            				</div>
-            			</div>
-        		   </div>
-        		   <div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
-            			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;" ondblclick="toWokerCountPage()">
-            				<div class="demo_header" id="workerCountsPerKWDate">-年-月-日</div>
-            				<div class="demo_jiange"></div>
-            				<div class="demo_title">
-            					单位万千瓦员工人数
-            				</div>
-            				<div class="demo_shuzi_red">
-            				<span id="workerCountsPerKW">0</span>
-            				<span class="demo_shuzi_span_shangbiao">人</span>
-            				</div>
-            				<div class="demo_content_1">同比<b id="tongbiWorkerCountsPerKW"></b>%&nbsp;<img  src="img/horizontal-green.png" id="tongbiWorkerCountsPerKWImg" class="demo_img_down"/>
-            				<!--&nbsp;环比<b id="huanbiWorkerCountsPerKW"></b>%&nbsp;<img  id="huanbiWorkerCountsPerKWImg" src="img/horizontal-green.png" class="demo_img_up"/>-->
-            				</div>
-            			</div>
-        		   </div>
-                    <div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
-            			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;" ondblclick="toWokerCountPerHourPage()">
-            				<div class="demo_header" id="workerCountsPerKWHourDate">-年-月-日</div>
-            				<div class="demo_jiange"></div>
-            				<div class="demo_title">
-            					单位万千瓦时员工人数
-            				</div>
-            				<div class="demo_shuzi_red">
-            				<span id="workerCountsPerKWHour">0</span>
-            				<span class="demo_shuzi_span_shangbiao">人</span>
-            				</div>
-            				<div class="demo_content_1">同比<b id="tongbiWorkerCountsPerKWHour"></b>%&nbsp;<img  src="img/horizontal-green.png" id="tongbiWorkerCountsPerKWHourImg" class="demo_img_down"/>
-            				<!--&nbsp;环比<b id="huanbiWorkerCountsPerKWHour"></b>%&nbsp;<img  id="huanbiWorkerCountsPerKWHourImg" src="img/horizontal-green.png" class="demo_img_up"/>-->
-            				</div>
-            			</div>
-        		   </div>
-        		   <div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
-            			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;" ondblclick="toWokerCostPage()">
-            				<div class="demo_header" id="workerCostPerKWDate">-年-月-日</div>
-            				<div class="demo_jiange"></div>
-            				<div class="demo_title">
-            					单位万千瓦人工成本
-            				</div>
-            				<div class="demo_shuzi_red">
-            				<span id="workerCostPerKW">0</span>
-            				<span class="demo_shuzi_span_shangbiao">元</span>
-            				</div>
-            				<div class="demo_content_1">同比<b id="tongbiWorkerCostPerKW"></b>%&nbsp;<img  src="img/horizontal-green.png" id="tongbiWorkerCostPerKWImg" class="demo_img_down"/>
-            				<!--&nbsp;环比<b id="huanbiWorkerCostPerKW"></b>%&nbsp;<img  id="huanbiWorkerCostPerKWImg" src="img/horizontal-green.png" class="demo_img_up"/>-->
-            				</div>
-            			</div>
-        		   </div>
-        		   <div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
-            			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;" ondblclick="toWokerCostPerHourPage()">
-            				<div class="demo_header" id="workerCostPerKWHourDate">-年-月-日</div>
-            				<div class="demo_jiange"></div>
-            				<div class="demo_title">
-            					单位万千瓦时人工成本
-            				</div>
-            				<div class="demo_shuzi_red">
-            				<span id="workerCostPerKWHour">0</span>
-            				<span class="demo_shuzi_span_shangbiao">元</span>
-            				</div>
-            				<div class="demo_content_1">同比<b id="tongbiWorkerCostPerKWHour"></b>%&nbsp;<img  src="img/horizontal-green.png" id="tongbiWorkerCostPerKWHourImg" class="demo_img_down"/>
-            				<!--&nbsp;环比<b id="huanbiWorkerCostPerKWHour"></b>%&nbsp;<img  id="huanbiWorkerCostPerKWHourImg" src="img/horizontal-green.png" class="demo_img_up"/>-->
-            				</div>
-            			</div>
-        		   </div>
-                </div>
-            </div>
-        </div>
-        <div class="menu_bottom">
-            <ul>
-                <li class="but01" id="but01">
-                    <div class="But01" type="button" onClick="doit1()"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but02" id="but02">
-                    <div class="But02" type="button" onClick="doit2()"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but03" id="but03">
-                    <div class="But03" type="button" onClick="doit3()"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but04" id="but04">
-                    <div class="But04" type="button" onClick="doit4()"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but05" id="but05">
-                    <div class="But05" type="button" onClick="doit5()"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but06" id="but06">
-                    <div class="But06" type="button" onClick="doit6()"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but07" id="but07">
-                    <div class="But07" type="button" onClick="doit7()"></div>
-                </li>
-                <li class="split_line"></li>
-                <li class="but08 nav_BI" id="but08">
-                    <div class="But08" type="button" onClick="doit8()"></div>
-                </li>
-            </ul>
-        </div>
+     </div>
     </div>
 </template>

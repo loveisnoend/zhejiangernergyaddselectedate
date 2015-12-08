@@ -32,6 +32,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.salesPercent", {
 	    var zhejiang_JsonData = JSON.parse(zhejiang_dataStr)
 		var huaiNan_JsonData = JSON.parse(huaiNan_dataStr);
 	    this.loadChart(zhejiang_JsonData, huaiNan_JsonData);
+        changeTheSkinOfPage();
 	},
 // 	loadmjChart: function(divId){
 //         require(
@@ -632,6 +633,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.salesPercent", {
 							      }
 							  }  
 							},
+							clickable:false,	
 							markPoint : {
 							    clickable: true,
 							    symbol: 'star50',
@@ -778,6 +780,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.salesPercent", {
 							hoverable:false,
 							roam:false,
 							data : [],
+							clickable:false,
 							markPoint : {
 								clickable: true,
 							    symbol: 'star50',

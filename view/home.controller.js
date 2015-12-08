@@ -2,7 +2,6 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 
     /* initialize the swiper plugin*/
 	_drawSwiper: function() {
-
 	    require(
                 [
                     'js/swiper'
@@ -38,7 +37,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 	
 	// 获取跑马灯的动态信息
 	_loadTopDynamicShowData : function(){
-
+	    if (isHomeLoad == false) {
+            busy = new sap.m.BusyDialog({
+				close: function(event) {}
+			});
+    		if (busy) {
+    			busy.open();
+    		} 
+	    }
 		var mParameters = {};
 		mParameters['async'] = true;
 	    
@@ -77,7 +83,6 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 	},
 	// 加载日利润值
 	_loadData_left : function(){
-
 	    var mParameters = {};
 		mParameters['async'] = true;
 		mParameters['success'] = jQuery.proxy(function(sRes) {
@@ -146,6 +151,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
     	    }
             // 日利润日期
 	        $('#dateProfitDate').html(daytime01 + "年" + daytime02 + "月" + daytime03 + "日");
+	        if (isHomeLoad == false) {
+                if (busy) {
+        			busy.close();
+        		} 
+        		changeTheSkinOfPage();
+        		isHomeLoad = true;
+            }
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			sap.m.MessageToast.show("网络连接失败，请重试", {

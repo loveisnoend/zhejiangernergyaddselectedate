@@ -32,6 +32,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProperty", {
 	    var zhejiang_JsonData = JSON.parse(zhejiang_dataStr)
 		var huaiNan_JsonData = JSON.parse(huaiNan_dataStr);
 	    this.loadChart(zhejiang_JsonData, huaiNan_JsonData);
+	    // change the page skin
+	    changeTheSkinOfPage();
 	},
 // 	loadmjChart: function(divId){
 //         require(
@@ -376,10 +378,6 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProperty", {
         			};
 			    
 			    mychart.setOption(option);
-			    // 关闭加载事件
-			    if (busy) {
-        			busy.close();
-        		}
 			}
     },
     // 加载集团-净资产指标
@@ -499,11 +497,6 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProperty", {
         			};
 			    
 			    mychart.setOption(option);
-			    
-			    // 关闭加载事件
-			    if (busy) {
-        			busy.close();
-        		} 
 			}
     },
 	// load the chart map
@@ -633,6 +626,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProperty", {
 							      }
 							  }  
 							},
+							clickable:false,
 							markPoint : {
 							    clickable: true,
 							    symbol: 'star50',
@@ -779,6 +773,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProperty", {
 							hoverable:false,
 							roam:false,
 							data : [],
+							clickable:false,
 							markPoint : {
 								clickable: true,
 							    symbol: 'star50',
@@ -1006,15 +1001,6 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProperty", {
 		}
 		// 设置Chart的数据
         function setChartData(ec, mapSeries, dataIndex) {
-            
-            // 加载等待事件
-            busy = new sap.m.BusyDialog({
-    			close: function(event) {}
-    		});
-    		if (busy) {
-    			busy.open();
-    		} 
-		
     		// 电厂名
 			var powerPlantName = '';
 			if (mapSeries.markPoint.data[dataIndex].name == '金华') {

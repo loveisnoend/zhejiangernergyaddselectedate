@@ -16,6 +16,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 	},
 	// 获取二级页面数据
 	_loadData01 : function () {
+	    if (isPerformaneceLoad == false) {
+            busy = new sap.m.BusyDialog({
+				close: function(event) {}
+			});
+    		if (busy) {
+    			busy.open();
+    		} 
+	    }
 	    var mParameters = {};
 	    date = new Array();
 		data1 = new Array();//上网电量
@@ -233,6 +241,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
                 }]
             };
             mychart.setOption(option);
+            if (isPerformaneceLoad == false) {
+                if (busy) {
+        			busy.close();
+        		} 
+        		changeTheSkinOfPage();
+        		isPerformaneceLoad = true;
+            }
         }
         
         function drawpie(e){

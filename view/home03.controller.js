@@ -37,6 +37,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.home03", {
 	},
 	// 加载资产值
 	_loadData_Property : function(){
+	    if (isHome03Load == false) {
+            busy = new sap.m.BusyDialog({
+				close: function(event) {}
+			});
+    		if (busy) {
+    			busy.open();
+    		} 
+	    }
 	    var mParameters = {};
 		mParameters['async'] = true;
 		mParameters['success'] = jQuery.proxy(function(sRes) {
@@ -152,6 +160,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.home03", {
     	    }
             // 总资产统计日期
 	        $('#sumPropertyDate').html(daytime01Sum + "年" + daytime02Sum + "月");//  + daytime03Sum + "日"
+	        if (isHome03Load == false) {
+                if (busy) {
+        			busy.close();
+        		} 
+        		changeTheSkinOfPage();
+        // 		isHome03Load = true;
+            }
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			alert("Get Data Error");
