@@ -33,20 +33,6 @@
 /*    width : 60%;*/
 /*    float : left;*/
 /*}*/
-.huiNanMap{
-    float:left;
-    margin-left:260px;
-    margin-top:20px;
-    height:100px;
-    width:100px;
-}
-.powerPlantMap{
-    float:left;
-    margin-left:300px;
-    margin-top:-50px;
-    height:500px;
-    width:500px;
-}
 .mapTop{
     background-color : black;
     width : 40%;
@@ -249,19 +235,19 @@
     font-size: 20px;
 
 }
-.detail_pie
-{
-    width: 614px;
-    height: 477px;
-    position: absolute;
+/*.detail_pie*/
+/*{*/
+/*    width: 614px;*/
+/*    height: 477px;*/
+/*    position: absolute;*/
     /*margin-left: 5%;*/
     /*top: 59px;*/
-    z-index:0;
+/*    z-index:0;*/
     /*top:19%;*/
     /*margin-left:-6.7%;*/
-    top: 180px;
-    margin-left: -128px;
-}
+/*    top: 180px;*/
+/*    margin-left: -128px;*/
+/*}*/
 .another_font01
 {
     color:#FF9900;

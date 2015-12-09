@@ -115,6 +115,10 @@ function changeSkinCss(pageName) {
     if (pageName == 'tab') {
         changeTheSkinOfPage();
     }
+    if (pageName == 'safeProduceDays') {
+        changeTheSkinOfPage();
+        safeProduceDays.getController()._loadData01(); 
+    }
 }
 // change the skin of the page
 function changeTheSkinOfPage() {

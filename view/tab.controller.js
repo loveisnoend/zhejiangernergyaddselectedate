@@ -222,7 +222,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
             $('#temperature3_date').html(data04[3]);
             $('#temperature4_date').html(data04[4]);
             $('#temperature5_date').html(data04[5]);
-            $('#temperature6_date').html(data04[6]);
+            if (data04[6] != undefined) {
+                $('#temperature6_date').html(data04[6]);
+            } else {
+                $('#temperature6_date').html('00-00');
+            }
             $('#temperature0').html(data01[0]);
             $('#temperature1').html(data01[1]);
             $('#temperature2').html(data01[2]);

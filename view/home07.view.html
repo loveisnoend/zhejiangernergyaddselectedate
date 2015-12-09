@@ -34,25 +34,23 @@
             <div class="content_center">
                 <!-- Swiper -->
                 <div class="swiper-container">
-                    <div class="swiper-wrapper" style="margin-top:-15px;">
-                        <div class="demo_outer" style="position: relative;background-size:100% 100%;">
-                    			<div class="demo_content_top">
-                    				<div class="demo_header" style="height:7%;"></div>
-                    				<div class="demo_jiange_1"></div>
-                    				<div class="demo_shuzi_white" style="font-size:50px;margin-top: 10%;font-family: 微软雅黑;" >
-                    				<span >电厂安全日天数</span>				
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
+                    			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;" ondblclick="toSafeProduceDaysPage()">
+                    				<div class="demo_header" id="safeProduceDaysDate">-年-月-日</div>
+                    				<div class="demo_jiange"></div>
+                    				<div class="demo_title">
+                    					安全生产天数
+                    				</div>
+                    				<div class="demo_shuzi_red">
+                    				<span id="safeProduceDays">0</span>
+                    				<span class="demo_shuzi_span_shangbiao">天</span>
+                    				</div>
+                    				<!--<div class="demo_content_1">同比<b id="tongbiAverBusinessIncome"></b>%&nbsp;<img  src="img/horizontal-green.png" id="tongbiAverBusinessIncomeImg" class="demo_img_down"/>-->
+                    				<!--&nbsp;环比<b id="huanbiAverBusinessIncome"></b>%&nbsp;<img  id="huanbiAverBusinessIncomeImg" src="img/horizontal-green.png" class="demo_img_up"/>-->
                     				</div>
                     			</div>
-                    			<div class="demo_content_foot">
-                    				<div class="demo_jiange_2"></div>
-                    				<div class="demo_content_1">
-                    					<span style="font-size:35px;">持续完善中<br/>...</span>
-                    				</div>
-                    				<div class="demo_content_foot_1">
-                    			    </div>
-                    			</div>
-                    		</div>
-                    </div>
+                		</div>
                 </div>
             </div>
             <div class="menu_bottom">

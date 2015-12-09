@@ -25,6 +25,7 @@
 		<link rel="stylesheet" type="text/css" href="css/bottom_button.css" id="bottomButCss">
 		<link rel="stylesheet" type="text/css" href="css/powerPlantMap.css" id="powerPlantMapCss">
         <link rel="stylesheet" type="text/css" href="css/internetPowerVolume.css" id="internetPowerVolumeCss">
+        <link rel="stylesheet" type="text/css" href="css/common.css">
 		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
 		<script src="echarts.js"></script>
         <script type="text/javascript" src="js/powerPlantMap.js"></script>
@@ -128,7 +129,6 @@
                 app.to("idhome06","show");
             }
             function doit7() {
-                // slidePageNum = 6;
                 app.to("idhome07","show");
             }
             function doit8(slide08PageNumParam) {
@@ -191,6 +191,11 @@
             // 单位万千瓦时人工成本
             function toWokerCostPerHourPage() {
                 app.to("idWorkerCostPerHour","show");
+            }
+            
+            // 安全生产天数
+            function toSafeProduceDaysPage() {
+                app.to("idSafeProduceDays","show");
             }
 		</script>
 		<script>
@@ -265,6 +270,9 @@
 				var workerCost;
 				// 单位万千瓦时人工成本
 				var workerCostPerHour;
+				
+				// 风险控制
+				var safeProduceDays;
 				
 				//业务情况
 				var tab;
@@ -550,6 +558,14 @@
             		 });
             		 app.addPage(workerCostPerHour);
             		 
+            		 // 安全生产天数
+            		 safeProduceDays = sap.ui.view({
+            			id: "idSafeProduceDays",
+            			viewName: "com.zhenergy.pcbi.view.safeProduceDays",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(safeProduceDays);
+            		 
 					 app.placeAt("content");
 				}
 				// if(window.cordova && appContext && !window.sap_webide_companion) {
@@ -562,11 +578,24 @@
         		} else {
         		    usrid = 'ERPTEST1';
         		}
+        		// initial the page
                 startApp();
+                
+                // change the zoom of the page relate to pixel
+                function detectZoom (){ 
+                      if (window.outerWidth == 1440) {
+                          document.getElementById("sapUiBodyId").style.zoom = 0.5;
+                      }
+                      if (window.outerWidth == 1366) {
+                          document.getElementById("sapUiBodyId").style.zoom = 0.67;
+                      }
+                      if (window.outerWidth == 1920) {
+                          document.getElementById("sapUiBodyId").style.zoom = 1;
+                      }
+                };
 		</script>
-		
 	</head>
-	<body class="sapUiBody" role="application">
+	<body class="sapUiBody" id="sapUiBodyId" role="application">
 		<div id="content"></div>
 	</body>
 </html>

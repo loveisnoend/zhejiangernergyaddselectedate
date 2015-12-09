@@ -121,6 +121,15 @@ sap.ui.controller("com.zhenergy.pcbi.view.home04", {
         }
 	    $('#home_temperature').html(temperature);
 	    $('#home_place').html(place);
+	    if (daytime01 == undefined) {
+	        daytime01 = '00';
+	    }	    
+	    if (daytime02 == undefined) {
+	        daytime02 = '00';
+	    }
+	    if (daytime03 == undefined) {
+	        daytime03 = '00';
+	    }
 	    $('#home_daytime').html(daytime01 + "年" + daytime02 + "月" + daytime03 + "日");
 	    
 	    var d = new Date();
