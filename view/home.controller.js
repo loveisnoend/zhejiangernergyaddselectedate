@@ -195,7 +195,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 				    daytime = sRes.results[i].KPI_DATE;
 				}
 				if (sRes.results[i].KPI_TYPE == '主营业务收入环比' && sRes.results[i].KPI_DESC == '集团'){  
-				    mainBusinessHuanBi = sRes.results[i].KPI_VALUE;
+				    mainBusinessHuanBi = (sRes.results[i].KPI_VALUE*100).toFixed(2);
 				}
 				if (sRes.results[i].KPI_TYPE == '主营业务收入同比' && sRes.results[i].KPI_DESC == '集团'){  
 				    mainBusinessTongBi = sRes.results[i].KPI_VALUE;
@@ -207,7 +207,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 				    daytimeNO1 = sRes.results[i].KPI_DATE;
 				}
 				if (sRes.results[i].KPI_TYPE == '净利润环比' && sRes.results[i].KPI_DESC == '集团'){  
-				    pureProfitHuanBi = sRes.results[i].KPI_VALUE;
+				    pureProfitHuanBi = (sRes.results[i].KPI_VALUE*100).toFixed(2);
 				}
 				if (sRes.results[i].KPI_TYPE == '净利润同比' && sRes.results[i].KPI_DESC == '集团'){  
 				    pureProfitTongBi = sRes.results[i].KPI_VALUE;
@@ -345,9 +345,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 * (NOT before the first rendering! onInit() is used for that one!).
 * @memberOf com.zhenergy.bi.view.home
 */
-//	onBeforeRendering: function() {
-//
-//	},
+	onBeforeRendering: function() {
+		// adjust the zoom of the brower
+        // detectZoom();
+	},
 
 /**
 * Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.
@@ -355,8 +356,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 * @memberOf com.zhenergy.bi.view.home
 */
 	onAfterRendering: function() {
-		// adjust the zoom of the brower
-        detectZoom();
+// 		// adjust the zoom of the brower
+//         detectZoom();
 	}
 
 /**

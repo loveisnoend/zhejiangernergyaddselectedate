@@ -9,7 +9,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home02", {
                 ]
                 );
 		var mySwiper = new Swiper('.swiper-container', {
-			initialSlide: 4,
+			initialSlide: 0,
 			speed: 50,
 			loop: false,
 			freeMode: false,
@@ -35,9 +35,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.home02", {
 			}
 		});
 	},
-	
-	// 获取二级页面数据
-	_loadData01 : function () {
+	// 加载宏观环境
+	_loadDataMacroEnvironment : function(){
 	    if (isHome02Load == false) {
             busy = new sap.m.BusyDialog({
 				close: function(event) {}
@@ -46,16 +45,323 @@ sap.ui.controller("com.zhenergy.pcbi.view.home02", {
     			busy.open();
     		} 
 	    } 
+	    var mParameters = {};
+		mParameters['async'] = true;
+		mParameters['success'] = jQuery.proxy(function(sRes) {
+		    
+            // 全国工业增加值增长速度
+            //当月
+            var currentMonthUp = 0;
+            //累计
+            var industryUpSum = 0;
+            
+            // 全社会用电量-浙江省
+            // 省-社会用电量(当月)
+            var KPI_TEC_M_0000 = 0;
+            // 省-社会用电量同比(当月)
+            var KPI_TEC_MT_0000 = 0;
+            // 省-社会用电量(年度累计)
+            var KPI_TEC_Y_0000 = 0;
+            // 省-社会用电量同比(年度累计)
+            var KPI_TEC_YT_0000 = 0;
+            
+            // 所有产业合计
+            // 产业-社会用电量(当月)
+            var KPI_TEC_M_SYCY = 0;
+            // 产业-社会用电量同比(当月)
+            var KPI_TEC_MT_SYCY = 0;
+            // 产业-社会用电量(年度累计)
+            var KPI_TEC_Y_SYCY = 0;
+            // 产业-社会用电量同比(年度累计)
+            var KPI_TEC_YT_SYCY = 0;
+
+            // 全国发电量
+            // 全国发电量(当月) 
+            var KPI_FDL_M_TOTA = 0;
+            // 全国发电量同比(当月)
+            var KPI_FDL_MT_TOTA = 0;
+            // 全国发电量(年度累计)
+            var KPI_FDL_Y_TOTA = 0;
+            // 全国发电量同比(年度累计)
+            var KPI_FDL_YT_TOTA = 0;
+
+            // 全国平均利用小时
+            // 全国平均利用小时(当月) 
+            var KPI_LYH_M_TOTA = 0;
+            // 全国平均利用小时同比(当月)
+            var KPI_LYH_MT_TOTA = 0;
+            // 全国平均利用小时(年度累计)
+            var KPI_LYH_Y_TOTA = 0;
+            // 全国平均利用小时同比(年度累计)
+            var KPI_LYH_YT_TOTA = 0;
+            
+            // 累计统调外购电量
+            var KPI_WGD_Y_0000 = 0;
+            // 累计统调外购电量-外省净送
+            var KPI_WGD_Y_WSJS = 0;
+            
+            // 统调最高发电负荷
+            var KPI_FHZ_Y_FDFH = 0;
+            // 统调最高用电负荷
+            var KPI_FHZ_Y_YDFH = 0;
+            
+            // 统计日期
+            var daytime = null;
+			for (var i in sRes.results) {
+			    // 工业增加值(当月)
+				if (sRes.results[i].KPI_ID == 'KPI_IAV_M_0000'){  
+				    currentMonthUp = (sRes.results[i].KPI_VALUE*100).toFixed(2);
+				    daytime = sRes.results[i].KPI_DATE;
+				}
+				// 工业增加值(年度累计)
+				if (sRes.results[i].KPI_ID == 'KPI_IAV_Y_0000'){  
+				    industryUpSum = (sRes.results[i].KPI_VALUE*100).toFixed(2);
+				}
+				
+				// 全社会用电量-浙江省
+				// 省-社会用电量(当月)
+				if (sRes.results[i].KPI_ID == 'KPI_TEC_M_0000'){  
+				    KPI_TEC_M_0000 = (sRes.results[i].KPI_VALUE/100).toFixed(2);
+				}
+				// 省-社会用电量同比(当月)
+				if (sRes.results[i].KPI_ID == 'KPI_TEC_MT_0000'){  
+				    KPI_TEC_MT_0000 = (sRes.results[i].KPI_VALUE*100).toFixed(2);
+				}
+				// 省-社会用电量(年度累计)
+				if (sRes.results[i].KPI_ID == 'KPI_TEC_Y_0000'){  
+				    KPI_TEC_Y_0000 = (sRes.results[i].KPI_VALUE/100).toFixed(2);
+				}
+				// 省-社会用电量同比(年度累计)
+				if (sRes.results[i].KPI_ID == 'KPI_TEC_YT_0000'){  
+				    KPI_TEC_YT_0000 = (sRes.results[i].KPI_VALUE*100).toFixed(2);
+				}
+				
+				// 所有产业合计
+				// 产业-社会用电量(当月)
+				if (sRes.results[i].KPI_ID == 'KPI_TEC_M_SYCY'){  
+				    KPI_TEC_M_SYCY = (sRes.results[i].KPI_VALUE/100).toFixed(2);
+				}
+				// 产业-社会用电量同比(当月)
+				if (sRes.results[i].KPI_ID == 'KPI_TEC_MT_SYCY'){  
+				    KPI_TEC_MT_SYCY = (sRes.results[i].KPI_VALUE*100).toFixed(2);
+				}
+				// 产业-社会用电量(年度累计)
+				if (sRes.results[i].KPI_ID == 'KPI_TEC_Y_SYCY'){  
+				    KPI_TEC_Y_SYCY = (sRes.results[i].KPI_VALUE/100).toFixed(2);
+				}
+				// 产业-社会用电量同比(年度累计)
+				if (sRes.results[i].KPI_ID == 'KPI_TEC_YT_SYCY'){  
+				    KPI_TEC_YT_SYCY = (sRes.results[i].KPI_VALUE*100).toFixed(2);
+				}
+				
+				// 全国发电量
+				// 全国发电量(当月)
+				if (sRes.results[i].KPI_ID == 'KPI_FDL_M_TOTA'){  
+				    KPI_FDL_M_TOTA = (sRes.results[i].KPI_VALUE/100).toFixed(2);
+				}
+				// 全国发电量同比(当月)
+				if (sRes.results[i].KPI_ID == 'KPI_FDL_MT_TOTA'){  
+				    KPI_FDL_MT_TOTA = (sRes.results[i].KPI_VALUE*100).toFixed(2);
+				}
+				// 全国发电量(年度累计)
+				if (sRes.results[i].KPI_ID == 'KPI_FDL_Y_TOTA'){  
+				    KPI_FDL_Y_TOTA = (sRes.results[i].KPI_VALUE/100).toFixed(2);
+				}
+				// 全国发电量同比(年度累计)
+				if (sRes.results[i].KPI_ID == 'KPI_FDL_YT_TOTA'){  
+				    KPI_FDL_YT_TOTA = (sRes.results[i].KPI_VALUE*100).toFixed(2);
+				}
+				
+				// 全国平均利用小时
+				// 全国平均利用小时(当月) 
+				if (sRes.results[i].KPI_ID == 'KPI_LYH_M_TOTA'){  
+				    KPI_LYH_M_TOTA = sRes.results[i].KPI_VALUE;
+				}
+				// 全国平均利用小时同比(当月)
+				if (sRes.results[i].KPI_ID == 'KPI_LYH_MT_TOTA'){  
+				    KPI_LYH_MT_TOTA = (sRes.results[i].KPI_VALUE*100).toFixed(2);
+				}
+				// 全国平均利用小时(年度累计)
+				if (sRes.results[i].KPI_ID == 'KPI_LYH_Y_TOTA'){  
+				    KPI_LYH_Y_TOTA = sRes.results[i].KPI_VALUE
+				}
+				// 全国平均利用小时同比(年度累计)
+				if (sRes.results[i].KPI_ID == 'KPI_LYH_YT_TOTA'){  
+				    KPI_LYH_YT_TOTA = (sRes.results[i].KPI_VALUE*100).toFixed(2);
+				}
+				
+				// 累计统调外购电量
+				if (sRes.results[i].KPI_ID == 'KPI_WGD_Y_0000'){  
+				    KPI_WGD_Y_0000 = sRes.results[i].KPI_VALUE
+				}
+                // 累计统调外购电量-外省净送
+                if (sRes.results[i].KPI_ID == 'KPI_WGD_Y_WSJS'){  
+				    KPI_WGD_Y_WSJS = sRes.results[i].KPI_VALUE
+				}
+				
+				// 统调最高发电负荷
+				if (sRes.results[i].KPI_ID == 'KPI_FHZ_Y_FDFH'){  
+				    KPI_FHZ_Y_FDFH = sRes.results[i].KPI_VALUE
+				}
+                // 统调最高用电负荷
+                if (sRes.results[i].KPI_ID == 'KPI_FHZ_Y_YDFH'){  
+				    KPI_FHZ_Y_YDFH = sRes.results[i].KPI_VALUE
+				}
+			}
+			// 工业增加值(当月)
+			$('#currentMonthUp').html(currentMonthUp);
+			// 工业增加值(年度累计)
+			$('#industryUpSum').html(industryUpSum+'%');
+			
+			// 全社会用电量-浙江省
+			// 省-社会用电量(当月)
+			$('#socialPowerVolumeMonthUp').html(KPI_TEC_M_0000);
+			// 省-社会用电量同比(当月)
+			$('#tongbiSocialPowerVolumeMonthUp').html(KPI_TEC_MT_0000);
+			if (KPI_TEC_MT_0000 < 0) {
+			    $("#tongbiSocialPowerVolumeMonthUpImg").attr("src","img/arrow-red2.png");
+			}
+			if (KPI_TEC_MT_0000 > 0) {
+			    $("#tongbiSocialPowerVolumeMonthUpImg").attr("src","img/arrow-green2.png");
+			}
+			
+			// 省-社会用电量(年度累计)
+			$('#socialPowerVolumeSumUp').html(KPI_TEC_Y_0000+'万元');
+			// 省-社会用电量同比(年度累计)
+			$('#huanbiSocialPowerVolumeSumUp').html(KPI_TEC_YT_0000);
+			if (KPI_TEC_YT_0000 < 0) {
+			    $("#huanbiSocialPowerVolumeSumUpImg").attr("src","img/arrow-red2.png");
+			}
+			if (KPI_TEC_YT_0000 > 0) {
+			    $("#huanbiSocialPowerVolumeSumUpImg").attr("src","img/arrow-green2.png");
+			}
+			
+			// 所有产业合计
+			// 产业-社会用电量(当月)
+			$('#allIndustryMonthUp').html(KPI_TEC_M_SYCY);
+			// 产业-社会用电量同比(当月)
+			$('#tongbiAllIndustryMonthUp').html(KPI_TEC_MT_SYCY);
+			if (KPI_TEC_MT_SYCY < 0) {
+			    $("#tongbiAllIndustryMonthUpImg").attr("src","img/arrow-red2.png");
+			}
+			if (KPI_TEC_MT_SYCY > 0) {
+			    $("#tongbiAllIndustryMonthUpImg").attr("src","img/arrow-green2.png");
+			}
+			
+			// 产业-社会用电量(年度累计)
+			$('#allIndustrySumUp').html(KPI_TEC_Y_SYCY+'万元');
+			// 产业-社会用电量同比(年度累计)
+			$('#huanbiAllIndustrySumUp').html(KPI_TEC_YT_SYCY);
+			if (KPI_TEC_YT_0000 < 0) {
+			    $("#huanbiAllIndustrySumUpImg").attr("src","img/arrow-red2.png");
+			}
+			if (KPI_TEC_YT_0000 > 0) {
+			    $("#huanbiAllIndustrySumUpImg").attr("src","img/arrow-green2.png");
+			}
+
+			// 全国发电量
+			// 全国发电量(当月)
+			$('#wholeNationPowerVolumeMonthUp').html(KPI_FDL_M_TOTA);
+			// 全国发电量同比(当月)
+			$('#tongbiWholeNationPowerVolumeMonthUp').html(KPI_FDL_MT_TOTA);
+			if (KPI_FDL_MT_TOTA < 0) {
+			    $("#tongbiWholeNationPowerVolumeMonthUpImg").attr("src","img/arrow-red2.png");
+			}
+			if (KPI_TEC_MT_SYCY > 0) {
+			    $("#tongbiWholeNationPowerVolumeMonthUpImg").attr("src","img/arrow-green2.png");
+			}
+			
+			// 全国发电量(年度累计)
+			$('#wholeNationPowerVolumeSumUp').html(KPI_FDL_Y_TOTA+'万元');
+			// 全国发电量同比(年度累计)
+			$('#huanbiWholeNationPowerVolumeSumUp').html(KPI_FDL_YT_TOTA);
+			if (KPI_FDL_YT_TOTA < 0) {
+			    $("#huanbiWholeNationPowerVolumeSumUpImg").attr("src","img/arrow-red2.png");
+			}
+			if (KPI_FDL_YT_TOTA > 0) {
+			    $("#huanbiWholeNationPowerVolumeSumUpImg").attr("src","img/arrow-green2.png");
+			}
+
+			// 全国平均利用小时
+			// 全国平均利用小时(当月) 
+			$('#averUsePerHourMonthUp').html(KPI_LYH_M_TOTA);
+			// 全国平均利用小时同比(当月)
+			$('#tongbiAverUsePerHourMonthUp').html(KPI_LYH_MT_TOTA);
+			if (KPI_LYH_MT_TOTA < 0) {
+			    $("#tongbiAverUsePerHourMonthUpImg").attr("src","img/arrow-red2.png");
+			}
+			if (KPI_LYH_MT_TOTA > 0) {
+			    $("#tongbiAverUsePerHourMonthUpImg").attr("src","img/arrow-green2.png");
+			}
+			
+			// 全国平均利用小时(年度累计)
+			$('#averUsePerHourSumUp').html(KPI_LYH_Y_TOTA+'小时');
+			// 全国平均利用小时同比(年度累计)
+			$('#huanbiAverUsePerHourSumUp').html(KPI_LYH_YT_TOTA);
+			if (KPI_LYH_YT_TOTA < 0) {
+			    $("#huanbiAverUsePerHourSumUpImg").attr("src","img/arrow-red2.png");
+			}
+			if (KPI_LYH_YT_TOTA > 0) {
+			    $("#huanbiAverUsePerHourSumUpImg").attr("src","img/arrow-green2.png");
+			}
+			
+			// 累计统调外购电量
+			$('#improtPowerSum').html(KPI_WGD_Y_0000);
+			// 累计统调外购电量-外省净送
+			$('#improtPowerSumOutProvince').html(KPI_WGD_Y_WSJS);
+			
+			// 统调最高发电负荷
+			$('#highestProducePower').html(KPI_FHZ_Y_FDFH);
+			// 统调最高用电负荷
+			$('#highestUsePower').html(KPI_FHZ_Y_YDFH);
+			
+            var daytime01;
+    	    var daytime02;
+    	    var daytime03;
+    	    if (daytime != null) {
+    	       daytime01 = daytime.substring(0,4);
+    	       daytime02 = daytime.substring(4,6);
+    	       daytime03 = daytime.substring(6,8); 
+    	    }
+            // 全国工业增加值增长速度
+	        $('#industryUpSumDate').html(daytime01 + "年" + daytime02 + "月");
+	        // 全社会用电量-浙江省
+	        $('#socialPowerVolumeDate').html(daytime01 + "年" + daytime02 + "月");
+	        // 全社会用电量-所有产业
+	        $('#allIndustryDate').html(daytime01 + "年" + daytime02 + "月");
+	        // 全国发电量
+	        $('#wholeNationPowerVolumeDate').html(daytime01 + "年" + daytime02 + "月");
+	        // 全国平均利用小时
+	        $('#averUsePerHourDate').html(daytime01 + "年" + daytime02 + "月");
+	        // 累计统调外购电量
+	        $('#improtPowerSumDate').html(daytime01 + "年" + daytime02 + "月");
+	        // 累计统调外购电量-外省净送
+	        $('#improtPowerSumOutProvinceDate').html(daytime01 + "年" + daytime02 + "月");
+	        // 累计统调外购电量
+	        $('#highestUsePowerDate').html(daytime01 + "年" + daytime02 + "月");
+	        // 累计统调外购电量-外省净送
+	        $('#highestProducePowerDate').html(daytime01 + "年" + daytime02 + "月");
+	        
+            if (isHome02Load == false) {
+                if (busy) {
+        			busy.close();
+        		} 
+        		changeTheSkinOfPage();
+        		isHome02Load = true;
+            }
+		}, this);
+		mParameters['error'] = jQuery.proxy(function(eRes) {
+			sap.m.MessageToast.show("网络连接失败，请重试", {
+				offset: '0 -110'
+			});
+		}, this);
+	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_01_V01", mParameters);
+	},
+	// 获取二级页面数据
+	_loadData01 : function () {
 		this._drawSwiper();
-		// 设定头部跑马灯信息 common.js
-		_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);
-        if (isHome02Load == false) {
-            if (busy) {
-    			busy.close();
-    		} 
-    		changeTheSkinOfPage();
-    		isHome02Load = true;
-        }
+		// 设置宏观环境数据
+		this._loadDataMacroEnvironment();
 	},
 /**
 * Called when a controller is instantiated and its View controls (if available) are already created.

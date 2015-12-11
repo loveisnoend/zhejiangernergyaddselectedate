@@ -2,7 +2,9 @@
 <html>
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=10">
-		<!--<meta http-equiv='cache-control' content='no-store,no-cache'/>-->
+        <META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+        <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+        <META HTTP-EQUIV="expires" CONTENT="0">
 		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
 
 		<script src="resources/sap-ui-core.js"
@@ -313,6 +315,7 @@
                 sap.ui.getCore().setModel(oModel);
                 
 				function startApp(context) {
+       
             		home = sap.ui.view({
             			id: "idhome",
             			viewName: "com.zhenergy.pcbi.view.home",
@@ -578,6 +581,7 @@
         		} else {
         		    usrid = 'ERPTEST1';
         		}
+
         		// initial the page
                 startApp();
                 

@@ -349,17 +349,17 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
     				// 	},
         //     			data:['社会用电量','发电量']
        	// 		 	},
-    			 //   tooltip:{
-    			 //      trigger:'axis' ,
-    			 //      backgroundColor:'rgb(234,234,234)',
-    			 //      textStyle:{
-    			 //          color:'rgb(0,0,0)',
-    			 //          baseline:'top'
-    			 //      },
-    			 //      axisPointer:{
-    			 //          type: 'none'
-    			 //      }
-    			 //   },
+    			    tooltip:{
+    			       trigger:'axis' ,
+    			       backgroundColor:'rgb(234,234,234)',
+    			       textStyle:{
+    			           color:'rgb(0,0,0)',
+    			           baseline:'top'
+    			       },
+    			       axisPointer:{
+    			           type: 'none'
+    			       }
+    			    },
     				color: [color1, color2],
     				grid: {
     					x: 50,

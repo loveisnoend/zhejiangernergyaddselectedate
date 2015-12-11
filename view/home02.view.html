@@ -35,98 +35,228 @@
                 <!-- Swiper -->
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
+            			<div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
                 			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;">
-                				<div class="demo_header"><b class="nowDateClass"></b></div>
+                				<div class="demo_header" id="industryUpSumDate">-年-月-日</div>
                 				<div class="demo_jiange"></div>
                 				<div class="demo_title">
-                					GDP增长率
+                					全国工业增加值增长速度
                 				</div>
-                				<div class="demo_shuzi_red">
-                				<span id="GDPUpdate"><b style="color:#32FF32;" Class="valueGDPIDClass">GDP 7.8 3%↓</b></span>
-                				<span class="demo_shuzi_span_shangbiao" style="margin-top:5px;margin-left:-15px;"></span>
+                				<div class="demo_shuzi_first">
+                				<span id="currentMonthUp">0</span>
+                				<span class="demo_shuzi_span_shangbiao">%</span>
+                				</div>
+                				<div class="demo_content_1"><b class="demo_content_sum">累计：</b><b id="industryUpSum"></b></div>
+                			</div>
+            			</div>
+            			<div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
+                			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;">
+                				<div class="demo_header" id="socialPowerVolumeDate">-年-月-日</div>
+                				<div class="demo_jiange"></div>
+                				<div class="demo_title">
+                					全社会用电量-浙江省
+                				</div>
+                				<div class="demo_shuzi_first">
+                				<span id="socialPowerVolumeMonthUp">0</span>
+                				<span class="demo_shuzi_span_shangbiao">万千瓦时</span>
+                				</div>
+                				<div class="demo_content_1">同比<b id="tongbiSocialPowerVolumeMonthUp"></b>%&nbsp;<img  src="img/horizontal-green.png" id="tongbiSocialPowerVolumeMonthUpImg" class="demo_img_down"/></div>
+                				<br/>
+                				<div class="demo_content_1"><b class="demo_content_sum">累计：</b><b id="socialPowerVolumeSumUp"></b>&nbsp;&nbsp;同比<b id="huanbiSocialPowerVolumeSumUp"></b>%&nbsp;<img  id="huanbiSocialPowerVolumeSumUpImg" src="img/horizontal-green.png" class="demo_img_up"/></div>
+                			</div>
+            			</div>
+            			<div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
+                			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;">
+                				<div class="demo_header" id="allIndustryDate">-年-月-日</div>
+                				<div class="demo_jiange"></div>
+                				<div class="demo_title">
+                					全社会用电量-所有产业
+                				</div>
+                				<div class="demo_shuzi_first">
+                				<span id="allIndustryMonthUp">0</span>
+                				<span class="demo_shuzi_span_shangbiao">万千瓦时</span>
+                				</div>
+                				<div class="demo_content_1">同比<b id="tongbiAllIndustryMonthUp"></b>%&nbsp;<img  src="img/horizontal-green.png" id="tongbiAllIndustryMonthUpImg" class="demo_img_down"/></div>
+                				<br/>
+                				<div class="demo_content_1"><b class="demo_content_sum">累计：</b><b id="allIndustrySumUp"></b>&nbsp;&nbsp;同比<b id="huanbiAllIndustrySumUp"></b>%&nbsp;<img  id="huanbiAllIndustrySumUpImg" src="img/horizontal-green.png" class="demo_img_up"/></div>
+                			</div>
+            			</div>
+            			<div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
+                			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;">
+                				<div class="demo_header" id="wholeNationPowerVolumeDate">-年-月-日</div>
+                				<div class="demo_jiange"></div>
+                				<div class="demo_title">
+                					全国发电量
+                				</div>
+                				<div class="demo_shuzi_first">
+                				<span id="wholeNationPowerVolumeMonthUp">0</span>
+                				<span class="demo_shuzi_span_shangbiao">亿千瓦时</span>
+                				</div>
+                				<div class="demo_content_1">同比<b id="tongbiWholeNationPowerVolumeMonthUp"></b>%&nbsp;<img  src="img/horizontal-green.png" id="tongbiWholeNationPowerVolumeMonthUpImg" class="demo_img_down"/></div>
+                				<br/>
+                				<div class="demo_content_1"><b class="demo_content_sum">累计：</b><b id="wholeNationPowerVolumeSumUp"></b>&nbsp;&nbsp;同比<b id="huanbiWholeNationPowerVolumeSumUp"></b>%&nbsp;<img  id="huanbiWholeNationPowerVolumeSumUpImg" src="img/horizontal-green.png" class="demo_img_up"/></div>
+                			</div>
+            			</div>
+            			<div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
+                			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;">
+                				<div class="demo_header" id="averUsePerHourDate">-年-月-日</div>
+                				<div class="demo_jiange"></div>
+                				<div class="demo_title">
+                					全国平均利用小时
+                				</div>
+                				<div class="demo_shuzi_first">
+                				<span id="averUsePerHourMonthUp">0</span>
+                				<span class="demo_shuzi_span_shangbiao">小时</span>
+                				</div>
+                				<div class="demo_content_1">同比<b id="tongbiAverUsePerHourMonthUp"></b>%&nbsp;<img  src="img/horizontal-green.png" id="tongbiAverUsePerHourMonthUpImg" class="demo_img_down"/></div>
+                				<br/>
+                				<div class="demo_content_1"><b class="demo_content_sum">累计：</b><b id="averUsePerHourSumUp"></b>&nbsp;&nbsp;同比<b id="huanbiAverUsePerHourSumUp"></b>%&nbsp;<img  id="huanbiAverUsePerHourSumUpImg" src="img/horizontal-green.png" class="demo_img_up"/></div>
+                			</div>
+            			</div>
+            			<div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
+                			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;">
+                				<div class="demo_header" id="improtPowerSumDate">-年-月-日</div>
+                				<div class="demo_jiange"></div>
+                				<div class="demo_title">
+                					累计统调外购电量
+                				</div>
+                				<div class="demo_shuzi_first">
+                				<span id="improtPowerSum">0</span>
+                				<span class="demo_shuzi_span_shangbiao">亿千瓦时</span>
                 				</div>
                 			</div>
             			</div>
             			<div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
                 			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;">
-                				<div class="demo_header"><b class="nowDateClass"></b></div>
+                				<div class="demo_header" id="improtPowerSumOutProvinceDate">-年-月-日</div>
                 				<div class="demo_jiange"></div>
                 				<div class="demo_title">
-                					PPI同比
+                					累计统调外购电量-外省净送
                 				</div>
-                				<div class="demo_shuzi_red">
-                				<span id="PPITongbi"><b style="color:#32FF32;" Class="valuePPItongbiIDClass">PPI 250 2%↑</b></span>
-                				<span class="demo_shuzi_span_shangbiao" style="margin-top:5px;margin-left:-15px;"></span>
+                				<div class="demo_shuzi_first">
+                				<span id="improtPowerSumOutProvince">0</span>
+                				<span class="demo_shuzi_span_shangbiao">亿千瓦时</span>
                 				</div>
                 			</div>
             			</div>
             			<div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
                 			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;">
-                				<div class="demo_header"><b class="nowDateClass"></b></div>
+                				<div class="demo_header" id="highestUsePowerDate">-年-月-日</div>
                 				<div class="demo_jiange"></div>
                 				<div class="demo_title">
-                					制造业-同比
+                					统调最高用电负荷
                 				</div>
-                				<div class="demo_shuzi_red">
-                				<span id="produceTongbi"><b Class="valuePMIproduceIDClass" style="color:#32FF32;"></b></span>
-                				<span class="demo_shuzi_span_shangbiao" style="margin-top:5px;margin-left:-15px;"></span>
+                				<div class="demo_shuzi_first">
+                				<span id="highestUsePower">0</span>
+                				<span class="demo_shuzi_span_shangbiao">万千瓦时</span>
                 				</div>
                 			</div>
             			</div>
             			<div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
                 			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;">
-                				<div class="demo_header"><b class="nowDateClass"></b></div>
+                				<div class="demo_header" id="highestProducePowerDate">-年-月-日</div>
                 				<div class="demo_jiange"></div>
                 				<div class="demo_title">
-                					非制造业-同比
+                					统调最高发电负荷
                 				</div>
-                				<div class="demo_shuzi_red">
-                				<span id="nonProduceTongbi"><b Class="valuePMInonProduceIDClass" style="color:#32FF32;"></b></span>
-                				<span class="demo_shuzi_span_shangbiao" style="margin-top:5px;margin-left:-15px;"></span>
+                				<div class="demo_shuzi_first">
+                				<span id="highestProducePower">0</span>
+                				<span class="demo_shuzi_span_shangbiao">万千瓦时</span>
                 				</div>
                 			</div>
             			</div>
-            			<div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
-                			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;">
-                				<div class="demo_header"><b class="nowDateClass"></b></div>
-                				<div class="demo_jiange"></div>
-                				<div class="demo_title">
-                					GDP总值
-                				</div>
-                				<div class="demo_shuzi_red">
-                				<span id="GDPSum" Class="GDPSumIdClass" style="font-size:75px;"></span>
-                				<span class="demo_shuzi_span_shangbiao">万元</span>
-                				</div>
+                        <!--<div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">-->
+               <!-- 			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;">-->
+               <!-- 				<div class="demo_header"><b class="nowDateClass"></b></div>-->
+               <!-- 				<div class="demo_jiange"></div>-->
+               <!-- 				<div class="demo_title">-->
+               <!-- 					GDP增长率-->
+               <!-- 				</div>-->
+               <!-- 				<div class="demo_shuzi_red">-->
+               <!-- 				<span id="GDPUpdate"><b style="color:#32FF32;" Class="valueGDPIDClass">GDP 7.8 3%↓</b></span>-->
+               <!-- 				<span class="demo_shuzi_span_shangbiao" style="margin-top:5px;margin-left:-15px;"></span>-->
+               <!-- 				</div>-->
+               <!-- 			</div>-->
+            			<!--</div>-->
+            			<!--<div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">-->
+               <!-- 			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;">-->
+               <!-- 				<div class="demo_header"><b class="nowDateClass"></b></div>-->
+               <!-- 				<div class="demo_jiange"></div>-->
+               <!-- 				<div class="demo_title">-->
+               <!-- 					PPI同比-->
+               <!-- 				</div>-->
+               <!-- 				<div class="demo_shuzi_red">-->
+               <!-- 				<span id="PPITongbi"><b style="color:#32FF32;" Class="valuePPItongbiIDClass">PPI 250 2%↑</b></span>-->
+               <!-- 				<span class="demo_shuzi_span_shangbiao" style="margin-top:5px;margin-left:-15px;"></span>-->
+               <!-- 				</div>-->
+               <!-- 			</div>-->
+            			<!--</div>-->
+            			<!--<div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">-->
+               <!-- 			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;">-->
+               <!-- 				<div class="demo_header"><b class="nowDateClass"></b></div>-->
+               <!-- 				<div class="demo_jiange"></div>-->
+               <!-- 				<div class="demo_title">-->
+               <!-- 					制造业-同比-->
+               <!-- 				</div>-->
+               <!-- 				<div class="demo_shuzi_red">-->
+               <!-- 				<span id="produceTongbi"><b Class="valuePMIproduceIDClass" style="color:#32FF32;"></b></span>-->
+               <!-- 				<span class="demo_shuzi_span_shangbiao" style="margin-top:5px;margin-left:-15px;"></span>-->
+               <!-- 				</div>-->
+               <!-- 			</div>-->
+            			<!--</div>-->
+            			<!--<div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">-->
+               <!-- 			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;">-->
+               <!-- 				<div class="demo_header"><b class="nowDateClass"></b></div>-->
+               <!-- 				<div class="demo_jiange"></div>-->
+               <!-- 				<div class="demo_title">-->
+               <!-- 					非制造业-同比-->
+               <!-- 				</div>-->
+               <!-- 				<div class="demo_shuzi_red">-->
+               <!-- 				<span id="nonProduceTongbi"><b Class="valuePMInonProduceIDClass" style="color:#32FF32;"></b></span>-->
+               <!-- 				<span class="demo_shuzi_span_shangbiao" style="margin-top:5px;margin-left:-15px;"></span>-->
+               <!-- 				</div>-->
+               <!-- 			</div>-->
+            			<!--</div>-->
+            			<!--<div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">-->
+               <!-- 			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;">-->
+               <!-- 				<div class="demo_header"><b class="nowDateClass"></b></div>-->
+               <!-- 				<div class="demo_jiange"></div>-->
+               <!-- 				<div class="demo_title">-->
+               <!-- 					GDP总值-->
+               <!-- 				</div>-->
+               <!-- 				<div class="demo_shuzi_red">-->
+               <!-- 				<span id="GDPSum" Class="GDPSumIdClass" style="font-size:75px;"></span>-->
+               <!-- 				<span class="demo_shuzi_span_shangbiao">万元</span>-->
+               <!-- 				</div>-->
                 				<!--<div class="demo_content_1">同比<b id="tongbiHome"></b>%&nbsp;<img  src="img/arrow-green2.png" id="tongbiProfitImg" class="demo_img_down"/>&nbsp;环比<b id="huanbiHome"></b>%&nbsp;<img  id="huanbiProfitImg" src="img/arrow-green2.png" class="demo_img_up"/></div>-->
-                			</div>
-            			</div>
-            			<div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
-                			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;">
-                				<div class="demo_header"><b class="nowDateClass"></b></div>
-                				<div class="demo_jiange"></div>
-                				<div class="demo_title">
-                					CPI环比
-                				</div>
-                				<div class="demo_shuzi_red">
-                				<span id="CPIHuanbi"><b style="color:#32FF32;" Class="valueCPIhuanbiIDClass"></b></span>
-                				<span class="demo_shuzi_span_shangbiao" style="margin-top:5px;margin-left:-15px;"></span>
-                				</div>
-                			</div>
-            			</div>
-            			<div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
-                			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;">
-                				<div class="demo_header"><b class="nowDateClass"></b></div>
-                				<div class="demo_jiange"></div>
-                				<div class="demo_title">
-                					CPI同比
-                				</div>
-                				<div class="demo_shuzi_red">
-                				<span id="CPITongbi"><b style="color:#32FF32;" Class="valueCPItongbiIDClass"></b></span>
-                				<span class="demo_shuzi_span_shangbiao" style="margin-top:5px;margin-left:-15px;"></span>
-                				</div>
-                			</div>
-            			</div>
+               <!-- 			</div>-->
+            			<!--</div>-->
+            			<!--<div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">-->
+               <!-- 			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;">-->
+               <!-- 				<div class="demo_header"><b class="nowDateClass"></b></div>-->
+               <!-- 				<div class="demo_jiange"></div>-->
+               <!-- 				<div class="demo_title">-->
+               <!-- 					CPI环比-->
+               <!-- 				</div>-->
+               <!-- 				<div class="demo_shuzi_red">-->
+               <!-- 				<span id="CPIHuanbi"><b style="color:#32FF32;" Class="valueCPIhuanbiIDClass"></b></span>-->
+               <!-- 				<span class="demo_shuzi_span_shangbiao" style="margin-top:5px;margin-left:-15px;"></span>-->
+               <!-- 				</div>-->
+               <!-- 			</div>-->
+            			<!--</div>-->
+            			<!--<div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">-->
+               <!-- 			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;">-->
+               <!-- 				<div class="demo_header"><b class="nowDateClass"></b></div>-->
+               <!-- 				<div class="demo_jiange"></div>-->
+               <!-- 				<div class="demo_title">-->
+               <!-- 					CPI同比-->
+               <!-- 				</div>-->
+               <!-- 				<div class="demo_shuzi_red">-->
+               <!-- 				<span id="CPITongbi"><b style="color:#32FF32;" Class="valueCPItongbiIDClass"></b></span>-->
+               <!-- 				<span class="demo_shuzi_span_shangbiao" style="margin-top:5px;margin-left:-15px;"></span>-->
+               <!-- 				</div>-->
+               <!-- 			</div>-->
+            			<!--</div>-->
                     </div>
                 </div>
             </div>
