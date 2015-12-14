@@ -121,7 +121,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home02", {
 				// 全社会用电量-浙江省
 				// 省-社会用电量(当月)
 				if (sRes.results[i].KPI_ID == 'KPI_TEC_M_0000'){  
-				    KPI_TEC_M_0000 = (sRes.results[i].KPI_VALUE/100).toFixed(2);
+				    KPI_TEC_M_0000 = sRes.results[i].KPI_VALUE;
 				}
 				// 省-社会用电量同比(当月)
 				if (sRes.results[i].KPI_ID == 'KPI_TEC_MT_0000'){  
@@ -129,7 +129,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home02", {
 				}
 				// 省-社会用电量(年度累计)
 				if (sRes.results[i].KPI_ID == 'KPI_TEC_Y_0000'){  
-				    KPI_TEC_Y_0000 = (sRes.results[i].KPI_VALUE/100).toFixed(2);
+				    KPI_TEC_Y_0000 = sRes.results[i].KPI_VALUE;
 				}
 				// 省-社会用电量同比(年度累计)
 				if (sRes.results[i].KPI_ID == 'KPI_TEC_YT_0000'){  
@@ -139,7 +139,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home02", {
 				// 所有产业合计
 				// 产业-社会用电量(当月)
 				if (sRes.results[i].KPI_ID == 'KPI_TEC_M_SYCY'){  
-				    KPI_TEC_M_SYCY = (sRes.results[i].KPI_VALUE/100).toFixed(2);
+				    KPI_TEC_M_SYCY = sRes.results[i].KPI_VALUE;
 				}
 				// 产业-社会用电量同比(当月)
 				if (sRes.results[i].KPI_ID == 'KPI_TEC_MT_SYCY'){  
@@ -147,7 +147,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home02", {
 				}
 				// 产业-社会用电量(年度累计)
 				if (sRes.results[i].KPI_ID == 'KPI_TEC_Y_SYCY'){  
-				    KPI_TEC_Y_SYCY = (sRes.results[i].KPI_VALUE/100).toFixed(2);
+				    KPI_TEC_Y_SYCY = sRes.results[i].KPI_VALUE;
 				}
 				// 产业-社会用电量同比(年度累计)
 				if (sRes.results[i].KPI_ID == 'KPI_TEC_YT_SYCY'){  
@@ -157,7 +157,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home02", {
 				// 全国发电量
 				// 全国发电量(当月)
 				if (sRes.results[i].KPI_ID == 'KPI_FDL_M_TOTA'){  
-				    KPI_FDL_M_TOTA = (sRes.results[i].KPI_VALUE/100).toFixed(2);
+				    KPI_FDL_M_TOTA = sRes.results[i].KPI_VALUE;
 				}
 				// 全国发电量同比(当月)
 				if (sRes.results[i].KPI_ID == 'KPI_FDL_MT_TOTA'){  
@@ -165,7 +165,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home02", {
 				}
 				// 全国发电量(年度累计)
 				if (sRes.results[i].KPI_ID == 'KPI_FDL_Y_TOTA'){  
-				    KPI_FDL_Y_TOTA = (sRes.results[i].KPI_VALUE/100).toFixed(2);
+				    KPI_FDL_Y_TOTA = sRes.results[i].KPI_VALUE;
 				}
 				// 全国发电量同比(年度累计)
 				if (sRes.results[i].KPI_ID == 'KPI_FDL_YT_TOTA'){  
@@ -187,7 +187,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home02", {
 				}
 				// 全国平均利用小时同比(年度累计)
 				if (sRes.results[i].KPI_ID == 'KPI_LYH_YT_TOTA'){  
-				    KPI_LYH_YT_TOTA = (sRes.results[i].KPI_VALUE*100).toFixed(2);
+				    KPI_LYH_YT_TOTA = sRes.results[i].KPI_VALUE;
 				}
 				
 				// 累计统调外购电量
@@ -226,7 +226,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home02", {
 			}
 			
 			// 省-社会用电量(年度累计)
-			$('#socialPowerVolumeSumUp').html(KPI_TEC_Y_0000+'万元');
+			$('#socialPowerVolumeSumUp').html(KPI_TEC_Y_0000+'亿千瓦时');
 			// 省-社会用电量同比(年度累计)
 			$('#huanbiSocialPowerVolumeSumUp').html(KPI_TEC_YT_0000);
 			if (KPI_TEC_YT_0000 < 0) {
@@ -249,7 +249,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home02", {
 			}
 			
 			// 产业-社会用电量(年度累计)
-			$('#allIndustrySumUp').html(KPI_TEC_Y_SYCY+'万元');
+			$('#allIndustrySumUp').html(KPI_TEC_Y_SYCY+'亿千瓦时');
 			// 产业-社会用电量同比(年度累计)
 			$('#huanbiAllIndustrySumUp').html(KPI_TEC_YT_SYCY);
 			if (KPI_TEC_YT_0000 < 0) {
@@ -272,7 +272,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home02", {
 			}
 			
 			// 全国发电量(年度累计)
-			$('#wholeNationPowerVolumeSumUp').html(KPI_FDL_Y_TOTA+'万元');
+			$('#wholeNationPowerVolumeSumUp').html(KPI_FDL_Y_TOTA+'亿千瓦时');
 			// 全国发电量同比(年度累计)
 			$('#huanbiWholeNationPowerVolumeSumUp').html(KPI_FDL_YT_TOTA);
 			if (KPI_FDL_YT_TOTA < 0) {
