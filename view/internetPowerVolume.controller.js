@@ -251,17 +251,19 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 		    var powerPlantName = new Array();
 		    
 			for (var i in sRes.results) {
-				if (sRes.results[i].KPI_TYPE == '平均上网电价'){ 
-                    dataThisYear.push(sRes.results[i].KPI_VALUE);
-                    powerPlantName.push(sRes.results[i].KPI_DESC);
-				}
-				if (sRes.results[i].KPI_TYPE == '去年同期平均上网电价'){ 
-                    dataLastYear.push(sRes.results[i].KPI_VALUE);
-				}
-				
-				if (dataStatisticDate == '') {
-				    dataStatisticDate = sRes.results[i].KPI_DATE.substring(0,4)+'.'+sRes.results[i].KPI_DATE.substring(4,6)+"."+sRes.results[i].KPI_DATE.substring(6,8);
-				}
+			    if (sRes.results[i].KPI_DESC != "集团") {
+    				if (sRes.results[i].KPI_TYPE == '平均上网电价'){ 
+                        dataThisYear.push(sRes.results[i].KPI_VALUE);
+                        powerPlantName.push(sRes.results[i].KPI_DESC);
+    				}
+    				if (sRes.results[i].KPI_TYPE == '去年同期平均上网电价'){ 
+                        dataLastYear.push(sRes.results[i].KPI_VALUE);
+    				}
+    				
+    				if (dataStatisticDate == '') {
+    				    dataStatisticDate = sRes.results[i].KPI_DATE.substring(0,4)+'.'+sRes.results[i].KPI_DATE.substring(4,6)+"."+sRes.results[i].KPI_DATE.substring(6,8);
+    				}
+			    }
 			}
 			// 统计于日期
 			$('#internetPowerVolumeStatisticDate').html(dataStatisticDate);
@@ -856,7 +858,12 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetPowerVolume", {
 			}
 			// 电厂名
 			document.getElementById('powerPlantName').innerHTML = powerPlantName;
-			
+            // 隐藏可点击箭头
+            if (powerPlantName != "集团") {
+                document.getElementById('arrowInternetPowerVolume').style.display = "none";
+            } else {
+                document.getElementById('arrowInternetPowerVolume').style.display = "";
+            }
 			// 平均电价
 			var internetAverPrice1 = mapSeries.markPoint.data[dataIndex].averNetPrice;
 			if (internetAverPrice1 != undefined) {

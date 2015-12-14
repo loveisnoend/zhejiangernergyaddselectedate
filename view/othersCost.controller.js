@@ -292,15 +292,16 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 		    var dataStatisticDate = '';
 		    
 			for (var i in sRes.results) {
-				if (sRes.results[i].KPI_TYPE == priceChartName){ 
-				    var tempCost = (sRes.results[i].KPI_VALUE/10000).toFixed(2);
-                    eachCostData.push(tempCost);
-                    eachPowerPlantName.push(sRes.results[i].KPI_DESC);
-				}
-				
-				if (dataStatisticDate == '') {
-				    dataStatisticDate = sRes.results[i].KPI_DATE.substring(0,4)+'.'+sRes.results[i].KPI_DATE.substring(4,6)+"."+sRes.results[i].KPI_DATE.substring(6,8);
-				}
+			    if (sRes.results[i].KPI_DESC != "集团") {
+    				if (sRes.results[i].KPI_TYPE == priceChartName){ 
+    				    var tempCost = (sRes.results[i].KPI_VALUE/10000).toFixed(2);
+                        eachCostData.push(tempCost);
+                        eachPowerPlantName.push(sRes.results[i].KPI_DESC);
+    				}
+    				if (dataStatisticDate == '') {
+    				    dataStatisticDate = sRes.results[i].KPI_DATE.substring(0,4)+'.'+sRes.results[i].KPI_DATE.substring(4,6)+"."+sRes.results[i].KPI_DATE.substring(6,8);
+    				}
+			    }
 			}
 			
 			// 统计于日期
@@ -1132,7 +1133,21 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 			    powerPlantName = '凤台电厂';
 			}
 			document.getElementById('powerPlantMainDetailTitleCost').innerHTML = powerPlantName;
-         
+            // 隐藏可点击箭头
+            // 隐藏可点击箭头
+            if (powerPlantName != "集团") {
+                document.getElementById('arrowOthersCost01').style.display = "none";
+                document.getElementById('arrowOthersCost02').style.display = "none";
+                document.getElementById('arrowOthersCost03').style.display = "none";
+                document.getElementById('arrowOthersCost04').style.display = "none";
+                document.getElementById('arrowOthersCost05').style.display = "none";
+            } else {
+                document.getElementById('arrowOthersCost01').style.display = "";
+                document.getElementById('arrowOthersCost02').style.display = "";
+                document.getElementById('arrowOthersCost03').style.display = "";
+                document.getElementById('arrowOthersCost04').style.display = "";
+                document.getElementById('arrowOthersCost05').style.display = "";
+            }
 		    // 其他营业成本
 		    var otherRunningCost = mapSeries.markPoint.data[dataIndex].otherRunningCost;
 		    if (otherRunningCost != undefined) {

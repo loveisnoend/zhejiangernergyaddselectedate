@@ -48,10 +48,12 @@ function btnclick(no) {
     }
 }
 function detailAnother() {
-	document.getElementById("rlcb_detail").style.display = "none";
-	//document.getElementById("hidden01").style.display = "none";
-	document.getElementById("detail_another").style.display = "";
-	powerPlantMap.getController().loadFuelCostChartData();
+    if (document.getElementById('powerPlantMainDetailTitle').innerHTML == "集团") {
+    	document.getElementById("rlcb_detail").style.display = "none";
+    	//document.getElementById("hidden01").style.display = "none";
+    	document.getElementById("detail_another").style.display = "";
+    	powerPlantMap.getController().loadFuelCostChartData();
+    }
 }
 
 function back_another() {

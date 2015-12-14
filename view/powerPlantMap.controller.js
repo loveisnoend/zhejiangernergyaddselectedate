@@ -377,18 +377,19 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 		    var powerPlantName = new Array();
 		    
 			for (var i in sRes.results) {
-				if (sRes.results[i].KPI_TYPE == '单位燃料成本'){ 
-				    if (sRes.results[i].KPI_DATE.toString().substring(0, 4) == thisYear) {
-				        dataThisYear.push(sRes.results[i].KPI_VALUE);
-				        powerPlantName.push(sRes.results[i].KPI_DESC);
-				    } else {
-				        dataLastYear.push(sRes.results[i].KPI_VALUE);
-				    }
-				}
-				if (sRes.results[i].KPI_TYPE == '单位燃料成本同比'){ 
-                    dataUpPercent.push(sRes.results[i].KPI_VALUE);
-				}
-				
+			    if (sRes.results[i].KPI_DESC != '集团') {
+    				if (sRes.results[i].KPI_TYPE == '单位燃料成本'){ 
+    				    if (sRes.results[i].KPI_DATE.toString().substring(0, 4) == thisYear) {
+    				        dataThisYear.push(sRes.results[i].KPI_VALUE);
+    				        powerPlantName.push(sRes.results[i].KPI_DESC);
+    				    } else {
+    				        dataLastYear.push(sRes.results[i].KPI_VALUE);
+    				    }
+    				}
+    				if (sRes.results[i].KPI_TYPE == '单位燃料成本同比'){ 
+                        dataUpPercent.push(sRes.results[i].KPI_VALUE);
+    				}
+			    }
 				// if (dataStatisticDate == '') {
 				//     dataStatisticDate = sRes.results[i].KPI_DATE.substring(0,4)+'.'+sRes.results[i].KPI_DATE.substring(4,6)+"."+sRes.results[i].KPI_DATE.substring(6,8);
 				// }
@@ -1217,7 +1218,12 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 			    powerPlantName = '凤台电厂';
 			}
 			document.getElementById('powerPlantMainDetailTitle').innerHTML = powerPlantName;
-
+            // 隐藏可点击箭头
+            if (powerPlantName != "集团") {
+                document.getElementById('arrowPowerPlantMap').style.display = "none";
+            } else {
+                document.getElementById('arrowPowerPlantMap').style.display = "";
+            }
 		    // 单位燃料成本
 		    var fuelCost = mapSeries.markPoint.data[dataIndex].fuelCost
 		    if (fuelCost != undefined) {
