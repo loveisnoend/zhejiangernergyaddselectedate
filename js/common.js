@@ -7,6 +7,9 @@ function changeSkinCss(pageName) {
         skinName = '夜间模式';
     }
     skinNameAlter = $('.userSkin').html();
+    if (pageName == 'help') {
+        changeTheSkinOfPage();
+    }
     if (pageName == 'home01') {
         isHomeLoad = false;
         home.getController()._loadData01();

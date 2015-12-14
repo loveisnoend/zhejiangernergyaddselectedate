@@ -879,10 +879,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 								effect:{
 								  show: true,
 								  type: 'scale',
-								  scaleSize: 3,
+								  scaleSize: 2,
 								  loop: true,
 								  shadowColor: '#00FF00',
-								  period: 7
+								  period: 10
 								},
 								itemStyle:{
 									normal:{
@@ -1015,10 +1015,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 								effect:{
 								  show: true,
 								  type: 'scale',
-								  scaleSize: 3,
+								  scaleSize: 2,
 								  loop: true,
 								  shadowColor: '#00FF00',
-								  period: 7
+								  period: 10
 								},
 								itemStyle:{
 									normal:{

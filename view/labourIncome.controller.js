@@ -1019,7 +1019,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.labourIncome", {
 								effect:{
 								  show: false,
 								  type: 'scale',
-								  scaleSize: 3,
+								  scaleSize: 2,
 								  loop: true,
 								  period: 10
 								},
@@ -1072,7 +1072,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.labourIncome", {
 								effect:{
 								  show: true,
 								  type: 'scale',
-								  scaleSize: 3,
+								  scaleSize: 2,
 								  loop: true,
 								  shadowColor: '#00FF00',
 								  period: 10
@@ -1182,9 +1182,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.labourIncome", {
 									effect:{
     								  show: true,
     								  type: 'scale',
-    								  scaleSize: 7,
+    								  scaleSize: 2,
     								  loop: true,
-    								  period: 5
+    								  period: 10
     								}
 								},
 								data :allLabourData2
@@ -1204,10 +1204,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.labourIncome", {
 								effect:{
 								  show: true,
 								  type: 'scale',
-								  scaleSize: 3,
+								  scaleSize: 2,
 								  loop: true,
 								  shadowColor: '#00FF00',
-								  period: 7
+								  period: 10
 								},
 								itemStyle:{
 									normal:{

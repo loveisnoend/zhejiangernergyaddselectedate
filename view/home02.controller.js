@@ -179,7 +179,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home02", {
 				}
 				// 全国平均利用小时同比(当月)
 				if (sRes.results[i].KPI_ID == 'KPI_LYH_MT_TOTA'){  
-				    KPI_LYH_MT_TOTA = (sRes.results[i].KPI_VALUE*100).toFixed(2);
+				    KPI_LYH_MT_TOTA = sRes.results[i].KPI_VALUE;
 				}
 				// 全国平均利用小时(年度累计)
 				if (sRes.results[i].KPI_ID == 'KPI_LYH_Y_TOTA'){  
