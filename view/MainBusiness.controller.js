@@ -367,7 +367,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.MainBusiness", {
 		    }
 		}
 		// 供热收入
-		var heatIncome = data2[data2.length - 1];
+		var heatIncome = data3[data3.length - 1];
 		var heatIncomeImg="horizontal-green";
 		var heatIncomeTongbi = 0;
 		if(heatIncomeTongbi>0){
@@ -380,7 +380,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.MainBusiness", {
 		    }
 		}
 		// 劳务收入
-		var laborIncome = data3[data3.length - 1];
+		var laborIncome = data2[data2.length - 1];
 		var laborIncomeImg="horizontal-green";
 		var laborIncomeTongbi = 0;
  		if(laborIncomeTongbi>0){
