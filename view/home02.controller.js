@@ -1,8 +1,7 @@
 sap.ui.controller("com.zhenergy.pcbi.view.home02", {
 
     /* initialize the swiper plugin*/
-	_drawSwiper: function() {
-
+	_drawSwiper: function(visiableIds) {
 	    require(
                 [
                     'js/swiper'
@@ -32,7 +31,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.home02", {
 				depth: 0,
 				modifier: 1,
 				slideShadows: false
-			}
+			},
+			onInit: function(mySwiper){
+              //Swiper初始化了
+              mySwiper.removeSlide(visiableIds);
+            }
 		});
 	},
 	// 加载宏观环境
@@ -357,9 +360,91 @@ sap.ui.controller("com.zhenergy.pcbi.view.home02", {
 		}, this);
 	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_01_V01", mParameters);
 	},
+	// 获取当前用户的可见功能ID
+	_getTheVisiableIdOfCurrentUser : function(){
+		var mParameters = {};
+		var tabName = "MACROENVIRONMENT";
+		mParameters['async'] = true;
+		mParameters['success'] = jQuery.proxy(function(sRes) {
+		    
+		    var visiableIds = new Array();
+		    var isMacro01 = false;
+		    var isMacro02 = false;
+		    var isMacro03 = false;
+		    var isMacro04 = false;
+		    var isMacro05 = false;
+		    var isMacro06 = false;
+		    var isMacro07 = false;
+		    var isMacro08 = false;
+		    var isMacro09 = false;
+			// 可见功能Ids
+			for (var i in sRes.results) {
+			    var visiableId = sRes.results[i].ZTABNAME;
+                if (visiableId == 'MACRO01') {
+                    isMacro01 = true;
+                }
+                if (visiableId == 'MACRO02') {
+                    isMacro02 = true;
+                }
+                if (visiableId == 'MACRO03') {
+                    isMacro03 = true;
+                }
+                if (visiableId == 'MACRO04') {
+                    isMacro04 = true;
+                }
+                if (visiableId == 'MACRO05') {
+                    isMacro05 = true;
+                }
+                if (visiableId == 'MACRO06') {
+                    isMacro06 = true;
+                }
+                if (visiableId == 'MACRO07') {
+                    isMacro07 = true;
+                }
+                if (visiableId == 'MACRO08') {
+                    isMacro08 = true;
+                }
+                if (visiableId == 'MACRO09') {
+                    isMacro09 = true;
+                }
+			}
+            if (isMacro01 === false) {
+                visiableIds.push(0);
+            }
+            if (isMacro02 === false) {
+                visiableIds.push(1);
+            }
+            if (isMacro03 === false) {
+                visiableIds.push(2);
+            }
+            if (isMacro04 === false) {
+                visiableIds.push(3);
+            }
+            if (isMacro05 === false) {
+                visiableIds.push(4);
+            }
+            if (isMacro06 === false) {
+                visiableIds.push(5);
+            }
+            if (isMacro07 === false) {
+                visiableIds.push(6);
+            }
+            if (isMacro08 === false){
+                visiableIds.push(7);
+            }
+            if (isMacro09 === false) {
+                visiableIds.push(8);
+            }     
+			this._drawSwiper(visiableIds);
+		}, this);
+		mParameters['error'] = jQuery.proxy(function(eRes) {
+			alert("Get Data Error");
+		}, this);
+	    sap.ui.getCore().getModel().read("ZJEY_AUT_PC_TABPRI?$filter=(BNAME eq '" +usrid+ "')and(ZTOPICNAME eq '"+tabName+"')", mParameters);
+	},
 	// 获取二级页面数据
 	_loadData01 : function () {
-		this._drawSwiper();
+		this._getTheVisiableIdOfCurrentUser();
 		// 设置宏观环境数据
 		this._loadDataMacroEnvironment();
 	},
@@ -377,25 +462,24 @@ sap.ui.controller("com.zhenergy.pcbi.view.home02", {
                 this._loadData01();
 			}, this)
 		});
-	},
+	}
 
 /**
 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
 * (NOT before the first rendering! onInit() is used for that one!).
 * @memberOf com.zhenergy.pcbi.view.home02
 */
-//	onBeforeRendering: function() {
-//
-//	},
+// 	onBeforeRendering: function() {
+// 	},
 
 /**
 * Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.
 * This hook is the same one that SAPUI5 controls get after being rendered.
 * @memberOf com.zhenergy.pcbi.view.home02
 */
-	onAfterRendering: function() {
-        this._drawSwiper();
-	}
+// 	onAfterRendering: function() {
+//         this._drawSwiper();
+// 	}
 
 /**
 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.

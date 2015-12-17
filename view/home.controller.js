@@ -317,9 +317,27 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 		}, this);
 	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_01_V04?$filter=(BNAME eq '" +usrid+ "')", mParameters);
 	},
-	
+	// 获取当前用户的可见功能ID
+	_getTheVisiableIdOfCurrentUser : function(){
+		var mParameters = {};
+		var tabName = "MACROENVIRONMENT";
+		mParameters['async'] = true;
+		mParameters['success'] = jQuery.proxy(function(sRes) {
+		    var visiableIds = new Array();
+			// 可见功能Ids
+			for (var i in sRes.results) {
+			    visiableIds.push(sRes.results[i].ZTABNAME);
+			}
+			controlTheFunVisiable(tabName, visiableIds);
+		}, this);
+		mParameters['error'] = jQuery.proxy(function(eRes) {
+			alert("Get Data Error");
+		}, this);
+	    sap.ui.getCore().getModel().read("ZJEY_AUT_PC_TABPRI?$filter=(BNAME eq '" +usrid+ "')and(ZTOPICNAME eq '"+tabName+"')", mParameters);
+	},
 	// 获取二级页面数据
 	_loadData01 : function () {
+	   // this._getTheVisiableIdOfCurrentUser();
         this._drawSwiper();
         this._loadTopDynamicShowData();
         this._loadData_left();

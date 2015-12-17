@@ -157,7 +157,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.sumProperty", {
 	
 	// 获取集团指标-总资产 SCREEN_ZCQK_02_V02
 	loadBase_SupplySumPropertyIncome : function (chartDivId, priceChartName) {
-        
+
+        var busy = new sap.m.BusyDialog({
+			close: function(event) {}
+		});
+		if (busy) {
+			busy.open();
+		} 
+		
         // 总资产指标
         // 总资产
         var KPI_ZZC_V = new Array();
@@ -192,6 +199,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.sumProperty", {
 			if (priceChartName == '总资产') {
 			    this.sumProperty(chartDivId, priceChartName,xData,KPI_ZZC_V,KPI_ZZC_UP);
 			}
+			if (busy) {
+    			busy.close();
+    		} 
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});
@@ -200,7 +210,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.sumProperty", {
 	},
 	// 获取个电厂指标-总资产 SCREEN_ZCQK_02_V02
 	loadEachPlant_SupplySumPropertyIncome : function (chartDivId, priceChartName, powerPlantName) {
-        
+
+        var busy = new sap.m.BusyDialog({
+			close: function(event) {}
+		});
+		if (busy) {
+			busy.open();
+		} 
+		
         // 总资产指标
         // 总资产
         var KPI_ZZC_V = new Array();
@@ -235,6 +252,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.sumProperty", {
 			if (priceChartName == '总资产') {
 			    this.loadBaseDataDetail_SumPropertyIncome(chartDivId, priceChartName,xData,KPI_ZZC_V,KPI_ZZC_UP);
 			}
+			
+			if (busy) {
+    			busy.close();
+    		} 
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});

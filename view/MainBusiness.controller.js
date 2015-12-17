@@ -167,7 +167,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.MainBusiness", {
                 },
                 grid: {
                     x: '50px',
-                    y: '20px',
+                    y: '30px',
                     x2: '40px',
                     y2: '40px'
                 },
@@ -367,7 +367,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.MainBusiness", {
 		    }
 		}
 		// 供热收入
-		var heatIncome = data3[data3.length - 1];
+		var heatIncome = data2[data2.length - 1];
 		var heatIncomeImg="horizontal-green";
 		var heatIncomeTongbi = 0;
 		if(heatIncomeTongbi>0){
@@ -380,7 +380,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.MainBusiness", {
 		    }
 		}
 		// 劳务收入
-		var laborIncome = data2[data2.length - 1];
+		var laborIncome = data3[data3.length - 1];
 		var laborIncomeImg="horizontal-green";
 		var laborIncomeTongbi = 0;
  		if(laborIncomeTongbi>0){
@@ -412,7 +412,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.MainBusiness", {
 		+'<div class="MB-main_content_sz"><div style="width:50%;height:100%;float:left;text-align:center;"><b style="margin-left:180px;">同比'+sr_prec+'%</b><img src="img/'+powerIncomeImg+'.png" class="content_img"/></div><div style="width:50%;height:100%;text-align:center;float:left;"><b style="margin-left:-180px;">同比'+cb_prec+'%</b><img src="img/'+laborIncomeImg+'.png" class="content_img"/></div></div>';
 
 		var sr_innerhtml2=
-		'<div class="MB-main_content_title_2"><span>劳务收入<span style="font-size:15px;">(百万元)</span></span>'+
+		'<div class="MB-main_content_title_2">劳务收入<span><span style="font-size:15px;">(百万元)</span></span>'+
 		'<span style="margin-left:105px;">其他收入<span style="font-size:15px;">(百万元)</span></span></div>'+
 		'<div class="MB-main_content_sz" style="font-size:30px;font-weight:bold;color:'+sr_colorR01+'"><span style="width:50%;height:100%;float:left;text-align:center;"><b style="margin-left:180px;">'+ laborIncome +'</b></span><span style="width:50%;height:100%;float:left;text-align:center;font-weight:bold;color:'+cb_colorR01+'"><b style="margin-left:-180px;">'+othersIncome+'</b></span></div>'
 		+'<div class="MB-main_content_sz"><div style="width:50%;height:100%;float:left;text-align:center;"><b style="margin-left:180px;">同比'+sr_prec+'%</b><img src="img/'+laborIncomeImg+'.png" class="content_img"/></div><div style="width:50%;height:100%;text-align:center;float:left;"><b style="margin-left:-180px;">同比'+cb_prec+'%</b><img src="img/'+othersIncomeImg+'.png" class="content_img"/></div></div>';

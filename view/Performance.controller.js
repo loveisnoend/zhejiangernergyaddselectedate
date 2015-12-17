@@ -161,7 +161,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
                 },
                 grid: {
                     x: '50px',
-                    y: '20px',
+                    y: '30px',
                     x2: '40px',
                     y2: '40px'
                 },

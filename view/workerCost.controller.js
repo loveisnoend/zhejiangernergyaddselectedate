@@ -198,7 +198,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCost", {
 // 	},
 	// 获取个电厂指标-单位万千瓦人工成本 SCREEN_FZBZ_02_V04
 	loadEachPlant_SupplyWorkerCostIncome : function (chartDivId, priceChartName, powerPlantName) {
-        
+
+        var busy = new sap.m.BusyDialog({
+			close: function(event) {}
+		});
+		if (busy) {
+			busy.open();
+		} 
+		
         // 单位万千瓦人工成本指标
         // 单位万千瓦人工成本
         var KPI_RLC_V = new Array();
@@ -233,6 +240,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCost", {
 			if (priceChartName == '单位万千瓦人工成本') {
 			    this.loadBaseDataDetail_WorkerCostIncome(chartDivId, priceChartName,xData,KPI_RLC_V,KPI_RLC_UP);
 			}
+			if (busy) {
+    			busy.close();
+    		} 
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});

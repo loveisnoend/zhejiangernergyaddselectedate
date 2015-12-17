@@ -198,7 +198,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
 // 	},
 	// 获取个电厂指标-单位万千瓦时员工数 SCREEN_FZBZ_02_V02
 	loadEachPlant_SupplyWorkerCountPerHourIncome : function (chartDivId, priceChartName, powerPlantName) {
-        
+
+        var busy = new sap.m.BusyDialog({
+			close: function(event) {}
+		});
+		if (busy) {
+			busy.open();
+		} 
+		
         // 单位万千瓦时员工数指标
         // 单位万千瓦时员工数
         var KPI_DLR_V = new Array();
@@ -233,6 +240,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
 			if (priceChartName == '单位万千瓦时员工数') {
 			    this.loadBaseDataDetail_WorkerCountPerHourIncome(chartDivId, priceChartName,xData,KPI_DLR_V,KPI_DLR_UP);
 			}
+			if (busy) {
+    			busy.close();
+    		} 
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});

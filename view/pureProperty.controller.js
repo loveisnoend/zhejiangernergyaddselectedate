@@ -157,6 +157,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProperty", {
 	
 	// 获取集团指标-净资产 SCREEN_ZCQK_02_V01
 	loadBase_SupplyPurePropertyIncome : function (chartDivId, priceChartName) {
+	    
+        var busy = new sap.m.BusyDialog({
+			close: function(event) {}
+		});
+		if (busy) {
+			busy.open();
+		} 
         
         // 净资产指标
         // 净资产
@@ -192,6 +199,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProperty", {
 			if (priceChartName == '净资产') {
 			    this.pureProperty(chartDivId, priceChartName,xData,KPI_JZC_V,KPI_JZC_UP);
 			}
+		    if (busy) {
+    			busy.close();
+    		} 
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});
@@ -200,7 +210,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProperty", {
 	},
 	// 获取个电厂指标-净资产 SCREEN_ZCQK_02_V01
 	loadEachPlant_SupplyPurePropertyIncome : function (chartDivId, priceChartName, powerPlantName) {
-        
+
+        var busy = new sap.m.BusyDialog({
+			close: function(event) {}
+		});
+		if (busy) {
+			busy.open();
+		} 
+		
         // 净资产指标
         // 净资产
         var KPI_JZC_V = new Array();
@@ -235,6 +252,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProperty", {
 			if (priceChartName == '净资产') {
 			    this.loadBaseDataDetail_PurePropertyIncome(chartDivId, priceChartName,xData,KPI_JZC_V,KPI_JZC_UP);
 			}
+			if (busy) {
+    			busy.close();
+    		} 
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});

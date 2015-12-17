@@ -157,6 +157,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProfit", {
 	
 	// 获取集团指标-净利润 SCREEN_JYYJ_02_V05
 	loadBase_SupplyPureProfitIncome : function (chartDivId, priceChartName) {
+	    
+        var busy = new sap.m.BusyDialog({
+			close: function(event) {}
+		});
+		if (busy) {
+			busy.open();
+		} 
+		
         // 净利润指标
         // 净利润
         var KPI_JLR_V = new Array();
@@ -191,6 +199,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProfit", {
 			if (priceChartName == '净利润') {
 			    this.loadBaseDataDetail_SupplyPureProfitIncome(chartDivId, priceChartName,xData,KPI_JLR_V,KPI_JLR_UP);
 			}
+			if (busy) {
+    			busy.close();
+    		} 
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});
@@ -199,7 +210,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProfit", {
 	},
 	// 获取个电厂指标-净利润 SCREEN_JYYJ_02_V05
 	loadEachPlant_SupplyPureProfitIncome : function (chartDivId, priceChartName, powerPlantName) {
-        
+
+        var busy = new sap.m.BusyDialog({
+			close: function(event) {}
+		});
+		if (busy) {
+			busy.open();
+		} 
+		
         // 净利润指标
         // 净利润
         var KPI_JLR_V = new Array();
@@ -234,6 +252,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProfit", {
 			if (priceChartName == '净利润') {
 			    this.loadBaseDataDetail_PureProfitIncome(chartDivId, priceChartName,xData,KPI_JLR_V,KPI_JLR_UP);
 			}
+			if (busy) {
+    			busy.close();
+    		} 
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});
