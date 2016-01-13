@@ -198,7 +198,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.safeProduceDays", {
 // 	},
 	// 获取个电厂指标-电厂安全日天数 SCREEN_FZBZ_02_V04
 	loadEachPlant_SupplySafeProduceDaysIncome : function (chartDivId, priceChartName, powerPlantName) {
-        
+	    
         // 电厂安全日天数指标
         // 电厂安全日天数
         var KPI_SPD_V = new Array();
@@ -207,10 +207,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.safeProduceDays", {
         var KPI_RLC_UP = new Array();
         
         var dataStatisticDate = '';
-	    var mParameters = {};
-		mParameters['async'] = true;
-		mParameters['success'] = jQuery.proxy(function(sRes) {
-		    
+        
+	    var mParameters = "/SCREEN_FXKZ_01_V01.xsodata/PARAMETER(PUR_NAME='"+usrid+"',PUR_DATE='"+safeProduceDaysDate+"')/Results?&$format=json";
+	    
+	    var mResults = makeCorsRequest(mParameters);
+	    
+	    if (mResults != '') {
+            var sResAll = JSON.parse(mResults);
+            var sRes = sResAll.d;
 			// 各个电厂月份指标
 			var xData = new Array();
 			for (var i in sRes.results) {
@@ -225,7 +229,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.safeProduceDays", {
 				}
 				// 收入统计日期
 				if (dataStatisticDate == '') {
-				    dataStatisticDate = sRes.results[sRes.results.length-1].KPI_DATE.substring(0,4)+'.'+sRes.results[sRes.results.length-1].KPI_DATE.substring(4,6);//+"."+sRes.results[i].KPI_DATE.substring(6,8);
+				    dataStatisticDate = sRes.results[sRes.results.length-1].KPI_DATE.substring(0,4)+'.'+sRes.results[sRes.results.length-1].KPI_DATE.substring(4,6)+"."+sRes.results[i].KPI_DATE.substring(6,8);
 				}
 			}
 			// 统计于日期
@@ -233,11 +237,38 @@ sap.ui.controller("com.zhenergy.pcbi.view.safeProduceDays", {
 			if (priceChartName == '电厂安全日天数') {
 			    this.loadBaseDataDetail_SafeProduceDaysIncome(chartDivId, priceChartName,xData,KPI_SPD_V,KPI_RLC_UP);
 			}
-		}, this);
-		mParameters['error'] = jQuery.proxy(function(eRes) {
-			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});
-		}, this);
-	    sap.ui.getCore().getModel().read("SCREEN_FXKZ_01_V01/?$filter=(BNAME eq '" + usrid + "')", mParameters);
+	    }
+// 	    var mParameters = {};
+// 		mParameters['async'] = true;
+// 		mParameters['success'] = jQuery.proxy(function(sRes) {
+		    
+// 			// 各个电厂月份指标
+// 			var xData = new Array();
+// 			for (var i in sRes.results) {
+// 			    // 电厂安全日天数收入同比
+// 				// if (sRes.results[i].KPI_TYPE == '电厂安全日天数_同比'){ 
+//     //                 KPI_RLC_UP.push(sRes.results[i].KPI_VALUE);
+// 				// }
+// 				// 电厂安全日天数收入
+// 				if (sRes.results[i].KPI_TYPE == '电厂安全日天数' && sRes.results[i].KPI_DESC != powerPlantName){ 
+//                     KPI_SPD_V.push(sRes.results[i].KPI_VALUE);
+//                     xData.push(sRes.results[i].KPI_DESC);
+// 				}
+// 				// 收入统计日期
+// 				if (dataStatisticDate == '') {
+// 				    dataStatisticDate = sRes.results[sRes.results.length-1].KPI_DATE.substring(0,4)+'.'+sRes.results[sRes.results.length-1].KPI_DATE.substring(4,6);//+"."+sRes.results[i].KPI_DATE.substring(6,8);
+// 				}
+// 			}
+// 			// 统计于日期
+// 			$('#safeProduceDaysIncomeStatisticDate').html(dataStatisticDate);
+// 			if (priceChartName == '电厂安全日天数') {
+// 			    this.loadBaseDataDetail_SafeProduceDaysIncome(chartDivId, priceChartName,xData,KPI_SPD_V,KPI_RLC_UP);
+// 			}
+// 		}, this);
+// 		mParameters['error'] = jQuery.proxy(function(eRes) {
+// 			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});
+// 		}, this);
+// 	    sap.ui.getCore().getModel().read("SCREEN_FXKZ_01_V01/?$filter=(BNAME eq '" + usrid + "')", mParameters);
 	},
 	// 加载集团-电厂安全日天数
 // 	loadBaseDataDetail_SupplySafeProduceDaysIncome: function(chartDivId, priceChartName,xData,KPI_RJS_V,KPI_RJS_UP) {

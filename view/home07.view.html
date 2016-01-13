@@ -1,4 +1,18 @@
 <template data-controller-name="com.zhenergy.pcbi.view.home07">
+ <script>
+    function dateChangeHome07(dateName){
+        if (dateName == "safeProduceDaysDate") {
+            var selectedDate = document.getElementById("safeProduceDaysDateId").value;
+            home07.getController()._loadData01(selectedDate);
+        }
+    }
+    function toSafeProduceDaysPageBefore(dateName){
+        if (dateName == "safeProduceDaysDate") {
+            var selectedDate = document.getElementById("safeProduceDaysDateId").value;
+            toSafeProduceDaysPage(selectedDate);
+        }
+    }
+ </script>
 <div class="nav_main">
     	<div class="main-center">
             <div class="msg_top">
@@ -36,11 +50,13 @@
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
-                    			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;" ondblclick="toSafeProduceDaysPage()">
+                    			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;" ondblclick="toSafeProduceDaysPageBefore('safeProduceDaysDate')">
+                    				<!--<div class="demo_header" id="safeProduceDaysDate">-年-月-日</div>-->
                     				<div class="demo_header" id="safeProduceDaysDate">-年-月-日</div>
                     				<div class="demo_jiange"></div>
                     				<div class="demo_title">
                     					安全生产天数
+                    					<input type="date" style="width:150px;height:20px;" onchange="dateChangeHome07('safeProduceDaysDate')" id="safeProduceDaysDateId"/>
                     				</div>
                     				<div class="demo_shuzi_red">
                     				<span id="safeProduceDays">0</span>

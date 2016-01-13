@@ -35,6 +35,32 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 		});
 	},
 	
+	// get data by new method of OData
+	_getDataByNewMethod : function(){
+	    
+	    var mParameters = "/HANA_VIEW2.xsodata/INPUT2(PUR_TYPE='增长率',PUR_INPUT='GDP')/Results";
+	    var mResults = makeCorsRequest(mParameters);
+	    alert('----dodo---'+mResults);
+	    
+	    
+	    // TODO backup method
+// 		var mParameters = {};
+// 		mParameters['async'] = true;
+	    
+// 		mParameters['success'] = jQuery.proxy(function(sRes) {
+// 			//设置数据
+// 			for (var i in sRes.results) {
+// 			    alert('------'+sRes.results[i].KPI_VALUE);
+// 			}
+// 		}, this);
+// 		mParameters['error'] = jQuery.proxy(function(eRes) {
+// 		    debugger;
+// 			alert("Get Data Error");
+// 		}, this);
+// 		debugger;
+// 	    sap.ui.getCore().getModel().read("/HANA_VIEW2.xsodata/INPUT2(PUR_TYPE='增长率',PUR_INPUT='GDP')/Results", mParameters);
+	},
+	
 	// 获取跑马灯的动态信息
 	_loadTopDynamicShowData : function(){
 	    if (isHomeLoad == false) {
@@ -51,6 +77,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 		mParameters['success'] = jQuery.proxy(function(sRes) {
 			//设置数据
 			for (var i in sRes.results) {
+			 //   alert('------'+sRes.results[i].KPI_VALUE);
 				if (sRes.results[i].KPI_ID == 'KPI_ENV_H_0001'){  //CPI环比
 				    valueCPIhuanbi = (sRes.results[i].KPI_VALUE*100).toFixed(2);
 				}
@@ -337,6 +364,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 	},
 	// 获取二级页面数据
 	_loadData01 : function () {
+	   // this._getDataByNewMethod();
 	   // this._getTheVisiableIdOfCurrentUser();
         this._drawSwiper();
         this._loadTopDynamicShowData();

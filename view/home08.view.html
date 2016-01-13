@@ -1,4 +1,16 @@
 <template data-controller-name="com.zhenergy.pcbi.view.home08">
+ <script>
+    function dateChangeHome08(dateName){
+        if (dateName == "workerCostPerKWHourDate") {
+            var selectedDate = document.getElementById("workerCostPerKWHourDateId").value;
+            alert('------'+selectedDate);
+        }
+        if (dateName == "workerCostPerKWDate") {
+            var selectedDate = document.getElementById("workerCostPerKWDateId").value;
+            alert('------'+selectedDate);
+        }
+    }
+ </script>
 	<div class="nav_main">
 		<div class="main-center">
             <div class="msg_top">
@@ -29,6 +41,7 @@
                         <div class="userSkinIcon" onmouseover="userHoverOn('userSkinCon')" onmouseout="userHoverOut('userSkinCon')" ></div>
                         <div class="userSkinCon"><b class="userSkin" onClick="changeSkinCss('home08')">夜间模式</b></div>
                     </div>
+                    <input type="text" style="width:0px;height:0px;border:none" class="magicFocus" id="home08" value=""/>
                 </div>
             </div>
             <div class="content_center">
@@ -89,6 +102,7 @@
                 				<div class="demo_jiange"></div>
                 				<div class="demo_title">
                 					单位万千瓦人工成本
+                                    <input type="month" style="width:150px;height:20px;" onchange="dateChangeHome08('workerCostPerKWDate')" id="workerCostPerKWDateId"/>
                 				</div>
                 				<div class="demo_shuzi_red">
                 				<span id="workerCostPerKW">0</span>
@@ -101,10 +115,16 @@
             		   </div>
             		   <div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
                 			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;" ondblclick="toWokerCostPerHourPage()">
-                				<div class="demo_header" id="workerCostPerKWHourDate">-年-月-日</div>
+                				<div class="demo_header" id="workerCostPerKWHourDate">-年-月-日
+                				    <!--<input type="month" style="width:150px;height:20px;" onchange="dateChangeHome08('workerCostPerKWHourDate')" id="workerCostPerKWHourDateId"/>-->
+                				</div>
+                				<!--<div style="float:left;margin-left:152px;">-->
+                				    <!--<input type="month" onchange="dateChangeHome08('workerCostPerKWHourDate')" id="workerCostPerKWHourDateId"/>-->
+                				<!--</div>-->
                 				<div class="demo_jiange"></div>
                 				<div class="demo_title">
                 					单位万千瓦时人工成本
+                                    <input type="month" style="width:150px;height:20px;" onchange="dateChangeHome08('workerCostPerKWHourDate')" id="workerCostPerKWHourDateId"/>
                 				</div>
                 				<div class="demo_shuzi_red">
                 				<span id="workerCostPerKWHour">0</span>

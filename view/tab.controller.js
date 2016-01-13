@@ -529,10 +529,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
     							lineStyle: {
     								color: 'rgba(64,64,64,0.5)'
     							}
-    						},
-    						max: y1,
-    						min: y2,
-    						splitNumber: n
+    						}
+    				// 		max: y1,
+    				// 		min: y2,
+    				// 		splitNumber: n
                         }
                         
                     ],

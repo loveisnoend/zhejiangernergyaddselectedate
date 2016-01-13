@@ -313,7 +313,57 @@
 				var sServiceUrl = "/sap/opu/odata/sap/ZBIMS_SRV";
                 var oModel = new sap.ui.model.odata.ODataModel(sServiceUrl, true);
                 sap.ui.getCore().setModel(oModel);
+
+                // Create the XHR object.
+                function createCORSRequest(method, url) {
+                      var xhr = new XMLHttpRequest();
+                      xhr.withCredentials = true;
+                      
+                      if ("withCredentials" in xhr) {
+                        // XHR for Chrome/Firefox/Opera/Safari.
+                        xhr.open(method, url, false, 'aclujj', 'Lujj1234');
+                      } else if (typeof XDomainRequest != "undefined") {
+                        // XDomainRequest for IE.
+                        xhr = new XDomainRequest();
+                        xhr.open(method, url);
+                      } else {
+                        // CORS not supported.
+                        xhr = null;
+                      }
+                      return xhr;
+                }
                 
+                // Helper method to parse the title tag from the response.
+                function getTitle(text) {
+                    return text.match('<title>(.*)?</title>')[1];
+                }
+                
+                // Make the actual CORS request.
+                function makeCorsRequest(mParameters) {
+                      // All HTML5 Rocks properties support CORS.
+                      var HostUrl = 'http://10.156.0.48:8000/tranpara_odata';
+                      HostUrl += mParameters;
+                      
+                      var resultData = '';
+                      var xhr = createCORSRequest('GET', HostUrl);
+                      if (!xhr) {
+                        alert('CORS not supported');
+                      }
+                    
+                      // Response handlers.
+                      xhr.onload = function() {
+                        var text = xhr.responseText;
+                        resultData = text;
+                      };
+                    
+                      xhr.onerror = function() {
+                        alert('Woops, there was an error making the request.');
+                      };
+                    
+                      xhr.send();
+                      return resultData;
+                }
+
 				function startApp(context) {
        
             		home = sap.ui.view({

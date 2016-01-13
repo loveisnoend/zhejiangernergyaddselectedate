@@ -76,7 +76,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home03", {
 				    purePropertyHuanBi = sRes.results[i].KPI_VALUE*100;
 				}
 				if (sRes.results[i].KPI_TYPE == '净资产同比' && sRes.results[i].KPI_DESC == '集团'){  
-				    purePropertyTongBi = sRes.results[i].KPI_VALUE*100;
+				    purePropertyTongBi = (sRes.results[i].KPI_VALUE*100).toFixed(0);
 				}
 				// 总资产
 				if (sRes.results[i].KPI_TYPE == '总资产' && sRes.results[i].KPI_DESC == '集团'){  
@@ -87,7 +87,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home03", {
 				    sumPropertyHuanBi = sRes.results[i].KPI_VALUE*100;
 				}
 				if (sRes.results[i].KPI_TYPE == '总资产同比' && sRes.results[i].KPI_DESC == '集团'){  
-				    sumPropertyTongBi = sRes.results[i].KPI_VALUE*100;
+				    sumPropertyTongBi = (sRes.results[i].KPI_VALUE*100).toFixed(0);
 				}
 			}
 			

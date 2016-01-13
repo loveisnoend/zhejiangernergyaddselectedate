@@ -337,6 +337,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
     	       daytime03NO4 = daytimeNO4.substring(6,8); 
     	    }
             // 单位万千瓦时人工成本统计日期
+            // TODO wait for new method of getting data
 	        $('#workerCostPerKWHourDate').html(daytime01NO4 + "年" + daytime02NO4 + "月");//  + daytime03NO4 + "日"
 	        if (isHome08Load == false) {
                 if (busy) {
@@ -353,6 +354,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
 	},
 	// 获取二级页面数据
 	_loadData01 : function () {
+	    $('.magicFocus').focus();
 		this._drawSwiper();
 	    this._loadData_AverBusinessIncome();
 		// 设定头部跑马灯信息 common.js

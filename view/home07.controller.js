@@ -1,5 +1,4 @@
 sap.ui.controller("com.zhenergy.pcbi.view.home07", {
-
     /* initialize the swiper plugin*/
 	_drawSwiper: function() {
 
@@ -35,6 +34,62 @@ sap.ui.controller("com.zhenergy.pcbi.view.home07", {
 			}
 		});
 	},
+	
+	// get data by new method of OData
+	_getDataByDifferentDate : function(currentDate){
+	    
+	    var mParameters = "/SCREEN_FXKZ_01_V01.xsodata/PARAMETER(PUR_NAME='"+usrid+"',PUR_DATE='"+currentDate+"')/Results?&$format=json";
+
+	    var mResults = makeCorsRequest(mParameters);
+
+	    if (mResults != '') {
+            var sResAll = JSON.parse(mResults);
+            var sRes = sResAll.d;
+
+            // 统计日期
+            var daytime = null;
+			//设置数据
+			var safeProduceDays=0;
+			for (var i in sRes.results) {
+			    
+				if (sRes.results[i].KPI_TYPE == '电厂安全日天数' && sRes.results[i].KPI_DESC == '集团'){  
+				    safeProduceDays = safeProduceDays+parseFloat(sRes.results[i].KPI_VALUE);
+				    daytime = sRes.results[i].KPI_DATE;
+				}
+			}
+			var rlr_color="red";
+    		if(safeProduceDays>0){
+    		    if (skinName == '夜间模式') {
+    		        rlr_color="green";
+    		    } else {
+    		        rlr_color="white";
+    		    }
+    		}
+    		$('#safeProduceDays').css('color',rlr_color);
+    		$('#safeProduceDays').css('font-size','75px');
+			$('#safeProduceDays').html(safeProduceDays);
+            var daytime01;
+    	    var daytime02;
+    	    var daytime03;
+    	    if (daytime != null) {
+    	       daytime01 = daytime.substring(0,4);
+    	       daytime02 = daytime.substring(4,6);
+    	       daytime03 = daytime.substring(6,8); 
+    	    }
+            // 电厂安全日天数日期
+	        $('#safeProduceDaysDate').html(daytime01 + "年" + daytime02 + "月" + daytime03 + "日");
+	        if (isHomeLoad == false) {
+                if (busy) {
+        			busy.close();
+        		} 
+        		changeTheSkinOfPage();
+        		isHomeLoad = true;
+            }
+	    } else {
+	        alert('The Result Is Empty');
+	    }
+	},
+	
 	// 加载电厂安全日天数值
 	_loadSafeProduceDays : function(){
 	    var mParameters = {};
@@ -87,9 +142,25 @@ sap.ui.controller("com.zhenergy.pcbi.view.home07", {
 	    sap.ui.getCore().getModel().read("SCREEN_FXKZ_01_V01?$filter=(BNAME eq '" +usrid+ "')", mParameters);
 	},
 	// 获取二级页面数据
-	_loadData01 : function () {
+	_loadData01 : function (currentDate) {
+	    
+	    var currentDate;
+	    if (currentDate == '') {
+	        var alreadySetDate = document.getElementById("safeProduceDaysDateId").value;
+	        if (alreadySetDate != '') {
+	            currentDate = alreadySetDate.replace(/\-/g,'');
+	        } else {
+            	var datetime = new Date();
+                currentDate = toSimpleDateString(datetime);  
+	        }
+	    } else {
+            currentDate = currentDate.replace(/\-/g,'');
+	    }
+	    // get data by different date
+	    this._getDataByDifferentDate(currentDate);
+	    
 		this._drawSwiper();
-	    this._loadSafeProduceDays();
+	   // this._loadSafeProduceDays();
 		// 设定头部跑马灯信息 common.js
 		_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);
 	},
@@ -104,7 +175,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home07", {
 			
 			// not added the controller as delegate to avoid controller functions with similar names as the events
 			onAfterShow: jQuery.proxy(function() {
-                this._loadData01();
+                this._loadData01('');
 			}, this)
 		});
 	}

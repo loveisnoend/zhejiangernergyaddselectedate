@@ -172,6 +172,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 	},
 	// 获取煤价数据
 	loadCoalPriceChartData : function (calorieType,divId,powerPlantName) {
+	    
+        var busy = new sap.m.BusyDialog({
+			close: function(event) {}
+		});
+		if (busy) {
+			busy.open();
+		} 
+		
 	    var mParameters = {};
 		mParameters['async'] = true;
 		mParameters['success'] = jQuery.proxy(function(sRes) {
@@ -215,8 +223,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
 			
 			// 统计于日期
 			$('#powerPlantStatisticDate').html(dataStatisticDate);
-			
     		this.loadmjChart(divId,reallyPrice,qinGangPrice,date);
+    		
+    		if (busy) {
+    			busy.close();
+    		}
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});
@@ -255,6 +266,17 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerPlantMap", {
     				},
         			data:['实际采购价格','秦港煤价']
        		 	},
+			    tooltip:{
+			       trigger:'axis' ,
+			       backgroundColor:'rgb(234,234,234)',
+			       textStyle:{
+			           color:'rgb(0,0,0)',
+			           baseline:'top'
+			       },
+			       axisPointer:{
+			           type: 'none'
+			       }
+			    },
        			color: ['#2DE630', '#E52DE6','white'],
     			grid: {
                     x:60,

@@ -1,3 +1,27 @@
+// date type to 20160101 format string
+function toSimpleDateString(datetime) {
+    
+	var dateYear
+    var dateMonth;
+    var dateDay;
+    var datetimeMonth = datetime.getMonth()+1;
+    // set year value
+    dateYear = datetime.getFullYear().toString();
+    // set month value
+    if (datetimeMonth < 10) {
+        dateMonth = '0'+datetimeMonth.toString();
+    } else {
+        dateMonth = datetime.getMonth().toString();
+    }
+    // set date value
+    if (datetime.getDate() < 10) {
+        dateDay = '0'+datetime.getDate().toString();
+    } else {
+        dateDay = datetime.getDate().toString();
+    }
+    var currentDate = dateYear + dateMonth + dateDay;
+    return currentDate;
+}
 // 皮肤切换，更换CSS文件
 function changeSkinCss(pageName) {
     var skinNameAlter = $('.userSkin').html();
