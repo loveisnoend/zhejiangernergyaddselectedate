@@ -1,5 +1,5 @@
 // date type to 20160101 format string
-function toSimpleDateString(datetime) {
+function toSimpleDateString(datetime,stringType) {
     
 	var dateYear
     var dateMonth;
@@ -19,7 +19,13 @@ function toSimpleDateString(datetime) {
     } else {
         dateDay = datetime.getDate().toString();
     }
-    var currentDate = dateYear + dateMonth + dateDay;
+    var currentDate = '';
+    if (stringType == 'date') {
+        currentDate = dateYear + dateMonth + dateDay;
+    }
+    if (stringType == 'month') {
+        currentDate = dateYear + dateMonth;
+    }
     return currentDate;
 }
 // 皮肤切换，更换CSS文件
@@ -62,7 +68,7 @@ function changeSkinCss(pageName) {
     }
     if (pageName == 'home08') {
         isHome08Load = false;
-        home08.getController()._loadData01();
+        home08.getController()._loadData01('');
     }
     if (pageName == 'internetPowerVolume') {
         isInternetPowerVolumeLoad = false;
@@ -121,8 +127,34 @@ function changeSkinCss(pageName) {
         workerCostPerHour.getController()._loadData01(); 
     }
     if (pageName == 'pureProfit') {
+        isPureProfit = false;
         pureProfit.getController()._loadData01(); 
     }
+    // 净利润详细
+    if (pageName == 'pureProfitDetail') {
+        pureProfitDetail.getController()._loadData01();
+    }
+    // 营业利润
+    if (pageName == 'businessProfit') {
+        businessProfit.getController()._loadData01();
+    }
+    // 利润总额
+    if (pageName == 'profitSum') {
+        profitSum.getController()._loadData01();
+    }
+    // 所得税费用
+    if (pageName == 'taxFee') {
+        taxFee.getController()._loadData01();
+    }
+    // 营业总收入
+    if (pageName == 'businessSumIncome') {
+        businessSumIncome.getController()._loadData01();
+    }
+    // 营业总成本
+    if (pageName == 'businessSumCost') {
+        businessSumCost.getController()._loadData01();
+    }
+    
     if (pageName == 'pureProperty') {
         pureProperty.getController()._loadData01(); 
     }
@@ -158,6 +190,7 @@ function changeTheSkinOfPage() {
         $('#mainBusinessCss').attr("href","css/mainBusinessHightlight.css");
         $('#powerPlantMapCss').attr("href","css/powerPlantMapHighlight.css");
         $('#internetPowerVolumeCss').attr("href","css/internetPowerVolumeHighlight.css");
+        $('#pureProfitCss').attr("href","css/pureProfitHighlight.css");
         $('.userSkin').html('高亮模式');
     } else {
         $('#homeCss').attr("href","css/home.css");
@@ -168,6 +201,7 @@ function changeTheSkinOfPage() {
         $('#mainBusinessCss').attr("href","css/mainBusiness.css");
         $('#powerPlantMapCss').attr("href","css/powerPlantMap.css");
         $('#internetPowerVolumeCss').attr("href","css/internetPowerVolume.css");
+        $('#pureProfitCss').attr("href","css/pureProfit.css");
         $('.userSkin').html('夜间模式');
     }
     skinNameAlter = $('.userSkin').html();

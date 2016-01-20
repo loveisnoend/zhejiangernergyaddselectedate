@@ -404,6 +404,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 	onAfterRendering: function() {
 // 		// adjust the zoom of the brower
 //         detectZoom();
+        this._drawSwiper();
 	}
 
 /**

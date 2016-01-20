@@ -4,10 +4,14 @@
         if (dateName == "workerCostPerKWHourDate") {
             var selectedDate = document.getElementById("workerCostPerKWHourDateId").value;
             alert('------'+selectedDate);
+            slide08PageNum = 4;
+            home08.getController()._loadData01(selectedDate);
         }
         if (dateName == "workerCostPerKWDate") {
             var selectedDate = document.getElementById("workerCostPerKWDateId").value;
             alert('------'+selectedDate);
+            slide08PageNum = 3;
+            home08.getController()._loadData01(selectedDate);
         }
     }
  </script>
@@ -169,7 +173,7 @@
                     </li>
                     <li class="split_line"></li>
                     <li class="but08 nav_BI" id="but08">
-                        <div class="But08" type="button" onClick="doit8()"></div>
+                        <div class="But08" type="button" onClick="doit8(0)"></div>
                     </li>
                 </ul>
         </div>

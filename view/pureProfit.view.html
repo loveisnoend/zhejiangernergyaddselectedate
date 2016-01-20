@@ -1,6 +1,6 @@
 <template data-controller-name="com.zhenergy.pcbi.view.pureProfit">
-    <div class="nav_main">
-        <div class="main-center">
+	 <div class="nav_main">
+	    <div class="main-center">
             <div class="msg_top">
                <div class="msg_top1">
                    <marquee behavior="scroll" scrollamount="5">
@@ -32,97 +32,45 @@
                 </div>
             </div>
             <div class="content_center">
-              <div class="powerTop">
-                    <div id="demo" style="color:white;margin-top:10px;margin-left:40px;font-weight:bold;font-size:20px;"><span id="demo" style="height:100%;"><b onClick="doit2(2)" style="cursor:pointer;">经营业绩</b> > <b>净利润</b></span></div>             
-              </div>
-              <div class="powerBottom">
-                  <div class="powerPlantLeft">
-        			  <div class="mapTop">
-        			      <div id="huaiNanMapPureProfit" class="huiNanMap"></div>
-        			      <div id="powerPlantMapPureProfit" class="powerPlantMap"></div>
-        			  </div>
-        			  <div class="mapBottom">
-        			      <div class="chinaMap" style="margin-left:40px;">
-                              <div class="chinaMapCon">
-            			          <div id="chinaMapPureProfit" style="float:left;height:110px;width:140px;margin-top:15px;margin-left:30px;">
-            			              
-            			          </div>
-        			          </div>
-        			      </div>
-        			      <b id="powerName" style="color:#FEFF02;display:none;"></b>
-        			  </div>
-                </div>
-                <div class="powerPlantRight">
-                    <div id="rlcb_detailPureProfit" class="detail_02">
-                        <div class="detail_02_01">
-                                <div id="powerPlantMainDetailTitlePureProfit" style="margin-top:0px;">集团</div>
-                        </div>
-                        <div class="main_content_combition_1">
-                            <div class="main_content_combition_1_1">
-                                <div class="detail_02_03" onClick="priceDetailAnotherPureProfit('detail001')">
-                                    <div class="detail_02_font1">自产蒸汽<b>(百万元)</b></div>
-                                    <div class="detail_02_font2" id="travelPricePureProfit"></div>
-                                    <div class="detail_02_img" id="detail_01PureProfit"></div>
-                                </div>
-                                <div class="detail_02_03 detail_position01" onClick="priceDetailAnotherPureProfit('detail002')">
-                                    <div class="detail_02_font1">外购蒸汽<b>(百万元)</b></div>
-                                    <div class="detail_02_font2" id="coalPricePureProfit"></div>
-                                    <div class="detail_02_img" id="detail_02PureProfit"></div>
-                                </div>
-                            </div>
-                            <div class="main_content_combition_1_2">
-                                <!--<div class="detail_02_04" style="cursor:pointer;" onClick="priceDetailAnotherPureProfit('detail006')">-->
-                                <!--    <div class="detail_001">-->
-                                <!--        上网电量<b id="internetPV"></b>万千瓦时-->
-                                <!--    </div>-->
-                                <!--</div>-->
-                            </div>
-                            <div class="main_content_combition_1_3">
-                                <div class="detail_02_03" onClick="priceDetailAnotherPureProfit('detail003')">
-                                    <div class="detail_02_font1">热水<b id="wattVolume1PureProfit">(百万元)</b></div>
-                                    <div class="detail_02_font2" id="watt1PureProfit"></div>
-                                    <div class="detail_02_img" id="detail_03PureProfit"></div>
-                                </div>
-                                <div class="detail_02_03" onClick="priceDetailAnotherPureProfit('detail004')">
-                                    <div class="detail_02_font1">初装费<b id="wattVolume2PureProfit">(百万元)</b></div>
-                                    <div class="detail_02_font2" id="factoryUsePV"></div>
-                                    <div class="detail_02_img" id="detail_04PureProfit"></div>
-                                </div>
+                <div id="demo" style="color:white;margin-top:10px;margin-left:40px;font-weight:bold;font-size:20px;"><span id="demo"><b onClick="doit2(2)" style="cursor:pointer;">经营业绩</b> > 净利润</span></div>
+                <div class="pureProfit_main">
+                    <div class="pureProfit_main_content_left">
+                        <div class="panel swdl" onclick="toDetailPage('利润总额')">
+                            <div class="panel_title">利润总额<span id="profitSum">百万元</span></div>
+                            <div class="panel_content">
+                                <div id="profitSumChart"></div>
                             </div>
                         </div>
-                        <div class="main_content_combition_2">
-                                <div class="detail_pie" id="detail_piePureProfit" style="cursor:pointer;" onClick="priceDetailAnotherPureProfit('detail005')"></div>
-                                <div class="detail_02_02" style="cursor:pointer;" onClick="priceDetailAnotherPureProfit('detail005')">
-                                    <div class="detail_02_font01">供热收入</div>
-                                    <div class="detail_02_font01 font_size1" id="fuelCostPureProfit"></div>
-                                    <div class="detail_02_font01 font_size2">百万元</div>
-                                    <div class="detail_02_font01 font_size3">
-                                        <div class="detail_02_font04_01 font_size4"><b id="fuelDownPercentPureProfit"></b>%</div>
-                                        <div class="detail_02_font04_02"></div>
-                                    </div>
-                                </div>
+                        <div class="panel rlcb" onclick="toDetailPage('营业总收入')">
+                            <div class="panel_title">营业总收入<span id="businessSumIncome">百万元</span></div>
+                            <div class="panel_content">
+                                <div id="businessSumIncomeChart"></div>
+                            </div>
                         </div>
                     </div>
-                    <div class="internetDetail" style="display:none;margin-top:0px;" id="internetDetailPureProfit">
-                        <div class="internetDetailTop" style="font-size:20px;font-family: 微软雅黑;margin-left:10px;">
-                           <div style="color:#FFFFFF;margin-top:15px;margin-left:10px;float:left">
-                                <span style="float:left;" id="profitNamePureProfit">
-                                集团
-                                </span>
-                                <!--<span onclick="internetbackPureProfit()" style="cursor:pointer;margin-left:20px;color:rgb(255,153,0);">返回</span>-->
-                           </div>
+                    <div class="pureProfit_main_content_center">
+                            <div id="pureProfitResult" style="cursor:pointer;" onclick="toDetailPage('净利润')">
+                             </div>
+                            <div id="businessProfitResult" style="cursor:pointer;margin-top:28%" onclick="toDetailPage('营业利润')">
+                             </div>
+                    </div>
+                    <div class="pureProfit_main_content_right">
+                        <div class="panel pjswdj" onclick="toDetailPage('所得税费用')">
+                            <div class="panel_title">所得税费用<span id="taxFee">百万元</span></div>
+                            <div class="panel_content">
+                                <div id="taxFeeChart"></div>
+                            </div>
                         </div>
-                        <div class="priceDetail_another_01" id="priceDetailDivPureProfit">
-                            
-                        </div>
-                        <div class="priceDetail_another_font">
-                            统计于<br/><b id="pureProfitIncomeStatisticDate"></b>
+                        <div class="panel qtcb" onclick="toDetailPage('营业总成本')">
+                            <div class="panel_title">营业总成本<span id="businessSumCost">百万元</span></div>
+                            <div class="panel_content">
+                                <div id="businessSumCostChart"></div>
+                            </div>
                         </div>
                     </div>
+        
+        
                 </div>
-                
-              </div>
-    
             </div>
             <div class="menu_bottom">
                 <ul>

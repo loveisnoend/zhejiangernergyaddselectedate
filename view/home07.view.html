@@ -5,6 +5,11 @@
             var selectedDate = document.getElementById("safeProduceDaysDateId").value;
             home07.getController()._loadData01(selectedDate);
         }
+        if (dateName == "safeProduceDaysDateNew") {
+            var selectedDate = document.getElementById("safeProduceDaysDateNewId").value;
+            alert('----'+selectedDate);
+            // home07.getController()._loadData01(selectedDate);
+        }
     }
     function toSafeProduceDaysPageBefore(dateName){
         if (dateName == "safeProduceDaysDate") {
@@ -12,6 +17,15 @@
             toSafeProduceDaysPage(selectedDate);
         }
     }
+    // 日期控件
+    laydate({
+        elem: '#safeProduceDaysDateNewId',
+        format: 'YYYY/MM', // 分隔符可以任意定义，该例子表示只显示年月
+        festival: true, //显示节日
+        choose: function(datas){ //选择日期完毕的回调
+            alert('得到：'+datas);
+        }
+    });
  </script>
 <div class="nav_main">
     	<div class="main-center">
@@ -57,6 +71,7 @@
                     				<div class="demo_title">
                     					安全生产天数
                     					<input type="date" style="width:150px;height:20px;" onchange="dateChangeHome07('safeProduceDaysDate')" id="safeProduceDaysDateId"/>
+                    					<!--<input placeholder="请输入日期" class="laydate-icon" id="safeProduceDaysDateNewId"/>-->
                     				</div>
                     				<div class="demo_shuzi_red">
                     				<span id="safeProduceDays">0</span>

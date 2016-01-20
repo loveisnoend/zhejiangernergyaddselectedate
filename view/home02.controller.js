@@ -462,7 +462,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home02", {
                 this._loadData01();
 			}, this)
 		});
-	}
+	},
 
 /**
 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
@@ -477,9 +477,9 @@ sap.ui.controller("com.zhenergy.pcbi.view.home02", {
 * This hook is the same one that SAPUI5 controls get after being rendered.
 * @memberOf com.zhenergy.pcbi.view.home02
 */
-// 	onAfterRendering: function() {
-//         this._drawSwiper();
-// 	}
+	onAfterRendering: function() {
+        this._drawSwiper();
+	}
 
 /**
 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.

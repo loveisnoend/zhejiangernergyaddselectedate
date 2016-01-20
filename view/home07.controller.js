@@ -151,7 +151,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home07", {
 	            currentDate = alreadySetDate.replace(/\-/g,'');
 	        } else {
             	var datetime = new Date();
-                currentDate = toSimpleDateString(datetime);  
+                currentDate = toSimpleDateString(datetime,'date');  
 	        }
 	    } else {
             currentDate = currentDate.replace(/\-/g,'');

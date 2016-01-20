@@ -28,6 +28,7 @@
 		<link rel="stylesheet" type="text/css" href="css/powerPlantMap.css" id="powerPlantMapCss">
         <link rel="stylesheet" type="text/css" href="css/internetPowerVolume.css" id="internetPowerVolumeCss">
         <link rel="stylesheet" type="text/css" href="css/common.css">
+        <link rel="stylesheet" type="text/css" href="css/pureProfit.css" id="pureProfitCss">
 		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
 		<script src="echarts.js"></script>
         <script type="text/javascript" src="js/powerPlantMap.js"></script>
@@ -40,6 +41,7 @@
         <script type="text/javascript" src="js/labourIncome.js"></script>
 		<script type="text/javascript" src="swiper.js"></script>
 		<script type="text/javascript" src="js/pdfobject.js"></script>
+		<script type="text/javascript" src="laydate/laydate.js"></script>
 		<script>
 		    var usrid = "ERPTEST1";
 		    var skinName = '夜间模式'
@@ -79,6 +81,7 @@
 		        mychart.dispose();
 		    }
 		    function toDetailPage(detailName){
+		        
 		        // 日利润
 		        if (detailName == "燃料成本") {
 		            app.to("idPowerPlantMap", "show");
@@ -89,6 +92,7 @@
 		        if (detailName == "其他成本") {
 		            app.to("idOthersCost", "show");
 		        }
+		        
 		        // 主营业务
 		        if (detailName == "发电收入") {
 		            app.to("idPowerIncome", "show");
@@ -101,6 +105,31 @@
 		        }
 		        if (detailName == "其他收入") {
 		            app.to("idOthersIncome", "show");
+		        }
+		        
+		        // 净利润
+		        if (detailName == "净利润") {
+		            app.to("idPureProfitDetail", "show");
+		        }
+		        // 营业利润
+		        if (detailName == "营业利润") {
+		            app.to("idBusinessProfit", "show");
+		        }
+		        // 利润总额
+		        if (detailName == "利润总额") {
+		            app.to("idProfitSum", "show");
+		        }
+		        // 所得税费用
+		        if (detailName == "所得税费用") {
+		            app.to("idTaxFee", "show");
+		        }
+		        // 营业总收入
+		        if (detailName == "营业总收入") {
+		            app.to("idBusinessSumIncome", "show");
+		        }
+		        // 营业总成本
+		        if (detailName == "营业总成本") {
+		            app.to("idBusinessSumCost", "show");
 		        }
 		    }
 		    function toInternetPowerDetailPage() {
@@ -245,6 +274,19 @@
 				var mainBusiness;
 				// 净利润
 				var pureProfit;
+				
+				// 净利润详细
+				var pureProfitDetail;
+				// 营业利润
+				var businessProfit;
+				// 利润总额
+				var profitSum;
+				// 所得税费用
+				var taxFee;
+				// 营业总收入
+				var businessSumIncome;
+				// 营业总成本
+				var businessSumCost;
 				
 				//资产情况
 				//净资产
@@ -504,6 +546,55 @@
             			type: sap.ui.core.mvc.ViewType.HTML
             		 });
             		 app.addPage(pureProfit);
+            		 
+            		 // 净利润详细
+            		 pureProfitDetail = sap.ui.view({
+            			id: "idPureProfitDetail",
+            			viewName: "com.zhenergy.pcbi.view.pureProfitDetail",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(pureProfitDetail);
+
+            		 // 营业利润
+            		 businessProfit = sap.ui.view({
+            			id: "idBusinessProfit",
+            			viewName: "com.zhenergy.pcbi.view.businessProfit",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(businessProfit);
+            		 
+            		 // 利润总额
+            		 profitSum = sap.ui.view({
+            			id: "idProfitSum",
+            			viewName: "com.zhenergy.pcbi.view.profitSum",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(profitSum);
+            		 
+            		 // 所得税费用
+            		 taxFee = sap.ui.view({
+            			id: "idTaxFee",
+            			viewName: "com.zhenergy.pcbi.view.taxFee",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(taxFee);
+            		 
+            		 // 营业总收入
+            		 businessSumIncome = sap.ui.view({
+            			id: "idBusinessSumIncome",
+            			viewName: "com.zhenergy.pcbi.view.businessSumIncome",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(businessSumIncome);  
+            		 
+            		 // 营业总成本
+            		 businessSumCost = sap.ui.view({
+            			id: "idBusinessSumCost",
+            			viewName: "com.zhenergy.pcbi.view.businessSumCost",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(businessSumCost);  
+            		 
             		 
             		 // 资产情况
             		 // 净资产
