@@ -1,0 +1,244 @@
+#idAverPersonProfit .averPersonProfit_main {
+  /*width: 1300px;*/
+  margin: 0px auto;
+  margin-left:0px;
+  /*padding-left: 10px;*/
+  /*padding-right: 10px;*/
+  font-size: 0;
+  -webkit-text-size-adjust: none;
+  color: #FFF;
+  font-family: \5FAE\8F6F\96C5\9ED1;
+ }
+ #idAverPersonProfit .averPersonProfit_head{
+  height: 200px;
+  padding-top: 15px;
+  background: url("../img/2-2-bg.png");
+  background-repeat: no-repeat;
+  background-position-x: 155px;
+  background-position-y: 15px;
+  background-size: auto 200px;
+  color: #FFF;
+ }
+ #idAverPersonProfit .averPersonProfit_head>.inner_text{
+       margin: 8px auto;
+  width: 840px;
+  text-align: center;
+  height: 180px;
+ }
+ #idAverPersonProfit .averPersonProfit_head>.inner_text>div{
+ display:inline-block;
+ vertical-align: top;
+ margin: 37px 58px;
+ }
+  #idAverPersonProfit .averPersonProfit_head>#rlr_circle{
+        width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 15px;
+  left: 410px;
+  }
+/*#idAverPersonProfit .averPersonProfit_main > div {*/
+/*    display: inline-block;*/
+/*    vertical-align: top;*/
+/*    padding: 12px;*/
+/*    height: 446px;*/
+/*    font-size: 12px;*/
+/*    float:left;*/
+/*    }*/
+.averPersonProfit_main{
+    width:100%;
+    height:100%;
+	border: 2% solid rgb(142,191,224);
+}
+.averPersonProfit_main_content{
+    float:left;
+    width:30%;
+    height:82%;
+    margin-top:20px;
+    margin-bottom: 0;
+    border: 2% solid rgb(47,233,48);
+}
+.averPersonProfit_main_content_left{
+    float:left;    
+    margin-left:120px;
+    width:25%;
+    height:82%;
+    /*TODO pixel*/
+    margin-top:50px;
+    margin-bottom: 0;
+    border: 2% solid rgb(47,233,48);
+}
+#idAverPersonProfit .averPersonProfit_main_content_center{
+    float:left;
+    /*margin-left:7%;*/
+    width:40%;
+    height:82%;
+    margin-top:50px;
+    margin-bottom: 0;
+    border: 2% solid rgb(47,233,48);
+    background:url("../img/averPersonProfitBlack.png") no-repeat center center;
+    background-size: 140% 140%;
+}
+.averPersonProfit_main_content_right{
+    float:left;
+    margin-left:-3%;
+    width:30%;
+    height:82%;
+    margin-top:50px;
+    margin-bottom: 0;
+    border: 2% solid rgb(47,233,48);
+}
+#idAverPersonProfit .panel {
+  width: 430px;
+  padding: 3px;
+  /*height: 200px;*/
+  margin-left:40px;
+  /*TODO pixel*/
+  margin-bottom: 180px;
+  background:url("../img/item-bg.png");
+  background-size: contain;
+  background-size: 100% 80%;
+  background-repeat: no-repeat;
+}
+
+#idAverPersonProfit .panel .panel_title {
+    text-align: left;
+    padding-left: 20px;
+    font-size: 18px;
+    background-color:transparent;
+    font-weight: bold;
+    line-height: 40px;
+}
+
+#idAverPersonProfit .panel .panel_title span {
+    float: right;
+    padding-right: 20px;
+}
+
+#idAverPersonProfit .panel .panel_content {
+    height: 160px;
+    background-color:transparent;
+}
+
+#idAverPersonProfit .panel .panel_content > div {
+    width: 430px;
+    height: 160px;
+}
+
+#idAverPersonProfit .averPersonProfit_head .inner_panel{
+    margin: 46px auto;
+    width: 156px;
+    text-align: center;
+}
+ #idAverPersonProfit .averPersonProfit_head .inner_panel .title{
+    font-size: 20px;
+}
+ #idAverPersonProfit .averPersonProfit_head .inner_panel .num{
+    font-size: 50px;
+}
+ #idAverPersonProfit .averPersonProfit_head .inner_panel .info{
+    font-size: 18px;
+    line-height: 18px;
+    height: 18px;
+}
+ #idAverPersonProfit .averPersonProfit_head .inner_panel .info img{
+width: 18px;
+    height: 18px;
+    vertical-align: bottom;
+    padding-left: 10px;
+}
+
+ .averPersonProfit_main_con_title{
+	margin:0 auto;
+	background-color:rgb(63,63,63);
+	border: 2% solid rgb(147,147,147);
+	border-radius: 10px 10px 10px 10px ;
+	width:55%;
+	text-align:center;
+	padding: 3% 6%;
+	color:red;
+	font-size:130%;
+	font-family:SimHei;
+ }
+ 
+.AP-main_content_title {
+    text-align: left;
+    /*TODO pixel*/
+    padding-left: 41%;
+    padding-top: 32%;
+    background-color:transparent;
+    font-weight: 500;
+    font-size:20px;
+    line-height: 40px;
+}
+.AP-main_content_title_1{
+    text-align: left;
+    /*TODO pixel*/
+    padding-left: 41%;
+    /*padding-top: 28%;*/
+    background-color:transparent;
+    font-weight: 500;
+    font-size:18px;
+    line-height: 40px; 
+}
+.AP-main_content_sz {
+    text-align: center;
+    font-size: 15px;
+    background-color: transparent;
+    color: white;
+    vertical-align: top;
+    margin-top: -2%;
+}
+
+.content_img{
+	height:18px;
+	width:18px;
+	vertical-align: bottom;
+	padding-left: 10px;
+}
+.averPersonProfitPanelRight {
+    margin: auto;
+    padding-top: 10px;
+    width: 450px;
+    height: 350px;
+    color: #FFF;
+    /* background-color: #181818; */
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    
+    background: url("../img/item-bg.png");
+    background-size: 100% 70%;;
+    background-repeat: no-repeat;
+}
+.averPersonProfitPanelLeft {
+    margin: auto;
+    padding-top: -10px;
+    width: 450px;
+    height: 350px;
+    color: #FFF;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.averPersonPanel_title {
+    height: 40px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 40px;
+    font-family: \5FAE\8F6F\96C5\9ED1;
+    text-align: center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.averPersonPanel_content01{
+    height: 270px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    /*background-color: #181818;*/
+}
+.averPersonPanel_content02{
+    height: 200px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    /*background-color: #181818;*/
+}

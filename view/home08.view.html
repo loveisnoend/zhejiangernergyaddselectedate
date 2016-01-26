@@ -4,13 +4,13 @@
         if (dateName == "workerCostPerKWHourDate") {
             var selectedDate = document.getElementById("workerCostPerKWHourDateId").value;
             alert('------'+selectedDate);
-            slide08PageNum = 4;
+            slide08PageNum = 5;
             home08.getController()._loadData01(selectedDate);
         }
         if (dateName == "workerCostPerKWDate") {
             var selectedDate = document.getElementById("workerCostPerKWDateId").value;
             alert('------'+selectedDate);
-            slide08PageNum = 3;
+            slide08PageNum = 4;
             home08.getController()._loadData01(selectedDate);
         }
     }
@@ -64,6 +64,22 @@
                 				<span class="demo_shuzi_span_shangbiao">万元</span>
                 				</div>
                 				<div class="demo_content_1">同比<b id="tongbiAverBusinessIncome"></b>%&nbsp;<img  src="img/horizontal-green.png" id="tongbiAverBusinessIncomeImg" class="demo_img_down"/>
+                				<!--&nbsp;环比<b id="huanbiAverBusinessIncome"></b>%&nbsp;<img  id="huanbiAverBusinessIncomeImg" src="img/horizontal-green.png" class="demo_img_up"/>-->
+                				</div>
+                			</div>
+            		   </div>
+                       <div class="swiper-slide" style="background-color:;margin-top: -15px;cursor:pointer;">
+                			<div class="demo_outer" style="cursor:pointer;background-size:100% 100%;" ondblclick="toAverPersonProfitPage()">
+                				<div class="demo_header" id="averPersonProfitDate">-年-月-日</div>
+                				<div class="demo_jiange"></div>
+                				<div class="demo_title">
+                					人均利润
+                				</div>
+                				<div class="demo_shuzi_red">
+                				<span id="averPersonProfit">0</span>
+                				<span class="demo_shuzi_span_shangbiao">万元</span>
+                				</div>
+                				<div class="demo_content_1">同比<b id="tongbiAverPersonProfit"></b>%&nbsp;<img  src="img/horizontal-green.png" id="tongbiAverPersonProfitImg" class="demo_img_down"/>
                 				<!--&nbsp;环比<b id="huanbiAverBusinessIncome"></b>%&nbsp;<img  id="huanbiAverBusinessIncomeImg" src="img/horizontal-green.png" class="demo_img_up"/>-->
                 				</div>
                 			</div>

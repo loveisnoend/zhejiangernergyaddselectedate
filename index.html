@@ -28,7 +28,8 @@
 		<link rel="stylesheet" type="text/css" href="css/powerPlantMap.css" id="powerPlantMapCss">
         <link rel="stylesheet" type="text/css" href="css/internetPowerVolume.css" id="internetPowerVolumeCss">
         <link rel="stylesheet" type="text/css" href="css/common.css">
-        <link rel="stylesheet" type="text/css" href="css/pureProfit.css" id="pureProfitCss">
+        <link rel="stylesheet" type="text/css" href="css/averPersonProfit.css" id="averPersonProfitCss">
+                <link rel="stylesheet" type="text/css" href="css/pureProfit.css" id="pureProfitCss">
 		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
 		<script src="echarts.js"></script>
         <script type="text/javascript" src="js/powerPlantMap.js"></script>
@@ -207,6 +208,10 @@
             function toAverBusinessPage() {
                 app.to("idAverBusinessIncome","show");
             }
+            // 人均利润
+            function toAverPersonProfitPage() {
+                app.to("idAverPersonProfit","show");
+            }
             // 单位万千瓦员工数
             function toWokerCountPage() {
                 app.to("idWorkerCount","show");
@@ -265,6 +270,8 @@
 				var isHome06Load = false;
 				var isHome07Load = false;
 				var isHome08Load = false;
+				// 净利润
+				var isAverPersonProfit = false;
 				
 				var internetVolume;
 				var othersCost;
@@ -306,6 +313,8 @@
 				var othersIncome;
 				// 人均营业收入
 				var averBusinessIncome;
+				// 人均利润
+				var averPersonProfit;
 				// 单位万千瓦员工数
 				var workerCount;
 				// 单位万千瓦时员工数
@@ -669,6 +678,14 @@
             			type: sap.ui.core.mvc.ViewType.HTML
             		 });
             		 app.addPage(averBusinessIncome);
+
+            		 // 人均利润
+            		 averPersonProfit = sap.ui.view({
+            			id: "idAverPersonProfit",
+            			viewName: "com.zhenergy.pcbi.view.averPersonProfit",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(averPersonProfit);
             		 
             		 // 单位万千瓦员工数
             		 workerCount = sap.ui.view({

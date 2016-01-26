@@ -47,6 +47,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
 	    var mParameters = {};
 		mParameters['async'] = true;
 		mParameters['success'] = jQuery.proxy(function(sRes) {
+		    
 		    // 人均营业收入同比值
             var AverBusinessIncomeTongBi = '';
             // 人均营业收入环比值
@@ -55,6 +56,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
             var daytime = null;
 			// 人均营业收入值
 			var AverBusinessIncomeValue=0;
+
+			// 人均利润同比值
+            var averPersonProfitTongBi = '';
+            // 人均利润环比值
+            var averPersonProfitHuanBi = '';
+			// 人均利润值
+			var averPersonProfit=0;
 			
 			// 单位万千瓦员工数同比值
             var workerCountsPerKWTongBi = '';
@@ -104,6 +112,20 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
 				if (sRes.results[i].KPI_TYPE == '人均营业收入同比' && sRes.results[i].KPI_DESC == '集团'){  
 				    AverBusinessIncomeTongBi = sRes.results[i].KPI_VALUE*100;
 				}
+				
+				
+			    // 人均利润
+				if (sRes.results[i].KPI_TYPE == '人均利润' && sRes.results[i].KPI_DESC == '集团'){  
+				    averPersonProfit = averPersonProfit+parseFloat(sRes.results[i].KPI_VALUE);
+				    daytimeNO5 = sRes.results[i].KPI_DATE;
+				}
+				if (sRes.results[i].KPI_TYPE == '人均利润环比' && sRes.results[i].KPI_DESC == '集团'){  
+				    averPersonProfitHuanBi = sRes.results[i].KPI_VALUE*100;
+				}
+				if (sRes.results[i].KPI_TYPE == '人均利润同比' && sRes.results[i].KPI_DESC == '集团'){  
+				    averPersonProfitTongBi = sRes.results[i].KPI_VALUE*100;
+				}
+				
 				// 单位千瓦员工人数
 				if (sRes.results[i].KPI_TYPE == '单位万千瓦员工数' && sRes.results[i].KPI_DESC == '集团'){  
 				    workerCountsPerKW = workerCountsPerKW+parseFloat(sRes.results[i].KPI_VALUE);
@@ -338,6 +360,43 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
             // 单位万千瓦时人工成本统计日期
             // TODO wait for new method of getting data
 	        $('#workerCostPerKWHourDate').html(daytime01NO4 + "年" + daytime02NO4 + "月");//  + daytime03NO4 + "日"
+	        
+	        // 人均利润
+			var averPersonProfit_color="red";
+    		if(averPersonProfit>0){
+    		    if (skinName == '夜间模式') {
+    		        averPersonProfit_color="green";
+    		    } else {
+    		        averPersonProfit_color="white";
+    		    }
+    		}
+    		$('#averPersonProfit').css('color',averPersonProfit_color);
+    		$('#averPersonProfit').css('font-size','65px');
+			$('#averPersonProfit').html(averPersonProfit);
+			// 同比值
+            if (averPersonProfitTongBi != undefined) {
+                $('#tongbiAverPersonProfit').html(averPersonProfitTongBi);    
+            }
+            if (averPersonProfitTongBi > 0) {
+                $("#tongbiAverPersonProfitImg").attr("src","img/arrow-green2.png");
+            } else {
+                if (averPersonProfitTongBi < 0) {
+                    $("#tongbiAverPersonProfitImg").attr("src","img/arrow-red2.png");
+                } else {
+                    $("#tongbiAverPersonProfitImg").attr("src","img/horizontal-green.png");
+                }
+            }
+            var daytime01NO5;
+    	    var daytime02NO5;
+    	    var daytime03NO5;
+    	    if (daytimeNO5 != null) {
+    	       daytime01NO5 = daytimeNO5.substring(0,4);
+    	       daytime02NO5 = daytimeNO5.substring(4,6);
+    	       daytime03NO5 = daytimeNO5.substring(6,8); 
+    	    }
+            // 人均利润统计日期
+	        $('#averPersonProfitDate').html(daytime01NO5 + "年" + daytime02NO5 + "月");//  + daytime03NO5 + "日"
+	        
 	        if (isHome08Load == false) {
                 if (busy) {
         			busy.close();
@@ -380,6 +439,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
 			// 人均营业收入值
 			var AverBusinessIncomeValue=0;
 			
+			// 人均利润同比值
+            var averPersonProfitTongBi = '';
+            // 人均利润环比值
+            var averPersonProfitHuanBi = '';
+			// 人均利润值
+			var averPersonProfit=0;
+			
 			// 单位万千瓦员工数同比值
             var workerCountsPerKWTongBi = '';
             // 单位万千瓦员工数环比值
@@ -428,6 +494,18 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
 				if (sRes.results[i].KPI_TYPE == '人均营业收入同比' && sRes.results[i].KPI_DESC == '集团'){  
 				    AverBusinessIncomeTongBi = sRes.results[i].KPI_VALUE*100;
 				}
+				
+			    // 人均利润
+				if (sRes.results[i].KPI_TYPE == '人均利润' && sRes.results[i].KPI_DESC == '集团'){  
+				    averPersonProfit = averPersonProfit+parseFloat(sRes.results[i].KPI_VALUE);
+				}
+				if (sRes.results[i].KPI_TYPE == '人均利润环比' && sRes.results[i].KPI_DESC == '集团'){  
+				    averPersonProfitHuanBi = sRes.results[i].KPI_VALUE*100;
+				}
+				if (sRes.results[i].KPI_TYPE == '人均利润同比' && sRes.results[i].KPI_DESC == '集团'){  
+				    averPersonProfitTongBi = sRes.results[i].KPI_VALUE*100;
+				}
+				
 				// 单位千瓦员工人数
 				if (sRes.results[i].KPI_TYPE == '单位万千瓦员工数' && sRes.results[i].KPI_DESC == '集团'){  
 				    workerCountsPerKW = workerCountsPerKW+parseFloat(sRes.results[i].KPI_VALUE);
@@ -662,6 +740,43 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
             // 单位万千瓦时人工成本统计日期
             // TODO wait for new method of getting data
 	        $('#workerCostPerKWHourDate').html(daytime01NO4 + "年" + daytime02NO4 + "月");//  + daytime03NO4 + "日"
+	        
+	        // 人均利润
+			var averPersonProfit_color="red";
+    		if(averPersonProfit>0){
+    		    if (skinName == '夜间模式') {
+    		        averPersonProfit_color="green";
+    		    } else {
+    		        averPersonProfit_color="white";
+    		    }
+    		}
+    		$('#averPersonProfit').css('color',averPersonProfit_color);
+    		$('#averPersonProfit').css('font-size','65px');
+			$('#averPersonProfit').html(averPersonProfit);
+			// 同比值
+            if (averPersonProfitTongBi != undefined) {
+                $('#tongbiaverPersonProfit').html(averPersonProfitTongBi);    
+            }
+            if (averPersonProfitTongBi > 0) {
+                $("#tongbiaverPersonProfitImg").attr("src","img/arrow-green2.png");
+            } else {
+                if (averPersonProfitTongBi < 0) {
+                    $("#tongbiaverPersonProfitImg").attr("src","img/arrow-red2.png");
+                } else {
+                    $("#tongbiaverPersonProfitImg").attr("src","img/horizontal-green.png");
+                }
+            }
+            var daytime01NO5;
+    	    var daytime02NO5;
+    	    var daytime03NO5;
+    	    if (daytimeNO5 != null) {
+    	       daytime01NO5 = daytimeNO5.substring(0,4);
+    	       daytime02NO5 = daytimeNO5.substring(4,6);
+    	       daytime03NO5 = daytimeNO5.substring(6,8); 
+    	    }
+            // 人均利润统计日期
+	        $('#averPersonProfitDate').html(daytime01NO5 + "年" + daytime02NO5 + "月");//  + daytime03NO5 + "日"
+	        
 	        if (isHome08Load == false) {
                 if (busy) {
         			busy.close();
@@ -677,25 +792,25 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
 	// 获取二级页面数据
 	_loadData01 : function (currentDate) {
 	    
-	    $('.magicFocus').focus();
+	   // $('.magicFocus').focus();
 	    
-	    var currentDate;
-	    if (currentDate == '') {
-	        var alreadySetDate = document.getElementById("workerCostPerKWDateId").value;
-	        if (alreadySetDate != '') {
-	            currentDate = alreadySetDate.replace(/\-/g,'');
-	        } else {
-            	var datetime = new Date();
-                currentDate = toSimpleDateString(datetime,'month');  
-	        }
-	    } else {
-            currentDate = currentDate.replace(/\-/g,'');
-	    }
-	    // get data by different date
-	    this._getDataByDifferentDate(currentDate);
+	   // var currentDate;
+	   // if (currentDate == '') {
+	   //     var alreadySetDate = document.getElementById("workerCostPerKWDateId").value;
+	   //     if (alreadySetDate != '') {
+	   //         currentDate = alreadySetDate.replace(/\-/g,'');
+	   //     } else {
+    //         	var datetime = new Date();
+    //             currentDate = toSimpleDateString(datetime,'month');  
+	   //     }
+	   // } else {
+    //         currentDate = currentDate.replace(/\-/g,'');
+	   // }
+	   // // get data by different date
+	   // this._getDataByDifferentDate(currentDate);
 	    
 		this._drawSwiper();
-	   // this._loadData_AverBusinessIncome();
+	    this._loadData_AverBusinessIncome();
 	    
 		// 设定头部跑马灯信息 common.js
 		_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);

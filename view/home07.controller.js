@@ -157,10 +157,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.home07", {
             currentDate = currentDate.replace(/\-/g,'');
 	    }
 	    // get data by different date
-	    this._getDataByDifferentDate(currentDate);
+	   // this._getDataByDifferentDate(currentDate);
 	    
 		this._drawSwiper();
-	   // this._loadSafeProduceDays();
+	    this._loadSafeProduceDays();
 		// 设定头部跑马灯信息 common.js
 		_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);
 	},

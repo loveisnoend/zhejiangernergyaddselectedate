@@ -178,6 +178,11 @@ function changeSkinCss(pageName) {
         changeTheSkinOfPage();
         safeProduceDays.getController()._loadData01(); 
     }
+    
+    // 人均利润
+    if (pageName == 'averPersonProfit') {
+        changeTheSkinOfPage();
+    }
 }
 // change the skin of the page
 function changeTheSkinOfPage() {
@@ -191,6 +196,7 @@ function changeTheSkinOfPage() {
         $('#powerPlantMapCss').attr("href","css/powerPlantMapHighlight.css");
         $('#internetPowerVolumeCss').attr("href","css/internetPowerVolumeHighlight.css");
         $('#pureProfitCss').attr("href","css/pureProfitHighlight.css");
+        $('#averPersonProfitCss').attr("href","css/averPersonProfitHighlight.css");
         $('.userSkin').html('高亮模式');
     } else {
         $('#homeCss').attr("href","css/home.css");
@@ -202,6 +208,7 @@ function changeTheSkinOfPage() {
         $('#powerPlantMapCss').attr("href","css/powerPlantMap.css");
         $('#internetPowerVolumeCss').attr("href","css/internetPowerVolume.css");
         $('#pureProfitCss').attr("href","css/pureProfit.css");
+        $('#averPersonProfitCss').attr("href","css/averPersonProfit.css");
         $('.userSkin').html('夜间模式');
     }
     skinNameAlter = $('.userSkin').html();
