@@ -183,6 +183,18 @@ function changeSkinCss(pageName) {
     if (pageName == 'averPersonProfit') {
         changeTheSkinOfPage();
     }
+    // 员工类型、用工性质
+    if (pageName == 'wokerPropertyAndType') {
+        wokerPropertyAndType.getController()._loadData01();
+    }
+    // 人均营业收入记录
+    if (pageName == 'averPersonProfitRecord') {
+        averPersonProfitRecord.getController()._loadData01();
+    }
+    // 人均工资
+    if (pageName == 'averPersonSalary') {
+        averPersonSalary.getController()._loadData01();
+    }
 }
 // change the skin of the page
 function changeTheSkinOfPage() {

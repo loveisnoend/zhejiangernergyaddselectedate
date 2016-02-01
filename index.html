@@ -132,6 +132,15 @@
 		        if (detailName == "营业总成本") {
 		            app.to("idBusinessSumCost", "show");
 		        }
+		        
+		        // 人均工资
+		        if (detailName == "人均工资") {
+		            app.to("idAverPersonSalary", "show");
+		        }
+		        // 人均营业收入记录
+		        if (detailName == "人均营业收入记录") {
+		            app.to("idAverPersonProfitRecord", "show");
+		        }
 		    }
 		    function toInternetPowerDetailPage() {
 		        app.to("idInternetPowerVolume","show");
@@ -212,6 +221,11 @@
             function toAverPersonProfitPage() {
                 app.to("idAverPersonProfit","show");
             }
+            // 员工性质、用工类型
+            function toWokerPropertyAndTypePage() {
+                app.to("idWokerPropertyAndType","show");
+            }
+            
             // 单位万千瓦员工数
             function toWokerCountPage() {
                 app.to("idWorkerCount","show");
@@ -315,6 +329,13 @@
 				var averBusinessIncome;
 				// 人均利润
 				var averPersonProfit;
+                // 用工性质/员工类型
+            	var wokerPropertyAndType;
+            	// 人均营业收入记录
+            	var averPersonProfitRecord;
+            	// 人均工资
+            	var averPersonSalary;
+				
 				// 单位万千瓦员工数
 				var workerCount;
 				// 单位万千瓦时员工数
@@ -686,6 +707,30 @@
             			type: sap.ui.core.mvc.ViewType.HTML
             		 });
             		 app.addPage(averPersonProfit);
+            		 
+            		 // 用工性质/员工类型
+            		 wokerPropertyAndType = sap.ui.view({
+            			id: "idWokerPropertyAndType",
+            			viewName: "com.zhenergy.pcbi.view.wokerPropertyAndType",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(wokerPropertyAndType);
+
+            		 // 人均营业收入记录
+            		 averPersonProfitRecord = sap.ui.view({
+            			id: "idAverPersonProfitRecord",
+            			viewName: "com.zhenergy.pcbi.view.averPersonProfitRecord",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(averPersonProfitRecord);
+
+            		 // 人均工资
+            		 averPersonSalary = sap.ui.view({
+            			id: "idAverPersonSalary",
+            			viewName: "com.zhenergy.pcbi.view.averPersonSalary",
+            			type: sap.ui.core.mvc.ViewType.HTML
+            		 });
+            		 app.addPage(averPersonSalary);
             		 
             		 // 单位万千瓦员工数
             		 workerCount = sap.ui.view({

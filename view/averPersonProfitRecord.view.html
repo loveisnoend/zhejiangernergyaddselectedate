@@ -1,4 +1,4 @@
-<template data-controller-name="com.zhenergy.pcbi.view.workerCost">
+<template data-controller-name="com.zhenergy.pcbi.view.averPersonProfitRecord">
     <div class="nav_main">
         <div class="main-center">
             <div class="msg_top">
@@ -27,24 +27,24 @@
                     </div>
                     <div class="topToolAll">
                         <div class="userSkinIcon" onmouseover="userHoverOn('userSkinCon')" onmouseout="userHoverOut('userSkinCon')" ></div>
-                        <div class="userSkinCon"><b class="userSkin" onClick="changeSkinCss('workerCost')">夜间模式</b></div>
+                        <div class="userSkinCon"><b class="userSkin" onClick="changeSkinCss('averPersonProfitRecord')">夜间模式</b></div>
                     </div>
                 </div>
             </div>
             <div class="content_center">
               <div class="powerTop">
-                    <div id="demo" style="color:white;margin-top:10px;margin-left:40px;font-weight:bold;font-size:20px;"><span id="demo" style="height:100%;"><b onClick="doit8(4)" style="cursor:pointer;">发展保障</b> > <b>单位万千瓦人工成本</b></span></div>             
+                    <div id="demo" style="color:white;margin-top:10px;margin-left:40px;font-weight:bold;font-size:20px;"><span id="demo" style="height:100%;"><b onClick="toAverPersonProfitPage()" style="cursor:pointer;">人均利润</b> > <b>人均营业收入</b></span></div>             
               </div>
               <div class="powerBottom">
                   <div class="powerPlantLeft">
         			  <div class="mapTop">
-        			      <div id="huaiNanMapWorkerCost" class="huiNanMap"></div>
-        			      <div id="powerPlantMapWorkerCost" class="powerPlantMap"></div>
+        			      <div id="huaiNanMapAverPersonProfitRecord" class="huiNanMap"></div>
+        			      <div id="powerPlantMapAverPersonProfitRecord" class="powerPlantMap"></div>
         			  </div>
         			  <div class="mapBottom">
         			      <div class="chinaMap" style="margin-left:40px;">
                               <div class="chinaMapCon">
-            			          <div id="chinaMapWorkerCost" style="float:left;height:110px;width:140px;margin-top:15px;margin-left:30px;">
+            			          <div id="chinaMapAverPersonProfitRecord" style="float:left;height:110px;width:140px;margin-top:15px;margin-left:30px;">
             			              
             			          </div>
         			          </div>
@@ -53,70 +53,70 @@
         			  </div>
                 </div>
                 <div class="powerPlantRight">
-                    <div id="rlcb_detailWorkerCost" class="detail_02">
+                    <div id="rlcb_detailAverPersonProfitRecord" class="detail_02">
                         <div class="detail_02_01">
-                                <div id="powerPlantMainDetailTitleWorkerCost" style="margin-top:0px;font-size:20px;">集团</div>
+                                <div id="powerPlantMainDetailTitleAverPersonProfitRecord" style="margin-top:0px;font-size:20px;">集团</div>
                         </div>
                         <div class="main_content_combition_1">
                             <div class="main_content_combition_1_1">
-                                <div class="detail_02_03" onClick="priceDetailAnotherWorkerCost('detail001')">
+                                <div class="detail_02_03" onClick="priceDetailAnotherAverPersonProfitRecord('detail001')">
                                     <div class="detail_02_font1">自产蒸汽<b>(百万元)</b></div>
-                                    <div class="detail_02_font2" id="travelPriceWorkerCost"></div>
-                                    <div class="detail_02_img" id="detail_01WorkerCost"></div>
+                                    <div class="detail_02_font2" id="travelPriceAverPersonProfitRecord"></div>
+                                    <div class="detail_02_img" id="detail_01AverPersonProfitRecord"></div>
                                 </div>
-                                <div class="detail_02_03 detail_position01" onClick="priceDetailAnotherWorkerCost('detail002')">
+                                <div class="detail_02_03 detail_position01" onClick="priceDetailAnotherAverPersonProfitRecord('detail002')">
                                     <div class="detail_02_font1">外购蒸汽<b>(百万元)</b></div>
-                                    <div class="detail_02_font2" id="coalPriceWorkerCost"></div>
-                                    <div class="detail_02_img" id="detail_02WorkerCost"></div>
+                                    <div class="detail_02_font2" id="coalPriceAverPersonProfitRecord"></div>
+                                    <div class="detail_02_img" id="detail_02AverPersonProfitRecord"></div>
                                 </div>
                             </div>
                             <div class="main_content_combition_1_2">
-                                <!--<div class="detail_02_04" style="cursor:pointer;" onClick="priceDetailAnotherWorkerCost('detail006')">-->
+                                <!--<div class="detail_02_04" style="cursor:pointer;" onClick="priceDetailAnotherAverPersonProfitRecord('detail006')">-->
                                 <!--    <div class="detail_001">-->
                                 <!--        上网电量<b id="internetPV"></b>万千瓦时-->
                                 <!--    </div>-->
                                 <!--</div>-->
                             </div>
                             <div class="main_content_combition_1_3">
-                                <div class="detail_02_03" onClick="priceDetailAnotherWorkerCost('detail003')">
-                                    <div class="detail_02_font1">热水<b id="wattVolume1WorkerCost">(百万元)</b></div>
-                                    <div class="detail_02_font2" id="watt1WorkerCost"></div>
-                                    <div class="detail_02_img" id="detail_03WorkerCost"></div>
+                                <div class="detail_02_03" onClick="priceDetailAnotherAverPersonProfitRecord('detail003')">
+                                    <div class="detail_02_font1">热水<b id="wattVolume1AverPersonProfitRecord">(百万元)</b></div>
+                                    <div class="detail_02_font2" id="watt1AverPersonProfitRecord"></div>
+                                    <div class="detail_02_img" id="detail_03AverPersonProfitRecord"></div>
                                 </div>
-                                <div class="detail_02_03" onClick="priceDetailAnotherWorkerCost('detail004')">
-                                    <div class="detail_02_font1">初装费<b id="wattVolume2WorkerCost">(百万元)</b></div>
+                                <div class="detail_02_03" onClick="priceDetailAnotherAverPersonProfitRecord('detail004')">
+                                    <div class="detail_02_font1">初装费<b id="wattVolume2AverPersonProfitRecord">(百万元)</b></div>
                                     <div class="detail_02_font2" id="factoryUsePV"></div>
-                                    <div class="detail_02_img" id="detail_04WorkerCost"></div>
+                                    <div class="detail_02_img" id="detail_04AverPersonProfitRecord"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="main_content_combition_2">
-                                <div class="detail_pie" id="detail_pieWorkerCost" style="cursor:pointer;" onClick="priceDetailAnotherWorkerCost('detail005')"></div>
-                                <div class="detail_02_02" style="cursor:pointer;" onClick="priceDetailAnotherWorkerCost('detail005')">
+                                <div class="detail_pie" id="detail_pieAverPersonProfitRecord" style="cursor:pointer;" onClick="priceDetailAnotherAverPersonProfitRecord('detail005')"></div>
+                                <div class="detail_02_02" style="cursor:pointer;" onClick="priceDetailAnotherAverPersonProfitRecord('detail005')">
                                     <div class="detail_02_font01">供热收入</div>
-                                    <div class="detail_02_font01 font_size1" id="fuelCostWorkerCost"></div>
+                                    <div class="detail_02_font01 font_size1" id="fuelCostAverPersonProfitRecord"></div>
                                     <div class="detail_02_font01 font_size2">百万元</div>
                                     <div class="detail_02_font01 font_size3">
-                                        <div class="detail_02_font04_01 font_size4"><b id="fuelDownPercentWorkerCost"></b>%</div>
+                                        <div class="detail_02_font04_01 font_size4"><b id="fuelDownPercentAverPersonProfitRecord"></b>%</div>
                                         <div class="detail_02_font04_02"></div>
                                     </div>
                                 </div>
                         </div>
                     </div>
-                    <div class="internetDetail" style="display:none;margin-top:0px;" id="internetDetailWorkerCost">
+                    <div class="internetDetail" style="display:none;margin-top:0px;" id="internetDetailAverPersonProfitRecord">
                         <div class="internetDetailTop" style="font-size:20px;font-family: 微软雅黑;margin-left:10px;">
                            <div style="color:#FFFFFF;margin-top:15px;margin-left:10px;float:left">
-                                <span style="float:left;" id="profitNameWorkerCost">
+                                <span style="float:left;" id="profitNameAverPersonProfitRecord">
                                 集团
                                 </span>
-                                <!--<span onclick="internetbackWorkerCost()" style="cursor:pointer;margin-left:20px;color:rgb(255,153,0);">返回</span>-->
+                                <!--<span onclick="internetbackAverPersonProfitRecord()" style="cursor:pointer;margin-left:20px;color:rgb(255,153,0);">返回</span>-->
                            </div>
                         </div>
-                        <div class="priceDetail_another_01" id="priceDetailDivWorkerCost">
+                        <div class="priceDetail_another_01" id="priceDetailDivAverPersonProfitRecord">
                             
                         </div>
                         <div class="priceDetail_another_font">
-                            统计于<br/><b id="workerCostIncomeStatisticDate"></b>
+                            统计于<br/><b id="averPersonProfitRecordIncomeStatisticDate"></b>
                         </div>
                     </div>
                 </div>
