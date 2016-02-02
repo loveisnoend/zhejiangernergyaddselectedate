@@ -82,7 +82,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
     				        tempJsonStrData += ',';
     				    }
         			    tempJsonStrData += '"useCostFee":';
-        			    tempJsonStrData += (sRes.results[i].KPI_VALUE/10000).toFixed(2);
+        			    tempJsonStrData += sRes.results[i].KPI_VALUE;///10000).toFixed(2);
         			    isFirst = false;
     				}
     				if (sRes.results[i].KPI_TYPE == '人工成本'&&sRes.results[i].KPI_DESC==dc[j]){ 
@@ -90,7 +90,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
     				        tempJsonStrData += ',';
     				    }
         			    tempJsonStrData += '"peopleCost":';
-        			    tempJsonStrData += (sRes.results[i].KPI_VALUE/10000).toFixed(2);
+        			    tempJsonStrData += sRes.results[i].KPI_VALUE;///10000).toFixed(2);
         			    isFirst = false;
     				}
     				if (sRes.results[i].KPI_TYPE == '修理费'&&sRes.results[i].KPI_DESC==dc[j]){ 
@@ -98,7 +98,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
     				        tempJsonStrData += ',';
     				    }
         			    tempJsonStrData += '"repairCost":';
-        			    tempJsonStrData += (sRes.results[i].KPI_VALUE/10000).toFixed(2);
+        			    tempJsonStrData += sRes.results[i].KPI_VALUE;///10000).toFixed(2);
         			    isFirst = false;
     				}
     				if (sRes.results[i].KPI_TYPE == '财务管理费'&&sRes.results[i].KPI_DESC==dc[j]){ 
@@ -106,7 +106,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
     				        tempJsonStrData += ',';
     				    }
         			    tempJsonStrData += '"financeManCost":';
-        			    tempJsonStrData += (sRes.results[i].KPI_VALUE/10000).toFixed(2);
+        			    tempJsonStrData += sRes.results[i].KPI_VALUE;///10000).toFixed(2);
         			    isFirst = false;
     				}
     				if (sRes.results[i].KPI_TYPE == '其他营业成本'&&sRes.results[i].KPI_DESC==dc[j]){ 
@@ -114,7 +114,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
     				        tempJsonStrData += ',';
     				    }
         			    tempJsonStrData += '"otherRunningCost":';
-        			    tempJsonStrData += (sRes.results[i].KPI_VALUE/10000).toFixed(2);
+        			    tempJsonStrData += sRes.results[i].KPI_VALUE;///10000).toFixed(2);
         			    isFirst = false;
     				}
     				if (sRes.results[i].KPI_TYPE == '其他营业成本同比'&&sRes.results[i].KPI_DESC==dc[j]){ 
@@ -294,7 +294,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 			for (var i in sRes.results) {
 			    if (sRes.results[i].KPI_DESC != "集团") {
     				if (sRes.results[i].KPI_TYPE == priceChartName){ 
-    				    var tempCost = (sRes.results[i].KPI_VALUE/10000).toFixed(2);
+    				    var tempCost = sRes.results[i].KPI_VALUE;//10000).toFixed(2);
                         eachCostData.push(tempCost);
                         eachPowerPlantName.push(sRes.results[i].KPI_DESC);
     				}
@@ -441,11 +441,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 			for (var i in sRes.results) {
 			    if (sRes.results[i].KPI_DESC != '集团') {
     				if (sRes.results[i].KPI_TYPE == '其他营业成本'){ 
-                        dataThisYear.push((sRes.results[i].KPI_VALUE/10000).toFixed(2));
+                        dataThisYear.push(sRes.results[i].KPI_VALUE);///10000).toFixed(2));
                         powerPlantName.push(sRes.results[i].KPI_DESC);
     				}
     				if (sRes.results[i].KPI_TYPE == '其他营业成本同比'){ 
-                        dataLastYear.push((sRes.results[i].KPI_VALUE/10000).toFixed(2));
+                        dataLastYear.push(sRes.results[i].KPI_VALUE);///10000).toFixed(2));
     				}
 			    }
 				if (dataStatisticDate == '') {

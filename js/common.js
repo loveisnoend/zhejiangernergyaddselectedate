@@ -189,10 +189,12 @@ function changeSkinCss(pageName) {
     }
     // 人均营业收入记录
     if (pageName == 'averPersonProfitRecord') {
+        changeTheSkinOfPage();
         averPersonProfitRecord.getController()._loadData01();
     }
     // 人均工资
     if (pageName == 'averPersonSalary') {
+        changeTheSkinOfPage();
         averPersonSalary.getController()._loadData01();
     }
 }

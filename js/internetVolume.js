@@ -4,11 +4,14 @@ function internetback() {
     document.getElementById('rlcb_detailNet').style.display = "";
 }
 function priceDetailAnotherNet(detailId) {
-    if (detailId == 'detail006') {
+    
+    var titleName = document.getElementById("powerPlantMainDetailTitleNet").innerHTML;
+    if (detailId == 'detail006'  && titleName == '集团') {
     	document.getElementById("rlcb_detailNet").style.display = "none";
     	document.getElementById("internetDetailNet").style.display = "";
     	var priceChartId = "priceDetailDivNet";
     	var priceChartName = '';
+
     	if (detailId == 'detail001') {
     	    priceChartName = '合约电量';
     	} else if(detailId == 'detail002'){

@@ -301,11 +301,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 		    
 			//设置数据
 		    var machineGroupData = new Array();
+		    // 数据日期
+		    var machineGroupDate = new Array();
 		    var dataStatisticDate = '';
 			for (var i in sRes.results) {
 			    var plantName = sRes.results[i].KPI_DESC.toString().substring(0, 4);
 			    if (powerPlantName == '集团') {
-			        if (sRes.results[i].KPI_TYPE == '上网电量'&& plantName != '集团'){ 
+			        if (sRes.results[i].KPI_TYPE == '上网电量'&& plantName != '集团' && sRes.results[i].KPI_DATE.substring(0,6) == sRes.results[0].KPI_DATE.substring(0,6)){ 
+			            machineGroupDate.push(sRes.results[i].KPI_DESC);
                         machineGroupData.push(sRes.results[i].KPI_VALUE);
     				}
 			    } else {
@@ -319,7 +322,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 			}
 			// 统计于日期
 			$('#internetVolumeStatisticDate').html(dataStatisticDate);
-    		this.loadPriceChartdetail(chartDivId, priceChartName, machineGroupData);
+    		this.loadPriceChartdetail(chartDivId, priceChartName, machineGroupData,machineGroupDate);
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
 			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});
@@ -327,7 +330,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 	    sap.ui.getCore().getModel().read("ZJEY_CL_JYYJ_04_VFDL/?$filter=(BNAME eq '" + usrid + "')", mParameters);
 	},
 	// 电价详细Chart
-	loadPriceChartdetail: function(chartDivId, priceChartName, machineGroupData) {
+	loadPriceChartdetail: function(chartDivId, priceChartName, machineGroupData,machineGroupDate) {
         	require(
             [
                 'echarts',
@@ -341,7 +344,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 			    document.getElementById('profitNameNet').innerHTML = document.getElementById('powerPlantMainDetailTitleNet').innerHTML;
 			    var fuelXaxisName = '';
 			    if (document.getElementById('powerPlantMainDetailTitleNet').innerHTML == '集团') {
-			        fuelXaxisName = ['兰溪发电', '台二发电', '凤台发电'];
+			     //   fuelXaxisName = ['兰溪发电', '台二发电', '凤台发电'];
+			          fuelXaxisName = machineGroupDate;
 			    } else {
 			        fuelXaxisName = ['机组1', '机组2', '机组3', '机组4'];
 			    }

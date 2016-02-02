@@ -1453,7 +1453,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerIncome", {
         						color:'white',
         						fontFamily:'微软雅黑'
         					},
-                			data:['发电收入','售电收入','补贴收入','辅助服务收入']
+                			data:['售电收入','补贴收入','辅助服务收入']
            			 	},
         			    tooltip:{
         			       trigger:'axis' ,
@@ -1512,26 +1512,26 @@ sap.ui.controller("com.zhenergy.pcbi.view.powerIncome", {
                             }
                         ],
         				series: [
-                            {
-                                name:'发电收入',
-                                type:'bar',
-                                stack: '发电收入',
-            //                     symbol:'emptyCircle',
-        				// 		symbolSize:5,
-        				// 		itemStyle: {
-        				// 		    normal: {
-        				// 		        label : {
-        				// 		            show :true,
-        				// 		            position : 'top',
-        				// 		            textStyle:{
-        				// 		                color : 'white'
-        				// 		            }
-        				// 		        }
-        				// 		    }
-        				// 		},
-                                barWidth : 50,
-                                data:KPI_FDS_V
-                            },
+            //                 {
+            //                     name:'发电收入',
+            //                     type:'bar',
+            //                     stack: '发电收入',
+            // //                     symbol:'emptyCircle',
+        				// // 		symbolSize:5,
+        				// // 		itemStyle: {
+        				// // 		    normal: {
+        				// // 		        label : {
+        				// // 		            show :true,
+        				// // 		            position : 'top',
+        				// // 		            textStyle:{
+        				// // 		                color : 'white'
+        				// // 		            }
+        				// // 		        }
+        				// // 		    }
+        				// // 		},
+            //                     barWidth : 50,
+            //                     data:KPI_FDS_V
+            //                 },
                             {
                                 name:'售电收入',
                                 type:'bar',

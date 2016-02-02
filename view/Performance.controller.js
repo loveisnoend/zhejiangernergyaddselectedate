@@ -53,7 +53,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
                     dailyProfitTongbi = sRes.results[i].KPI_VALUE*100;
 				}
 				if (sRes.results[i].KPI_TYPE == '上网电量'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){ 
-				    date.push(sRes.results[i].KPI_DATE);
+				    date.push(sRes.results[i].KPI_DATE.substring(4,6)+"/"+sRes.results[i].KPI_DATE.substring(6,8));
 				    data1.push(parseFloat(sRes.results[i].KPI_VALUE));    
 				}
 				if (sRes.results[i].KPI_TYPE == '平均上网电价'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){
@@ -188,7 +188,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
                         },
                         type: 'category',
                         boundaryGap: false,
-                        data: date //['7/21', '7/22', '7/23', '7/24', '7/25', '7/26', '7/27']
+                        data: date,
+                        splitNumber : 8
                     }
                 ],
 
