@@ -386,24 +386,25 @@ sap.ui.controller("com.zhenergy.pcbi.view.averPersonProfit", {
                 },
                 legend: {
                     orient: 'vertical',
-                    x: 'left',
+                    x:'left',
                     data:dataName
                 },
                 series: [
                     {
                         name:'访问来源',
                         type:'pie',
-                        radius: ['50%', '70%'],
+                        radius: ['40%', '60%'],
+                        center: ['60%', '50%'],
                         avoidLabelOverlap: false,
                         label: {
                             normal: {
                                 show: false,
-                                position: 'center'
+                                position: 'right'
                             },
                             emphasis: {
                                 show: true,
                                 textStyle: {
-                                    fontSize: '30',
+                                    fontSize: '20',
                                     fontWeight: 'bold'
                                 }
                             }

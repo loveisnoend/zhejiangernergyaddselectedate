@@ -144,18 +144,18 @@ sap.ui.controller("com.zhenergy.pcbi.view.home07", {
 	// 获取二级页面数据
 	_loadData01 : function (currentDate) {
 	    
-	    var currentDate;
-	    if (currentDate == '') {
-	        var alreadySetDate = document.getElementById("safeProduceDaysDateId").value;
-	        if (alreadySetDate != '') {
-	            currentDate = alreadySetDate.replace(/\-/g,'');
-	        } else {
-            	var datetime = new Date();
-                currentDate = toSimpleDateString(datetime,'date');  
-	        }
-	    } else {
-            currentDate = currentDate.replace(/\-/g,'');
-	    }
+	   // var currentDate;
+	   // if (currentDate == '') {
+	   //     var alreadySetDate = document.getElementById("safeProduceDaysDateId").value;
+	   //     if (alreadySetDate != '') {
+	   //         currentDate = alreadySetDate.replace(/\-/g,'');
+	   //     } else {
+    //         	var datetime = new Date();
+    //             currentDate = toSimpleDateString(datetime,'date');  
+	   //     }
+	   // } else {
+    //         currentDate = currentDate.replace(/\-/g,'');
+	   // }
 	    // get data by different date
 	   // this._getDataByDifferentDate(currentDate);
 	    
