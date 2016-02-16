@@ -48,8 +48,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.averPersonProfit", {
 				    data_AverBusinessIncome.push(parseFloat(sRes.results[i].KPI_VALUE));    
 				}
 			}
+
 			// 设定头部跑马灯信息 common.js
 			_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);
+			
 			this.loadChart(data_AverBusinessIncome,data_AverPersonSalary,'','');
 		    this.loadData(KPI_JLR_V, KPI_JLR_T, KPI_OPP_V, KPI_TOC_T);
 		}, this);
@@ -440,7 +442,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.averPersonProfit", {
 		var workerProperty = '';//data4[data4.length - 1];
 		
 		//净利润
-		var averPersonProfitResult = 0
+		var averPersonProfitResult = averPersonProfitDetailValue;
 		var averPersonProfitResultImg="horizontal-green";
 		var averPersonProfitResultTongbi = KPI_JLR_T;
  		if(averPersonProfitResultTongbi>0){
@@ -464,7 +466,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.averPersonProfit", {
 	        rlr_colorR01="white";
 	    }
 
-		var rlr_innerhtml01='<div class="AP-main_content_title">人均利润<span style="font-size:20px;">(百万元)</span></div><div class="AP-main_content_sz" style="font-size:60px;font-weight:bold;color:'+rlr_colorR01+'">'+averPersonProfitResult+'</div><div class="AP-main_content_sz">同比'+averPersonProfitResultTongbi+'%<img src="img/'+averPersonProfitResultImg+'.png" class="content_img"/></div>';
+		var rlr_innerhtml01='<div class="AP-main_content_title">人均利润<span style="font-size:20px;">(万元)</span></div><div class="AP-main_content_sz" style="font-size:60px;font-weight:bold;color:'+rlr_colorR01+'">'+averPersonProfitResult+'</div><div class="AP-main_content_sz">同比'+averPersonProfitResultTongbi+'%<img src="img/'+averPersonProfitResultImg+'.png" class="content_img"/></div>';
 		document.getElementById('averPersonProfitResult').innerHTML=rlr_innerhtml01;
 		
         document.getElementById('employeeType').innerHTML=employeeType;

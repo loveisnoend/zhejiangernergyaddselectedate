@@ -117,6 +117,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home08", {
 			    // 人均利润
 				if (sRes.results[i].KPI_TYPE == '人均利润' && sRes.results[i].KPI_DESC == '集团'){  
 				    averPersonProfit = averPersonProfit+parseFloat(sRes.results[i].KPI_VALUE);
+				    averPersonProfitDetailValue = averPersonProfit;
 				    daytimeNO5 = sRes.results[i].KPI_DATE;
 				}
 				if (sRes.results[i].KPI_TYPE == '人均利润环比' && sRes.results[i].KPI_DESC == '集团'){  
