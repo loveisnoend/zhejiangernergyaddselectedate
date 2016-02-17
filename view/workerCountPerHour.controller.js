@@ -27,8 +27,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.workerCountPerHour", {
 	// 获取三级页面数据
 	_loadData01 : function () {
 	    
-	    var zhejiang_dataStr = '[{"name":"杭州","inputPlanValue":"0"},{"name":"金华","inputPlanValue":"0"},{"name":"台州","inputPlanValue":"0"}]';
-	    var huaiNan_dataStr = '[{"name":"淮南","inputPlanValue":"0"}]';
+	    var zhejiang_dataStr = '[{"name":"杭州","inputPlanValue":""},{"name":"金华","inputPlanValue":""},{"name":"台州","inputPlanValue":""}]';
+	    var huaiNan_dataStr = '[{"name":"淮南","inputPlanValue":""}]';
 	    var zhejiang_JsonData = JSON.parse(zhejiang_dataStr)
 		var huaiNan_JsonData = JSON.parse(huaiNan_dataStr);
 	    this.loadChart(zhejiang_JsonData, huaiNan_JsonData);

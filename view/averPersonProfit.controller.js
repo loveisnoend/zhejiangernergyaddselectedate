@@ -472,7 +472,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.averPersonProfit", {
         document.getElementById('employeeType').innerHTML=employeeType;
         document.getElementById('businessIncome').innerHTML=businessIncome+'万元';
         document.getElementById('averSalary').innerHTML=averSalary+'万元';
-        document.getElementById('workerProperty').innerHTML=workerProperty+'万元';
+        document.getElementById('workerProperty').innerHTML=workerProperty;
 
 
 // 		document.getElementById('cb').innerHTML = cb_innerhtml;
