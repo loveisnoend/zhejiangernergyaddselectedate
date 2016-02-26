@@ -1,3 +1,42 @@
+// get real name by powerplant name
+function getRealNameByPowerplantname(plantName) {
+    var realName = '';
+	if (plantName == '凤台发电') {
+        realName = '淮南';
+    }
+    if (plantName == '兰溪发电') {
+        realName = '金华';
+    }
+    if (plantName == '台二发电') {
+        realName = '台州';
+    }
+    if (plantName == '集团') {
+        realName = '杭州';
+    }
+    // new added power plant
+    if (plantName == '萧山电厂1') {
+        realName = '浙江浙能电力股份有限公司萧山发电厂';
+    }
+    return realName;
+}
+// get powerplant name by real name
+function getPowerplantnameByRealName(realName) {
+    var powerPlantName = '';
+	if (realName == '金华') {
+	    powerPlantName = '兰溪电厂';
+	} else if (realName == '台州') {
+	    powerPlantName = '台二电厂';
+	} else if (realName == '杭州') {
+	    powerPlantName = '集团';
+	} else if (realName == '淮南') {
+	    powerPlantName = '凤台电厂';
+	}
+	// new added power plant 
+    if (realName == '浙江浙能电力股份有限公司萧山发电厂') {
+        powerPlantName = '萧山电厂1';
+    }
+	return powerPlantName;
+}
 // date type to 20160101 format string
 function toSimpleDateString(datetime,stringType) {
     

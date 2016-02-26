@@ -58,19 +58,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 		    var isZhejiangDataFirst = true;
 		    var isHuaiNanDataFirst = true;
 			for(var j in dc){
-			    var powerPlantName = '';
-			    if (dc[j] == '凤台发电') {
-			        powerPlantName = '淮南';
-			    }
-			    if (dc[j] == '兰溪发电') {
-			        powerPlantName = '金华';
-			    }
-			    if (dc[j] == '台二发电') {
-			        powerPlantName = '台州';
-			    }
-			    if (dc[j] == '集团') {
-			        powerPlantName = '杭州';
-			    }
+			    // get real area name by power plant name
+			    var powerPlantName = getRealNameByPowerplantname(dc[j]);
 
 			    var tempJsonStrData = '{';
 			    tempJsonStrData += '"name":"';
@@ -951,17 +940,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.internetVolume", {
 		// 设置Chart的数据
         function setChartData(ec, mapSeries, dataIndex) {
             
-    		// 电厂名
-			var powerPlantName = '';
-			if (mapSeries.markPoint.data[dataIndex].name == '金华') {
-			    powerPlantName = '兰溪电厂';
-			} else if (mapSeries.markPoint.data[dataIndex].name == '台州') {
-			    powerPlantName = '台二电厂';
-			} else if (mapSeries.markPoint.data[dataIndex].name == '杭州') {
-			    powerPlantName = '集团';
-			} else if (mapSeries.markPoint.data[dataIndex].name == '淮南') {
-			    powerPlantName = '凤台电厂';
-			}
+    		// get powerplantname by real name
+			var powerPlantName = getPowerplantnameByRealName(mapSeries.markPoint.data[dataIndex].name);
 			document.getElementById('powerPlantMainDetailTitleNet').innerHTML = powerPlantName;
 
 		    // 发电量

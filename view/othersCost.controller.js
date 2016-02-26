@@ -52,31 +52,51 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
     				}
 			    }
 			}
-			
+            
+            // TODO
+            dc.push('萧山电厂1');
+            
 			var zhejiang_dataStr = '[';
 		    var huaiNan_dataStr = '[';
 		    var isZhejiangDataFirst = true;
 		    var isHuaiNanDataFirst = true;
 			for(var j in dc){
-			    var powerPlantName = '';
-			    if (dc[j] == '凤台发电') {
-			        powerPlantName = '淮南';
-			    }
-			    if (dc[j] == '兰溪发电') {
-			        powerPlantName = '金华';
-			    }
-			    if (dc[j] == '台二发电') {
-			        powerPlantName = '台州';
-			    }
-			    if (dc[j] == '集团') {
-			        powerPlantName = '杭州';
-			    }
+			    // get real area name by power plant name
+			    var powerPlantName = getRealNameByPowerplantname(dc[j]);
 			    var tempJsonStrData = '{';
 			    tempJsonStrData += '"name":"';
 			    tempJsonStrData += powerPlantName;
 			    tempJsonStrData += '",';
 			    var isFirst = true;
+			    
+		        // TODO
+			    if (dc[j] == '萧山电厂1') {
+			        tempJsonStrData += '"useCostFee":';
+        			tempJsonStrData += 0;
+                    tempJsonStrData += ',';
+                    
+			        tempJsonStrData += '"repairCost":';
+        			tempJsonStrData += 0;
+                    tempJsonStrData += ',';
+                    
+        			tempJsonStrData += '"peopleCost":';
+        			tempJsonStrData += 0;
+                    tempJsonStrData += ',';
+                    
+        			tempJsonStrData += '"financeManCost":';
+        			tempJsonStrData += 0;
+                    tempJsonStrData += ',';
+                    
+        			tempJsonStrData += '"otherRunningCost":';
+        			tempJsonStrData += 0;
+                    tempJsonStrData += ',';
+                    
+        			tempJsonStrData += '"otherRunningCostUP":';
+        			tempJsonStrData += 0;
+			    }
+    			    
     			for (var i in sRes.results) {
+    			    
     				if (sRes.results[i].KPI_TYPE == '折旧费'&&sRes.results[i].KPI_DESC==dc[j]){ 
     				    if (isFirst != true) {
     				        tempJsonStrData += ',';
@@ -144,6 +164,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 			}
 			zhejiang_dataStr += ']';
 			huaiNan_dataStr += ']';
+			alert('-----'+zhejiang_dataStr);
 			var zhejiang_JsonData = JSON.parse(zhejiang_dataStr)
 			var huaiNan_JsonData = JSON.parse(huaiNan_dataStr);
     		this.loadChart(zhejiang_JsonData, huaiNan_JsonData);
@@ -686,9 +707,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 					},
 					calculable: false,
 					tooltip : {
-					    show : false,
-						trigger : 'item'
-					},
+                        trigger: 'item',
+                        formatter: '{b}<br/>{c}',
+                        position : [200,0]
+                    },
 					series : [
 						{
 						    itemStyle:{
@@ -768,7 +790,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 							},
 							geoCoord: {
 								// "温州":[120.65,28.01],
-								// "义乌":[120.06,29.32],
+								"浙江浙能电力股份有限公司萧山发电厂":[120.06,29.32],
 								"杭州":[119.50,30],
 								// "绍兴":[120.58,30.01],
 								"金华":[119.64,29.12],
@@ -807,7 +829,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 								},
 								data : [
 								    {name: "金华", value: 300},
-								    {name: "台州", value: 300}
+								    {name: "台州", value: 300},
+								    {name: "浙江浙能电力股份有限公司萧山发电厂", value: 300}
 								    ]
 							}
 						}
@@ -1121,17 +1144,8 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 		// 设置Chart的数据
         function setChartData(ec, mapSeries, dataIndex) {
             
-    		// 电厂名
-			var powerPlantName = '';
-			if (mapSeries.markPoint.data[dataIndex].name == '金华') {
-			    powerPlantName = '兰溪电厂';
-			} else if (mapSeries.markPoint.data[dataIndex].name == '台州') {
-			    powerPlantName = '台二电厂';
-			} else if (mapSeries.markPoint.data[dataIndex].name == '杭州') {
-			    powerPlantName = '集团';
-			} else if (mapSeries.markPoint.data[dataIndex].name == '淮南') {
-			    powerPlantName = '凤台电厂';
-			}
+    		// get powerplantname by real name
+			var powerPlantName = getPowerplantnameByRealName(mapSeries.markPoint.data[dataIndex].name);
 			document.getElementById('powerPlantMainDetailTitleCost').innerHTML = powerPlantName;
             // 隐藏可点击箭头
             // 隐藏可点击箭头
