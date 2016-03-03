@@ -14,8 +14,31 @@ function getRealNameByPowerplantname(plantName) {
         realName = '杭州';
     }
     // new added power plant
-    if (plantName == '萧山电厂1') {
+    if (plantName == '萧山电厂') {
         realName = '浙江浙能电力股份有限公司萧山发电厂';
+    }
+    // 台州
+    if (plantName == '台州电厂') {
+        realName = '台州发电厂';
+    }
+    if (plantName == '海天电力工程') {
+        realName = '台州市海天电力工程有限公司';
+    }
+    if (plantName == '台州联源热力') {
+        realName = '台州市联源热力有限公司';
+    }
+    // 绍兴
+    if (plantName == '华隆电力') {
+        realName = '浙江华隆电力工程有限公司';
+    }
+    if (plantName == '绍兴滨海热电') {
+        realName = '浙江浙能绍兴滨海热电有限责任公司';
+    }
+    if (plantName == '钱清发电') {
+        realName = '浙江浙能钱清发电有限责任公司';
+    }
+    if (plantName == '绍兴滨海热力') {
+        realName = '浙江浙能绍兴滨海热力有限公司';
     }
     return realName;
 }
@@ -33,7 +56,30 @@ function getPowerplantnameByRealName(realName) {
 	}
 	// new added power plant 
     if (realName == '浙江浙能电力股份有限公司萧山发电厂') {
-        powerPlantName = '萧山电厂1';
+        powerPlantName = '萧山电厂';
+    }
+    // 台州
+    if (realName == '台州发电厂') {
+        powerPlantName = '台州电厂';
+    }
+    if (realName == '台州市海天电力工程有限公司') {
+        powerPlantName = '海天电力工程';
+    }
+    if (realName == '台州市联源热力有限公司') {
+        powerPlantName = '台州联源热力';
+    }
+    // 绍兴
+    if (realName == '浙江浙能绍兴滨海热电有限责任公司') {
+        powerPlantName = '绍兴滨海热电';
+    }
+    if (realName == '浙江华隆电力工程有限公司') {
+        powerPlantName = '华隆电力';
+    }
+    if (realName == '浙江浙能钱清发电有限责任公司') {
+        powerPlantName = '钱清发电';
+    }
+    if (realName == '浙江浙能绍兴滨海热力有限公司') {
+        powerPlantName = '绍兴滨海热力';
     }
 	return powerPlantName;
 }

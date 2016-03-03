@@ -30,6 +30,11 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 		data2 = new Array();//平均上网电价
 		data3 = new Array();//燃料成本
 		data4 = new Array();//其他成本
+		
+		KPI_RGL_V = new Array();//日利润-供热收入-供热量
+		KPI_RGJ_V = new Array();//日利润-供热收入-单价
+		KPI_GRC_V = new Array();// 供热燃料成本
+		
 		// 数据类型，集团数据还是电厂数据
 		var dateTypeName = '';
 		mParameters['async'] = true;
@@ -65,15 +70,28 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 				if (sRes.results[i].KPI_TYPE == '日利润-其他成本'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){ 
 				    data4.push(parseFloat(sRes.results[i].KPI_VALUE));    
 				}
+				
+				//日利润-供热收入-供热量
+				if (sRes.results[i].KPI_TYPE == '日利润-供热收入-供热量'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){ 
+				    KPI_RGL_V.push(parseFloat(sRes.results[i].KPI_VALUE));    
+				}
+		        //日利润-供热收入-单价
+		        if (sRes.results[i].KPI_TYPE == '日利润-供热收入-单价'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){ 
+				    KPI_RGJ_V.push(parseFloat(sRes.results[i].KPI_VALUE));    
+				}
+				//供热燃料成本
+		        if (sRes.results[i].KPI_TYPE == '供热燃料成本'&&sRes.results[i].KPI_DESC == sRes.results[0].KPI_DESC){ 
+				    KPI_GRC_V.push(parseFloat(sRes.results[i].KPI_VALUE));    
+				}
 			}
-// 			alert('---data1---'+data1+'---data2---'+data2+'---data3----'+data3+'----data4---'+data4);
+// 			alert('---data1---'+data1+'---data2---'+data2+'---data3----'+data3+'----data4---'+data4+'--供热量--'+KPI_RGL_V+'---供热单价----'+KPI_RGJ_V);
 			this.loadChart();
 			this.loadData(incomeTongbi, costTongbi, dailyProfitTongbi);
 			// 设定头部跑马灯信息 common.js
 			_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
-			alert("Get Data Error");
+			alert("数据分析中,请稍后......");
 		}, this);
 	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_02_V03/?$filter=(BNAME eq '" + usrid + "')", mParameters);
 	},
@@ -103,7 +121,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 
             //上网电量
             function drawswdl(e) {
-                drawline(e, date, data1, '上网电量', 'green', 'swdl', data1[data1.length - 1] + '亿千瓦时');
+                drawline(e, date, data1, '上网电量', 'green', 'swdl', data1[data1.length - 1] + '亿千瓦时', KPI_RGL_V,'供热量','orange','auto','auto','auto','auto');
             }
             /*function drawdetail01{
                 drawline(e, date01, data5, '上网电量', 'green', 'detail01', data1[data1.length - 1] + '亿千瓦时');
@@ -111,20 +129,20 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 
             //平均上网电价
             function drawpjswdj(e) {
-                drawline(e, date, data2, '平均上网电价', 'green', 'pjswdj', data2[data2.length - 1] + '元/千瓦时');
+                drawline(e, date, data2, '平均上网电价', 'green', 'pjswdj', data2[data2.length - 1] + '元/千瓦时', KPI_RGJ_V,'供热收入','orange','auto','auto',0,200);
             }
             //燃料成本
             function drawrlcb(e) {
-                drawline(e, date, data3, '燃料成本', 'green', 'rlcb', data3[data3.length - 1] + '亿元');
+                drawline(e, date, data3, '燃料成本', 'green', 'rlcb', data3[data3.length - 1] + '亿元', KPI_GRC_V,'供热燃料成本','orange','auto','auto','auto','auto');
             }
 
             //其他成本
             function drawqtcb(e) {
-                drawline(e, date, data4, '其他成本', 'green', 'qtcb', data4[data4.length - 1] + '亿元');
+                drawline(e, date, data4, '其他成本', 'green', 'qtcb', data4[data4.length - 1] + '亿元', '','','orange','auto','auto','auto','auto');
             }
 
-	        //折线通用
-        function drawline(e, date, data1, title, color, id, value) {
+	    //折线通用
+        function drawline(e, date, data1, title01, color01, id, value, data2, title02, color02,miny1,maxy1,miny2,maxy2) {
             mychart = e.init(document.getElementById(id));
             var w = document.getElementById(id).clientWidth;
             var h = document.getElementById(id).clientHeight;
@@ -150,21 +168,30 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
                         }
                     }  
                 },
-                tooltip: {
-                    show: false,
-                    trigger: 'axis'
-                    // formatter: "Temperature : <br/>{b}km : {c}°C"
-                },
-                legend: {
-                    show: false,
-                    data: [title]
-                },
+                // tooltip: {
+                //     show: true,
+                //     trigger: 'yxis'
+                //     // formatter: "Temperature : <br/>{b}km : {c}°C"
+                // },
+                tooltip:{
+			       trigger:'axis' ,
+			       alwaysShowContent : true,
+			       backgroundColor:'rgb(234,234,234)',
+			       textStyle:{
+			           color:'rgb(0,0,0)',
+			           fontSize : 12
+			       },
+			       axisPointer:{
+			           type: 'none'
+			       }
+			    },
                 grid: {
                     x: '50px',
                     y: '30px',
                     x2: '40px',
                     y2: '40px'
                 },
+                color: ['#FFB300', '#31536f'],
                 xAxis: [
                     {
                         axisTick: {
@@ -189,17 +216,17 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
                         type: 'category',
                         boundaryGap: false,
                         data: date,
-                        splitNumber : 8
+                        splitNumber : 6
                     }
                 ],
-
                 yAxis: [
                     {
+                        name : title01,
                         type: 'value',
                         axisLabel: {
                             formatter: '{value} ',
                             textStyle: {
-                                color: '#FFF'
+                                color: color01
                             }
                         },
                         axisLine: {
@@ -213,34 +240,239 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
                                 color: '#31536f'
                             }
                         },
-                        scale: true
+						max: maxy1,
+						min: miny1,
+						splitNumber: 4
+                    },
+                    {
+						name: title02,
+						type: 'value',
+                        axisLine: {
+                            lineStyle: {
+                                color: '#31536f',
+                                width: 1
+                            }
+                        },
+						axisLabel: {
+							textStyle: {
+								color: color02
+							},
+							formatter: '{value}'
+						},
+						splitLine: {
+							// 			show: false
+							lineStyle: {
+								color: 'rgba(64,64,64,0.5)'
+							}
+						},
+						max: maxy2,
+						min: miny2,
+						splitNumber: 4
                     }
                 ],
-                series: [{
-                    name: title,
-                    type: 'line',
-                    smooth: true,
-                    symbol:'emptyCircle',
-                    symbolSize: 4,
-                    itemStyle: {
-                        normal: {
-                            // areaStyle: { type: 'default' },
-                            color: color,
-                            lineStyle: {
-                                color: color
-                            },
-                            label : {
-					            show :true,
-					            position : 'top',
-					            textStyle:{
-					                color : 'white'
-					            }
-					        }
-                        }
+                // series: [
+                //             {
+                //                 name: '上网电量',
+                //                 type: 'line',
+                //                 smooth: true,
+                //                 symbol:'emptyCircle',
+                //                 symbolSize: 4,
+                //                 itemStyle: {
+                //                     normal: {
+                //                         // areaStyle: { type: 'default' },
+                //                         color: color,
+                //                         lineStyle: {
+                //                             color: color
+                //                         },
+                //                         label : {
+            				// 	            show :true,
+            				// 	            position : 'top',
+            				// 	            textStyle:{
+            				// 	                color : 'white'
+            				// 	            }
+            				// 	        }
+                //                     }
+                //                 },
+                //                 data: data1
+                //             },
+                //             {
+                //                 name: '供热量',
+                //                 type: 'line',
+                //                 smooth: true,
+                //                 symbol:'emptyCircle',
+                //                 symbolSize: 4,
+                //                 itemStyle: {
+                //                     normal: {
+                //                         // areaStyle: { type: 'default' },
+                //                         color: '#FFB300',
+                //                         lineStyle: {
+                //                             color: '#FFB300'
+                //                         },
+                //                         label : {
+            				// 	            show :true,
+            				// 	            position : 'top',
+            				// 	            textStyle:{
+            				// 	                color : 'white'
+            				// 	            }
+            				// 	        }
+                //                     }
+                //                 },
+                //                 data: data2
+                //             }
+                //         ]
+                series: [
+				    {
+                		name: title01,
+                		type: 'line',
+                		smooth: true,
+        		        itemStyle: {
+                            normal: {
+                                color: color01,
+                                lineStyle: {
+                                    color: color01
+                                },
+                                label : {
+    					            show :true,
+    					            position : 'top',
+    					            textStyle:{
+    					                color : color01
+    					            }
+    					        }
+                            }
+                        },
+                		data: data1
                     },
-                    data: data1
-                }]
+                	{
+                		name: title02,
+                		type: 'line',
+                		smooth: true,
+                		yAxisIndex: 1,
+        		        itemStyle: {
+                            normal: {
+                                color: color02,
+                                lineStyle: {
+                                    color: color02
+                                },
+                                label : {
+    					            show :true,
+    					            position : 'top',
+    					            textStyle:{
+    					                color : color02
+    					            }
+    					        }
+                            }
+                        },
+                		data: data2
+                    }
+                    ]
             };
+//             var option = {
+//                 color:['#ffb300','#33FF32'],
+// 				title: {
+// 					show: false,
+// 					text: value,
+// 					padding: 10,
+// 					x: 'center',
+// 					textStyle: {
+// 						color: '#FFF',
+// 						fontFamily: 'hiragino',
+// 						fontSize: 18,
+// 						fontStyle: 'normal',
+// 						fontWeight: 'bold'
+// 					}
+// 				},
+// 				tooltip: {
+// 				    show:false,
+// 					trigger: 'axis'
+// 				},
+// 				legend: {
+// 					show: false,
+// 					data: [title]
+// 				},
+// 				grid: {
+// 					x: '30px',
+// 					y: '20px',
+// 					x2: '30px',
+// 					y2: '40px'
+// 				},
+// 				xAxis: [
+// 					{
+// 						axisLabel: {
+// 							textStyle: {
+// 								color: '#FFF'
+// 							}
+// 						},
+// 						axisLine: {
+// 							lineStyle: {
+// 								color: '#31536f',
+// 								width: 1
+// 							}
+// 						},
+// 						splitLine: {
+// 							lineStyle: {
+// 								color: '#31536f'
+// 							}
+// 						},
+// 						type: 'category',
+// 						data: date //['7/21', '7/22', '7/23', '7/24', '7/25', '7/26', '7/27']
+//                     }
+//                 ],
+// 				yAxis: [
+// 					{
+// 						splitNumber: 5,
+// 						type: 'value',
+// 						axisLine: {
+// 							show: false
+// 						},
+// 						axisLabel: {
+// 							textStyle: {
+// 								color: '#FFB300'
+// 							},
+// 							formatter: '{value}'
+// 						},
+
+// 						splitLine: {
+// 							lineStyle: {
+// 								color: 'rgba(64,64,64,0.5)'
+// 							}
+// 						}
+//                     },
+// 					{
+// 						name: '',
+// 						splitNumber: 5,
+// 						type: 'value',
+// 						axisLine: {
+// 							show: false
+// 						},
+// 						axisLabel: {
+// 							textStyle: {
+// 								color: '#33FF32'
+// 							},
+// 							formatter: '{value}'
+// 						},
+// 						splitLine: {
+// 							lineStyle: {
+// 								color: 'rgba(64,64,64,0.5)'
+// 							}
+// 						}
+//                     }
+//                     ],
+// 				series: [
+// 				    {
+//                 		name: '上网电量',
+//                 		type: 'line',
+//                 		smooth: true,
+//                 		data: data1
+//                     },
+//                 	{
+//                 		name: '供热量',
+//                 		type: 'line',
+//                 		smooth: true,
+//                 		yAxisIndex: 1,
+//                 		data: data2
+//                     }
+// 				]
+// 			};
             mychart.setOption(option);
             if (isPerformaneceLoad == false) {
                 if (busy) {
@@ -308,6 +540,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 		var pjswdj_data = data2[data2.length - 1];
 		var rlcb_data=data3[data3.length - 1];
 		var qtcb_data=data4[data4.length-1];
+		
+		//日利润-供热收入-供热量
+		var KPI_RGL_V_Value = KPI_RGL_V[KPI_RGL_V.length - 1];
+        //日利润-供热收入-单价
+        var KPI_RGJ_V_Value = KPI_RGJ_V[KPI_RGJ_V.length - 1];
+		// 供热燃料成本
+		var KPI_GRC_V_Value = KPI_GRC_V[KPI_GRC_V.length - 1];
 		var a = 1;
     		
 		//收入数据
@@ -373,10 +612,17 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
                         
 		document.getElementById('sr').innerHTML = sr_innerhtml;
 		document.getElementById('rlr').innerHTML=rlr_innerhtml;
-        document.getElementById('swdl_span').innerHTML=swdl_data+'万千瓦时';
-        document.getElementById('pjswdj_span').innerHTML=pjswdj_data+'元/千瓦时';
-        document.getElementById('rlcb_span').innerHTML=rlcb_data+'万元';
-        document.getElementById('qtcb_span').innerHTML=qtcb_data+'万元';
+		// 供热量
+		document.getElementById('gongreliang_span').innerHTML=KPI_RGL_V_Value+'(吨)';
+		// 供热收入-单价
+		document.getElementById('gongreshouru_span').innerHTML=KPI_RGJ_V_Value+'(元/吨)';
+		// 供热燃料成本
+		document.getElementById('gongrechengben_span').innerHTML=KPI_GRC_V_Value+'(元/吨)';
+		
+        document.getElementById('swdl_span').innerHTML=swdl_data+'(万/千瓦时)';
+        document.getElementById('pjswdj_span').innerHTML=pjswdj_data+'(元/千瓦时)';
+        document.getElementById('rlcb_span').innerHTML=rlcb_data+'(万元)';
+        document.getElementById('qtcb_span').innerHTML=qtcb_data+'(万元)';
 
 
 // 		document.getElementById('cb').innerHTML = cb_innerhtml;

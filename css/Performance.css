@@ -89,14 +89,12 @@
     border: 2% solid rgb(47,233,48);
 }
 #idPerformance .panel {
-  width: 430px;
-  padding: 3px;
-  height: 200px;
+  width: 450px;
+  height: 300px;
   margin-left:40px;
-
   margin-bottom: 24px;
   background:url("../img/item-bg.png");
-  background-size: contain;
+  background-size: 450px 300px;
   background-repeat: no-repeat;
 }
 
@@ -115,13 +113,13 @@
 }
 
 #idPerformance .panel .panel_content {
-    height: 160px;
+    height: 250px;
     background-color:transparent;
 }
 
 #idPerformance .panel .panel_content > div {
     width: 430px;
-    height: 160px;
+    height: 250px;
 }
 
 #idPerformance .performance_head .inner_panel{

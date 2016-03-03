@@ -54,8 +54,15 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 			}
             
             // TODO
-            dc.push('萧山电厂1');
-            
+            dc.push('萧山电厂');
+            dc.push('华隆电力');
+            dc.push('台州电厂');
+            dc.push('海天电力工程');
+            dc.push('台州联源热力');
+            dc.push('绍兴滨海热电');
+            dc.push('钱清发电');
+            dc.push('绍兴滨海热力'); 
+
 			var zhejiang_dataStr = '[';
 		    var huaiNan_dataStr = '[';
 		    var isZhejiangDataFirst = true;
@@ -70,7 +77,15 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 			    var isFirst = true;
 			    
 		        // TODO
-			    if (dc[j] == '萧山电厂1') {
+			    if (dc[j] == '萧山电厂' || 
+			        dc[j] == '华隆电力' || 
+			        dc[j] == '台州电厂' || 
+			        dc[j] == '海天电力工程' || 
+			        dc[j] == '台州联源热力' || 
+			        dc[j] == '绍兴滨海热电' ||
+			        dc[j] == '钱清发电' ||
+			        dc[j] == '绍兴滨海热力') {
+			            
 			        tempJsonStrData += '"useCostFee":';
         			tempJsonStrData += 0;
                     tempJsonStrData += ',';
@@ -790,14 +805,24 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 							},
 							geoCoord: {
 								// "温州":[120.65,28.01],
-								"浙江浙能电力股份有限公司萧山发电厂":[120.06,29.32],
+								// 杭州
+								"浙江浙能电力股份有限公司萧山发电厂":[120,30.17],
 								"杭州":[119.50,30],
-								// "绍兴":[120.58,30.01],
+								// 绍兴
+								"浙江华隆电力工程有限公司":[120.58,30],
+								"浙江浙能绍兴滨海热电有限责任公司":[120.58,29.70],
+								"浙江浙能钱清发电有限责任公司":[120.28,29.70],
+								"浙江浙能绍兴滨海热力有限公司":[120.88,29.70],
+								// 金华
 								"金华":[119.64,29.12],
 								// "衢州":[118.88,28.97],
 								// "舟山":[122.207216,29.985295],
 								// "宁波":[121.56,29.86],
-								"台州":[121.420757,28.656386],
+								// 台州
+								"台州":[121.42,28.65],
+								"台州市海天电力工程有限公司":[121.42,28.85],
+								"台州市联源热力有限公司":[121.12,28.65],
+								"台州发电厂":[121.42,28.40],
 								// "湖州":[120.1,30.86],
 								"上海":[3000,3000]
 							}
@@ -828,9 +853,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 									}
 								},
 								data : [
-								    {name: "金华", value: 300},
-								    {name: "台州", value: 300},
-								    {name: "浙江浙能电力股份有限公司萧山发电厂", value: 300}
+								    // {name: "金华", value: 300},
+								    // {name: "台州", value: 300}
+								    // {name: "浙江浙能电力股份有限公司萧山发电厂", value: 300},
+								    // {name: "浙江华隆电力工程有限公司", value: 300}
 								    ]
 							}
 						}
