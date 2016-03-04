@@ -54,14 +54,14 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 			}
             
             // TODO
-            dc.push('萧山电厂');
-            dc.push('华隆电力');
-            dc.push('台州电厂');
-            dc.push('海天电力工程');
-            dc.push('台州联源热力');
-            dc.push('绍兴滨海热电');
-            dc.push('钱清发电');
-            dc.push('绍兴滨海热力'); 
+            // dc.push('萧山电厂');
+            // dc.push('华隆电力');
+            // dc.push('台州电厂');
+            // dc.push('海天电力工程');
+            // dc.push('台州联源热力');
+            // dc.push('绍兴滨海热电');
+            // dc.push('钱清发电');
+            // dc.push('绍兴滨海热力'); 
 
 			var zhejiang_dataStr = '[';
 		    var huaiNan_dataStr = '[';
@@ -179,7 +179,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 			}
 			zhejiang_dataStr += ']';
 			huaiNan_dataStr += ']';
-			alert('-----'+zhejiang_dataStr);
+// 			alert('-----'+zhejiang_dataStr);
 			var zhejiang_JsonData = JSON.parse(zhejiang_dataStr)
 			var huaiNan_JsonData = JSON.parse(huaiNan_dataStr);
     		this.loadChart(zhejiang_JsonData, huaiNan_JsonData);
