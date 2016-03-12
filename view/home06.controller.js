@@ -168,7 +168,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home06", {
             }
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
-			alert("Get Data Error");
+			alert("数据分析中,请稍后......");
 		}, this);
 	    sap.ui.getCore().getModel().read("SCREEN_ZJQK_01_V01?$filter=(BNAME eq '" +usrid+ "')", mParameters);
 	},

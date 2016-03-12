@@ -14,14 +14,23 @@ sap.ui.controller("com.zhenergy.pcbi.view.averPersonProfit", {
 		});
 	},
     onBeforeShow: function(evt) {
-        this._loadData01();
-        this._loadData02();
-        this._loadData03();
+        if (isAverPersonProfit == false) {
+            this._loadData01();
+            this._loadData02();
+            this._loadData03(); 
+            isAverPersonProfit = true;
+        }
 	},
 	onAfterShow: function(evt) {
 	},
 	// 获取二级页面数据 人均工资/人均营业收入
 	_loadData01 : function () {
+        var busy = new sap.m.BusyDialog({
+			close: function(event) {}
+		});
+		if (busy) {
+			busy.open();
+		} 
 	    var mParameters = {};
 
 	    var KPI_JLR_V;
@@ -54,23 +63,31 @@ sap.ui.controller("com.zhenergy.pcbi.view.averPersonProfit", {
 			
 			this.loadChart(data_AverBusinessIncome,data_AverPersonSalary,'','');
 		    this.loadData(KPI_JLR_V, KPI_JLR_T, KPI_OPP_V, KPI_TOC_T);
+    		if (busy) {
+    			busy.close();
+    		} 
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
-			alert("Get Data Error");
+			alert("数据分析中,请稍后......");
 		}, this);
 	    sap.ui.getCore().getModel().read("SCREEN_FZBZ_02_V01/?$filter=(BNAME eq '" + usrid + "')", mParameters);
 	},
 	// 获取二级页面数据 员工类型
 	_loadData02 : function () {
-
-	    if (isAverPersonProfit == false) {
-            busy = new sap.m.BusyDialog({
-				close: function(event) {}
-			});
-    		if (busy) {
-    			busy.open();
-    		} 
-	    }
+        var busy = new sap.m.BusyDialog({
+			close: function(event) {}
+		});
+		if (busy) {
+			busy.open();
+		} 
+// 	    if (isAverPersonProfit == false) {
+//             busy = new sap.m.BusyDialog({
+// 				close: function(event) {}
+// 			});
+//     		if (busy) {
+//     			busy.open();
+//     		} 
+// 	    }
 	    
 	    var mParameters = {};
         // 员工类型
@@ -125,15 +142,23 @@ sap.ui.controller("com.zhenergy.pcbi.view.averPersonProfit", {
                 {value:KPI_PTYG_V, name:'普通员工人数'}
             ];
             this.loadChart('','','',employeeTypeDataContent);
+    		if (busy) {
+    			busy.close();
+    		} 
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
-			alert("Get Data Error");
+			alert("数据分析中,请稍后......");
 		}, this);
 	    sap.ui.getCore().getModel().read("SCREEN_FZBZ_02_V06/?$filter=(BNAME eq '" + usrid + "')", mParameters);
 	},
     // 获取二级页面数据 用工性质
 	_loadData03 : function () {
-
+        var busy = new sap.m.BusyDialog({
+			close: function(event) {}
+		});
+		if (busy) {
+			busy.open();
+		}
 	    var mParameters = {};
         
         // 用工性质
@@ -197,9 +222,12 @@ sap.ui.controller("com.zhenergy.pcbi.view.averPersonProfit", {
                 {value:KPI_QT_V, name:'其他人员'}
             ];
             this.loadChart('','',workerPropertyDataContent,'');
+    		if (busy) {
+    			busy.close();
+    		}
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
-			alert("Get Data Error");
+			alert("数据分析中,请稍后......");
 		}, this);
 	    sap.ui.getCore().getModel().read("SCREEN_FZBZ_02_V07/?$filter=(BNAME eq '" + usrid + "')", mParameters);
 	},
@@ -421,13 +449,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.averPersonProfit", {
                 ]
             };
             mychart.setOption(option);
-            if (isAverPersonProfit == false) {
-                if (busy) {
-        			busy.close();
-        		} 
-        		changeTheSkinOfPage();
-        		isAverPersonProfit = true;
-            }
+        //     if (isAverPersonProfit == false) {
+        //         if (busy) {
+        // 			busy.close();
+        // 		} 
+        // 		changeTheSkinOfPage();
+        // 		isAverPersonProfit = true;
+        //     }
         }
 	},
 	loadData: function(KPI_JLR_V, KPI_JLR_T, KPI_OPP_V, KPI_TOC_T) {

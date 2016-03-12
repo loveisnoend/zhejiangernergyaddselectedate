@@ -59,7 +59,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home04", {
 			this._loadDataInitial(daytime,weather,temperature,place);
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
-			alert("Get Data Error");
+			alert("数据分析中,请稍后......");
 		}, this);
 	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_01_V01", mParameters);
 	},
@@ -178,7 +178,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home04", {
 			this._loadData02(mom,allenergy);
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
-			alert("Get Data Error");
+			alert("数据分析中,请稍后......");
 		}, this);
 	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_01_V02", mParameters);
 	},

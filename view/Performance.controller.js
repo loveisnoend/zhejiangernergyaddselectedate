@@ -332,7 +332,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
                                     color: color01
                                 },
                                 label : {
-    					            show :true,
+    					            show :false,
     					            position : 'top',
     					            textStyle:{
     					                color : color01
@@ -354,7 +354,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
                                     color: color02
                                 },
                                 label : {
-    					            show :true,
+    					            show :false,
     					            position : 'top',
     					            textStyle:{
     					                color : color02
@@ -550,7 +550,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 		var a = 1;
     		
 		//收入数据
-		var sr_data = (swdl_data * pjswdj_data).toFixed(2);
+		var sr_data = (swdl_data * pjswdj_data+(KPI_RGL_V_Value*KPI_RGJ_V_Value)/10000).toFixed(2);
 		if (incomeTongbi == undefined) {
 		    incomeTongbi = 0;
 		}
@@ -619,7 +619,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 		// 供热燃料成本
 		document.getElementById('gongrechengben_span').innerHTML=KPI_GRC_V_Value+'(元/吨)';
 		
-        document.getElementById('swdl_span').innerHTML=swdl_data+'(万/千瓦时)';
+        document.getElementById('swdl_span').innerHTML=swdl_data+'(万千瓦时)';
         document.getElementById('pjswdj_span').innerHTML=pjswdj_data+'(元/千瓦时)';
         document.getElementById('rlcb_span').innerHTML=rlcb_data+'(万元)';
         document.getElementById('qtcb_span').innerHTML=qtcb_data+'(万元)';

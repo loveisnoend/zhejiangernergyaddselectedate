@@ -65,7 +65,12 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 	    this.loadData_v01(place_v01);
 	},
 	loadData_v01 : function(cityName){
-
+        var busy = new sap.m.BusyDialog({
+			close: function(event) {}
+		});
+		if (busy) {
+			busy.open();
+		} 
 	    data01 = [];
 	    data02 = [];
 	    data03 = [];
@@ -128,16 +133,24 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 			}
 			this.loadChart();
 			this.loadData_weather(year,month_true,day);
+    		if (busy) {
+    			busy.close();
+    		} 
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
-			alert("Get Data Error");
+			alert("数据分析中,请稍后......");
 		}, this);
 	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_02_V01", mParameters);
 	},
 	
 	// 发电量和利用小时chart加载
 	loadData_v02 : function(currentPowerPlant, tab_usetime){
-
+        var busy = new sap.m.BusyDialog({
+			close: function(event) {}
+		});
+		if (busy) {
+			busy.open();
+		} 
 	    // 利用小时或发电量
         data02_01 = new Array();
         data02_02 = new Array();
@@ -190,9 +203,12 @@ sap.ui.controller("com.zhenergy.pcbi.view.tab", {
 			}
 			this.loadChart();
 			this.loadData_weather(year,month_true,day);
+    		if (busy) {
+    			busy.close();
+    		} 
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
-			alert("Get Data Error");
+			alert("数据分析中,请稍后......");
 		}, this);
 		
 		if(window.cordova && appContext && !window.sap_webide_companion) {

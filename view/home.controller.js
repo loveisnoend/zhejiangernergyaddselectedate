@@ -104,7 +104,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 			_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
-			alert("Get Data Error");
+			alert("数据分析中,请稍后......");
 		}, this);
 	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_01_V01", mParameters);
 	},
@@ -340,7 +340,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 	        $('#pureProfitDate').html(daytime01NO1 + "年" + daytime02NO1 + "月");//  + daytime03NO1 + "日"
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
-			alert("Get Data Error");
+			alert("数据分析中,请稍后......");
 		}, this);
 	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_01_V04?$filter=(BNAME eq '" +usrid+ "')", mParameters);
 	},
@@ -358,7 +358,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.home", {
 			controlTheFunVisiable(tabName, visiableIds);
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
-			alert("Get Data Error");
+			alert("数据分析中,请稍后......");
 		}, this);
 	    sap.ui.getCore().getModel().read("ZJEY_AUT_PC_TABPRI?$filter=(BNAME eq '" +usrid+ "')and(ZTOPICNAME eq '"+tabName+"')", mParameters);
 	},

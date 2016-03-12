@@ -163,7 +163,7 @@
             }
             function doit5() {
                 slidePageNum = 4;
-                app.to("idhome05","show");
+                // app.to("idhome05","show");
             }
             function doit6(slide06PageNumParam) {
                 slide06PageNum = slide06PageNumParam;
@@ -245,6 +245,8 @@
             
             // 安全生产天数
             function toSafeProduceDaysPage() {
+                // TODO wait for the selected date functionality
+                // safeProduceDaysDate = 
                 app.to("idSafeProduceDays","show");
             }
 		</script>
@@ -333,6 +335,7 @@
 				
                 // 用工性质/员工类型
             	var wokerPropertyAndType;
+            	var isWokerPropertyAndType = false;
             	// 人均营业收入记录
             	var averPersonProfitRecord;
             	// 人均工资
@@ -349,6 +352,8 @@
 				
 				// 风险控制
 				var safeProduceDays;
+				// TODO 
+				var safeProduceDaysDate;
 				
 				//业务情况
 				var tab;

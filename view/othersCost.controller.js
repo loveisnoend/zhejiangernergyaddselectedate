@@ -53,7 +53,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 			    }
 			}
             
-            // TODO
+            // // TODO
             // dc.push('萧山电厂');
             // dc.push('华隆电力');
             // dc.push('台州电厂');
@@ -62,11 +62,59 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
             // dc.push('绍兴滨海热电');
             // dc.push('钱清发电');
             // dc.push('绍兴滨海热力'); 
+            
+            // // 嘉兴
+            // dc.push('嘉兴发电');
+            // dc.push('嘉源电力');
+            // dc.push('平湖市滨海热力');
+            // dc.push('嘉华发电');
+            
+            // // 湖州市
+            // dc.push('长兴发电');
+            // dc.push('长兴东南热力');
+            
+            // // 宁波
+            // dc.push('镇海发电');
+            // dc.push('镇海热力');
+            // dc.push('宁波发电工程');
+            // dc.push('镇海联合');
+            // dc.push('北仑发电');
+            // dc.push('镇海燃气');
+            // dc.push('镇海燃热');
+            
+            // // 温州
+            // dc.push('温州发电');
+            // dc.push('瓯越电力');
+            // dc.push('嘉隆供热');
+            // dc.push('乐清发电');
+            // dc.push('温州燃机发电');
+            // dc.push('特鲁莱发电');
+            
+            // // 舟山
+            // dc.push('中煤舟山煤电');
+            
+            // // 金华
+            // dc.push('金华燃机发电');
+            
+            // // 衢州
+            // dc.push('常山天然气发电');
+            
+            // // 新疆
+            // dc.push('阿克苏热电'); 
 
+            // // 宁夏
+            // dc.push('枣泉发电'); 
+            
+            // TODO New Ddded
 			var zhejiang_dataStr = '[';
 		    var huaiNan_dataStr = '[';
+		    var akesu_dataStr = '[';
+		    var zhaoquan_dataStr = '[';
+		    
 		    var isZhejiangDataFirst = true;
 		    var isHuaiNanDataFirst = true;
+		    var isAkesuDataFirst = true;
+		    var isZaoquanDataFirst = true;
 			for(var j in dc){
 			    // get real area name by power plant name
 			    var powerPlantName = getRealNameByPowerplantname(dc[j]);
@@ -76,39 +124,63 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 			    tempJsonStrData += '",';
 			    var isFirst = true;
 			    
-		        // TODO
-			    if (dc[j] == '萧山电厂' || 
-			        dc[j] == '华隆电力' || 
-			        dc[j] == '台州电厂' || 
-			        dc[j] == '海天电力工程' || 
-			        dc[j] == '台州联源热力' || 
-			        dc[j] == '绍兴滨海热电' ||
-			        dc[j] == '钱清发电' ||
-			        dc[j] == '绍兴滨海热力') {
+		  //      // TODO
+			 //   if (dc[j] == '萧山电厂' || 
+			 //       dc[j] == '华隆电力' || 
+			 //       dc[j] == '台州电厂' || 
+			 //       dc[j] == '海天电力工程' || 
+			 //       dc[j] == '台州联源热力' || 
+			 //       dc[j] == '绍兴滨海热电' ||
+			 //       dc[j] == '钱清发电' ||
+			 //       dc[j] == '绍兴滨海热力' ||
+			 //       dc[j] == '嘉兴发电' ||
+			 //       dc[j] == '嘉源电力' ||
+			 //       dc[j] == '平湖市滨海热力' ||
+			 //       dc[j] == '嘉华发电' ||
+			 //       dc[j] == '长兴发电' ||
+			 //       dc[j] == '长兴东南热力' ||
+			 //       dc[j] == '镇海发电' ||
+			 //       dc[j] == '镇海热力' ||
+			 //       dc[j] == '宁波发电工程' ||
+			 //       dc[j] == '镇海联合' ||
+			 //       dc[j] == '北仑发电' ||
+			 //       dc[j] == '镇海燃气' ||
+			 //       dc[j] == '镇海燃热' ||
+			 //       dc[j] == '温州发电' ||
+			 //       dc[j] == '瓯越电力' ||
+			 //       dc[j] == '嘉隆供热' ||
+			 //       dc[j] == '乐清发电' ||
+			 //       dc[j] == '温州燃机发电' ||
+			 //       dc[j] == '特鲁莱发电' ||
+			 //       dc[j] == '中煤舟山煤电' ||
+			 //       dc[j] == '金华燃机发电' ||
+			 //       dc[j] == '常山天然气发电' ||
+			 //       dc[j] == '阿克苏热电' ||
+			 //       dc[j] == '枣泉发电') {
 			            
-			        tempJsonStrData += '"useCostFee":';
-        			tempJsonStrData += 0;
-                    tempJsonStrData += ',';
+			 //       tempJsonStrData += '"useCostFee":';
+    //     			tempJsonStrData += 0;
+    //                 tempJsonStrData += ',';
                     
-			        tempJsonStrData += '"repairCost":';
-        			tempJsonStrData += 0;
-                    tempJsonStrData += ',';
+			 //       tempJsonStrData += '"repairCost":';
+    //     			tempJsonStrData += 0;
+    //                 tempJsonStrData += ',';
                     
-        			tempJsonStrData += '"peopleCost":';
-        			tempJsonStrData += 0;
-                    tempJsonStrData += ',';
+    //     			tempJsonStrData += '"peopleCost":';
+    //     			tempJsonStrData += 0;
+    //                 tempJsonStrData += ',';
                     
-        			tempJsonStrData += '"financeManCost":';
-        			tempJsonStrData += 0;
-                    tempJsonStrData += ',';
+    //     			tempJsonStrData += '"financeManCost":';
+    //     			tempJsonStrData += 0;
+    //                 tempJsonStrData += ',';
                     
-        			tempJsonStrData += '"otherRunningCost":';
-        			tempJsonStrData += 0;
-                    tempJsonStrData += ',';
+    //     			tempJsonStrData += '"otherRunningCost":';
+    //     			tempJsonStrData += 0;
+    //                 tempJsonStrData += ',';
                     
-        			tempJsonStrData += '"otherRunningCostUP":';
-        			tempJsonStrData += 0;
-			    }
+    //     			tempJsonStrData += '"otherRunningCostUP":';
+    //     			tempJsonStrData += 0;
+			 //   }
     			    
     			for (var i in sRes.results) {
     			    
@@ -162,13 +234,25 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
     				}
     			}
     			tempJsonStrData += '}';
-    			    				
+    			
     			if (powerPlantName == '淮南') {
     			    if (isHuaiNanDataFirst != true){
     			        huaiNan_dataStr += ',';
     			    } 
     			    huaiNan_dataStr += tempJsonStrData;
     			    isHuaiNanDataFirst = false;
+    			} else if (powerPlantName == '浙能阿克苏热电有限公司'){
+    			    if (isAkesuDataFirst != true){
+    			        akesu_dataStr += ',';
+    			    }
+    			    akesu_dataStr += tempJsonStrData
+    			    isAkesuDataFirst = false;
+    			} else if (powerPlantName == '宁夏枣泉发电有限责任公司'){
+    			    if (isZaoquanDataFirst != true){
+    			        zhaoquan_dataStr += ',';
+    			    }
+    			    zhaoquan_dataStr += tempJsonStrData
+    			    isZaoquanDataFirst = false;
     			} else {
     			    if (isZhejiangDataFirst != true){
     			        zhejiang_dataStr += ',';
@@ -179,13 +263,17 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 			}
 			zhejiang_dataStr += ']';
 			huaiNan_dataStr += ']';
-// 			alert('-----'+zhejiang_dataStr);
+			akesu_dataStr += ']';
+			zhaoquan_dataStr += ']';
+
 			var zhejiang_JsonData = JSON.parse(zhejiang_dataStr)
 			var huaiNan_JsonData = JSON.parse(huaiNan_dataStr);
-    		this.loadChart(zhejiang_JsonData, huaiNan_JsonData);
+			var akesu_JsonData = JSON.parse(akesu_dataStr);
+			var zhaoquan_JsonData = JSON.parse(zhaoquan_dataStr);
+    		this.loadChart(zhejiang_JsonData, huaiNan_JsonData, akesu_JsonData, zhaoquan_JsonData);
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
-			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});
+			sap.m.MessageToast.show("数据分析中,请稍后......",{offset:'0 -110'});
 		}, this);
 	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_03_V02/?$filter=(BNAME eq '" + usrid + "')", mParameters);
 	},
@@ -316,6 +404,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 	},
 	// 获取各电厂各种费用
 	loadOthersCostEachCostChartData : function (chartDivId, priceChartName) {
+	    
+        var busy = new sap.m.BusyDialog({
+			close: function(event) {}
+		});
+		if (busy) {
+			busy.open();
+		}
 	    var mParameters = {};
 		mParameters['async'] = true;
 		mParameters['success'] = jQuery.proxy(function(sRes) {
@@ -344,9 +439,12 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 			$('#othersCostStatisticDate').html(dataStatisticDate);
 			
     		this.loadEachCostChartdetail(chartDivId, priceChartName, eachPowerPlantName, eachCostData);
+    		if (busy) {
+    			busy.close();
+    		} 
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
-			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});
+			sap.m.MessageToast.show("数据分析中,请稍后......",{offset:'0 -110'});
 		}, this);
 	    sap.ui.getCore().getModel().read("ZJEY_CL_JYYJ_04_VQTCB/?$filter=(BNAME eq '" + usrid + "')", mParameters);
 	},
@@ -401,7 +499,12 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 							textStyle: {
 								color: 'white'
 							},
-							formatter: '{value}'
+							formatter: '{value}',
+							show: true,
+                            interval: 'auto',
+                            inside: false,
+                            rotate: 30,
+                            margin: 8
 						},
 						data: fuelXaxisName
                     }
@@ -459,6 +562,13 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
     },
 	// 获取其他营业成本值
 	loadOthersCostChartData : function (chartDivId, priceChartName) {
+	    
+        var busy = new sap.m.BusyDialog({
+			close: function(event) {}
+		});
+		if (busy) {
+			busy.open();
+		} 
 	    var mParameters = {};
 		mParameters['async'] = true;
 		mParameters['success'] = jQuery.proxy(function(sRes) {
@@ -493,9 +603,12 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 			$('#othersCostStatisticDate').html(dataStatisticDate);
 			
     		this.loadPriceChartdetail(chartDivId, priceChartName, dataThisYear, dataLastYear, powerPlantName);
+    		if (busy) {
+    			busy.close();
+    		} 
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
-			sap.m.MessageToast.show("获取数据失败",{offset:'0 -110'});
+			sap.m.MessageToast.show("数据分析中,请稍后......",{offset:'0 -110'});
 		}, this);
 	    sap.ui.getCore().getModel().read("ZJEY_CL_JYYJ_04_VQTCB/?$filter=(BNAME eq '" + usrid + "')", mParameters);
 	},
@@ -553,7 +666,12 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 							textStyle: {
 								color: 'white'
 							},
-							formatter: '{value}'
+                        	formatter: '{value}',
+                        	show: true,
+                        	interval: 'auto',
+                        	inside: false,
+                        	rotate: 30,
+                        	margin: 8
 						},
 						data: fuelXaxisName
                     }
@@ -645,7 +763,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 			}
     },
 	// load the chart map
-	loadChart : function (map1Data, map2Data) {
+	loadChart : function (map1Data, map2Data, map3Data, map4Data) {
 	    var skinColor = '';
 	    if (skinName == '夜间模式') {
 	        skinColor = 'Black';
@@ -655,6 +773,10 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 	    var myChart3
 		var myChart4;
 		var myChart5;
+		// 新疆阿克苏
+		var myChart6;
+		// 宁夏枣泉
+		var myChart7;
         // 使用
         require(
             [
@@ -710,7 +832,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
                 document.getElementById('powerPlantMainDetailTitleCost').innerHTML = '集团'
 	//////////////////////////////////浙江省地图//////////////////////////////////////////////////////////		
 			    // 基于准备好的dom，初始化echarts图表
-                myChart4 = ec.init(document.getElementById('powerPlantMap3'));
+                var myChart4 = ec.init(document.getElementById('powerPlantMap3'));
 				var allPowerData = map1Data;			
 		        var option4 = {
 
@@ -804,26 +926,51 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 								data :allPowerData
 							},
 							geoCoord: {
-								// "温州":[120.65,28.01],
 								// 杭州
-								"浙江浙能电力股份有限公司萧山发电厂":[120,30.17],
 								"杭州":[119.50,30],
+								"萧山发电厂":[120,30.17],
+								"浙能电力股份有限公司":[119.70,30.17],
+								// 嘉兴
+								"浙江浙能嘉兴发电有限公司":[120.58,30.60],
+								"浙江嘉源电力工程有限公司":[120.88,30.85],
+								"浙江浙能嘉华发电有限公司":[120.88,30.40],
+								"平湖市滨海热力有限公司":[121.20,30.60],
 								// 绍兴
-								"浙江华隆电力工程有限公司":[120.58,30],
-								"浙江浙能绍兴滨海热电有限责任公司":[120.58,29.70],
-								"浙江浙能钱清发电有限责任公司":[120.28,29.70],
-								"浙江浙能绍兴滨海热力有限公司":[120.88,29.70],
+								"浙江华隆电力工程有限公司":[120.58,29.90],
+								"浙江浙能绍兴滨海热电有限责任公司":[120.58,29.60],
+								"浙江浙能钱清发电有限责任公司":[120.28,29.60],
+								"浙江浙能绍兴滨海热力有限公司":[120.88,29.60],
+								// 湖州
+								"浙江浙能长兴发电有限公司":[119.80,30.95],
+								"浙江长兴东南热力有限责任公司":[120,30.60],
 								// 金华
 								"金华":[119.64,29.12],
-								// "衢州":[118.88,28.97],
-								// "舟山":[122.207216,29.985295],
-								// "宁波":[121.56,29.86],
+								"浙江浙能金华燃机发电有限责任公司":[112.50,29.12],
+								//衢州
+								"浙江浙能常山天然气发电有限公司":[118.70,29],
+								// 舟山
+								"浙江浙能中煤舟山煤电有限责任公司":[122.20,30.40],
+								// 宁波
+								"浙江浙能镇海发电有限责任公司":[121.20,30.20],
+								"宁波市镇海热力有限责任公司":[121.40,30],
+								"宁波发电工程有限公司":[121.60,29.80],
+								"浙江浙能镇海联合发电有限公司":[121.70,29.50],
+								"浙江浙能北仑发电有限公司":[122.10,29.10],
+								"浙江浙能镇海天然气发电有限责任公司":[121.50,29.30],
+								"浙江浙能镇海燃气热电有限责任公司":[121.90,29.30],
+								// 温州
+								"浙江浙能温州发电有限公司":[120.68,28.30],
+								"乐清市瓯越电力工程检修有限公司":[120.68,28],
+								"乐清市嘉隆供热有限公司":[120.68,27.60],
+								"浙江浙能乐清发电有限责任公司":[120.38,27.60],
+								"温州燃机发电有限公司":[120.10,27.60],
+								"浙江温州特鲁莱发电有限责任公司":[120.98,27.60],
 								// 台州
-								"台州":[121.42,28.65],
-								"台州市海天电力工程有限公司":[121.42,28.85],
-								"台州市联源热力有限公司":[121.12,28.65],
-								"台州发电厂":[121.42,28.40],
-								// "湖州":[120.1,30.86],
+								"台州":[121.50,28.65],
+								"台州市海天电力工程有限公司":[121.50,28.85],
+								"台州市联源热力有限公司":[121.12,28.85],
+								"台州发电厂":[121.50,28.40],
+								// TODO
 								"上海":[3000,3000]
 							}
 						},
@@ -870,6 +1017,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 					var mapSeries = option4.series[0];
 					
 					var selectedData = {name: mapSeries.markPoint.data[param.dataIndex].name, value: mapSeries.markPoint.data[param.dataIndex].inputPlanValue};
+					
 					option4.series[1].markPoint.data = [];
 					option4.series[1].markPoint.data[0] = selectedData;
 					option4.series[1].markPoint.data[1] = {name:'上海',value:0};
@@ -879,17 +1027,22 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 					option5.series[1].markPoint.data = [{name:'上海',value:0}];
                     myChart5.setOption(option5);
                     
+                    option6.series[1].markPoint.data = [{name:'上海',value:0}];
+                    myChart6.setOption(option6);
+                    
+                    option7.series[1].markPoint.data = [{name:'上海',value:0}];
+                    myChart7.setOption(option7);
                     setChartData(ec, mapSeries, param.dataIndex);
 				});	
                 // 默认图表显示数据
                 var mapSeries = option4.series[0];
-                setChartData(ec, mapSeries, 2);
+                setChartData(ec, mapSeries, 0);
                 
                 // 默认集团数据显示
-				var selectedData = {name: mapSeries.markPoint.data[2].name, value: mapSeries.markPoint.data[2].inputPlanValue};
-				option4.series[1].markPoint.data[2] = selectedData;
+				var selectedData = {name: mapSeries.markPoint.data[0].name, value: mapSeries.markPoint.data[0].inputPlanValue};
+				option4.series[1].markPoint.data[0] = selectedData;
 			    option4.series[1].markPoint.data[1] = {name:'上海',value:0};
-                option4.series[1].markPoint.data[0] = {name:'上海',value:0};
+                option4.series[1].markPoint.data[2] = {name:'上海',value:0};
 				
                 // 为echarts对象加载数据 
                 myChart4.setOption(option4); 
@@ -897,17 +1050,19 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
 				// 基于准备好的dom，初始化echarts图表
                 myChart5 = ec.init(document.getElementById('huaiNanMap3')); 
                 
-				// var allPowerData2 = [
-				// 	{name: "淮南", value: 300, coal:1196820.02, coalDays:3, inputPlanTotal:"600", inputPlanValue:335, averUsePerH:11.8, averLoadRate: "65%", netPowerWPerH:6.19, costData:8580.15, costPer:0.45, otherAllCost:5646.66, otherCost:345.45, repairCost:580.9, peopleCost:3456.15, finaceCost:1000.56, depreciationCost:345.3},
-				// ];
 				var allPowerData2 = map2Data;
-				option5 = {
+				var option5 = {
 					title : {
 						text: '',
 						subtext: '',
 						sublink: '',
 						x:'center'
 					},
+					tooltip : {
+                        trigger: 'item',
+                        formatter: '{b}<br/>{c}',
+                        position : [200,0]
+                    },
 					calculable: false,
 					series : [
 						{
@@ -1011,12 +1166,272 @@ sap.ui.controller("com.zhenergy.pcbi.view.othersCost", {
                     option4.series[1].markPoint.data[1] = {name:'上海',value:0};
                     option4.series[1].markPoint.data[2] = {name:'上海',value:0};
                     myChart4.setOption(option4);
+
+                    option6.series[1].markPoint.data[0] = {name:'上海',value:0};
+                    myChart6.setOption(option6);
                     
+                    option7.series[1].markPoint.data[0] = {name:'上海',value:0};
+                    myChart7.setOption(option7);
                     setChartData(ec, mapSeries, param.dataIndex);
 				});	
 			    option5.series[1].markPoint.data[0] = {name:'上海',value:0};
                 // 为echarts对象加载数据 
                 myChart5.setOption(option5); 
+                
+		///////////////////////////////新疆阿克苏地图////////////////////////////////////////////
+				// 基于准备好的dom，初始化echarts图表
+                myChart6 = ec.init(document.getElementById('akesuMap')); 
+				var allPowerData3 = map3Data;
+				var option6 = {
+					title : {
+						text: '',
+						subtext: '',
+						sublink: '',
+						x:'center'
+					},
+					calculable: false,
+					series : [
+						{
+							itemStyle:{
+								normal:
+								{
+								    label:{
+								        show: true,
+								        textStyle: {
+							                color: '#00FF00',
+							                fontSize: 12
+							            },
+								    },
+								    areaStyle:{
+							            color: skinColor,
+							            type: 'default'
+							        },
+							        borderColor: 'white',
+							        borderWidth: 2
+								},
+								emphasis:{label:{show:true}},
+							},
+							name: '新疆',
+							type: 'map',
+							mapType: '新疆|阿克苏地区',
+							hoverable:false,
+							roam:false,
+							data : [],
+							clickable:false,
+							markPoint : {
+								clickable: true,
+							    symbol: 'star50',
+								symbolSize: 6,         // 标注大小，半宽（半径）参数，当图形为方向或菱形则总宽度为symbolSize * 2
+								itemStyle: {
+									normal: {
+									    color:'#00FF00',    // 标点颜色值
+										borderColor: 'white',
+										borderWidth: 1,            // 标注边线线宽，单位px，默认为1
+										label: {
+											show: false
+										}
+									},
+									emphasis: {
+										borderColor: 'white',
+										borderWidth: 1,
+										label: {
+											show: false
+										}
+									},
+									effect:{
+    								  show: true,
+    								  type: 'scale',
+    								  scaleSize: 2,
+    								  loop: true,
+    								  period: 10
+    								}
+								},
+								data :allPowerData3
+							},
+							geoCoord: {
+                                "浙能阿克苏热电有限公司":[80.22,41.17],
+                                "上海":[3000,3000]
+							}
+						},
+						{
+							name: 'Top3',
+							type: 'map',
+							mapType: '新疆|阿克苏地区',
+							data:[],
+							markPoint : {
+								symbol:'star50',
+								effect:{
+								  show: true,
+								  type: 'scale',
+								  scaleSize: 2,
+								  loop: true,
+								  shadowColor: '#00FF00',
+								  period: 10
+								},
+								itemStyle:{
+									normal:{
+										label:{show:false}
+									}
+								},
+								data : [{name: "浙能阿克苏热电有限公司", value: 300}]
+							}
+						}
+					]
+				}; 
+				myChart6.on(ecConfig.EVENT.CLICK, function (param){
+
+                    document.getElementById('othersCostDetail2').style.display = "none";
+                    document.getElementById('othersCost_detail').style.display = "";
+                    
+					var mapSeries = option6.series[0];
+
+					var selectedData = {name: mapSeries.markPoint.data[param.dataIndex].name, value: mapSeries.markPoint.data[param.dataIndex].inputPlanValue};
+                    option6.series[1].markPoint.data[0] = selectedData;
+                    myChart6.setOption(option6);
+                
+                    option4.series[1].markPoint.data[0] = {name:'上海',value:0};
+                    option4.series[1].markPoint.data[1] = {name:'上海',value:0};
+                    option4.series[1].markPoint.data[2] = {name:'上海',value:0};
+                    myChart4.setOption(option4);
+
+                    option5.series[1].markPoint.data[0] = {name:'上海',value:0};
+                    myChart5.setOption(option5);
+
+                    option7.series[1].markPoint.data[0] = {name:'上海',value:0};
+                    myChart7.setOption(option7);
+                    setChartData(ec, mapSeries, param.dataIndex);
+				});	
+			    option6.series[1].markPoint.data[0] = {name:'上海',value:0};
+                // 为echarts对象加载数据 
+                myChart6.setOption(option6); 
+
+		///////////////////////////////宁夏枣泉地图////////////////////////////////////////////
+				// 基于准备好的dom，初始化echarts图表
+                myChart7 = ec.init(document.getElementById('zaoquanMap')); 
+				var allPowerData4 = map4Data;
+				var option7 = {
+					title : {
+						text: '',
+						subtext: '',
+						sublink: '',
+						x:'center'
+					},
+					calculable: false,
+					series : [
+						{
+							itemStyle:{
+								normal:
+								{
+								    label:{
+								        show: true,
+								        textStyle: {
+							                color: '#00FF00',
+							                fontSize: 12
+							            },
+								    },
+								    areaStyle:{
+							            color: skinColor,
+							            type: 'default'
+							        },
+							        borderColor: 'white',
+							        borderWidth: 2
+								},
+								emphasis:{label:{show:true}},
+							},
+							name: '宁夏',
+							type: 'map',
+							mapType: '宁夏|银川市',
+							hoverable:false,
+							roam:false,
+							data : [],
+							clickable:false,
+							markPoint : {
+								clickable: true,
+							    symbol: 'star50',
+								symbolSize: 6,         // 标注大小，半宽（半径）参数，当图形为方向或菱形则总宽度为symbolSize * 2
+								itemStyle: {
+									normal: {
+									    color:'#00FF00',    // 标点颜色值
+										borderColor: 'white',
+										borderWidth: 1,            // 标注边线线宽，单位px，默认为1
+										label: {
+											show: false
+										}
+									},
+									emphasis: {
+										borderColor: 'white',
+										borderWidth: 1,
+										label: {
+											show: false
+										}
+									},
+									effect:{
+    								  show: true,
+    								  type: 'scale',
+    								  scaleSize: 2,
+    								  loop: true,
+    								  period: 10
+    								}
+								},
+								data :allPowerData4
+							},
+							geoCoord: {
+                                "宁夏枣泉发电有限责任公司":[106.27,38.47],
+                                "上海":[3000,3000]
+							}
+						},
+						{
+							name: 'Top3',
+							type: 'map',
+							mapType: '宁夏|银川市',
+							data:[],
+							markPoint : {
+								symbol:'star50',
+								effect:{
+								  show: true,
+								  type: 'scale',
+								  scaleSize: 2,
+								  loop: true,
+								  shadowColor: '#00FF00',
+								  period: 10
+								},
+								itemStyle:{
+									normal:{
+										label:{show:false}
+									}
+								},
+								data : [{name: "宁夏枣泉发电有限责任公司", value: 300}]
+							}
+						}
+					]
+				}; 
+				myChart7.on(ecConfig.EVENT.CLICK, function (param){
+
+                    document.getElementById('othersCostDetail2').style.display = "none";
+                    document.getElementById('othersCost_detail').style.display = "";
+                    
+					var mapSeries = option7.series[0];
+
+					var selectedData = {name: mapSeries.markPoint.data[param.dataIndex].name, value: mapSeries.markPoint.data[param.dataIndex].inputPlanValue};
+                    option7.series[1].markPoint.data[0] = selectedData;
+                    myChart7.setOption(option7);
+                
+                    option4.series[1].markPoint.data[0] = {name:'上海',value:0};
+                    option4.series[1].markPoint.data[1] = {name:'上海',value:0};
+                    option4.series[1].markPoint.data[2] = {name:'上海',value:0};
+                    myChart4.setOption(option4);
+
+                    option5.series[1].markPoint.data[0] = {name:'上海',value:0};
+                    myChart5.setOption(option5);
+
+                    option6.series[1].markPoint.data[0] = {name:'上海',value:0};
+                    myChart6.setOption(option6);
+                    setChartData(ec, mapSeries, param.dataIndex);
+				});	
+			    option7.series[1].markPoint.data[0] = {name:'上海',value:0};
+                // 为echarts对象加载数据 
+                myChart7.setOption(option7); 
+                
                 if (isOthersCostLoad == false) {
                     if (busy) {
             			busy.close();

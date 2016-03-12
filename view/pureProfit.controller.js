@@ -95,7 +95,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.pureProfit", {
 			_loadData03(valueCPIhuanbi,valueGDP,valueCPItongbi,valuePPItongbi,valuePMIproduce,valuePMInonProduce,valueGDPTotal);
 		}, this);
 		mParameters['error'] = jQuery.proxy(function(eRes) {
-			alert("Get Data Error");
+			alert("数据分析中,请稍后......");
 		}, this);
 	    sap.ui.getCore().getModel().read("SCREEN_JYYJ_02_V05/?$filter=(BNAME eq '" + usrid + "')", mParameters);
 	},
