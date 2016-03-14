@@ -568,7 +568,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 		}
 
 		//成本数据
-		var cb_data=(rlcb_data+qtcb_data).toFixed(2);
+		var cb_data=(rlcb_data+qtcb_data+KPI_GRC_V_Value).toFixed(2);
 		if (costTongbi == undefined) {
 		    costTongbi = 0;
 		}
@@ -617,7 +617,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.Performance", {
 		// 供热收入-单价
 		document.getElementById('gongreshouru_span').innerHTML=KPI_RGJ_V_Value+'(元/吨)';
 		// 供热燃料成本
-		document.getElementById('gongrechengben_span').innerHTML=KPI_GRC_V_Value+'(元/吨)';
+		document.getElementById('gongrechengben_span').innerHTML=KPI_GRC_V_Value+'(万元)';
 		
         document.getElementById('swdl_span').innerHTML=swdl_data+'(万千瓦时)';
         document.getElementById('pjswdj_span').innerHTML=pjswdj_data+'(元/千瓦时)';

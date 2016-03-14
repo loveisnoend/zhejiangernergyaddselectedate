@@ -221,7 +221,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.taxFee", {
                         ],
         				yAxis: [
         					{
-        						name: '单位:千万元',
+        						name: '单位:百万元',
         						type: 'value',
         						axisLine: {
         							show: true
@@ -358,7 +358,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.taxFee", {
                         ],
         				yAxis: [
         					{
-        						name: '单位:千万元',
+        						name: '单位:百万元',
         						type: 'value',
         						axisLine: {
         							show: true
@@ -919,7 +919,7 @@ sap.ui.controller("com.zhenergy.pcbi.view.taxFee", {
 								"浙江长兴东南热力有限责任公司":[120,30.60],
 								// 金华
 								"金华":[119.64,29.12],
-								"浙江浙能金华燃机发电有限责任公司":[112.50,29.12],
+								"浙江浙能金华燃机发电有限责任公司":[120.35,29.12],
 								//衢州
 								"浙江浙能常山天然气发电有限公司":[118.70,29],
 								// 舟山

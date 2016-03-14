@@ -12,7 +12,7 @@
   background-color: inherit;
   /*width: 120px;*/
   /*TODO*/
-  width:180px;
+  width:220px;
 }
 
 .menu_bottom li{
@@ -41,7 +41,7 @@
     float:left;
     /*margin-left:30px;*/
     /*TODO*/
-    margin-left:60px;
+    margin-left:85px;
 }
 
 .menu_bottom .But02{
@@ -50,7 +50,7 @@
     float:left;
     /*margin-left:30px;*/
     /*TODO*/
-    margin-left:60px;
+    margin-left:85px;
 }
 
 .menu_bottom .But03{
@@ -59,7 +59,7 @@
     float:left;
     /*margin-left:30px;*/
     /*TODO*/
-    margin-left:60px;
+    margin-left:85px;
 }
 .menu_bottom .But04{
     background:url('../img/normal-nav-ico-4.png');
@@ -67,7 +67,7 @@
     float:left;
     /*margin-left:30px;*/
     /*TODO*/
-    margin-left:60px;
+    margin-left:85px;
 }
 .menu_bottom .But05{
     background:url('../img/normal-nav-ico-5.png');
@@ -75,7 +75,7 @@
     float:left;
     /*margin-left:30px;*/
     /*TODO*/
-    margin-left:60px;
+    margin-left:85px;
 }
 .menu_bottom .But06{
     background:url('../img/normal-nav-ico-6.png');
@@ -83,7 +83,7 @@
     float:left;
     /*margin-left:30px;*/
     /*TODO*/
-    margin-left:60px;
+    margin-left:85px;
 }
 .menu_bottom .But07{
     background:url('../img/normal-nav-ico-7.png');
@@ -91,13 +91,13 @@
     float:left;
     /*margin-left:30px;*/
     /*TODO*/
-    margin-left:60px;
+    margin-left:85px;
 }
 .menu_bottom .But08{
     background:url('../img/normal-nav-ico-8.png');
     background-size: cover;
     float:left;
-    margin-left:60px;
+    margin-left:85px;
 }
 .menu_bottom>ul>.nav_BI>.But01, .menu_bottom .But01:active{
 background:url('../img/active-nav-ico-1.png');
